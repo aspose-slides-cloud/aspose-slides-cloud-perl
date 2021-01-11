@@ -83,7 +83,7 @@ subtest 'multipart content' => sub {
 
 subtest 'subclass property deserialization' => sub {
     $utils->initialize('get_slide_shape', '');
-    my %params = ('name' => 'test.ppt', 'slide_index' => 1, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+    my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
     eval {
         my $result = $utils->{api}->get_slide_shape(%params);
         is($result->{text}, "1");
@@ -106,12 +106,12 @@ subtest 'timeout' => sub {
     #my $config_file = decode_json(read_file("testConfig.json"));
     #$config->{base_url} = $config_file->{BaseUrl};
     #$config->{auth_base_url} = $config_file->{AuthBaseUrl};
-    #$config->{app_sid} = $config_file->{AppSid};
-    #$config->{app_key} = $config_file->{AppKey};
+    #$config->{app_sid} = $config_file->{ClientId};
+    #$config->{app_key} = $config_file->{ClientSecret};
     #$config->{debug} = $config_file->{Debug};
     #$config->{timeout} = 1;
     #my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    #my %params = ('name' => 'test.ppt', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK', 'format' => 'svg');
+    #my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK', 'format' => 'svg');
     #$api->post_slide_save_as(%params);
     pass();
 };
@@ -215,8 +215,8 @@ subtest 'good auth' => sub {
     my $config_file = decode_json(read_file("testConfig.json"));
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
-    $config->{app_sid} = $config_file->{AppSid};
-    $config->{app_key} = $config_file->{AppKey};
+    $config->{app_sid} = $config_file->{ClientId};
+    $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     $api->get_slides_api_info();
@@ -229,7 +229,7 @@ subtest 'bad auth' => sub {
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
     $config->{app_sid} = 'invalid';
-    $config->{app_key} = $config_file->{AppKey};
+    $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     eval {
@@ -252,8 +252,8 @@ subtest 'good token' => sub {
     my $config_file = decode_json(read_file("testConfig.json"));
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
-    $config->{app_sid} = $config_file->{AppSid};
-    $config->{app_key} = $config_file->{AppKey};
+    $config->{app_sid} = $config_file->{ClientId};
+    $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     $api->get_slides_api_info();
@@ -269,8 +269,8 @@ subtest 'bad token' => sub {
     my $config_file = decode_json(read_file("testConfig.json"));
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
-    $config->{app_sid} = $config_file->{AppSid};
-    $config->{app_key} = $config_file->{AppKey};
+    $config->{app_sid} = $config_file->{ClientId};
+    $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     $api->get_slides_api_info();

@@ -46,8 +46,8 @@ sub new {
     my $config_file = decode_json(read_file("testConfig.json"));
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
-    $config->{app_sid} = $config_file->{AppSid};
-    $config->{app_key} = $config_file->{AppKey};
+    $config->{app_sid} = $config_file->{ClientId};
+    $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     return bless { rules => decode_json(read_file('testRules.json')), api => $api }, $class;
@@ -111,7 +111,7 @@ sub get_param_value {
     $function =~ s/_//g;
     $parameter =~ s/_//g;
     if ($type eq 'File') {
-        my $content = read_file("TestData\\test.ppt", { binmode => ':raw' });
+        my $content = read_file("TestData\\test.pptx", { binmode => ':raw' });
         return $content;
     }
     my $result = "test".$parameter;
