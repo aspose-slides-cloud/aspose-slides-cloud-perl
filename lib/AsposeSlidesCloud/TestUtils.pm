@@ -111,7 +111,11 @@ sub get_param_value {
     $function =~ s/_//g;
     $parameter =~ s/_//g;
     if ($type eq 'File') {
-        my $content = read_file("TestData\\test.pptx", { binmode => ':raw' });
+        my $file_name = "test.pptx";
+        if (uc("PostSlidesDocumentFromPdf") eq uc($function)) {
+            $file_name = "test.pdf";
+        }
+        my $content = read_file("TestData\\$file_name", { binmode => ':raw' });
         return $content;
     }
     my $result = "test".$parameter;
