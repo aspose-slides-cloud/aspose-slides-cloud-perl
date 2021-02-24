@@ -14184,7 +14184,7 @@ subtest 'post_slides_document_from_template invalid folder' => sub {
 # post_slides_pipeline test
 #
 subtest 'post_slides_pipeline' => sub {
-    my %params = ('pipeline' => $utils->get_param_value('post_slides_pipeline', 'pipeline', 'Pipeline'));
+    my %params = ('pipeline' => $utils->get_param_value('post_slides_pipeline', 'pipeline', 'Pipeline'), 'files' => $utils->get_param_value('post_slides_pipeline', 'files', 'ARRAY[string]'));
     $utils->initialize('post_slides_pipeline', '');
     eval {
         my $result = $utils->{api}->post_slides_pipeline(%params);
@@ -14196,7 +14196,7 @@ subtest 'post_slides_pipeline' => sub {
 };
 
 subtest 'post_slides_pipeline invalid pipeline' => sub {
-    my %params = ('pipeline' => $utils->get_param_value('post_slides_pipeline', 'pipeline', 'Pipeline'));
+    my %params = ('pipeline' => $utils->get_param_value('post_slides_pipeline', 'pipeline', 'Pipeline'), 'files' => $utils->get_param_value('post_slides_pipeline', 'files', 'ARRAY[string]'));
     $params{ pipeline } = $utils->invalidize_param_value('post_slides_pipeline', 'pipeline', $params{ pipeline });
     $utils->initialize('post_slides_pipeline', 'pipeline', $params{ pipeline });
 
@@ -14207,6 +14207,21 @@ subtest 'post_slides_pipeline invalid pipeline' => sub {
         $utils->assert_error('post_slides_pipeline', 'pipeline', $params{ pipeline }, $@);
     } else {
         $utils->assert_no_error('post_slides_pipeline', 'pipeline');
+    }
+};
+
+subtest 'post_slides_pipeline invalid files' => sub {
+    my %params = ('pipeline' => $utils->get_param_value('post_slides_pipeline', 'pipeline', 'Pipeline'), 'files' => $utils->get_param_value('post_slides_pipeline', 'files', 'ARRAY[string]'));
+    $params{ files } = $utils->invalidize_param_value('post_slides_pipeline', 'files', $params{ files });
+    $utils->initialize('post_slides_pipeline', 'files', $params{ files });
+
+    eval {
+        my $result = $utils->{api}->post_slides_pipeline(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_slides_pipeline', 'files', $params{ files }, $@);
+    } else {
+        $utils->assert_no_error('post_slides_pipeline', 'files');
     }
 };
 
