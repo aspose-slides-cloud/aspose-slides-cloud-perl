@@ -73,7 +73,7 @@ subtest 'multipart content' => sub {
     my @files = ($file1, $file2);
     my %params = ('pipeline' => $pipeline, 'files' => \@files);
     eval {
-        my $result = $utils->{api}->post_slides_pipeline(%params);
+        my $result = $utils->{api}->pipeline(%params);
     };
     if ($@) {
         fail("post_slides_pipeline raised an exception: $@");
@@ -85,7 +85,7 @@ subtest 'subclass property deserialization' => sub {
     $utils->initialize('get_slide_shape', '');
     my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
     eval {
-        my $result = $utils->{api}->get_slide_shape(%params);
+        my $result = $utils->{api}->get_shape(%params);
         is($result->{text}, "1");
     };
     if ($@) {
@@ -112,7 +112,7 @@ subtest 'timeout' => sub {
     #$config->{timeout} = 1;
     #my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     #my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK', 'format' => 'svg');
-    #$api->post_slide_save_as(%params);
+    #$api->download_slide(%params);
     pass();
 };
 
@@ -127,27 +127,6 @@ subtest 'nullable properties' => sub {
     $utils->initialize('no_method', 'no_property');
     my %copy_params = ('src_path' => 'TempTests/'.$file_name, 'dest_path' => $folder_name.'/'.$file_name);
     $utils->{api}->copy_file(%copy_params);
-
-    my $pipeline = AsposeSlidesCloud::Object::Pipeline->new();
-    my $input = AsposeSlidesCloud::Object::Input->new();
-    my $template_data = AsposeSlidesCloud::Object::RequestInputFile->new();
-    $template_data->{index} = 0;
-    $input->{template_data} = $template_data;
-    my $template = AsposeSlidesCloud::Object::RequestInputFile->new();
-    $template->{index} = 1;
-    $input->{template} = $template;
-    $pipeline->{input} = $input;
-    my $task = AsposeSlidesCloud::Object::Save->new();
-    $task->{format} = "pptx";
-    my $output = AsposeSlidesCloud::Object::OutputFile->new();
-    $output->{type} = "Response";
-    $task->{output} = $output;
-    my @tasks = ($task);
-    $pipeline->{tasks} = \@tasks;
-    my $file1 = read_file("TestData\\TemplatingCVDataWithBase64.xml", { binmode => ':raw' });
-    my $file2 = read_file("TestData\\TemplateCV.pptx", { binmode => ':raw' });
-    my @files = ($file1, $file2);
-    my %params = ('pipeline' => $pipeline, 'files' => \@files);
 
     my $title = AsposeSlidesCloud::Object::ChartTitle->new();
     $title->{has_title} = 1;
@@ -178,10 +157,10 @@ subtest 'nullable properties' => sub {
     $chart->{series} = \@series_list;
     $chart->{axes} = $axes;
     my %post_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'dto' => $chart);
-    $utils->{api}->post_add_new_shape(%post_params);
+    $utils->{api}->create_shape(%post_params);
 
     my %get_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 4);
-    my $result = $utils->{api}->get_slide_shape(%get_params);
+    my $result = $utils->{api}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min1);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max1);
 
@@ -191,9 +170,9 @@ subtest 'nullable properties' => sub {
     $chart = AsposeSlidesCloud::Object::Chart->new();
     $chart->{axes} = $axes;
     my %put_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 4, 'dto' => $chart);
-    $utils->{api}->put_slide_shape_info(%put_params);
+    $utils->{api}->update_shape(%put_params);
 
-    $result = $utils->{api}->get_slide_shape(%get_params);
+    $result = $utils->{api}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min2);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max1);
 
@@ -201,9 +180,9 @@ subtest 'nullable properties' => sub {
     $axis->{max_value} = $max2;
     $axes->{horizontal_axis} = $axis;
     $chart->{axes} = $axes;
-    $utils->{api}->put_slide_shape_info(%put_params);
+    $utils->{api}->update_shape(%put_params);
 
-    $result = $utils->{api}->get_slide_shape(%get_params);
+    $result = $utils->{api}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min2);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max2);
 
@@ -219,7 +198,7 @@ subtest 'good auth' => sub {
     $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    $api->get_slides_api_info();
+    $api->get_api_info();
     pass();
 };
 
@@ -233,7 +212,7 @@ subtest 'bad auth' => sub {
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     eval {
-        $api->get_slides_api_info();
+        $api->get_api_info();
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
@@ -256,11 +235,11 @@ subtest 'good token' => sub {
     $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    $api->get_slides_api_info();
+    $api->get_api_info();
 
     $config->{app_sid} = 'invalid';
     $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    $api->get_slides_api_info();
+    $api->get_api_info();
     pass();
 };
 
@@ -273,11 +252,11 @@ subtest 'bad token' => sub {
     $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    $api->get_slides_api_info();
+    $api->get_api_info();
 
     $config->{access_token} = 'invalid';
     $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    $api->get_slides_api_info();
+    $api->get_api_info();
     pass();
 };
 

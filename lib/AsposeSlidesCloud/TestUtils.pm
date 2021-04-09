@@ -118,6 +118,12 @@ sub get_param_value {
         my $content = read_file("TestData\\$file_name", { binmode => ':raw' });
         return $content;
     }
+    if ($parameter eq 'files') {
+        my $file1 = read_file("TestData\\test.pptx", { binmode => ':raw' });
+        my $file2 = read_file("TestData\\test-unprotected.pptx", { binmode => ':raw' });
+        my @files = ($file1, $file2);
+        return \@files;
+    }
     my $result = "test".$parameter;
     my $values = $self->{rules}->{Values};
     foreach (@$values) {
