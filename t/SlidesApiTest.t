@@ -3666,6 +3666,126 @@ subtest 'delete_slides_document_property invalid storage' => sub {
 };
 
 #
+# delete_slides_protection_properties test
+#
+subtest 'delete_slides_protection_properties' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_slides_protection_properties', 'name', 'string'), 'password' => $utils->get_param_value('delete_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides_protection_properties', 'storage', 'string'));
+    $utils->initialize('delete_slides_protection_properties', '');
+    eval {
+        my $result = $utils->{api}->delete_protection(%params);
+    };
+    if ($@) {
+        fail("delete_slides_protection_properties raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_slides_protection_properties invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_slides_protection_properties', 'name', 'string'), 'password' => $utils->get_param_value('delete_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides_protection_properties', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_slides_protection_properties', 'name', $params{ name });
+    $utils->initialize('delete_slides_protection_properties', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_protection(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties', 'name');
+    }
+};
+
+subtest 'delete_slides_protection_properties invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_slides_protection_properties', 'name', 'string'), 'password' => $utils->get_param_value('delete_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides_protection_properties', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_slides_protection_properties', 'password', $params{ password });
+    $utils->initialize('delete_slides_protection_properties', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_protection(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties', 'password');
+    }
+};
+
+subtest 'delete_slides_protection_properties invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_slides_protection_properties', 'name', 'string'), 'password' => $utils->get_param_value('delete_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides_protection_properties', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_slides_protection_properties', 'folder', $params{ folder });
+    $utils->initialize('delete_slides_protection_properties', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_protection(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties', 'folder');
+    }
+};
+
+subtest 'delete_slides_protection_properties invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_slides_protection_properties', 'name', 'string'), 'password' => $utils->get_param_value('delete_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides_protection_properties', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_slides_protection_properties', 'storage', $params{ storage });
+    $utils->initialize('delete_slides_protection_properties', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_protection(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties', 'storage');
+    }
+};
+
+#
+# delete_slides_protection_properties_online test
+#
+subtest 'delete_slides_protection_properties_online' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_slides_protection_properties_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_slides_protection_properties_online', 'password', 'string'));
+    $utils->initialize('delete_slides_protection_properties_online', '');
+    eval {
+        my $result = $utils->{api}->delete_protection_online(%params);
+    };
+    if ($@) {
+        fail("delete_slides_protection_properties_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_slides_protection_properties_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_slides_protection_properties_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_slides_protection_properties_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('delete_slides_protection_properties_online', 'document', $params{ document });
+    $utils->initialize('delete_slides_protection_properties_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->delete_protection_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties_online', 'document');
+    }
+};
+
+subtest 'delete_slides_protection_properties_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_slides_protection_properties_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_slides_protection_properties_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_slides_protection_properties_online', 'password', $params{ password });
+    $utils->initialize('delete_slides_protection_properties_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_protection_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_slides_protection_properties_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_slides_protection_properties_online', 'password');
+    }
+};
+
+#
 # delete_slides_slide_background test
 #
 subtest 'delete_slides_slide_background' => sub {
@@ -4322,6 +4442,96 @@ subtest 'delete_subshape_portions invalid storage' => sub {
         $utils->assert_error('delete_subshape_portions', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('delete_subshape_portions', 'storage');
+    }
+};
+
+#
+# delete_watermark test
+#
+subtest 'delete_watermark' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $utils->initialize('delete_watermark', '');
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        fail("delete_watermark raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_watermark invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_watermark', 'name', $params{ name });
+    $utils->initialize('delete_watermark', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_watermark', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('delete_watermark', 'name');
+    }
+};
+
+subtest 'delete_watermark invalid shape_name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $params{ shape_name } = $utils->invalidize_param_value('delete_watermark', 'shape_name', $params{ shape_name });
+    $utils->initialize('delete_watermark', 'shape_name', $params{ shape_name });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_watermark', 'shape_name', $params{ shape_name }, $@);
+    } else {
+        $utils->assert_no_error('delete_watermark', 'shape_name');
+    }
+};
+
+subtest 'delete_watermark invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_watermark', 'password', $params{ password });
+    $utils->initialize('delete_watermark', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_watermark', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_watermark', 'password');
+    }
+};
+
+subtest 'delete_watermark invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_watermark', 'folder', $params{ folder });
+    $utils->initialize('delete_watermark', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_watermark', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('delete_watermark', 'folder');
+    }
+};
+
+subtest 'delete_watermark invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_watermark', 'name', 'string'), 'shape_name' => $utils->get_param_value('delete_watermark', 'shape_name', 'string'), 'password' => $utils->get_param_value('delete_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('delete_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_watermark', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_watermark', 'storage', $params{ storage });
+    $utils->initialize('delete_watermark', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_watermark', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('delete_watermark', 'storage');
     }
 };
 
@@ -11949,7 +12159,7 @@ subtest 'post_export_images_with_format invalid storage' => sub {
 # post_export_shape test
 #
 subtest 'post_export_shape' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $utils->initialize('post_export_shape', '');
     eval {
         my $result = $utils->{api}->download_shape_online(%params);
@@ -11961,7 +12171,7 @@ subtest 'post_export_shape' => sub {
 };
 
 subtest 'post_export_shape invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ document } = $utils->invalidize_param_value('post_export_shape', 'document', $params{ document });
     $utils->initialize('post_export_shape', 'document', $params{ document });
 
@@ -11976,7 +12186,7 @@ subtest 'post_export_shape invalid document' => sub {
 };
 
 subtest 'post_export_shape invalid slide_index' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('post_export_shape', 'slide_index', $params{ slide_index });
     $utils->initialize('post_export_shape', 'slide_index', $params{ slide_index });
 
@@ -11991,7 +12201,7 @@ subtest 'post_export_shape invalid slide_index' => sub {
 };
 
 subtest 'post_export_shape invalid shape_index' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('post_export_shape', 'shape_index', $params{ shape_index });
     $utils->initialize('post_export_shape', 'shape_index', $params{ shape_index });
 
@@ -12006,7 +12216,7 @@ subtest 'post_export_shape invalid shape_index' => sub {
 };
 
 subtest 'post_export_shape invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ format } = $utils->invalidize_param_value('post_export_shape', 'format', $params{ format });
     $utils->initialize('post_export_shape', 'format', $params{ format });
 
@@ -12020,38 +12230,8 @@ subtest 'post_export_shape invalid format' => sub {
     }
 };
 
-subtest 'post_export_shape invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
-    $params{ password } = $utils->invalidize_param_value('post_export_shape', 'password', $params{ password });
-    $utils->initialize('post_export_shape', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{api}->download_shape_online(%params);
-    };
-    if ($@) {
-        $utils->assert_error('post_export_shape', 'password', $params{ password }, $@);
-    } else {
-        $utils->assert_no_error('post_export_shape', 'password');
-    }
-};
-
-subtest 'post_export_shape invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('post_export_shape', 'storage', $params{ storage });
-    $utils->initialize('post_export_shape', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{api}->download_shape_online(%params);
-    };
-    if ($@) {
-        $utils->assert_error('post_export_shape', 'storage', $params{ storage }, $@);
-    } else {
-        $utils->assert_no_error('post_export_shape', 'storage');
-    }
-};
-
 subtest 'post_export_shape invalid scale_x' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ scale_x } = $utils->invalidize_param_value('post_export_shape', 'scale_x', $params{ scale_x });
     $utils->initialize('post_export_shape', 'scale_x', $params{ scale_x });
 
@@ -12066,7 +12246,7 @@ subtest 'post_export_shape invalid scale_x' => sub {
 };
 
 subtest 'post_export_shape invalid scale_y' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ scale_y } = $utils->invalidize_param_value('post_export_shape', 'scale_y', $params{ scale_y });
     $utils->initialize('post_export_shape', 'scale_y', $params{ scale_y });
 
@@ -12081,7 +12261,7 @@ subtest 'post_export_shape invalid scale_y' => sub {
 };
 
 subtest 'post_export_shape invalid bounds' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ bounds } = $utils->invalidize_param_value('post_export_shape', 'bounds', $params{ bounds });
     $utils->initialize('post_export_shape', 'bounds', $params{ bounds });
 
@@ -12095,8 +12275,38 @@ subtest 'post_export_shape invalid bounds' => sub {
     }
 };
 
+subtest 'post_export_shape invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_export_shape', 'password', $params{ password });
+    $utils->initialize('post_export_shape', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->download_shape_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_export_shape', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_export_shape', 'password');
+    }
+};
+
+subtest 'post_export_shape invalid storage' => sub {
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('post_export_shape', 'storage', $params{ storage });
+    $utils->initialize('post_export_shape', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->download_shape_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_export_shape', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('post_export_shape', 'storage');
+    }
+};
+
 subtest 'post_export_shape invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('post_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('post_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('post_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('post_export_shape', 'format', 'string'), 'scale_x' => $utils->get_param_value('post_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('post_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('post_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('post_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('post_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('post_export_shape', 'fonts_folder', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('post_export_shape', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('post_export_shape', 'fonts_folder', $params{ fonts_folder });
 
@@ -12482,6 +12692,186 @@ subtest 'post_get_notes_slide_with_format invalid fonts_folder' => sub {
         $utils->assert_error('post_get_notes_slide_with_format', 'fonts_folder', $params{ fonts_folder }, $@);
     } else {
         $utils->assert_no_error('post_get_notes_slide_with_format', 'fonts_folder');
+    }
+};
+
+#
+# post_image_watermark test
+#
+subtest 'post_image_watermark' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $utils->initialize('post_image_watermark', '');
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        fail("post_image_watermark raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'post_image_watermark invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('post_image_watermark', 'name', $params{ name });
+    $utils->initialize('post_image_watermark', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'name');
+    }
+};
+
+subtest 'post_image_watermark invalid image' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ image } = $utils->invalidize_param_value('post_image_watermark', 'image', $params{ image });
+    $utils->initialize('post_image_watermark', 'image', $params{ image });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'image', $params{ image }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'image');
+    }
+};
+
+subtest 'post_image_watermark invalid picture_frame' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ picture_frame } = $utils->invalidize_param_value('post_image_watermark', 'picture_frame', $params{ picture_frame });
+    $utils->initialize('post_image_watermark', 'picture_frame', $params{ picture_frame });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'picture_frame', $params{ picture_frame }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'picture_frame');
+    }
+};
+
+subtest 'post_image_watermark invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_image_watermark', 'password', $params{ password });
+    $utils->initialize('post_image_watermark', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'password');
+    }
+};
+
+subtest 'post_image_watermark invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('post_image_watermark', 'folder', $params{ folder });
+    $utils->initialize('post_image_watermark', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'folder');
+    }
+};
+
+subtest 'post_image_watermark invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('post_image_watermark', 'name', 'string'), 'image' => $utils->get_param_value('post_image_watermark', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_image_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_image_watermark', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('post_image_watermark', 'storage', $params{ storage });
+    $utils->initialize('post_image_watermark', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark', 'storage');
+    }
+};
+
+#
+# post_image_watermark_online test
+#
+subtest 'post_image_watermark_online' => sub {
+    my %params = ('document' => $utils->get_param_value('post_image_watermark_online', 'document', 'File'), 'image' => $utils->get_param_value('post_image_watermark_online', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark_online', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark_online', 'password', 'string'));
+    $utils->initialize('post_image_watermark_online', '');
+    eval {
+        my $result = $utils->{api}->create_image_watermark_online(%params);
+    };
+    if ($@) {
+        fail("post_image_watermark_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'post_image_watermark_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('post_image_watermark_online', 'document', 'File'), 'image' => $utils->get_param_value('post_image_watermark_online', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark_online', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('post_image_watermark_online', 'document', $params{ document });
+    $utils->initialize('post_image_watermark_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark_online', 'document');
+    }
+};
+
+subtest 'post_image_watermark_online invalid image' => sub {
+    my %params = ('document' => $utils->get_param_value('post_image_watermark_online', 'document', 'File'), 'image' => $utils->get_param_value('post_image_watermark_online', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark_online', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark_online', 'password', 'string'));
+    $params{ image } = $utils->invalidize_param_value('post_image_watermark_online', 'image', $params{ image });
+    $utils->initialize('post_image_watermark_online', 'image', $params{ image });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark_online', 'image', $params{ image }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark_online', 'image');
+    }
+};
+
+subtest 'post_image_watermark_online invalid picture_frame' => sub {
+    my %params = ('document' => $utils->get_param_value('post_image_watermark_online', 'document', 'File'), 'image' => $utils->get_param_value('post_image_watermark_online', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark_online', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark_online', 'password', 'string'));
+    $params{ picture_frame } = $utils->invalidize_param_value('post_image_watermark_online', 'picture_frame', $params{ picture_frame });
+    $utils->initialize('post_image_watermark_online', 'picture_frame', $params{ picture_frame });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark_online', 'picture_frame', $params{ picture_frame }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark_online', 'picture_frame');
+    }
+};
+
+subtest 'post_image_watermark_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('post_image_watermark_online', 'document', 'File'), 'image' => $utils->get_param_value('post_image_watermark_online', 'image', 'File'), 'picture_frame' => $utils->get_param_value('post_image_watermark_online', 'picture_frame', 'PictureFrame'), 'password' => $utils->get_param_value('post_image_watermark_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_image_watermark_online', 'password', $params{ password });
+    $utils->initialize('post_image_watermark_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_image_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_image_watermark_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_image_watermark_online', 'password');
     }
 };
 
@@ -16566,6 +16956,336 @@ subtest 'post_subshape_save_as invalid fonts_folder' => sub {
 };
 
 #
+# post_watermark test
+#
+subtest 'post_watermark' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $utils->initialize('post_watermark', '');
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        fail("post_watermark raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'post_watermark invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('post_watermark', 'name', $params{ name });
+    $utils->initialize('post_watermark', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'name');
+    }
+};
+
+subtest 'post_watermark invalid shape' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ shape } = $utils->invalidize_param_value('post_watermark', 'shape', $params{ shape });
+    $utils->initialize('post_watermark', 'shape', $params{ shape });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'shape', $params{ shape }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'shape');
+    }
+};
+
+subtest 'post_watermark invalid font_height' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ font_height } = $utils->invalidize_param_value('post_watermark', 'font_height', $params{ font_height });
+    $utils->initialize('post_watermark', 'font_height', $params{ font_height });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'font_height', $params{ font_height }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'font_height');
+    }
+};
+
+subtest 'post_watermark invalid text' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ text } = $utils->invalidize_param_value('post_watermark', 'text', $params{ text });
+    $utils->initialize('post_watermark', 'text', $params{ text });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'text', $params{ text }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'text');
+    }
+};
+
+subtest 'post_watermark invalid font_name' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('post_watermark', 'font_name', $params{ font_name });
+    $utils->initialize('post_watermark', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'font_name');
+    }
+};
+
+subtest 'post_watermark invalid font_color' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ font_color } = $utils->invalidize_param_value('post_watermark', 'font_color', $params{ font_color });
+    $utils->initialize('post_watermark', 'font_color', $params{ font_color });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'font_color', $params{ font_color }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'font_color');
+    }
+};
+
+subtest 'post_watermark invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_watermark', 'password', $params{ password });
+    $utils->initialize('post_watermark', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'password');
+    }
+};
+
+subtest 'post_watermark invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('post_watermark', 'folder', $params{ folder });
+    $utils->initialize('post_watermark', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'folder');
+    }
+};
+
+subtest 'post_watermark invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('post_watermark', 'name', 'string'), 'shape' => $utils->get_param_value('post_watermark', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark', 'password', 'string'), 'folder' => $utils->get_param_value('post_watermark', 'folder', 'string'), 'storage' => $utils->get_param_value('post_watermark', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('post_watermark', 'storage', $params{ storage });
+    $utils->initialize('post_watermark', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_watermark(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark', 'storage');
+    }
+};
+
+#
+# post_watermark_delete_online test
+#
+subtest 'post_watermark_delete_online' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_delete_online', 'document', 'File'), 'shape_name' => $utils->get_param_value('post_watermark_delete_online', 'shape_name', 'string'), 'password' => $utils->get_param_value('post_watermark_delete_online', 'password', 'string'));
+    $utils->initialize('post_watermark_delete_online', '');
+    eval {
+        my $result = $utils->{api}->delete_watermark_online(%params);
+    };
+    if ($@) {
+        fail("post_watermark_delete_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'post_watermark_delete_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_delete_online', 'document', 'File'), 'shape_name' => $utils->get_param_value('post_watermark_delete_online', 'shape_name', 'string'), 'password' => $utils->get_param_value('post_watermark_delete_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('post_watermark_delete_online', 'document', $params{ document });
+    $utils->initialize('post_watermark_delete_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_delete_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_delete_online', 'document');
+    }
+};
+
+subtest 'post_watermark_delete_online invalid shape_name' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_delete_online', 'document', 'File'), 'shape_name' => $utils->get_param_value('post_watermark_delete_online', 'shape_name', 'string'), 'password' => $utils->get_param_value('post_watermark_delete_online', 'password', 'string'));
+    $params{ shape_name } = $utils->invalidize_param_value('post_watermark_delete_online', 'shape_name', $params{ shape_name });
+    $utils->initialize('post_watermark_delete_online', 'shape_name', $params{ shape_name });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_delete_online', 'shape_name', $params{ shape_name }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_delete_online', 'shape_name');
+    }
+};
+
+subtest 'post_watermark_delete_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_delete_online', 'document', 'File'), 'shape_name' => $utils->get_param_value('post_watermark_delete_online', 'shape_name', 'string'), 'password' => $utils->get_param_value('post_watermark_delete_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_watermark_delete_online', 'password', $params{ password });
+    $utils->initialize('post_watermark_delete_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_delete_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_delete_online', 'password');
+    }
+};
+
+#
+# post_watermark_online test
+#
+subtest 'post_watermark_online' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $utils->initialize('post_watermark_online', '');
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        fail("post_watermark_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'post_watermark_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('post_watermark_online', 'document', $params{ document });
+    $utils->initialize('post_watermark_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'document');
+    }
+};
+
+subtest 'post_watermark_online invalid shape' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ shape } = $utils->invalidize_param_value('post_watermark_online', 'shape', $params{ shape });
+    $utils->initialize('post_watermark_online', 'shape', $params{ shape });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'shape', $params{ shape }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'shape');
+    }
+};
+
+subtest 'post_watermark_online invalid font_height' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ font_height } = $utils->invalidize_param_value('post_watermark_online', 'font_height', $params{ font_height });
+    $utils->initialize('post_watermark_online', 'font_height', $params{ font_height });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'font_height', $params{ font_height }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'font_height');
+    }
+};
+
+subtest 'post_watermark_online invalid text' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ text } = $utils->invalidize_param_value('post_watermark_online', 'text', $params{ text });
+    $utils->initialize('post_watermark_online', 'text', $params{ text });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'text', $params{ text }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'text');
+    }
+};
+
+subtest 'post_watermark_online invalid font_name' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('post_watermark_online', 'font_name', $params{ font_name });
+    $utils->initialize('post_watermark_online', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'font_name');
+    }
+};
+
+subtest 'post_watermark_online invalid font_color' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ font_color } = $utils->invalidize_param_value('post_watermark_online', 'font_color', $params{ font_color });
+    $utils->initialize('post_watermark_online', 'font_color', $params{ font_color });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'font_color', $params{ font_color }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'font_color');
+    }
+};
+
+subtest 'post_watermark_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('post_watermark_online', 'document', 'File'), 'shape' => $utils->get_param_value('post_watermark_online', 'shape', 'Shape'), 'font_height' => $utils->get_param_value('post_watermark_online', 'font_height', 'double'), 'text' => $utils->get_param_value('post_watermark_online', 'text', 'string'), 'font_name' => $utils->get_param_value('post_watermark_online', 'font_name', 'string'), 'font_color' => $utils->get_param_value('post_watermark_online', 'font_color', 'string'), 'password' => $utils->get_param_value('post_watermark_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('post_watermark_online', 'password', $params{ password });
+    $utils->initialize('post_watermark_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_watermark_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('post_watermark_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('post_watermark_online', 'password');
+    }
+};
+
+#
 # put_chart_category test
 #
 subtest 'put_chart_category' => sub {
@@ -16989,7 +17709,7 @@ subtest 'put_chart_series invalid storage' => sub {
 # put_export_shape test
 #
 subtest 'put_export_shape' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $utils->initialize('put_export_shape', '');
     eval {
         my $result = $utils->{api}->save_shape_online(%params);
@@ -17001,7 +17721,7 @@ subtest 'put_export_shape' => sub {
 };
 
 subtest 'put_export_shape invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ document } = $utils->invalidize_param_value('put_export_shape', 'document', $params{ document });
     $utils->initialize('put_export_shape', 'document', $params{ document });
 
@@ -17016,7 +17736,7 @@ subtest 'put_export_shape invalid document' => sub {
 };
 
 subtest 'put_export_shape invalid slide_index' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('put_export_shape', 'slide_index', $params{ slide_index });
     $utils->initialize('put_export_shape', 'slide_index', $params{ slide_index });
 
@@ -17031,7 +17751,7 @@ subtest 'put_export_shape invalid slide_index' => sub {
 };
 
 subtest 'put_export_shape invalid shape_index' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('put_export_shape', 'shape_index', $params{ shape_index });
     $utils->initialize('put_export_shape', 'shape_index', $params{ shape_index });
 
@@ -17046,7 +17766,7 @@ subtest 'put_export_shape invalid shape_index' => sub {
 };
 
 subtest 'put_export_shape invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ format } = $utils->invalidize_param_value('put_export_shape', 'format', $params{ format });
     $utils->initialize('put_export_shape', 'format', $params{ format });
 
@@ -17061,7 +17781,7 @@ subtest 'put_export_shape invalid format' => sub {
 };
 
 subtest 'put_export_shape invalid out_path' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ out_path } = $utils->invalidize_param_value('put_export_shape', 'out_path', $params{ out_path });
     $utils->initialize('put_export_shape', 'out_path', $params{ out_path });
 
@@ -17075,38 +17795,8 @@ subtest 'put_export_shape invalid out_path' => sub {
     }
 };
 
-subtest 'put_export_shape invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
-    $params{ password } = $utils->invalidize_param_value('put_export_shape', 'password', $params{ password });
-    $utils->initialize('put_export_shape', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{api}->save_shape_online(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_export_shape', 'password', $params{ password }, $@);
-    } else {
-        $utils->assert_no_error('put_export_shape', 'password');
-    }
-};
-
-subtest 'put_export_shape invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('put_export_shape', 'storage', $params{ storage });
-    $utils->initialize('put_export_shape', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{api}->save_shape_online(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_export_shape', 'storage', $params{ storage }, $@);
-    } else {
-        $utils->assert_no_error('put_export_shape', 'storage');
-    }
-};
-
 subtest 'put_export_shape invalid scale_x' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ scale_x } = $utils->invalidize_param_value('put_export_shape', 'scale_x', $params{ scale_x });
     $utils->initialize('put_export_shape', 'scale_x', $params{ scale_x });
 
@@ -17121,7 +17811,7 @@ subtest 'put_export_shape invalid scale_x' => sub {
 };
 
 subtest 'put_export_shape invalid scale_y' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ scale_y } = $utils->invalidize_param_value('put_export_shape', 'scale_y', $params{ scale_y });
     $utils->initialize('put_export_shape', 'scale_y', $params{ scale_y });
 
@@ -17136,7 +17826,7 @@ subtest 'put_export_shape invalid scale_y' => sub {
 };
 
 subtest 'put_export_shape invalid bounds' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ bounds } = $utils->invalidize_param_value('put_export_shape', 'bounds', $params{ bounds });
     $utils->initialize('put_export_shape', 'bounds', $params{ bounds });
 
@@ -17150,8 +17840,38 @@ subtest 'put_export_shape invalid bounds' => sub {
     }
 };
 
+subtest 'put_export_shape invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    $params{ password } = $utils->invalidize_param_value('put_export_shape', 'password', $params{ password });
+    $utils->initialize('put_export_shape', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->save_shape_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('put_export_shape', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('put_export_shape', 'password');
+    }
+};
+
+subtest 'put_export_shape invalid storage' => sub {
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('put_export_shape', 'storage', $params{ storage });
+    $utils->initialize('put_export_shape', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->save_shape_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('put_export_shape', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('put_export_shape', 'storage');
+    }
+};
+
 subtest 'put_export_shape invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('put_export_shape', 'document', 'File'), 'slide_index' => $utils->get_param_value('put_export_shape', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('put_export_shape', 'shape_index', 'int'), 'format' => $utils->get_param_value('put_export_shape', 'format', 'string'), 'out_path' => $utils->get_param_value('put_export_shape', 'out_path', 'string'), 'scale_x' => $utils->get_param_value('put_export_shape', 'scale_x', 'double'), 'scale_y' => $utils->get_param_value('put_export_shape', 'scale_y', 'double'), 'bounds' => $utils->get_param_value('put_export_shape', 'bounds', 'string'), 'password' => $utils->get_param_value('put_export_shape', 'password', 'string'), 'storage' => $utils->get_param_value('put_export_shape', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('put_export_shape', 'fonts_folder', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('put_export_shape', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('put_export_shape', 'fonts_folder', $params{ fonts_folder });
 
@@ -20001,96 +20721,6 @@ subtest 'put_slides_convert invalid fonts_folder' => sub {
 };
 
 #
-# put_slides_document_from_html test
-#
-subtest 'put_slides_document_from_html' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $utils->initialize('put_slides_document_from_html', '');
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        fail("put_slides_document_from_html raised an exception: $@");
-    }
-    pass();
-};
-
-subtest 'put_slides_document_from_html invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $params{ name } = $utils->invalidize_param_value('put_slides_document_from_html', 'name', $params{ name });
-    $utils->initialize('put_slides_document_from_html', 'name', $params{ name });
-
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_document_from_html', 'name', $params{ name }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_document_from_html', 'name');
-    }
-};
-
-subtest 'put_slides_document_from_html invalid html' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $params{ html } = $utils->invalidize_param_value('put_slides_document_from_html', 'html', $params{ html });
-    $utils->initialize('put_slides_document_from_html', 'html', $params{ html });
-
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_document_from_html', 'html', $params{ html }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_document_from_html', 'html');
-    }
-};
-
-subtest 'put_slides_document_from_html invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $params{ password } = $utils->invalidize_param_value('put_slides_document_from_html', 'password', $params{ password });
-    $utils->initialize('put_slides_document_from_html', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_document_from_html', 'password', $params{ password }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_document_from_html', 'password');
-    }
-};
-
-subtest 'put_slides_document_from_html invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $params{ folder } = $utils->invalidize_param_value('put_slides_document_from_html', 'folder', $params{ folder });
-    $utils->initialize('put_slides_document_from_html', 'folder', $params{ folder });
-
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_document_from_html', 'folder', $params{ folder }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_document_from_html', 'folder');
-    }
-};
-
-subtest 'put_slides_document_from_html invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_document_from_html', 'name', 'string'), 'html' => $utils->get_param_value('put_slides_document_from_html', 'html', 'string'), 'password' => $utils->get_param_value('put_slides_document_from_html', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_document_from_html', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_document_from_html', 'storage', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('put_slides_document_from_html', 'storage', $params{ storage });
-    $utils->initialize('put_slides_document_from_html', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{api}->put_slides_document_from_html(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_document_from_html', 'storage', $params{ storage }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_document_from_html', 'storage');
-    }
-};
-
-#
 # put_slides_header_footer test
 #
 subtest 'put_slides_header_footer' => sub {
@@ -20277,7 +20907,7 @@ subtest 'put_slides_protection_properties' => sub {
     my %params = ('name' => $utils->get_param_value('put_slides_protection_properties', 'name', 'string'), 'dto' => $utils->get_param_value('put_slides_protection_properties', 'dto', 'ProtectionProperties'), 'password' => $utils->get_param_value('put_slides_protection_properties', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_protection_properties', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_protection_properties', 'storage', 'string'));
     $utils->initialize('put_slides_protection_properties', '');
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         fail("put_slides_protection_properties raised an exception: $@");
@@ -20291,7 +20921,7 @@ subtest 'put_slides_protection_properties invalid name' => sub {
     $utils->initialize('put_slides_protection_properties', 'name', $params{ name });
 
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         $utils->assert_error('put_slides_protection_properties', 'name', $params{ name }, $@);
@@ -20306,7 +20936,7 @@ subtest 'put_slides_protection_properties invalid dto' => sub {
     $utils->initialize('put_slides_protection_properties', 'dto', $params{ dto });
 
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         $utils->assert_error('put_slides_protection_properties', 'dto', $params{ dto }, $@);
@@ -20321,7 +20951,7 @@ subtest 'put_slides_protection_properties invalid password' => sub {
     $utils->initialize('put_slides_protection_properties', 'password', $params{ password });
 
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         $utils->assert_error('put_slides_protection_properties', 'password', $params{ password }, $@);
@@ -20336,7 +20966,7 @@ subtest 'put_slides_protection_properties invalid folder' => sub {
     $utils->initialize('put_slides_protection_properties', 'folder', $params{ folder });
 
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         $utils->assert_error('put_slides_protection_properties', 'folder', $params{ folder }, $@);
@@ -20351,12 +20981,72 @@ subtest 'put_slides_protection_properties invalid storage' => sub {
     $utils->initialize('put_slides_protection_properties', 'storage', $params{ storage });
 
     eval {
-        my $result = $utils->{api}->set_protection_properties(%params);
+        my $result = $utils->{api}->set_protection(%params);
     };
     if ($@) {
         $utils->assert_error('put_slides_protection_properties', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('put_slides_protection_properties', 'storage');
+    }
+};
+
+#
+# put_slides_protection_properties_online test
+#
+subtest 'put_slides_protection_properties_online' => sub {
+    my %params = ('document' => $utils->get_param_value('put_slides_protection_properties_online', 'document', 'File'), 'dto' => $utils->get_param_value('put_slides_protection_properties_online', 'dto', 'ProtectionProperties'), 'password' => $utils->get_param_value('put_slides_protection_properties_online', 'password', 'string'));
+    $utils->initialize('put_slides_protection_properties_online', '');
+    eval {
+        my $result = $utils->{api}->set_protection_online(%params);
+    };
+    if ($@) {
+        fail("put_slides_protection_properties_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'put_slides_protection_properties_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('put_slides_protection_properties_online', 'document', 'File'), 'dto' => $utils->get_param_value('put_slides_protection_properties_online', 'dto', 'ProtectionProperties'), 'password' => $utils->get_param_value('put_slides_protection_properties_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('put_slides_protection_properties_online', 'document', $params{ document });
+    $utils->initialize('put_slides_protection_properties_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->set_protection_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('put_slides_protection_properties_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('put_slides_protection_properties_online', 'document');
+    }
+};
+
+subtest 'put_slides_protection_properties_online invalid dto' => sub {
+    my %params = ('document' => $utils->get_param_value('put_slides_protection_properties_online', 'document', 'File'), 'dto' => $utils->get_param_value('put_slides_protection_properties_online', 'dto', 'ProtectionProperties'), 'password' => $utils->get_param_value('put_slides_protection_properties_online', 'password', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('put_slides_protection_properties_online', 'dto', $params{ dto });
+    $utils->initialize('put_slides_protection_properties_online', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->set_protection_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('put_slides_protection_properties_online', 'dto', $params{ dto }, $@);
+    } else {
+        $utils->assert_no_error('put_slides_protection_properties_online', 'dto');
+    }
+};
+
+subtest 'put_slides_protection_properties_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('put_slides_protection_properties_online', 'document', 'File'), 'dto' => $utils->get_param_value('put_slides_protection_properties_online', 'dto', 'ProtectionProperties'), 'password' => $utils->get_param_value('put_slides_protection_properties_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('put_slides_protection_properties_online', 'password', $params{ password });
+    $utils->initialize('put_slides_protection_properties_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_protection_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('put_slides_protection_properties_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('put_slides_protection_properties_online', 'password');
     }
 };
 
@@ -21002,141 +21692,6 @@ subtest 'put_slides_slide_properties invalid storage' => sub {
         $utils->assert_error('put_slides_slide_properties', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('put_slides_slide_properties', 'storage');
-    }
-};
-
-#
-# put_slides_slide_size test
-#
-subtest 'put_slides_slide_size' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $utils->initialize('put_slides_slide_size', '');
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        fail("put_slides_slide_size raised an exception: $@");
-    }
-    pass();
-};
-
-subtest 'put_slides_slide_size invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ name } = $utils->invalidize_param_value('put_slides_slide_size', 'name', $params{ name });
-    $utils->initialize('put_slides_slide_size', 'name', $params{ name });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'name', $params{ name }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'name');
-    }
-};
-
-subtest 'put_slides_slide_size invalid width' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ width } = $utils->invalidize_param_value('put_slides_slide_size', 'width', $params{ width });
-    $utils->initialize('put_slides_slide_size', 'width', $params{ width });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'width', $params{ width }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'width');
-    }
-};
-
-subtest 'put_slides_slide_size invalid height' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ height } = $utils->invalidize_param_value('put_slides_slide_size', 'height', $params{ height });
-    $utils->initialize('put_slides_slide_size', 'height', $params{ height });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'height', $params{ height }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'height');
-    }
-};
-
-subtest 'put_slides_slide_size invalid size_type' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ size_type } = $utils->invalidize_param_value('put_slides_slide_size', 'size_type', $params{ size_type });
-    $utils->initialize('put_slides_slide_size', 'size_type', $params{ size_type });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'size_type', $params{ size_type }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'size_type');
-    }
-};
-
-subtest 'put_slides_slide_size invalid scale_type' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ scale_type } = $utils->invalidize_param_value('put_slides_slide_size', 'scale_type', $params{ scale_type });
-    $utils->initialize('put_slides_slide_size', 'scale_type', $params{ scale_type });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'scale_type', $params{ scale_type }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'scale_type');
-    }
-};
-
-subtest 'put_slides_slide_size invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ password } = $utils->invalidize_param_value('put_slides_slide_size', 'password', $params{ password });
-    $utils->initialize('put_slides_slide_size', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'password', $params{ password }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'password');
-    }
-};
-
-subtest 'put_slides_slide_size invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ folder } = $utils->invalidize_param_value('put_slides_slide_size', 'folder', $params{ folder });
-    $utils->initialize('put_slides_slide_size', 'folder', $params{ folder });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'folder', $params{ folder }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'folder');
-    }
-};
-
-subtest 'put_slides_slide_size invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('put_slides_slide_size', 'name', 'string'), 'width' => $utils->get_param_value('put_slides_slide_size', 'width', 'int'), 'height' => $utils->get_param_value('put_slides_slide_size', 'height', 'int'), 'size_type' => $utils->get_param_value('put_slides_slide_size', 'size_type', 'string'), 'scale_type' => $utils->get_param_value('put_slides_slide_size', 'scale_type', 'string'), 'password' => $utils->get_param_value('put_slides_slide_size', 'password', 'string'), 'folder' => $utils->get_param_value('put_slides_slide_size', 'folder', 'string'), 'storage' => $utils->get_param_value('put_slides_slide_size', 'storage', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('put_slides_slide_size', 'storage', $params{ storage });
-    $utils->initialize('put_slides_slide_size', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{api}->put_slides_slide_size(%params);
-    };
-    if ($@) {
-        $utils->assert_error('put_slides_slide_size', 'storage', $params{ storage }, $@);
-    } else {
-        $utils->assert_no_error('put_slides_slide_size', 'storage');
     }
 };
 
