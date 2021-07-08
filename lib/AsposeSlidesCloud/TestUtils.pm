@@ -112,7 +112,7 @@ sub get_param_value {
     $parameter =~ s/_//g;
     if ($type eq 'File') {
         my $file_name = "test.pptx";
-        if (uc("PostSlidesDocumentFromPdf") eq uc($function)) {
+        if (uc("ImportFromPdf") eq uc($function)) {
             $file_name = "test.pdf";
         }
         if (uc("Image") eq uc($parameter)) {
