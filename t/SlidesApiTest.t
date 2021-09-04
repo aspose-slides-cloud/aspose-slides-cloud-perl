@@ -174,7 +174,7 @@ subtest 'align_shapes invalid storage' => sub {
 # convert test
 #
 subtest 'convert' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $utils->initialize('convert', '');
     eval {
         my $result = $utils->{api}->convert(%params);
@@ -186,7 +186,7 @@ subtest 'convert' => sub {
 };
 
 subtest 'convert invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $params{ document } = $utils->invalidize_param_value('convert', 'document', $params{ document });
     $utils->initialize('convert', 'document', $params{ document });
 
@@ -201,7 +201,7 @@ subtest 'convert invalid document' => sub {
 };
 
 subtest 'convert invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $params{ format } = $utils->invalidize_param_value('convert', 'format', $params{ format });
     $utils->initialize('convert', 'format', $params{ format });
 
@@ -216,7 +216,7 @@ subtest 'convert invalid format' => sub {
 };
 
 subtest 'convert invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $params{ password } = $utils->invalidize_param_value('convert', 'password', $params{ password });
     $utils->initialize('convert', 'password', $params{ password });
 
@@ -231,7 +231,7 @@ subtest 'convert invalid password' => sub {
 };
 
 subtest 'convert invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $params{ storage } = $utils->invalidize_param_value('convert', 'storage', $params{ storage });
     $utils->initialize('convert', 'storage', $params{ storage });
 
@@ -246,7 +246,7 @@ subtest 'convert invalid storage' => sub {
 };
 
 subtest 'convert invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('convert', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('convert', 'fonts_folder', $params{ fonts_folder });
 
@@ -260,11 +260,26 @@ subtest 'convert invalid fonts_folder' => sub {
     }
 };
 
+subtest 'convert invalid slides' => sub {
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'));
+    $params{ slides } = $utils->invalidize_param_value('convert', 'slides', $params{ slides });
+    $utils->initialize('convert', 'slides', $params{ slides });
+
+    eval {
+        my $result = $utils->{api}->convert(%params);
+    };
+    if ($@) {
+        $utils->assert_error('convert', 'slides', $params{ slides }, $@);
+    } else {
+        $utils->assert_no_error('convert', 'slides');
+    }
+};
+
 #
 # convert_and_save test
 #
 subtest 'convert_and_save' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $utils->initialize('convert_and_save', '');
     eval {
         my $result = $utils->{api}->convert_and_save(%params);
@@ -276,7 +291,7 @@ subtest 'convert_and_save' => sub {
 };
 
 subtest 'convert_and_save invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ document } = $utils->invalidize_param_value('convert_and_save', 'document', $params{ document });
     $utils->initialize('convert_and_save', 'document', $params{ document });
 
@@ -291,7 +306,7 @@ subtest 'convert_and_save invalid document' => sub {
 };
 
 subtest 'convert_and_save invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ format } = $utils->invalidize_param_value('convert_and_save', 'format', $params{ format });
     $utils->initialize('convert_and_save', 'format', $params{ format });
 
@@ -306,7 +321,7 @@ subtest 'convert_and_save invalid format' => sub {
 };
 
 subtest 'convert_and_save invalid out_path' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ out_path } = $utils->invalidize_param_value('convert_and_save', 'out_path', $params{ out_path });
     $utils->initialize('convert_and_save', 'out_path', $params{ out_path });
 
@@ -321,7 +336,7 @@ subtest 'convert_and_save invalid out_path' => sub {
 };
 
 subtest 'convert_and_save invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ password } = $utils->invalidize_param_value('convert_and_save', 'password', $params{ password });
     $utils->initialize('convert_and_save', 'password', $params{ password });
 
@@ -336,7 +351,7 @@ subtest 'convert_and_save invalid password' => sub {
 };
 
 subtest 'convert_and_save invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ storage } = $utils->invalidize_param_value('convert_and_save', 'storage', $params{ storage });
     $utils->initialize('convert_and_save', 'storage', $params{ storage });
 
@@ -351,7 +366,7 @@ subtest 'convert_and_save invalid storage' => sub {
 };
 
 subtest 'convert_and_save invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('convert_and_save', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('convert_and_save', 'fonts_folder', $params{ fonts_folder });
 
@@ -362,6 +377,21 @@ subtest 'convert_and_save invalid fonts_folder' => sub {
         $utils->assert_error('convert_and_save', 'fonts_folder', $params{ fonts_folder }, $@);
     } else {
         $utils->assert_no_error('convert_and_save', 'fonts_folder');
+    }
+};
+
+subtest 'convert_and_save invalid slides' => sub {
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'));
+    $params{ slides } = $utils->invalidize_param_value('convert_and_save', 'slides', $params{ slides });
+    $utils->initialize('convert_and_save', 'slides', $params{ slides });
+
+    eval {
+        my $result = $utils->{api}->convert_and_save(%params);
+    };
+    if ($@) {
+        $utils->assert_error('convert_and_save', 'slides', $params{ slides }, $@);
+    } else {
+        $utils->assert_no_error('convert_and_save', 'slides');
     }
 };
 
@@ -10149,7 +10179,7 @@ subtest 'download_notes_slide_shape invalid fonts_folder' => sub {
 # download_presentation test
 #
 subtest 'download_presentation' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $utils->initialize('download_presentation', '');
     eval {
         my $result = $utils->{api}->download_presentation(%params);
@@ -10161,7 +10191,7 @@ subtest 'download_presentation' => sub {
 };
 
 subtest 'download_presentation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ name } = $utils->invalidize_param_value('download_presentation', 'name', $params{ name });
     $utils->initialize('download_presentation', 'name', $params{ name });
 
@@ -10176,7 +10206,7 @@ subtest 'download_presentation invalid name' => sub {
 };
 
 subtest 'download_presentation invalid format' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ format } = $utils->invalidize_param_value('download_presentation', 'format', $params{ format });
     $utils->initialize('download_presentation', 'format', $params{ format });
 
@@ -10191,7 +10221,7 @@ subtest 'download_presentation invalid format' => sub {
 };
 
 subtest 'download_presentation invalid options' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ options } = $utils->invalidize_param_value('download_presentation', 'options', $params{ options });
     $utils->initialize('download_presentation', 'options', $params{ options });
 
@@ -10206,7 +10236,7 @@ subtest 'download_presentation invalid options' => sub {
 };
 
 subtest 'download_presentation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ password } = $utils->invalidize_param_value('download_presentation', 'password', $params{ password });
     $utils->initialize('download_presentation', 'password', $params{ password });
 
@@ -10221,7 +10251,7 @@ subtest 'download_presentation invalid password' => sub {
 };
 
 subtest 'download_presentation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ folder } = $utils->invalidize_param_value('download_presentation', 'folder', $params{ folder });
     $utils->initialize('download_presentation', 'folder', $params{ folder });
 
@@ -10236,7 +10266,7 @@ subtest 'download_presentation invalid folder' => sub {
 };
 
 subtest 'download_presentation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ storage } = $utils->invalidize_param_value('download_presentation', 'storage', $params{ storage });
     $utils->initialize('download_presentation', 'storage', $params{ storage });
 
@@ -10251,7 +10281,7 @@ subtest 'download_presentation invalid storage' => sub {
 };
 
 subtest 'download_presentation invalid fonts_folder' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('download_presentation', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('download_presentation', 'fonts_folder', $params{ fonts_folder });
 
@@ -10262,6 +10292,21 @@ subtest 'download_presentation invalid fonts_folder' => sub {
         $utils->assert_error('download_presentation', 'fonts_folder', $params{ fonts_folder }, $@);
     } else {
         $utils->assert_no_error('download_presentation', 'fonts_folder');
+    }
+};
+
+subtest 'download_presentation invalid slides' => sub {
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    $params{ slides } = $utils->invalidize_param_value('download_presentation', 'slides', $params{ slides });
+    $utils->initialize('download_presentation', 'slides', $params{ slides });
+
+    eval {
+        my $result = $utils->{api}->download_presentation(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_presentation', 'slides', $params{ slides }, $@);
+    } else {
+        $utils->assert_no_error('download_presentation', 'slides');
     }
 };
 
@@ -17844,7 +17889,7 @@ subtest 'save_notes_slide_shape invalid fonts_folder' => sub {
 # save_presentation test
 #
 subtest 'save_presentation' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $utils->initialize('save_presentation', '');
     eval {
         my $result = $utils->{api}->save_presentation(%params);
@@ -17856,7 +17901,7 @@ subtest 'save_presentation' => sub {
 };
 
 subtest 'save_presentation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ name } = $utils->invalidize_param_value('save_presentation', 'name', $params{ name });
     $utils->initialize('save_presentation', 'name', $params{ name });
 
@@ -17871,7 +17916,7 @@ subtest 'save_presentation invalid name' => sub {
 };
 
 subtest 'save_presentation invalid format' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ format } = $utils->invalidize_param_value('save_presentation', 'format', $params{ format });
     $utils->initialize('save_presentation', 'format', $params{ format });
 
@@ -17886,7 +17931,7 @@ subtest 'save_presentation invalid format' => sub {
 };
 
 subtest 'save_presentation invalid out_path' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ out_path } = $utils->invalidize_param_value('save_presentation', 'out_path', $params{ out_path });
     $utils->initialize('save_presentation', 'out_path', $params{ out_path });
 
@@ -17901,7 +17946,7 @@ subtest 'save_presentation invalid out_path' => sub {
 };
 
 subtest 'save_presentation invalid options' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ options } = $utils->invalidize_param_value('save_presentation', 'options', $params{ options });
     $utils->initialize('save_presentation', 'options', $params{ options });
 
@@ -17916,7 +17961,7 @@ subtest 'save_presentation invalid options' => sub {
 };
 
 subtest 'save_presentation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ password } = $utils->invalidize_param_value('save_presentation', 'password', $params{ password });
     $utils->initialize('save_presentation', 'password', $params{ password });
 
@@ -17931,7 +17976,7 @@ subtest 'save_presentation invalid password' => sub {
 };
 
 subtest 'save_presentation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ folder } = $utils->invalidize_param_value('save_presentation', 'folder', $params{ folder });
     $utils->initialize('save_presentation', 'folder', $params{ folder });
 
@@ -17946,7 +17991,7 @@ subtest 'save_presentation invalid folder' => sub {
 };
 
 subtest 'save_presentation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ storage } = $utils->invalidize_param_value('save_presentation', 'storage', $params{ storage });
     $utils->initialize('save_presentation', 'storage', $params{ storage });
 
@@ -17961,7 +18006,7 @@ subtest 'save_presentation invalid storage' => sub {
 };
 
 subtest 'save_presentation invalid fonts_folder' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
     $params{ fonts_folder } = $utils->invalidize_param_value('save_presentation', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('save_presentation', 'fonts_folder', $params{ fonts_folder });
 
@@ -17972,6 +18017,21 @@ subtest 'save_presentation invalid fonts_folder' => sub {
         $utils->assert_error('save_presentation', 'fonts_folder', $params{ fonts_folder }, $@);
     } else {
         $utils->assert_no_error('save_presentation', 'fonts_folder');
+    }
+};
+
+subtest 'save_presentation invalid slides' => sub {
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    $params{ slides } = $utils->invalidize_param_value('save_presentation', 'slides', $params{ slides });
+    $utils->initialize('save_presentation', 'slides', $params{ slides });
+
+    eval {
+        my $result = $utils->{api}->save_presentation(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_presentation', 'slides', $params{ slides }, $@);
+    } else {
+        $utils->assert_no_error('save_presentation', 'slides');
     }
 };
 
