@@ -118,7 +118,7 @@ subtest 'timeout' => sub {
 
 subtest 'nullable properties' => sub {
     my $folder_name = "TempSlidesSDK";
-    my $file_name = "placeholders.pptx";
+    my $file_name = "test.pptx";
     my $password = "password";
     my $min1  = 44.3;
     my $min2 = 12;
@@ -159,7 +159,7 @@ subtest 'nullable properties' => sub {
     my %post_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'dto' => $chart);
     $utils->{api}->create_shape(%post_params);
 
-    my %get_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 4);
+    my %get_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 5);
     my $result = $utils->{api}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min1);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max1);
@@ -169,7 +169,7 @@ subtest 'nullable properties' => sub {
     $axes->{horizontal_axis} = $axis;
     $chart = AsposeSlidesCloud::Object::Chart->new();
     $chart->{axes} = $axes;
-    my %put_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 4, 'dto' => $chart);
+    my %put_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 5, 'dto' => $chart);
     $utils->{api}->update_shape(%put_params);
 
     $result = $utils->{api}->get_shape(%get_params);
