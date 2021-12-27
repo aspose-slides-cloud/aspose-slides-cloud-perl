@@ -23,8 +23,14 @@ You may want to check out Aspose free [[PowerPoint to Word Converter]](https://p
 
 **Fixed Layout:** PDF, PDF/A, XPS
 **Images:** JPEG, PNG, BMP, TIFF, SVG
-**Web:** HTML
+**Web:** HTML/HTML5
 **Other:** SWF (export whole presentations)
+
+## Enhancements in Version 21.12
+* New **ThreeDFormat**, **Camera**, **LightRig** and **ShapeBevel** classes allow to get and set 3D effects for shapes. New **ThreeDFormat** property of **ShapeBase** class allows to access those objects.
+* The declaration of **GetAnimation** and  **GetSpecialSlideAnimation** methods is changed. New **paragraphIndex** parameter allows to get effects for a specific paragraph. New **ParagraphIndex** property of **Effect** class allows to set effects for a specific paragraph.
+* You can now use **Html5** value for **format** parameter in conversion methods and export presentations to HTML5 format.
+* New **Width** and **Height** parameters were added to **ExportOptions** class. You can now set custom size when convertion your documents.
 
 ## Enhancements in Version 21.9
 * New **options** parameter for **Convert**, **ConvertAndSave**, **DownloadSlideOnline**, **SaveSlideOnline**, **DownloadShapeOnline** and **SaveShapeOnline** methods that allows to specify options when converting presentations from request body.
@@ -72,7 +78,7 @@ To use Aspose Slides Cloud SDK for Perl you need to register an account with [As
 ### Installation
 
 ```sh
-cpan ASPOSE/AsposeSlidesCloud-SlidesApi-21.09.tar.gz
+cpan ASPOSE/AsposeSlidesCloud-SlidesApi-21.12.tar.gz
 ```
 
 ### Sample usage
@@ -90,7 +96,7 @@ The example code below converts a PowerPoint document to PDF format using aspose
 	my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
 	my $file = read_file("MyPresentation.pptx", { binmode => ':raw' });
 	my %params = ('format' => 'pdf', 'document' => $file);
-	my $result = $api->post_slides_convert(%params);
+	my $result = $api->convert(%params);
 	my $pdf = "MyPresentation.pdf";
 	open my $fh, '>>', $pdf;
 	binmode $fh;

@@ -14244,7 +14244,7 @@ subtest 'download_subshape invalid fonts_folder' => sub {
 # get_animation test
 #
 subtest 'get_animation' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $utils->initialize('get_animation', '');
     eval {
         my $result = $utils->{api}->get_animation(%params);
@@ -14256,7 +14256,7 @@ subtest 'get_animation' => sub {
 };
 
 subtest 'get_animation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('get_animation', 'name', $params{ name });
     $utils->initialize('get_animation', 'name', $params{ name });
 
@@ -14271,7 +14271,7 @@ subtest 'get_animation invalid name' => sub {
 };
 
 subtest 'get_animation invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('get_animation', 'slide_index', $params{ slide_index });
     $utils->initialize('get_animation', 'slide_index', $params{ slide_index });
 
@@ -14286,7 +14286,7 @@ subtest 'get_animation invalid slide_index' => sub {
 };
 
 subtest 'get_animation invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('get_animation', 'shape_index', $params{ shape_index });
     $utils->initialize('get_animation', 'shape_index', $params{ shape_index });
 
@@ -14300,8 +14300,23 @@ subtest 'get_animation invalid shape_index' => sub {
     }
 };
 
+subtest 'get_animation invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_animation', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_animation', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_animation(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_animation', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_animation', 'paragraph_index');
+    }
+};
+
 subtest 'get_animation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('get_animation', 'password', $params{ password });
     $utils->initialize('get_animation', 'password', $params{ password });
 
@@ -14316,7 +14331,7 @@ subtest 'get_animation invalid password' => sub {
 };
 
 subtest 'get_animation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('get_animation', 'folder', $params{ folder });
     $utils->initialize('get_animation', 'folder', $params{ folder });
 
@@ -14331,7 +14346,7 @@ subtest 'get_animation invalid folder' => sub {
 };
 
 subtest 'get_animation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_animation', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_animation', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('get_animation', 'storage', $params{ storage });
     $utils->initialize('get_animation', 'storage', $params{ storage });
 
@@ -17454,7 +17469,7 @@ subtest 'get_slides invalid storage' => sub {
 # get_special_slide_animation test
 #
 subtest 'get_special_slide_animation' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $utils->initialize('get_special_slide_animation', '');
     eval {
         my $result = $utils->{api}->get_special_slide_animation(%params);
@@ -17466,7 +17481,7 @@ subtest 'get_special_slide_animation' => sub {
 };
 
 subtest 'get_special_slide_animation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('get_special_slide_animation', 'name', $params{ name });
     $utils->initialize('get_special_slide_animation', 'name', $params{ name });
 
@@ -17481,7 +17496,7 @@ subtest 'get_special_slide_animation invalid name' => sub {
 };
 
 subtest 'get_special_slide_animation invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('get_special_slide_animation', 'slide_index', $params{ slide_index });
     $utils->initialize('get_special_slide_animation', 'slide_index', $params{ slide_index });
 
@@ -17496,7 +17511,7 @@ subtest 'get_special_slide_animation invalid slide_index' => sub {
 };
 
 subtest 'get_special_slide_animation invalid slide_type' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ slide_type } = $utils->invalidize_param_value('get_special_slide_animation', 'slide_type', $params{ slide_type });
     $utils->initialize('get_special_slide_animation', 'slide_type', $params{ slide_type });
 
@@ -17511,7 +17526,7 @@ subtest 'get_special_slide_animation invalid slide_type' => sub {
 };
 
 subtest 'get_special_slide_animation invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('get_special_slide_animation', 'shape_index', $params{ shape_index });
     $utils->initialize('get_special_slide_animation', 'shape_index', $params{ shape_index });
 
@@ -17525,8 +17540,23 @@ subtest 'get_special_slide_animation invalid shape_index' => sub {
     }
 };
 
+subtest 'get_special_slide_animation invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_special_slide_animation', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_special_slide_animation', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_special_slide_animation(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_special_slide_animation', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_special_slide_animation', 'paragraph_index');
+    }
+};
+
 subtest 'get_special_slide_animation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('get_special_slide_animation', 'password', $params{ password });
     $utils->initialize('get_special_slide_animation', 'password', $params{ password });
 
@@ -17541,7 +17571,7 @@ subtest 'get_special_slide_animation invalid password' => sub {
 };
 
 subtest 'get_special_slide_animation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('get_special_slide_animation', 'folder', $params{ folder });
     $utils->initialize('get_special_slide_animation', 'folder', $params{ folder });
 
@@ -17556,7 +17586,7 @@ subtest 'get_special_slide_animation invalid folder' => sub {
 };
 
 subtest 'get_special_slide_animation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_special_slide_animation', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_special_slide_animation', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('get_special_slide_animation', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('get_special_slide_animation', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_special_slide_animation', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_special_slide_animation', 'password', 'string'), 'folder' => $utils->get_param_value('get_special_slide_animation', 'folder', 'string'), 'storage' => $utils->get_param_value('get_special_slide_animation', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('get_special_slide_animation', 'storage', $params{ storage });
     $utils->initialize('get_special_slide_animation', 'storage', $params{ storage });
 
