@@ -321,6 +321,156 @@ subtest 'align_special_slide_shapes invalid storage' => sub {
 };
 
 #
+# align_subshapes test
+#
+subtest 'align_subshapes' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $utils->initialize('align_subshapes', '');
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        fail("align_subshapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'align_subshapes invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('align_subshapes', 'name', $params{ name });
+    $utils->initialize('align_subshapes', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'name');
+    }
+};
+
+subtest 'align_subshapes invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('align_subshapes', 'slide_index', $params{ slide_index });
+    $utils->initialize('align_subshapes', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'slide_index');
+    }
+};
+
+subtest 'align_subshapes invalid path' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ path } = $utils->invalidize_param_value('align_subshapes', 'path', $params{ path });
+    $utils->initialize('align_subshapes', 'path', $params{ path });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'path', $params{ path }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'path');
+    }
+};
+
+subtest 'align_subshapes invalid alignment_type' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ alignment_type } = $utils->invalidize_param_value('align_subshapes', 'alignment_type', $params{ alignment_type });
+    $utils->initialize('align_subshapes', 'alignment_type', $params{ alignment_type });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'alignment_type', $params{ alignment_type }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'alignment_type');
+    }
+};
+
+subtest 'align_subshapes invalid align_to_slide' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ align_to_slide } = $utils->invalidize_param_value('align_subshapes', 'align_to_slide', $params{ align_to_slide });
+    $utils->initialize('align_subshapes', 'align_to_slide', $params{ align_to_slide });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'align_to_slide', $params{ align_to_slide }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'align_to_slide');
+    }
+};
+
+subtest 'align_subshapes invalid shapes' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ shapes } = $utils->invalidize_param_value('align_subshapes', 'shapes', $params{ shapes });
+    $utils->initialize('align_subshapes', 'shapes', $params{ shapes });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'shapes', $params{ shapes }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'shapes');
+    }
+};
+
+subtest 'align_subshapes invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('align_subshapes', 'password', $params{ password });
+    $utils->initialize('align_subshapes', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'password');
+    }
+};
+
+subtest 'align_subshapes invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('align_subshapes', 'folder', $params{ folder });
+    $utils->initialize('align_subshapes', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'folder');
+    }
+};
+
+subtest 'align_subshapes invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('align_subshapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_subshapes', 'slide_index', 'int'), 'path' => $utils->get_param_value('align_subshapes', 'path', 'string'), 'alignment_type' => $utils->get_param_value('align_subshapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_subshapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_subshapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_subshapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_subshapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_subshapes', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('align_subshapes', 'storage', $params{ storage });
+    $utils->initialize('align_subshapes', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->align_subshapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('align_subshapes', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('align_subshapes', 'storage');
+    }
+};
+
+#
 # convert test
 #
 subtest 'convert' => sub {
@@ -12771,6 +12921,141 @@ subtest 'download_notes_slide_online invalid fonts_folder' => sub {
 };
 
 #
+# download_portion_as_math_ml test
+#
+subtest 'download_portion_as_math_ml' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $utils->initialize('download_portion_as_math_ml', '');
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        fail("download_portion_as_math_ml raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'download_portion_as_math_ml invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('download_portion_as_math_ml', 'name', $params{ name });
+    $utils->initialize('download_portion_as_math_ml', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'name');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'slide_index', $params{ slide_index });
+    $utils->initialize('download_portion_as_math_ml', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'slide_index');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'shape_index', $params{ shape_index });
+    $utils->initialize('download_portion_as_math_ml', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'shape_index');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'paragraph_index');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'portion_index', $params{ portion_index });
+    $utils->initialize('download_portion_as_math_ml', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'portion_index', $params{ portion_index }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'portion_index');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('download_portion_as_math_ml', 'password', $params{ password });
+    $utils->initialize('download_portion_as_math_ml', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'password');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('download_portion_as_math_ml', 'folder', $params{ folder });
+    $utils->initialize('download_portion_as_math_ml', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'folder');
+    }
+};
+
+subtest 'download_portion_as_math_ml invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('download_portion_as_math_ml', 'storage', $params{ storage });
+    $utils->initialize('download_portion_as_math_ml', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->download_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_portion_as_math_ml', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('download_portion_as_math_ml', 'storage');
+    }
+};
+
+#
 # download_presentation test
 #
 subtest 'download_presentation' => sub {
@@ -16757,6 +17042,111 @@ subtest 'get_shape invalid storage' => sub {
         $utils->assert_error('get_shape', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_shape', 'storage');
+    }
+};
+
+#
+# get_shape_geometry_path test
+#
+subtest 'get_shape_geometry_path' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $utils->initialize('get_shape_geometry_path', '');
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        fail("get_shape_geometry_path raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_shape_geometry_path invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_shape_geometry_path', 'name', $params{ name });
+    $utils->initialize('get_shape_geometry_path', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'name');
+    }
+};
+
+subtest 'get_shape_geometry_path invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_shape_geometry_path', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_shape_geometry_path', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'slide_index');
+    }
+};
+
+subtest 'get_shape_geometry_path invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_shape_geometry_path', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_shape_geometry_path', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'shape_index');
+    }
+};
+
+subtest 'get_shape_geometry_path invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_shape_geometry_path', 'password', $params{ password });
+    $utils->initialize('get_shape_geometry_path', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'password');
+    }
+};
+
+subtest 'get_shape_geometry_path invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_shape_geometry_path', 'folder', $params{ folder });
+    $utils->initialize('get_shape_geometry_path', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'folder');
+    }
+};
+
+subtest 'get_shape_geometry_path invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_shape_geometry_path', 'shape_index', 'int'), 'password' => $utils->get_param_value('get_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('get_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shape_geometry_path', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_shape_geometry_path', 'storage', $params{ storage });
+    $utils->initialize('get_shape_geometry_path', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shape_geometry_path', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_shape_geometry_path', 'storage');
     }
 };
 
@@ -21831,6 +22221,156 @@ subtest 'replace_slide_text_online invalid password' => sub {
 };
 
 #
+# save_portion_as_math_ml test
+#
+subtest 'save_portion_as_math_ml' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $utils->initialize('save_portion_as_math_ml', '');
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        fail("save_portion_as_math_ml raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'save_portion_as_math_ml invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('save_portion_as_math_ml', 'name', $params{ name });
+    $utils->initialize('save_portion_as_math_ml', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'name');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'slide_index', $params{ slide_index });
+    $utils->initialize('save_portion_as_math_ml', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'slide_index');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'shape_index', $params{ shape_index });
+    $utils->initialize('save_portion_as_math_ml', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'shape_index');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'paragraph_index');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'portion_index', $params{ portion_index });
+    $utils->initialize('save_portion_as_math_ml', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'portion_index', $params{ portion_index }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'portion_index');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid out_path' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ out_path } = $utils->invalidize_param_value('save_portion_as_math_ml', 'out_path', $params{ out_path });
+    $utils->initialize('save_portion_as_math_ml', 'out_path', $params{ out_path });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'out_path', $params{ out_path }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'out_path');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('save_portion_as_math_ml', 'password', $params{ password });
+    $utils->initialize('save_portion_as_math_ml', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'password');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('save_portion_as_math_ml', 'folder', $params{ folder });
+    $utils->initialize('save_portion_as_math_ml', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'folder');
+    }
+};
+
+subtest 'save_portion_as_math_ml invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('save_portion_as_math_ml', 'storage', $params{ storage });
+    $utils->initialize('save_portion_as_math_ml', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->save_portion_as_math_ml(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_portion_as_math_ml', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('save_portion_as_math_ml', 'storage');
+    }
+};
+
+#
 # save_presentation test
 #
 subtest 'save_presentation' => sub {
@@ -24362,6 +24902,126 @@ subtest 'set_sections invalid storage' => sub {
         $utils->assert_error('set_sections', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('set_sections', 'storage');
+    }
+};
+
+#
+# set_shape_geometry_path test
+#
+subtest 'set_shape_geometry_path' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $utils->initialize('set_shape_geometry_path', '');
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        fail("set_shape_geometry_path raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_shape_geometry_path invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_shape_geometry_path', 'name', $params{ name });
+    $utils->initialize('set_shape_geometry_path', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'name');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('set_shape_geometry_path', 'slide_index', $params{ slide_index });
+    $utils->initialize('set_shape_geometry_path', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'slide_index');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('set_shape_geometry_path', 'shape_index', $params{ shape_index });
+    $utils->initialize('set_shape_geometry_path', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'shape_index');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('set_shape_geometry_path', 'dto', $params{ dto });
+    $utils->initialize('set_shape_geometry_path', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'dto', $params{ dto }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'dto');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_shape_geometry_path', 'password', $params{ password });
+    $utils->initialize('set_shape_geometry_path', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'password');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_shape_geometry_path', 'folder', $params{ folder });
+    $utils->initialize('set_shape_geometry_path', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'folder');
+    }
+};
+
+subtest 'set_shape_geometry_path invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_shape_geometry_path', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_shape_geometry_path', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_shape_geometry_path', 'shape_index', 'int'), 'dto' => $utils->get_param_value('set_shape_geometry_path', 'dto', 'GeometryPaths'), 'password' => $utils->get_param_value('set_shape_geometry_path', 'password', 'string'), 'folder' => $utils->get_param_value('set_shape_geometry_path', 'folder', 'string'), 'storage' => $utils->get_param_value('set_shape_geometry_path', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_shape_geometry_path', 'storage', $params{ storage });
+    $utils->initialize('set_shape_geometry_path', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_shape_geometry_path(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_shape_geometry_path', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_shape_geometry_path', 'storage');
     }
 };
 

@@ -132,7 +132,13 @@ sub get_param_value {
     foreach (@$values) {
         if ($self->is_good_rule($_, $function, $parameter)) {
             if (exists $_->{Value}) {
-                $result = $_->{Value};
+                if (exists $_->{Type}) {
+                    if (AsposeSlidesCloud::ClassRegistry->is_subclass($_->{Type}, $type)) {
+                        $result = $_->{Value}
+                    }
+                } else {
+                    $result = $_->{Value};
+                }
             }
         }
     }
