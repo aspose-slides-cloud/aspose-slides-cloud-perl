@@ -11841,6 +11841,126 @@ subtest 'delete_subshapes invalid storage' => sub {
 };
 
 #
+# delete_unused_layout_slides test
+#
+subtest 'delete_unused_layout_slides' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_layout_slides', 'name', 'string'), 'password' => $utils->get_param_value('delete_unused_layout_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_layout_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_layout_slides', 'storage', 'string'));
+    $utils->initialize('delete_unused_layout_slides', '');
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides(%params);
+    };
+    if ($@) {
+        fail("delete_unused_layout_slides raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_unused_layout_slides invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_layout_slides', 'name', 'string'), 'password' => $utils->get_param_value('delete_unused_layout_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_layout_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_layout_slides', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_unused_layout_slides', 'name', $params{ name });
+    $utils->initialize('delete_unused_layout_slides', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides', 'name');
+    }
+};
+
+subtest 'delete_unused_layout_slides invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_layout_slides', 'name', 'string'), 'password' => $utils->get_param_value('delete_unused_layout_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_layout_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_layout_slides', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_unused_layout_slides', 'password', $params{ password });
+    $utils->initialize('delete_unused_layout_slides', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides', 'password');
+    }
+};
+
+subtest 'delete_unused_layout_slides invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_layout_slides', 'name', 'string'), 'password' => $utils->get_param_value('delete_unused_layout_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_layout_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_layout_slides', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_unused_layout_slides', 'folder', $params{ folder });
+    $utils->initialize('delete_unused_layout_slides', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides', 'folder');
+    }
+};
+
+subtest 'delete_unused_layout_slides invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_layout_slides', 'name', 'string'), 'password' => $utils->get_param_value('delete_unused_layout_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_layout_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_layout_slides', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_unused_layout_slides', 'storage', $params{ storage });
+    $utils->initialize('delete_unused_layout_slides', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides', 'storage');
+    }
+};
+
+#
+# delete_unused_layout_slides_online test
+#
+subtest 'delete_unused_layout_slides_online' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_layout_slides_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_unused_layout_slides_online', 'password', 'string'));
+    $utils->initialize('delete_unused_layout_slides_online', '');
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides_online(%params);
+    };
+    if ($@) {
+        fail("delete_unused_layout_slides_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_unused_layout_slides_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_layout_slides_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_unused_layout_slides_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('delete_unused_layout_slides_online', 'document', $params{ document });
+    $utils->initialize('delete_unused_layout_slides_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides_online', 'document');
+    }
+};
+
+subtest 'delete_unused_layout_slides_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_layout_slides_online', 'document', 'File'), 'password' => $utils->get_param_value('delete_unused_layout_slides_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_unused_layout_slides_online', 'password', $params{ password });
+    $utils->initialize('delete_unused_layout_slides_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_layout_slides_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_layout_slides_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_layout_slides_online', 'password');
+    }
+};
+
+#
 # delete_watermark test
 #
 subtest 'delete_watermark' => sub {
@@ -20537,6 +20657,336 @@ subtest 'get_view_properties invalid storage' => sub {
         $utils->assert_error('get_view_properties', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_view_properties', 'storage');
+    }
+};
+
+#
+# highlight_shape_regex test
+#
+subtest 'highlight_shape_regex' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $utils->initialize('highlight_shape_regex', '');
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        fail("highlight_shape_regex raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight_shape_regex invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('highlight_shape_regex', 'name', $params{ name });
+    $utils->initialize('highlight_shape_regex', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'name');
+    }
+};
+
+subtest 'highlight_shape_regex invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('highlight_shape_regex', 'slide_index', $params{ slide_index });
+    $utils->initialize('highlight_shape_regex', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'slide_index');
+    }
+};
+
+subtest 'highlight_shape_regex invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('highlight_shape_regex', 'shape_index', $params{ shape_index });
+    $utils->initialize('highlight_shape_regex', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'shape_index');
+    }
+};
+
+subtest 'highlight_shape_regex invalid regex' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ regex } = $utils->invalidize_param_value('highlight_shape_regex', 'regex', $params{ regex });
+    $utils->initialize('highlight_shape_regex', 'regex', $params{ regex });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'regex', $params{ regex }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'regex');
+    }
+};
+
+subtest 'highlight_shape_regex invalid color' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ color } = $utils->invalidize_param_value('highlight_shape_regex', 'color', $params{ color });
+    $utils->initialize('highlight_shape_regex', 'color', $params{ color });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'color', $params{ color }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'color');
+    }
+};
+
+subtest 'highlight_shape_regex invalid whole_words_only' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ whole_words_only } = $utils->invalidize_param_value('highlight_shape_regex', 'whole_words_only', $params{ whole_words_only });
+    $utils->initialize('highlight_shape_regex', 'whole_words_only', $params{ whole_words_only });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'whole_words_only', $params{ whole_words_only }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'whole_words_only');
+    }
+};
+
+subtest 'highlight_shape_regex invalid ignore_case' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ ignore_case } = $utils->invalidize_param_value('highlight_shape_regex', 'ignore_case', $params{ ignore_case });
+    $utils->initialize('highlight_shape_regex', 'ignore_case', $params{ ignore_case });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'ignore_case', $params{ ignore_case }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'ignore_case');
+    }
+};
+
+subtest 'highlight_shape_regex invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('highlight_shape_regex', 'password', $params{ password });
+    $utils->initialize('highlight_shape_regex', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'password');
+    }
+};
+
+subtest 'highlight_shape_regex invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('highlight_shape_regex', 'folder', $params{ folder });
+    $utils->initialize('highlight_shape_regex', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'folder');
+    }
+};
+
+subtest 'highlight_shape_regex invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_regex', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_regex', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_regex', 'shape_index', 'int'), 'regex' => $utils->get_param_value('highlight_shape_regex', 'regex', 'string'), 'color' => $utils->get_param_value('highlight_shape_regex', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_regex', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_regex', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_regex', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_regex', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_regex', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('highlight_shape_regex', 'storage', $params{ storage });
+    $utils->initialize('highlight_shape_regex', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_regex(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_regex', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_regex', 'storage');
+    }
+};
+
+#
+# highlight_shape_text test
+#
+subtest 'highlight_shape_text' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $utils->initialize('highlight_shape_text', '');
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        fail("highlight_shape_text raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight_shape_text invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('highlight_shape_text', 'name', $params{ name });
+    $utils->initialize('highlight_shape_text', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'name');
+    }
+};
+
+subtest 'highlight_shape_text invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('highlight_shape_text', 'slide_index', $params{ slide_index });
+    $utils->initialize('highlight_shape_text', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'slide_index');
+    }
+};
+
+subtest 'highlight_shape_text invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('highlight_shape_text', 'shape_index', $params{ shape_index });
+    $utils->initialize('highlight_shape_text', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'shape_index');
+    }
+};
+
+subtest 'highlight_shape_text invalid text' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ text } = $utils->invalidize_param_value('highlight_shape_text', 'text', $params{ text });
+    $utils->initialize('highlight_shape_text', 'text', $params{ text });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'text', $params{ text }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'text');
+    }
+};
+
+subtest 'highlight_shape_text invalid color' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ color } = $utils->invalidize_param_value('highlight_shape_text', 'color', $params{ color });
+    $utils->initialize('highlight_shape_text', 'color', $params{ color });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'color', $params{ color }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'color');
+    }
+};
+
+subtest 'highlight_shape_text invalid whole_words_only' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ whole_words_only } = $utils->invalidize_param_value('highlight_shape_text', 'whole_words_only', $params{ whole_words_only });
+    $utils->initialize('highlight_shape_text', 'whole_words_only', $params{ whole_words_only });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'whole_words_only', $params{ whole_words_only }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'whole_words_only');
+    }
+};
+
+subtest 'highlight_shape_text invalid ignore_case' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ ignore_case } = $utils->invalidize_param_value('highlight_shape_text', 'ignore_case', $params{ ignore_case });
+    $utils->initialize('highlight_shape_text', 'ignore_case', $params{ ignore_case });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'ignore_case', $params{ ignore_case }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'ignore_case');
+    }
+};
+
+subtest 'highlight_shape_text invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('highlight_shape_text', 'password', $params{ password });
+    $utils->initialize('highlight_shape_text', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'password');
+    }
+};
+
+subtest 'highlight_shape_text invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('highlight_shape_text', 'folder', $params{ folder });
+    $utils->initialize('highlight_shape_text', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'folder');
+    }
+};
+
+subtest 'highlight_shape_text invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('highlight_shape_text', 'name', 'string'), 'slide_index' => $utils->get_param_value('highlight_shape_text', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('highlight_shape_text', 'shape_index', 'int'), 'text' => $utils->get_param_value('highlight_shape_text', 'text', 'string'), 'color' => $utils->get_param_value('highlight_shape_text', 'color', 'string'), 'whole_words_only' => $utils->get_param_value('highlight_shape_text', 'whole_words_only', 'boolean'), 'ignore_case' => $utils->get_param_value('highlight_shape_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('highlight_shape_text', 'password', 'string'), 'folder' => $utils->get_param_value('highlight_shape_text', 'folder', 'string'), 'storage' => $utils->get_param_value('highlight_shape_text', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('highlight_shape_text', 'storage', $params{ storage });
+    $utils->initialize('highlight_shape_text', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->highlight_shape_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('highlight_shape_text', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('highlight_shape_text', 'storage');
     }
 };
 
