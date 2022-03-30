@@ -2034,7 +2034,7 @@ subtest 'create_chart_series invalid storage' => sub {
 # create_comment test
 #
 subtest 'create_comment' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $utils->initialize('create_comment', '');
     eval {
         my $result = $utils->{api}->create_comment(%params);
@@ -2046,7 +2046,7 @@ subtest 'create_comment' => sub {
 };
 
 subtest 'create_comment invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('create_comment', 'name', $params{ name });
     $utils->initialize('create_comment', 'name', $params{ name });
 
@@ -2061,7 +2061,7 @@ subtest 'create_comment invalid name' => sub {
 };
 
 subtest 'create_comment invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('create_comment', 'slide_index', $params{ slide_index });
     $utils->initialize('create_comment', 'slide_index', $params{ slide_index });
 
@@ -2076,7 +2076,7 @@ subtest 'create_comment invalid slide_index' => sub {
 };
 
 subtest 'create_comment invalid dto' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ dto } = $utils->invalidize_param_value('create_comment', 'dto', $params{ dto });
     $utils->initialize('create_comment', 'dto', $params{ dto });
 
@@ -2090,8 +2090,23 @@ subtest 'create_comment invalid dto' => sub {
     }
 };
 
+subtest 'create_comment invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('create_comment', 'shape_index', $params{ shape_index });
+    $utils->initialize('create_comment', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->create_comment(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_comment', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('create_comment', 'shape_index');
+    }
+};
+
 subtest 'create_comment invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('create_comment', 'password', $params{ password });
     $utils->initialize('create_comment', 'password', $params{ password });
 
@@ -2106,7 +2121,7 @@ subtest 'create_comment invalid password' => sub {
 };
 
 subtest 'create_comment invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('create_comment', 'folder', $params{ folder });
     $utils->initialize('create_comment', 'folder', $params{ folder });
 
@@ -2121,7 +2136,7 @@ subtest 'create_comment invalid folder' => sub {
 };
 
 subtest 'create_comment invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('create_comment', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_comment', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment', 'password', 'string'), 'folder' => $utils->get_param_value('create_comment', 'folder', 'string'), 'storage' => $utils->get_param_value('create_comment', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('create_comment', 'storage', $params{ storage });
     $utils->initialize('create_comment', 'storage', $params{ storage });
 
@@ -2139,7 +2154,7 @@ subtest 'create_comment invalid storage' => sub {
 # create_comment_online test
 #
 subtest 'create_comment_online' => sub {
-    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
     $utils->initialize('create_comment_online', '');
     eval {
         my $result = $utils->{api}->create_comment_online(%params);
@@ -2151,7 +2166,7 @@ subtest 'create_comment_online' => sub {
 };
 
 subtest 'create_comment_online invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
     $params{ document } = $utils->invalidize_param_value('create_comment_online', 'document', $params{ document });
     $utils->initialize('create_comment_online', 'document', $params{ document });
 
@@ -2166,7 +2181,7 @@ subtest 'create_comment_online invalid document' => sub {
 };
 
 subtest 'create_comment_online invalid slide_index' => sub {
-    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('create_comment_online', 'slide_index', $params{ slide_index });
     $utils->initialize('create_comment_online', 'slide_index', $params{ slide_index });
 
@@ -2181,7 +2196,7 @@ subtest 'create_comment_online invalid slide_index' => sub {
 };
 
 subtest 'create_comment_online invalid dto' => sub {
-    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
     $params{ dto } = $utils->invalidize_param_value('create_comment_online', 'dto', $params{ dto });
     $utils->initialize('create_comment_online', 'dto', $params{ dto });
 
@@ -2195,8 +2210,23 @@ subtest 'create_comment_online invalid dto' => sub {
     }
 };
 
+subtest 'create_comment_online invalid shape_index' => sub {
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('create_comment_online', 'shape_index', $params{ shape_index });
+    $utils->initialize('create_comment_online', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->create_comment_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_comment_online', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('create_comment_online', 'shape_index');
+    }
+};
+
 subtest 'create_comment_online invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideComment'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('create_comment_online', 'document', 'File'), 'slide_index' => $utils->get_param_value('create_comment_online', 'slide_index', 'int'), 'dto' => $utils->get_param_value('create_comment_online', 'dto', 'SlideCommentBase'), 'shape_index' => $utils->get_param_value('create_comment_online', 'shape_index', 'int'), 'password' => $utils->get_param_value('create_comment_online', 'password', 'string'));
     $params{ password } = $utils->invalidize_param_value('create_comment_online', 'password', $params{ password });
     $utils->initialize('create_comment_online', 'password', $params{ password });
 
@@ -16116,6 +16146,126 @@ subtest 'get_paragraph invalid storage' => sub {
 };
 
 #
+# get_paragraph_rectangle test
+#
+subtest 'get_paragraph_rectangle' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $utils->initialize('get_paragraph_rectangle', '');
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        fail("get_paragraph_rectangle raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_paragraph_rectangle invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_paragraph_rectangle', 'name', $params{ name });
+    $utils->initialize('get_paragraph_rectangle', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'name');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_paragraph_rectangle', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_paragraph_rectangle', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'slide_index');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_paragraph_rectangle', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_paragraph_rectangle', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'shape_index');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_paragraph_rectangle', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_paragraph_rectangle', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'paragraph_index');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_paragraph_rectangle', 'password', $params{ password });
+    $utils->initialize('get_paragraph_rectangle', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'password');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_paragraph_rectangle', 'folder', $params{ folder });
+    $utils->initialize('get_paragraph_rectangle', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'folder');
+    }
+};
+
+subtest 'get_paragraph_rectangle invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_rectangle', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_rectangle', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_paragraph_rectangle', 'storage', $params{ storage });
+    $utils->initialize('get_paragraph_rectangle', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_rectangle', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_rectangle', 'storage');
+    }
+};
+
+#
 # get_paragraphs test
 #
 subtest 'get_paragraphs' => sub {
@@ -16547,6 +16697,141 @@ subtest 'get_portion invalid storage' => sub {
         $utils->assert_error('get_portion', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_portion', 'storage');
+    }
+};
+
+#
+# get_portion_rectangle test
+#
+subtest 'get_portion_rectangle' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $utils->initialize('get_portion_rectangle', '');
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        fail("get_portion_rectangle raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_portion_rectangle invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_portion_rectangle', 'name', $params{ name });
+    $utils->initialize('get_portion_rectangle', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'name');
+    }
+};
+
+subtest 'get_portion_rectangle invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_portion_rectangle', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_portion_rectangle', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'slide_index');
+    }
+};
+
+subtest 'get_portion_rectangle invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_portion_rectangle', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_portion_rectangle', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'shape_index');
+    }
+};
+
+subtest 'get_portion_rectangle invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_portion_rectangle', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_portion_rectangle', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'paragraph_index');
+    }
+};
+
+subtest 'get_portion_rectangle invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('get_portion_rectangle', 'portion_index', $params{ portion_index });
+    $utils->initialize('get_portion_rectangle', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'portion_index', $params{ portion_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'portion_index');
+    }
+};
+
+subtest 'get_portion_rectangle invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_portion_rectangle', 'password', $params{ password });
+    $utils->initialize('get_portion_rectangle', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'password');
+    }
+};
+
+subtest 'get_portion_rectangle invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_portion_rectangle', 'folder', $params{ folder });
+    $utils->initialize('get_portion_rectangle', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'folder');
+    }
+};
+
+subtest 'get_portion_rectangle invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_rectangle', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_rectangle', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_rectangle', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_rectangle', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_rectangle', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_rectangle', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_rectangle', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_rectangle', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_portion_rectangle', 'storage', $params{ storage });
+    $utils->initialize('get_portion_rectangle', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_portion_rectangle(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_rectangle', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_rectangle', 'storage');
     }
 };
 
@@ -17274,7 +17559,7 @@ subtest 'get_shape_geometry_path invalid storage' => sub {
 # get_shapes test
 #
 subtest 'get_shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $utils->initialize('get_shapes', '');
     eval {
         my $result = $utils->{api}->get_shapes(%params);
@@ -17286,7 +17571,7 @@ subtest 'get_shapes' => sub {
 };
 
 subtest 'get_shapes invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $params{ name } = $utils->invalidize_param_value('get_shapes', 'name', $params{ name });
     $utils->initialize('get_shapes', 'name', $params{ name });
 
@@ -17301,7 +17586,7 @@ subtest 'get_shapes invalid name' => sub {
 };
 
 subtest 'get_shapes invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('get_shapes', 'slide_index', $params{ slide_index });
     $utils->initialize('get_shapes', 'slide_index', $params{ slide_index });
 
@@ -17316,7 +17601,7 @@ subtest 'get_shapes invalid slide_index' => sub {
 };
 
 subtest 'get_shapes invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $params{ password } = $utils->invalidize_param_value('get_shapes', 'password', $params{ password });
     $utils->initialize('get_shapes', 'password', $params{ password });
 
@@ -17331,7 +17616,7 @@ subtest 'get_shapes invalid password' => sub {
 };
 
 subtest 'get_shapes invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $params{ folder } = $utils->invalidize_param_value('get_shapes', 'folder', $params{ folder });
     $utils->initialize('get_shapes', 'folder', $params{ folder });
 
@@ -17346,7 +17631,7 @@ subtest 'get_shapes invalid folder' => sub {
 };
 
 subtest 'get_shapes invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
     $params{ storage } = $utils->invalidize_param_value('get_shapes', 'storage', $params{ storage });
     $utils->initialize('get_shapes', 'storage', $params{ storage });
 
@@ -17357,6 +17642,21 @@ subtest 'get_shapes invalid storage' => sub {
         $utils->assert_error('get_shapes', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_shapes', 'storage');
+    }
+};
+
+subtest 'get_shapes invalid shape_type' => sub {
+    my %params = ('name' => $utils->get_param_value('get_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_shapes', 'slide_index', 'int'), 'password' => $utils->get_param_value('get_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('get_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('get_shapes', 'storage', 'string'), 'shape_type' => $utils->get_param_value('get_shapes', 'shape_type', 'string'));
+    $params{ shape_type } = $utils->invalidize_param_value('get_shapes', 'shape_type', $params{ shape_type });
+    $utils->initialize('get_shapes', 'shape_type', $params{ shape_type });
+
+    eval {
+        my $result = $utils->{api}->get_shapes(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_shapes', 'shape_type', $params{ shape_type }, $@);
+    } else {
+        $utils->assert_no_error('get_shapes', 'shape_type');
     }
 };
 

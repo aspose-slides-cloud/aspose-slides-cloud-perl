@@ -65,8 +65,8 @@ sub initialize {
             my @files = readdir $dir;
             closedir $dir;
             foreach (@files) {
-                if(-f "TestData\\".$_) {
-                    my $content = read_file("TestData\\".$_, { binmode => ':raw' });
+                if(-f "TestData/".$_) {
+                    my $content = read_file("TestData/".$_, { binmode => ':raw' });
                     my %file_upload_params = ('path' => 'TempTests/'.$_, 'file' => $content);
                     $self->{api}->upload_file(%file_upload_params);
                 }
@@ -118,12 +118,12 @@ sub get_param_value {
         if (uc("Image") eq uc($parameter)) {
             $file_name = "watermark.png";
         }
-        my $content = read_file("TestData\\$file_name", { binmode => ':raw' });
+        my $content = read_file("TestData/$file_name", { binmode => ':raw' });
         return $content;
     }
     if ($parameter eq 'files') {
-        my $file1 = read_file("TestData\\test.pptx", { binmode => ':raw' });
-        my $file2 = read_file("TestData\\test-unprotected.pptx", { binmode => ':raw' });
+        my $file1 = read_file("TestData/test.pptx", { binmode => ':raw' });
+        my $file2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
         my @files = ($file1, $file2);
         return \@files;
     }
