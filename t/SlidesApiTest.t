@@ -16146,6 +16146,126 @@ subtest 'get_paragraph invalid storage' => sub {
 };
 
 #
+# get_paragraph_effective test
+#
+subtest 'get_paragraph_effective' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $utils->initialize('get_paragraph_effective', '');
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        fail("get_paragraph_effective raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_paragraph_effective invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_paragraph_effective', 'name', $params{ name });
+    $utils->initialize('get_paragraph_effective', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'name');
+    }
+};
+
+subtest 'get_paragraph_effective invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_paragraph_effective', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_paragraph_effective', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'slide_index');
+    }
+};
+
+subtest 'get_paragraph_effective invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_paragraph_effective', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_paragraph_effective', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'shape_index');
+    }
+};
+
+subtest 'get_paragraph_effective invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_paragraph_effective', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_paragraph_effective', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'paragraph_index');
+    }
+};
+
+subtest 'get_paragraph_effective invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_paragraph_effective', 'password', $params{ password });
+    $utils->initialize('get_paragraph_effective', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'password');
+    }
+};
+
+subtest 'get_paragraph_effective invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_paragraph_effective', 'folder', $params{ folder });
+    $utils->initialize('get_paragraph_effective', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'folder');
+    }
+};
+
+subtest 'get_paragraph_effective invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_paragraph_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_paragraph_effective', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_paragraph_effective', 'storage', $params{ storage });
+    $utils->initialize('get_paragraph_effective', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_paragraph_effective', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_paragraph_effective', 'storage');
+    }
+};
+
+#
 # get_paragraph_rectangle test
 #
 subtest 'get_paragraph_rectangle' => sub {
@@ -16697,6 +16817,141 @@ subtest 'get_portion invalid storage' => sub {
         $utils->assert_error('get_portion', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_portion', 'storage');
+    }
+};
+
+#
+# get_portion_effective test
+#
+subtest 'get_portion_effective' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $utils->initialize('get_portion_effective', '');
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        fail("get_portion_effective raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_portion_effective invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_portion_effective', 'name', $params{ name });
+    $utils->initialize('get_portion_effective', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'name');
+    }
+};
+
+subtest 'get_portion_effective invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_portion_effective', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_portion_effective', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'slide_index');
+    }
+};
+
+subtest 'get_portion_effective invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_portion_effective', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_portion_effective', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'shape_index');
+    }
+};
+
+subtest 'get_portion_effective invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_portion_effective', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_portion_effective', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'paragraph_index');
+    }
+};
+
+subtest 'get_portion_effective invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('get_portion_effective', 'portion_index', $params{ portion_index });
+    $utils->initialize('get_portion_effective', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'portion_index', $params{ portion_index }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'portion_index');
+    }
+};
+
+subtest 'get_portion_effective invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_portion_effective', 'password', $params{ password });
+    $utils->initialize('get_portion_effective', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'password');
+    }
+};
+
+subtest 'get_portion_effective invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_portion_effective', 'folder', $params{ folder });
+    $utils->initialize('get_portion_effective', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'folder');
+    }
+};
+
+subtest 'get_portion_effective invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_portion_effective', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_portion_effective', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_portion_effective', 'storage', $params{ storage });
+    $utils->initialize('get_portion_effective', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_portion_effective', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_portion_effective', 'storage');
     }
 };
 
@@ -20286,6 +20541,141 @@ subtest 'get_subshape_paragraph invalid storage' => sub {
 };
 
 #
+# get_subshape_paragraph_effective test
+#
+subtest 'get_subshape_paragraph_effective' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $utils->initialize('get_subshape_paragraph_effective', '');
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        fail("get_subshape_paragraph_effective raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_subshape_paragraph_effective invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'name', $params{ name });
+    $utils->initialize('get_subshape_paragraph_effective', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'name');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_subshape_paragraph_effective', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'slide_index');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid path' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ path } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'path', $params{ path });
+    $utils->initialize('get_subshape_paragraph_effective', 'path', $params{ path });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'path', $params{ path }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'path');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_subshape_paragraph_effective', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'shape_index');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_subshape_paragraph_effective', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'paragraph_index');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'password', $params{ password });
+    $utils->initialize('get_subshape_paragraph_effective', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'password');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'folder', $params{ folder });
+    $utils->initialize('get_subshape_paragraph_effective', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'folder');
+    }
+};
+
+subtest 'get_subshape_paragraph_effective invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_paragraph_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_paragraph_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_paragraph_effective', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_subshape_paragraph_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_paragraph_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_paragraph_effective', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_subshape_paragraph_effective', 'storage', $params{ storage });
+    $utils->initialize('get_subshape_paragraph_effective', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_paragraph_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_paragraph_effective', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_paragraph_effective', 'storage');
+    }
+};
+
+#
 # get_subshape_paragraphs test
 #
 subtest 'get_subshape_paragraphs' => sub {
@@ -20552,6 +20942,156 @@ subtest 'get_subshape_portion invalid storage' => sub {
         $utils->assert_error('get_subshape_portion', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('get_subshape_portion', 'storage');
+    }
+};
+
+#
+# get_subshape_portion_effective test
+#
+subtest 'get_subshape_portion_effective' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $utils->initialize('get_subshape_portion_effective', '');
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        fail("get_subshape_portion_effective raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_subshape_portion_effective invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_subshape_portion_effective', 'name', $params{ name });
+    $utils->initialize('get_subshape_portion_effective', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'name');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_subshape_portion_effective', 'slide_index', $params{ slide_index });
+    $utils->initialize('get_subshape_portion_effective', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'slide_index');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid path' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ path } = $utils->invalidize_param_value('get_subshape_portion_effective', 'path', $params{ path });
+    $utils->initialize('get_subshape_portion_effective', 'path', $params{ path });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'path', $params{ path }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'path');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_subshape_portion_effective', 'shape_index', $params{ shape_index });
+    $utils->initialize('get_subshape_portion_effective', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'shape_index');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_subshape_portion_effective', 'paragraph_index', $params{ paragraph_index });
+    $utils->initialize('get_subshape_portion_effective', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'paragraph_index', $params{ paragraph_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'paragraph_index');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('get_subshape_portion_effective', 'portion_index', $params{ portion_index });
+    $utils->initialize('get_subshape_portion_effective', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'portion_index', $params{ portion_index }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'portion_index');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_subshape_portion_effective', 'password', $params{ password });
+    $utils->initialize('get_subshape_portion_effective', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'password');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_subshape_portion_effective', 'folder', $params{ folder });
+    $utils->initialize('get_subshape_portion_effective', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'folder');
+    }
+};
+
+subtest 'get_subshape_portion_effective invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_subshape_portion_effective', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_subshape_portion_effective', 'slide_index', 'int'), 'path' => $utils->get_param_value('get_subshape_portion_effective', 'path', 'string'), 'shape_index' => $utils->get_param_value('get_subshape_portion_effective', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_subshape_portion_effective', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_subshape_portion_effective', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_subshape_portion_effective', 'password', 'string'), 'folder' => $utils->get_param_value('get_subshape_portion_effective', 'folder', 'string'), 'storage' => $utils->get_param_value('get_subshape_portion_effective', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_subshape_portion_effective', 'storage', $params{ storage });
+    $utils->initialize('get_subshape_portion_effective', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_subshape_portion_effective(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_subshape_portion_effective', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_subshape_portion_effective', 'storage');
     }
 };
 
@@ -27392,6 +27932,141 @@ subtest 'update_chart_series invalid storage' => sub {
         $utils->assert_error('update_chart_series', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('update_chart_series', 'storage');
+    }
+};
+
+#
+# update_chart_series_group test
+#
+subtest 'update_chart_series_group' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $utils->initialize('update_chart_series_group', '');
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        fail("update_chart_series_group raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_chart_series_group invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_chart_series_group', 'name', $params{ name });
+    $utils->initialize('update_chart_series_group', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'name');
+    }
+};
+
+subtest 'update_chart_series_group invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('update_chart_series_group', 'slide_index', $params{ slide_index });
+    $utils->initialize('update_chart_series_group', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'slide_index');
+    }
+};
+
+subtest 'update_chart_series_group invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('update_chart_series_group', 'shape_index', $params{ shape_index });
+    $utils->initialize('update_chart_series_group', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'shape_index');
+    }
+};
+
+subtest 'update_chart_series_group invalid series_group_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ series_group_index } = $utils->invalidize_param_value('update_chart_series_group', 'series_group_index', $params{ series_group_index });
+    $utils->initialize('update_chart_series_group', 'series_group_index', $params{ series_group_index });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'series_group_index', $params{ series_group_index }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'series_group_index');
+    }
+};
+
+subtest 'update_chart_series_group invalid series_group' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ series_group } = $utils->invalidize_param_value('update_chart_series_group', 'series_group', $params{ series_group });
+    $utils->initialize('update_chart_series_group', 'series_group', $params{ series_group });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'series_group', $params{ series_group }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'series_group');
+    }
+};
+
+subtest 'update_chart_series_group invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_chart_series_group', 'password', $params{ password });
+    $utils->initialize('update_chart_series_group', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'password');
+    }
+};
+
+subtest 'update_chart_series_group invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_chart_series_group', 'folder', $params{ folder });
+    $utils->initialize('update_chart_series_group', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'folder');
+    }
+};
+
+subtest 'update_chart_series_group invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_chart_series_group', 'storage', $params{ storage });
+    $utils->initialize('update_chart_series_group', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_chart_series_group', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('update_chart_series_group', 'storage');
     }
 };
 
