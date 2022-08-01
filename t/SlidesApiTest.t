@@ -11991,6 +11991,156 @@ subtest 'delete_unused_layout_slides_online invalid password' => sub {
 };
 
 #
+# delete_unused_master_slides test
+#
+subtest 'delete_unused_master_slides' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $utils->initialize('delete_unused_master_slides', '');
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        fail("delete_unused_master_slides raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_unused_master_slides invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_unused_master_slides', 'name', $params{ name });
+    $utils->initialize('delete_unused_master_slides', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides', 'name');
+    }
+};
+
+subtest 'delete_unused_master_slides invalid ignore_preserve_field' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $params{ ignore_preserve_field } = $utils->invalidize_param_value('delete_unused_master_slides', 'ignore_preserve_field', $params{ ignore_preserve_field });
+    $utils->initialize('delete_unused_master_slides', 'ignore_preserve_field', $params{ ignore_preserve_field });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides', 'ignore_preserve_field', $params{ ignore_preserve_field }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides', 'ignore_preserve_field');
+    }
+};
+
+subtest 'delete_unused_master_slides invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_unused_master_slides', 'password', $params{ password });
+    $utils->initialize('delete_unused_master_slides', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides', 'password');
+    }
+};
+
+subtest 'delete_unused_master_slides invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_unused_master_slides', 'folder', $params{ folder });
+    $utils->initialize('delete_unused_master_slides', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides', 'folder');
+    }
+};
+
+subtest 'delete_unused_master_slides invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_unused_master_slides', 'name', 'string'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_unused_master_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_unused_master_slides', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_unused_master_slides', 'storage', $params{ storage });
+    $utils->initialize('delete_unused_master_slides', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides', 'storage');
+    }
+};
+
+#
+# delete_unused_master_slides_online test
+#
+subtest 'delete_unused_master_slides_online' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_master_slides_online', 'document', 'File'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides_online', 'password', 'string'));
+    $utils->initialize('delete_unused_master_slides_online', '');
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides_online(%params);
+    };
+    if ($@) {
+        fail("delete_unused_master_slides_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_unused_master_slides_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_master_slides_online', 'document', 'File'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('delete_unused_master_slides_online', 'document', $params{ document });
+    $utils->initialize('delete_unused_master_slides_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides_online', 'document');
+    }
+};
+
+subtest 'delete_unused_master_slides_online invalid ignore_preserve_field' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_master_slides_online', 'document', 'File'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides_online', 'password', 'string'));
+    $params{ ignore_preserve_field } = $utils->invalidize_param_value('delete_unused_master_slides_online', 'ignore_preserve_field', $params{ ignore_preserve_field });
+    $utils->initialize('delete_unused_master_slides_online', 'ignore_preserve_field', $params{ ignore_preserve_field });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides_online', 'ignore_preserve_field', $params{ ignore_preserve_field }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides_online', 'ignore_preserve_field');
+    }
+};
+
+subtest 'delete_unused_master_slides_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_unused_master_slides_online', 'document', 'File'), 'ignore_preserve_field' => $utils->get_param_value('delete_unused_master_slides_online', 'ignore_preserve_field', 'boolean'), 'password' => $utils->get_param_value('delete_unused_master_slides_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_unused_master_slides_online', 'password', $params{ password });
+    $utils->initialize('delete_unused_master_slides_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_unused_master_slides_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_unused_master_slides_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_unused_master_slides_online', 'password');
+    }
+};
+
+#
 # delete_watermark test
 #
 subtest 'delete_watermark' => sub {
@@ -25566,6 +25716,531 @@ subtest 'set_background_color invalid storage' => sub {
 };
 
 #
+# set_chart_axis test
+#
+subtest 'set_chart_axis' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $utils->initialize('set_chart_axis', '');
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        fail("set_chart_axis raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_chart_axis invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_chart_axis', 'name', $params{ name });
+    $utils->initialize('set_chart_axis', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'name');
+    }
+};
+
+subtest 'set_chart_axis invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('set_chart_axis', 'slide_index', $params{ slide_index });
+    $utils->initialize('set_chart_axis', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'slide_index');
+    }
+};
+
+subtest 'set_chart_axis invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('set_chart_axis', 'shape_index', $params{ shape_index });
+    $utils->initialize('set_chart_axis', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'shape_index');
+    }
+};
+
+subtest 'set_chart_axis invalid axis_type' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ axis_type } = $utils->invalidize_param_value('set_chart_axis', 'axis_type', $params{ axis_type });
+    $utils->initialize('set_chart_axis', 'axis_type', $params{ axis_type });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'axis_type', $params{ axis_type }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'axis_type');
+    }
+};
+
+subtest 'set_chart_axis invalid axis' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ axis } = $utils->invalidize_param_value('set_chart_axis', 'axis', $params{ axis });
+    $utils->initialize('set_chart_axis', 'axis', $params{ axis });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'axis', $params{ axis }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'axis');
+    }
+};
+
+subtest 'set_chart_axis invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_chart_axis', 'password', $params{ password });
+    $utils->initialize('set_chart_axis', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'password');
+    }
+};
+
+subtest 'set_chart_axis invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_chart_axis', 'folder', $params{ folder });
+    $utils->initialize('set_chart_axis', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'folder');
+    }
+};
+
+subtest 'set_chart_axis invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_axis', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_axis', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_axis', 'shape_index', 'int'), 'axis_type' => $utils->get_param_value('set_chart_axis', 'axis_type', 'string'), 'axis' => $utils->get_param_value('set_chart_axis', 'axis', 'Axis'), 'password' => $utils->get_param_value('set_chart_axis', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_axis', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_axis', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_chart_axis', 'storage', $params{ storage });
+    $utils->initialize('set_chart_axis', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_chart_axis(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_axis', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_axis', 'storage');
+    }
+};
+
+#
+# set_chart_legend test
+#
+subtest 'set_chart_legend' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $utils->initialize('set_chart_legend', '');
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        fail("set_chart_legend raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_chart_legend invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_chart_legend', 'name', $params{ name });
+    $utils->initialize('set_chart_legend', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'name');
+    }
+};
+
+subtest 'set_chart_legend invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('set_chart_legend', 'slide_index', $params{ slide_index });
+    $utils->initialize('set_chart_legend', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'slide_index');
+    }
+};
+
+subtest 'set_chart_legend invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('set_chart_legend', 'shape_index', $params{ shape_index });
+    $utils->initialize('set_chart_legend', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'shape_index');
+    }
+};
+
+subtest 'set_chart_legend invalid legend' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ legend } = $utils->invalidize_param_value('set_chart_legend', 'legend', $params{ legend });
+    $utils->initialize('set_chart_legend', 'legend', $params{ legend });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'legend', $params{ legend }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'legend');
+    }
+};
+
+subtest 'set_chart_legend invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_chart_legend', 'password', $params{ password });
+    $utils->initialize('set_chart_legend', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'password');
+    }
+};
+
+subtest 'set_chart_legend invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_chart_legend', 'folder', $params{ folder });
+    $utils->initialize('set_chart_legend', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'folder');
+    }
+};
+
+subtest 'set_chart_legend invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_legend', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_legend', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_legend', 'shape_index', 'int'), 'legend' => $utils->get_param_value('set_chart_legend', 'legend', 'Legend'), 'password' => $utils->get_param_value('set_chart_legend', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_legend', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_legend', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_chart_legend', 'storage', $params{ storage });
+    $utils->initialize('set_chart_legend', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_chart_legend(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_legend', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_legend', 'storage');
+    }
+};
+
+#
+# set_chart_series_group test
+#
+subtest 'set_chart_series_group' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $utils->initialize('set_chart_series_group', '');
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        fail("set_chart_series_group raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_chart_series_group invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_chart_series_group', 'name', $params{ name });
+    $utils->initialize('set_chart_series_group', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'name');
+    }
+};
+
+subtest 'set_chart_series_group invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('set_chart_series_group', 'slide_index', $params{ slide_index });
+    $utils->initialize('set_chart_series_group', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'slide_index');
+    }
+};
+
+subtest 'set_chart_series_group invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('set_chart_series_group', 'shape_index', $params{ shape_index });
+    $utils->initialize('set_chart_series_group', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'shape_index');
+    }
+};
+
+subtest 'set_chart_series_group invalid series_group_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ series_group_index } = $utils->invalidize_param_value('set_chart_series_group', 'series_group_index', $params{ series_group_index });
+    $utils->initialize('set_chart_series_group', 'series_group_index', $params{ series_group_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'series_group_index', $params{ series_group_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'series_group_index');
+    }
+};
+
+subtest 'set_chart_series_group invalid series_group' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ series_group } = $utils->invalidize_param_value('set_chart_series_group', 'series_group', $params{ series_group });
+    $utils->initialize('set_chart_series_group', 'series_group', $params{ series_group });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'series_group', $params{ series_group }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'series_group');
+    }
+};
+
+subtest 'set_chart_series_group invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_chart_series_group', 'password', $params{ password });
+    $utils->initialize('set_chart_series_group', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'password');
+    }
+};
+
+subtest 'set_chart_series_group invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_chart_series_group', 'folder', $params{ folder });
+    $utils->initialize('set_chart_series_group', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'folder');
+    }
+};
+
+subtest 'set_chart_series_group invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('set_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('set_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('set_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_series_group', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_chart_series_group', 'storage', $params{ storage });
+    $utils->initialize('set_chart_series_group', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_chart_series_group(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_series_group', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_series_group', 'storage');
+    }
+};
+
+#
+# set_chart_wall test
+#
+subtest 'set_chart_wall' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $utils->initialize('set_chart_wall', '');
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        fail("set_chart_wall raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_chart_wall invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_chart_wall', 'name', $params{ name });
+    $utils->initialize('set_chart_wall', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'name');
+    }
+};
+
+subtest 'set_chart_wall invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('set_chart_wall', 'slide_index', $params{ slide_index });
+    $utils->initialize('set_chart_wall', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'slide_index');
+    }
+};
+
+subtest 'set_chart_wall invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('set_chart_wall', 'shape_index', $params{ shape_index });
+    $utils->initialize('set_chart_wall', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'shape_index', $params{ shape_index }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'shape_index');
+    }
+};
+
+subtest 'set_chart_wall invalid chart_wall_type' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ chart_wall_type } = $utils->invalidize_param_value('set_chart_wall', 'chart_wall_type', $params{ chart_wall_type });
+    $utils->initialize('set_chart_wall', 'chart_wall_type', $params{ chart_wall_type });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'chart_wall_type', $params{ chart_wall_type }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'chart_wall_type');
+    }
+};
+
+subtest 'set_chart_wall invalid chart_wall' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ chart_wall } = $utils->invalidize_param_value('set_chart_wall', 'chart_wall', $params{ chart_wall });
+    $utils->initialize('set_chart_wall', 'chart_wall', $params{ chart_wall });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'chart_wall', $params{ chart_wall }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'chart_wall');
+    }
+};
+
+subtest 'set_chart_wall invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_chart_wall', 'password', $params{ password });
+    $utils->initialize('set_chart_wall', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'password');
+    }
+};
+
+subtest 'set_chart_wall invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_chart_wall', 'folder', $params{ folder });
+    $utils->initialize('set_chart_wall', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'folder');
+    }
+};
+
+subtest 'set_chart_wall invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_chart_wall', 'name', 'string'), 'slide_index' => $utils->get_param_value('set_chart_wall', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('set_chart_wall', 'shape_index', 'int'), 'chart_wall_type' => $utils->get_param_value('set_chart_wall', 'chart_wall_type', 'string'), 'chart_wall' => $utils->get_param_value('set_chart_wall', 'chart_wall', 'ChartWall'), 'password' => $utils->get_param_value('set_chart_wall', 'password', 'string'), 'folder' => $utils->get_param_value('set_chart_wall', 'folder', 'string'), 'storage' => $utils->get_param_value('set_chart_wall', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_chart_wall', 'storage', $params{ storage });
+    $utils->initialize('set_chart_wall', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_chart_wall(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_chart_wall', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_chart_wall', 'storage');
+    }
+};
+
+#
 # set_document_properties test
 #
 subtest 'set_document_properties' => sub {
@@ -27932,141 +28607,6 @@ subtest 'update_chart_series invalid storage' => sub {
         $utils->assert_error('update_chart_series', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('update_chart_series', 'storage');
-    }
-};
-
-#
-# update_chart_series_group test
-#
-subtest 'update_chart_series_group' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $utils->initialize('update_chart_series_group', '');
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        fail("update_chart_series_group raised an exception: $@");
-    }
-    pass();
-};
-
-subtest 'update_chart_series_group invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ name } = $utils->invalidize_param_value('update_chart_series_group', 'name', $params{ name });
-    $utils->initialize('update_chart_series_group', 'name', $params{ name });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'name', $params{ name }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'name');
-    }
-};
-
-subtest 'update_chart_series_group invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ slide_index } = $utils->invalidize_param_value('update_chart_series_group', 'slide_index', $params{ slide_index });
-    $utils->initialize('update_chart_series_group', 'slide_index', $params{ slide_index });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'slide_index', $params{ slide_index }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'slide_index');
-    }
-};
-
-subtest 'update_chart_series_group invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ shape_index } = $utils->invalidize_param_value('update_chart_series_group', 'shape_index', $params{ shape_index });
-    $utils->initialize('update_chart_series_group', 'shape_index', $params{ shape_index });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'shape_index', $params{ shape_index }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'shape_index');
-    }
-};
-
-subtest 'update_chart_series_group invalid series_group_index' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ series_group_index } = $utils->invalidize_param_value('update_chart_series_group', 'series_group_index', $params{ series_group_index });
-    $utils->initialize('update_chart_series_group', 'series_group_index', $params{ series_group_index });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'series_group_index', $params{ series_group_index }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'series_group_index');
-    }
-};
-
-subtest 'update_chart_series_group invalid series_group' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ series_group } = $utils->invalidize_param_value('update_chart_series_group', 'series_group', $params{ series_group });
-    $utils->initialize('update_chart_series_group', 'series_group', $params{ series_group });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'series_group', $params{ series_group }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'series_group');
-    }
-};
-
-subtest 'update_chart_series_group invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ password } = $utils->invalidize_param_value('update_chart_series_group', 'password', $params{ password });
-    $utils->initialize('update_chart_series_group', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'password', $params{ password }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'password');
-    }
-};
-
-subtest 'update_chart_series_group invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ folder } = $utils->invalidize_param_value('update_chart_series_group', 'folder', $params{ folder });
-    $utils->initialize('update_chart_series_group', 'folder', $params{ folder });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'folder', $params{ folder }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'folder');
-    }
-};
-
-subtest 'update_chart_series_group invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('update_chart_series_group', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_chart_series_group', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_chart_series_group', 'shape_index', 'int'), 'series_group_index' => $utils->get_param_value('update_chart_series_group', 'series_group_index', 'int'), 'series_group' => $utils->get_param_value('update_chart_series_group', 'series_group', 'ChartSeriesGroup'), 'password' => $utils->get_param_value('update_chart_series_group', 'password', 'string'), 'folder' => $utils->get_param_value('update_chart_series_group', 'folder', 'string'), 'storage' => $utils->get_param_value('update_chart_series_group', 'storage', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('update_chart_series_group', 'storage', $params{ storage });
-    $utils->initialize('update_chart_series_group', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{api}->update_chart_series_group(%params);
-    };
-    if ($@) {
-        $utils->assert_error('update_chart_series_group', 'storage', $params{ storage }, $@);
-    } else {
-        $utils->assert_no_error('update_chart_series_group', 'storage');
     }
 };
 
