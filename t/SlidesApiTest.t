@@ -7041,6 +7041,156 @@ subtest 'delete_document_property invalid storage' => sub {
 };
 
 #
+# delete_embedded_font test
+#
+subtest 'delete_embedded_font' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $utils->initialize('delete_embedded_font', '');
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        fail("delete_embedded_font raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_embedded_font invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_embedded_font', 'name', $params{ name });
+    $utils->initialize('delete_embedded_font', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font', 'name');
+    }
+};
+
+subtest 'delete_embedded_font invalid font_name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('delete_embedded_font', 'font_name', $params{ font_name });
+    $utils->initialize('delete_embedded_font', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font', 'font_name');
+    }
+};
+
+subtest 'delete_embedded_font invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_embedded_font', 'password', $params{ password });
+    $utils->initialize('delete_embedded_font', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font', 'password');
+    }
+};
+
+subtest 'delete_embedded_font invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_embedded_font', 'folder', $params{ folder });
+    $utils->initialize('delete_embedded_font', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font', 'folder');
+    }
+};
+
+subtest 'delete_embedded_font invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('delete_embedded_font', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('delete_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_embedded_font', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_embedded_font', 'storage', $params{ storage });
+    $utils->initialize('delete_embedded_font', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font', 'storage');
+    }
+};
+
+#
+# delete_embedded_font_online test
+#
+subtest 'delete_embedded_font_online' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('delete_embedded_font_online', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font_online', 'password', 'string'));
+    $utils->initialize('delete_embedded_font_online', '');
+    eval {
+        my $result = $utils->{api}->delete_embedded_font_online(%params);
+    };
+    if ($@) {
+        fail("delete_embedded_font_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_embedded_font_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('delete_embedded_font_online', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('delete_embedded_font_online', 'document', $params{ document });
+    $utils->initialize('delete_embedded_font_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font_online', 'document');
+    }
+};
+
+subtest 'delete_embedded_font_online invalid font_name' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('delete_embedded_font_online', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font_online', 'password', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('delete_embedded_font_online', 'font_name', $params{ font_name });
+    $utils->initialize('delete_embedded_font_online', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font_online', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font_online', 'font_name');
+    }
+};
+
+subtest 'delete_embedded_font_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('delete_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('delete_embedded_font_online', 'font_name', 'string'), 'password' => $utils->get_param_value('delete_embedded_font_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_embedded_font_online', 'password', $params{ password });
+    $utils->initialize('delete_embedded_font_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_embedded_font_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('delete_embedded_font_online', 'password');
+    }
+};
+
+#
 # delete_file test
 #
 subtest 'delete_file' => sub {
@@ -15516,6 +15666,126 @@ subtest 'get_font_scheme invalid storage' => sub {
 };
 
 #
+# get_fonts test
+#
+subtest 'get_fonts' => sub {
+    my %params = ('name' => $utils->get_param_value('get_fonts', 'name', 'string'), 'password' => $utils->get_param_value('get_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('get_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('get_fonts', 'storage', 'string'));
+    $utils->initialize('get_fonts', '');
+    eval {
+        my $result = $utils->{api}->get_fonts(%params);
+    };
+    if ($@) {
+        fail("get_fonts raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_fonts invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_fonts', 'name', 'string'), 'password' => $utils->get_param_value('get_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('get_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('get_fonts', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_fonts', 'name', $params{ name });
+    $utils->initialize('get_fonts', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts', 'name');
+    }
+};
+
+subtest 'get_fonts invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_fonts', 'name', 'string'), 'password' => $utils->get_param_value('get_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('get_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('get_fonts', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_fonts', 'password', $params{ password });
+    $utils->initialize('get_fonts', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts', 'password');
+    }
+};
+
+subtest 'get_fonts invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_fonts', 'name', 'string'), 'password' => $utils->get_param_value('get_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('get_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('get_fonts', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_fonts', 'folder', $params{ folder });
+    $utils->initialize('get_fonts', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts', 'folder');
+    }
+};
+
+subtest 'get_fonts invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_fonts', 'name', 'string'), 'password' => $utils->get_param_value('get_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('get_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('get_fonts', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_fonts', 'storage', $params{ storage });
+    $utils->initialize('get_fonts', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts', 'storage');
+    }
+};
+
+#
+# get_fonts_online test
+#
+subtest 'get_fonts_online' => sub {
+    my %params = ('document' => $utils->get_param_value('get_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('get_fonts_online', 'password', 'string'));
+    $utils->initialize('get_fonts_online', '');
+    eval {
+        my $result = $utils->{api}->get_fonts_online(%params);
+    };
+    if ($@) {
+        fail("get_fonts_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_fonts_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('get_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('get_fonts_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('get_fonts_online', 'document', $params{ document });
+    $utils->initialize('get_fonts_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->get_fonts_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts_online', 'document');
+    }
+};
+
+subtest 'get_fonts_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('get_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('get_fonts_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_fonts_online', 'password', $params{ password });
+    $utils->initialize('get_fonts_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_fonts_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_fonts_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('get_fonts_online', 'password');
+    }
+};
+
+#
 # get_format_scheme test
 #
 subtest 'get_format_scheme' => sub {
@@ -22161,6 +22431,186 @@ subtest 'import_from_pdf invalid storage' => sub {
 };
 
 #
+# import_shapes_from_svg test
+#
+subtest 'import_shapes_from_svg' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $utils->initialize('import_shapes_from_svg', '');
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        fail("import_shapes_from_svg raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'import_shapes_from_svg invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('import_shapes_from_svg', 'name', $params{ name });
+    $utils->initialize('import_shapes_from_svg', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'name');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('import_shapes_from_svg', 'slide_index', $params{ slide_index });
+    $utils->initialize('import_shapes_from_svg', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'slide_index', $params{ slide_index }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'slide_index');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid image' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ image } = $utils->invalidize_param_value('import_shapes_from_svg', 'image', $params{ image });
+    $utils->initialize('import_shapes_from_svg', 'image', $params{ image });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'image', $params{ image }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'image');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid x' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ x } = $utils->invalidize_param_value('import_shapes_from_svg', 'x', $params{ x });
+    $utils->initialize('import_shapes_from_svg', 'x', $params{ x });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'x', $params{ x }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'x');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid y' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ y } = $utils->invalidize_param_value('import_shapes_from_svg', 'y', $params{ y });
+    $utils->initialize('import_shapes_from_svg', 'y', $params{ y });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'y', $params{ y }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'y');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid width' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ width } = $utils->invalidize_param_value('import_shapes_from_svg', 'width', $params{ width });
+    $utils->initialize('import_shapes_from_svg', 'width', $params{ width });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'width', $params{ width }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'width');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid height' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ height } = $utils->invalidize_param_value('import_shapes_from_svg', 'height', $params{ height });
+    $utils->initialize('import_shapes_from_svg', 'height', $params{ height });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'height', $params{ height }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'height');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid shapes' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ shapes } = $utils->invalidize_param_value('import_shapes_from_svg', 'shapes', $params{ shapes });
+    $utils->initialize('import_shapes_from_svg', 'shapes', $params{ shapes });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'shapes', $params{ shapes }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'shapes');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('import_shapes_from_svg', 'password', $params{ password });
+    $utils->initialize('import_shapes_from_svg', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'password');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('import_shapes_from_svg', 'folder', $params{ folder });
+    $utils->initialize('import_shapes_from_svg', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'folder');
+    }
+};
+
+subtest 'import_shapes_from_svg invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('import_shapes_from_svg', 'storage', $params{ storage });
+    $utils->initialize('import_shapes_from_svg', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->import_shapes_from_svg(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_shapes_from_svg', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('import_shapes_from_svg', 'storage');
+    }
+};
+
+#
 # merge test
 #
 subtest 'merge' => sub {
@@ -26432,6 +26882,186 @@ subtest 'set_document_property invalid storage' => sub {
         $utils->assert_error('set_document_property', 'storage', $params{ storage }, $@);
     } else {
         $utils->assert_no_error('set_document_property', 'storage');
+    }
+};
+
+#
+# set_embedded_font test
+#
+subtest 'set_embedded_font' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $utils->initialize('set_embedded_font', '');
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        fail("set_embedded_font raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_embedded_font invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('set_embedded_font', 'name', $params{ name });
+    $utils->initialize('set_embedded_font', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'name', $params{ name }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'name');
+    }
+};
+
+subtest 'set_embedded_font invalid font_name' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('set_embedded_font', 'font_name', $params{ font_name });
+    $utils->initialize('set_embedded_font', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'font_name');
+    }
+};
+
+subtest 'set_embedded_font invalid only_used' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ only_used } = $utils->invalidize_param_value('set_embedded_font', 'only_used', $params{ only_used });
+    $utils->initialize('set_embedded_font', 'only_used', $params{ only_used });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'only_used', $params{ only_used }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'only_used');
+    }
+};
+
+subtest 'set_embedded_font invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_embedded_font', 'password', $params{ password });
+    $utils->initialize('set_embedded_font', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'password');
+    }
+};
+
+subtest 'set_embedded_font invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('set_embedded_font', 'folder', $params{ folder });
+    $utils->initialize('set_embedded_font', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'folder', $params{ folder }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'folder');
+    }
+};
+
+subtest 'set_embedded_font invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('set_embedded_font', 'name', 'string'), 'font_name' => $utils->get_param_value('set_embedded_font', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font', 'password', 'string'), 'folder' => $utils->get_param_value('set_embedded_font', 'folder', 'string'), 'storage' => $utils->get_param_value('set_embedded_font', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('set_embedded_font', 'storage', $params{ storage });
+    $utils->initialize('set_embedded_font', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font', 'storage', $params{ storage }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font', 'storage');
+    }
+};
+
+#
+# set_embedded_font_online test
+#
+subtest 'set_embedded_font_online' => sub {
+    my %params = ('document' => $utils->get_param_value('set_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('set_embedded_font_online', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font_online', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font_online', 'password', 'string'));
+    $utils->initialize('set_embedded_font_online', '');
+    eval {
+        my $result = $utils->{api}->set_embedded_font_online(%params);
+    };
+    if ($@) {
+        fail("set_embedded_font_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set_embedded_font_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('set_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('set_embedded_font_online', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font_online', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('set_embedded_font_online', 'document', $params{ document });
+    $utils->initialize('set_embedded_font_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font_online', 'document', $params{ document }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font_online', 'document');
+    }
+};
+
+subtest 'set_embedded_font_online invalid font_name' => sub {
+    my %params = ('document' => $utils->get_param_value('set_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('set_embedded_font_online', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font_online', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font_online', 'password', 'string'));
+    $params{ font_name } = $utils->invalidize_param_value('set_embedded_font_online', 'font_name', $params{ font_name });
+    $utils->initialize('set_embedded_font_online', 'font_name', $params{ font_name });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font_online', 'font_name', $params{ font_name }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font_online', 'font_name');
+    }
+};
+
+subtest 'set_embedded_font_online invalid only_used' => sub {
+    my %params = ('document' => $utils->get_param_value('set_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('set_embedded_font_online', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font_online', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font_online', 'password', 'string'));
+    $params{ only_used } = $utils->invalidize_param_value('set_embedded_font_online', 'only_used', $params{ only_used });
+    $utils->initialize('set_embedded_font_online', 'only_used', $params{ only_used });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font_online', 'only_used', $params{ only_used }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font_online', 'only_used');
+    }
+};
+
+subtest 'set_embedded_font_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('set_embedded_font_online', 'document', 'File'), 'font_name' => $utils->get_param_value('set_embedded_font_online', 'font_name', 'string'), 'only_used' => $utils->get_param_value('set_embedded_font_online', 'only_used', 'boolean'), 'password' => $utils->get_param_value('set_embedded_font_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('set_embedded_font_online', 'password', $params{ password });
+    $utils->initialize('set_embedded_font_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->set_embedded_font_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('set_embedded_font_online', 'password', $params{ password }, $@);
+    } else {
+        $utils->assert_no_error('set_embedded_font_online', 'password');
     }
 };
 

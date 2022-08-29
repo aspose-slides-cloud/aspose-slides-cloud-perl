@@ -115,7 +115,10 @@ sub get_param_value {
         if (uc("ImportFromPdf") eq uc($function)) {
             $file_name = "test.pdf";
         }
-        if (uc("Image") eq uc($parameter)) {
+        elsif (uc("ImportShapesFromSvg") eq uc($function)) {
+            $file_name = "shapes.svg";
+        }
+        elsif (uc("Image") eq uc($parameter)) {
             $file_name = "watermark.png";
         }
         my $content = read_file("TestData/$file_name", { binmode => ':raw' });
