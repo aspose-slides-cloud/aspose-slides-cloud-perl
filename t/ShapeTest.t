@@ -521,34 +521,35 @@ subtest 'shapes align group' => sub {
       $utils->{api}->copy_file(%copy_params);
 
       my $slide_index = 1;
-      my $shape1_index = 1;
-      my $shape2_index = 2;
-      my $path = "4/shapes";
+      my $shape1_index = "1";
+      my $shape2_index = "2";
+      my $shape_index = 4;
+      my $shape_index_str = "4";
       my $dto = AsposeSlidesCloud::Object::Connector->new();
-      my %params1 = ('name' => "test.pptx", 'slide_index' => $slide_index, 'shape_index' => $shape1_index, 'path' => $path, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape1 = $utils->{api}->get_subshape(%params1);
-      my %params2 = ('name' => "test.pptx", 'slide_index' => $slide_index, 'shape_index' => $shape2_index, 'path' => $path, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape2 = $utils->{api}->get_subshape(%params2);
+      my %params1 = ('name' => "test.pptx", 'slide_index' => $slide_index, 'shape_index' => $shape_index, 'sub_shape' => $shape1_index, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $shape1 = $utils->{api}->get_shape(%params1);
+      my %params2 = ('name' => "test.pptx", 'slide_index' => $slide_index, 'shape_index' => $shape_index, 'sub_shape' => $shape2_index, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $shape2 = $utils->{api}->get_shape(%params2);
       ok(abs($shape1->{x} - $shape2->{x}) > 1);
 
-      my %params = ('name' => "test.pptx", 'slide_index' => $slide_index, 'alignment_type' => "AlignTop", 'path' => $path, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $utils->{api}->align_subshapes(%params);
-      $shape1 = $utils->{api}->get_subshape(%params1);
-      $shape2 = $utils->{api}->get_subshape(%params2);
+      my %params = ('name' => "test.pptx", 'slide_index' => $slide_index, 'alignment_type' => "AlignTop", 'sub_shape' => $shape_index_str, 'password' => "password", 'folder' => "TempSlidesSDK");
+      $utils->{api}->align_shapes(%params);
+      $shape1 = $utils->{api}->get_shape(%params1);
+      $shape2 = $utils->{api}->get_shape(%params2);
       ok(abs($shape1->{x} - $shape2->{x}) > 1);
       ok(abs($shape1->{y} - $shape2->{y}) < 1);
 
       my @shapes = ( 1, 2 );
-      %params = ('name' => "test.pptx", 'slide_index' => $slide_index, 'alignment_type' => "AlignLeft", 'path' => $path, 'align_to_slide' => 1, 'shapes' => \@shapes, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $utils->{api}->align_subshapes(%params);
-      $shape1 = $utils->{api}->get_subshape(%params1);
-      $shape2 = $utils->{api}->get_subshape(%params2);
+      %params = ('name' => "test.pptx", 'slide_index' => $slide_index, 'alignment_type' => "AlignLeft", 'sub_shape' => $shape_index_str, 'align_to_slide' => 1, 'shapes' => \@shapes, 'password' => "password", 'folder' => "TempSlidesSDK");
+      $utils->{api}->align_shapes(%params);
+      $shape1 = $utils->{api}->get_shape(%params1);
+      $shape2 = $utils->{api}->get_shape(%params2);
       ok(abs($shape1->{x} - $shape2->{x}) < 1);
       ok(abs($shape1->{x}) < 1);
       ok(abs($shape1->{y} - $shape2->{y}) < 1);
     };
     if ($@) {
-        fail("align_subshapes raised an exception: $@");
+        fail("align_shapes raised an exception: $@");
     }
     pass();
 };

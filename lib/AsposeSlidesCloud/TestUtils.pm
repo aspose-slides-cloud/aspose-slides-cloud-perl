@@ -121,6 +121,9 @@ sub get_param_value {
         elsif (uc("Image") eq uc($parameter)) {
             $file_name = "watermark.png";
         }
+        elsif (uc("Font") eq uc($parameter)) {
+            $file_name = "calibri.ttf";
+        }
         my $content = read_file("TestData/$file_name", { binmode => ':raw' });
         return $content;
     }
