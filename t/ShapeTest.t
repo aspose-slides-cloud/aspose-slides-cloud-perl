@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -48,11 +50,109 @@ use AsposeSlidesCloud::Object::GeometryPaths;
 use AsposeSlidesCloud::Object::MoveToPathSegment;
 use AsposeSlidesCloud::Object::LineToPathSegment;
 use AsposeSlidesCloud::Object::ClosePathSegment;
+use AsposeSlidesCloud::Object::Portion;
+use AsposeSlidesCloud::Object::GradientFill;
+use AsposeSlidesCloud::Object::GradientFillStop;
+use AsposeSlidesCloud::Object::ZoomFrame;
+use AsposeSlidesCloud::Object::SectionZoomFrame;
+use AsposeSlidesCloud::Object::OleObjectFrame;
 
 use strict;
 use warnings;
+use MIME::Base64 qw(encode_base64);
 
 my $utils = AsposeSlidesCloud::TestUtils->new();
+
+subtest 'get_shapes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 3, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 2);
+    };
+    if ($@) {
+        fail("get_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_shapes by type' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'shape_type' => 'Chart');
+      my $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 2);
+    };
+    if ($@) {
+        fail("get_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get sub-shapes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '4');
+      my $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 2);
+    };
+    if ($@) {
+        fail("get_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 3, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $shape = $utils->{api}->get_shape(%params);
+      is($shape->{type}, 'Chart');
+    };
+    if ($@) {
+        fail("get_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get sub-shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shape_index' => 4, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '1');
+      my $shape = $utils->{api}->get_shape(%params);
+      is($shape->{type}, 'Shape');
+    };
+    if ($@) {
+        fail("get_shape raised an exception: $@");
+    }
+    pass();
+};
 
 subtest 'shape add' => sub {
     eval {
@@ -286,6 +386,45 @@ subtest 'smart art add' => sub {
     pass();
 };
 
+subtest 'smart art add text formatting' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $portion = AsposeSlidesCloud::Object::Portion->new();
+      $portion->{text} = 'New text';
+      $portion->{font_height} = 24;
+      $portion->{font_bold} = 1;
+      $portion->{spacing} = 3;
+      my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
+      $fill_format->{color} = '#FFFFFF00';
+      $portion->{fill_format} = $fill_format;
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 7, 
+        'shape_index' => 1,
+        'paragraph_index' => 1,
+        'portion_index' => 1,
+        'dto' => $portion, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '1/nodes/2');
+
+      my $response = $utils->{api}->update_portion(%params);
+      is($portion->{text}, $response->{text});
+      is($portion->{font_height}, $response->{font_height});
+      is($portion->{font_bold}, '1');
+      is($portion->{spacing}, $response->{spacing});
+      is ($portion->{fill_format}->{color}, $portion->{fill_format}->{color});
+
+    };
+    if ($@) {
+        fail("update_portion raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'smart art empty' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
@@ -302,18 +441,23 @@ subtest 'smart art empty' => sub {
     pass();
 };
 
-subtest 'chart empty' => sub { #See Chart tests for non-empty chart examples
+subtest 'chart empty' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
       $utils->{api}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Chart->new();
       my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape = $utils->{api}->create_shape(%params);
-      is(ref $shape, "AsposeSlidesCloud::Object::Chart");
+      $utils->{api}->create_shape(%params);
     };
     if ($@) {
-        fail("create_shape raised an exception: $@");
+        if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
+            is($1, 500);
+        } else {
+            fail("Invalid exception type: $@");
+        }
+    } else {
+        fail("Chart with undefinined series data should not have been created");
     }
     pass();
 };
@@ -478,6 +622,229 @@ subtest 'connector empty' => sub {
     pass();
 };
 
+subtest 'create sub_shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::Shape->new();
+      $dto->{shape_type} = 'Rectangle';
+      $dto->{x} = 200;
+      $dto->{y} = 200;
+      $dto->{width} = 50;
+      $dto->{height} = 50;
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '4');
+
+      my $shape = $utils->{api}->create_shape(%params);
+      is(ref $shape, "AsposeSlidesCloud::Object::Shape");
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::Shape->new();
+      $dto->{width} = 200;
+      $dto->{height} = 200;
+      my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
+      $fill_format->{color} = '#FFF5FF8A';
+      $dto->{fill_format} = $fill_format;
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shape_index' => 3,
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+
+      my $response = $utils->{api}->update_shape(%params);
+      is($response->{width}, $dto->{width});
+      is($response->{height}, $dto->{height});
+      is($response->{fill_format}->{type}, 'Solid');
+    };
+    if ($@) {
+        fail("update_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update sub-shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::Shape->new();
+      $dto->{width} = 200;
+      $dto->{height} = 200;
+      my $fill_format = AsposeSlidesCloud::Object::GradientFill->new();
+      $fill_format->{shape} = 'Linear';
+      $fill_format->{direction} = 'FromCorner1';
+      my $gradient_stop1 = AsposeSlidesCloud::Object::GradientFillStop->new();
+      $gradient_stop1->{color} = '#FFF5FF8A';
+      $gradient_stop1->{position} = 0;
+      my $gradient_stop2 = AsposeSlidesCloud::Object::GradientFillStop->new();
+      $gradient_stop2->{color} = '#FFF5FF8A';
+      $gradient_stop2->{position} = 1;
+      my @stops = ($gradient_stop1, $gradient_stop2);
+      $fill_format->{stops} = \@stops;
+      $dto->{fill_format} = $fill_format;
+
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shape_index' => 4,
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '1');
+
+      my $response = $utils->{api}->update_shape(%params);
+      is($response->{width}, $dto->{width});
+      is($response->{height}, $dto->{height});
+      is($response->{fill_format}->{type}, 'Gradient');
+    };
+    if ($@) {
+        fail("update_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete shapes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 3, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $response = $utils->{api}->delete_shapes(%params);
+      is(scalar @{$response->{shapes_links}}, 0)
+    };
+    if ($@) {
+        fail("delete_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete shapes indexes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my @indexes = (2);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3,
+        'shapes' => \@indexes, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+      my $response = $utils->{api}->delete_shapes(%params);
+      is(scalar @{$response->{shapes_links}}, 1)
+    };
+    if ($@) {
+        fail("delete_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete sub-shapes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '4');
+      my $response = $utils->{api}->delete_shapes(%params);
+      is(scalar @{$response->{shapes_links}}, 0)
+    };
+    if ($@) {
+        fail("delete_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete sub-shapes indexes' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my @indexes = (2);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shapes' => \@indexes,
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '4');
+      my $response = $utils->{api}->delete_shapes(%params);
+      is(scalar @{$response->{shapes_links}}, 1)
+    };
+    if ($@) {
+        fail("delete_shapes raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shape_index' => 4,
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+      my $response = $utils->{api}->delete_shape(%params);
+      is(scalar @{$response->{shapes_links}}, 3)
+    };
+    if ($@) {
+        fail("delete_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete sub_shape' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 1, 
+        'shape_index' => 4,
+        'password' => "password", 
+        'folder' => "TempSlidesSDK",
+        'sub_shape' => '1');
+      my $response = $utils->{api}->delete_shape(%params);
+      is(scalar @{$response->{shapes_links}}, 1)
+    };
+    if ($@) {
+        fail("delete_shape raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'shapes align' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
@@ -554,6 +921,22 @@ subtest 'shapes align group' => sub {
     pass();
 };
 
+subtest 'shapes geometry get' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 4, 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $paths = $utils->{api}->get_shape_geometry_path(%params);
+      is(scalar @{$paths->{paths}}, 1);
+    };
+    if ($@) {
+        fail("get_shape_geometry_path raised an exception: $@");
+    }
+    pass();
+};
+
+
 subtest 'shapes geometry set' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
@@ -587,6 +970,323 @@ subtest 'shapes geometry set' => sub {
     };
     if ($@) {
         fail("set_shape_geometry_path raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'zoom frame add' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::ZoomFrame->new();
+      $dto->{x} = 20;
+      $dto->{y} = 20;
+      $dto->{width} = 200;
+      $dto->{height} = 100;
+      $dto->{target_slide_index} = 2;
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3,
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+      my $shape = $utils->{api}->create_shape(%params);
+      is($shape->{type}, 'ZoomFrame');
+      is($shape->{target_slide_index}, $dto->{target_slide_index});
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'section zoom frame add' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::SectionZoomFrame->new();
+      $dto->{x} = 20;
+      $dto->{y} = 20;
+      $dto->{width} = 200;
+      $dto->{height} = 100;
+      $dto->{target_section_index} = 2;
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3, 
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+      my $shape = $utils->{api}->create_shape(%params);
+      is($shape->{type}, 'SectionZoomFrame');
+      is($shape->{target_section_index}, $dto->{target_section_index});
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'ole object frame add by link' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::OleObjectFrame->new();
+      $dto->{x} = 100;
+      $dto->{y} = 100;
+      $dto->{width} = 200;
+      $dto->{height} = 200;
+      $dto->{link_path} = 'oleObject.xlsx';
+      $dto->{object_prog_id} = 'Excel.Sheet.8';
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3, 
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+
+      my $shape = $utils->{api}->create_shape(%params);
+      is($shape->{type}, 'OleObjectFrame');
+      is($shape->{link_path}, $dto->{link_path});
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'ole object frame add embedded' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $source = read_file("TestData/oleObject.xlsx", { binmode => ':raw' });
+
+      my $dto = AsposeSlidesCloud::Object::OleObjectFrame->new();
+      $dto->{x} = 100;
+      $dto->{y} = 100;
+      $dto->{width} = 200;
+      $dto->{height} = 200;
+      $dto->{embedded_file_base64_data} = encode_base64($source);
+      $dto->{embedded_file_extension} = 'xlsx';
+
+      my %params = (
+        'name' => "test.pptx", 
+        'slide_index' => 3, 
+        'dto' => $dto, 
+        'password' => "password", 
+        'folder' => "TempSlidesSDK");
+
+      my $shape = $utils->{api}->create_shape(%params);
+      is($shape->{type}, 'OleObjectFrame');
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'group shape add' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 5, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 0);
+
+      #add group shape
+      my $dto = AsposeSlidesCloud::Object::GroupShape->new();
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
+      $utils->{api}->create_shape(%params);
+
+      #add sub-shapes
+      my $shape1 = AsposeSlidesCloud::Object::Shape->new();
+      $shape1->{shape_type} = 'Rectangle';
+      $shape1->{x} = 50;
+      $shape1->{y} = 400;
+      $shape1->{width} = 50;
+      $shape1->{height} = 50;
+
+      my $shape2 = AsposeSlidesCloud::Object::Shape->new();
+      $shape2->{shape_type} = 'Ellipse';
+      $shape2->{x} = 150;
+      $shape2->{y} = 400;
+      $shape2->{width} = 50;
+      $shape2->{height} = 50;
+
+      my $shape3 = AsposeSlidesCloud::Object::Shape->new();
+      $shape3->{shape_type} = 'Triangle';
+      $shape3->{x} = 250;
+      $shape3->{y} = 400;
+      $shape3->{width} = 50;
+      $shape3->{height} = 50;
+
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'dto' => $shape1, 'password' => "password", 'folder' => "TempSlidesSDK", 'sub_shape' => '1');
+      $utils->{api}->create_shape(%params);
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'dto' => $shape2, 'password' => "password", 'folder' => "TempSlidesSDK", 'sub_shape' => '1');
+      $utils->{api}->create_shape(%params);
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'dto' => $shape3, 'password' => "password", 'folder' => "TempSlidesSDK", 'sub_shape' => '1');
+      $utils->{api}->create_shape(%params);
+
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'password' => "password", 'folder' => "TempSlidesSDK");
+      $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 1);
+
+      %params = ('name' => "test.pptx", 'slide_index' => 5, 'password' => "password", 'folder' => "TempSlidesSDK", 'sub_shape' => '1');
+      $shapes = $utils->{api}->get_shapes(%params);
+      is(scalar @{$shapes->{shapes_links}}, 3);
+    };
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'import shapes from svg' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $source = read_file("TestData/shapes.svg", { binmode => ':raw' });
+
+        my @shapes_indexes = (1,3,5);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 5, 
+            'image' => $source,
+            'x' => 50,
+            'y' => 50,
+            'width' => 300,
+            'height' => 300,
+            'shapes' => \@shapes_indexes,
+            'group' => 0,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $shapes = $utils->{api}->import_shapes_from_svg(%params);
+        is(scalar @{$shapes->{shapes_links}}, 3);
+
+	};
+    if ($@) {
+        fail("import_shapes_from_svg raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create smart art node' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 7, 
+            'smart_art_index' => 1,
+            'text' => 'new root node',
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->create_smart_art_node(%params);	
+        is(scalar @{$response->{nodes}}, 2);
+        is($response->{nodes}[1]->{text}, 'new root node');
+	};
+    if ($@) {
+        fail("create_smart_art_node raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create smart art sub-node' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 7, 
+            'smart_art_index' => 1,
+            'sub_node'=> '1',
+            'position' => '1',
+            'text' => 'new sub-node',
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->create_smart_art_node(%params);	
+        is(scalar @{$response->{nodes}[0]{nodes}}, 5);
+        is($response->{nodes}[0]{nodes}[0]->{text}, 'new sub-node');
+	};
+    if ($@) {
+        fail("create_smart_art_node raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create smart art sub-sub-node' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 7, 
+            'smart_art_index' => 1,
+            'sub_node'=> '1/nodes/1',
+            'text' => 'new sub-sub-node',
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->create_smart_art_node(%params);	
+        is(scalar @{$response->{nodes}[0]{nodes}[0]{nodes}}, 1);
+        is($response->{nodes}[0]{nodes}[0]{nodes}[0]->{text}, 'new sub-sub-node');
+	};
+    if ($@) {
+        fail("create_smart_art_node raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete smart art node' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 7, 
+            'smart_art_index' => 2,
+            'node_index' => 1,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->delete_smart_art_node(%params);	
+        is(scalar @{$response->{nodes}}, 2);
+	};
+    if ($@) {
+        fail("delete_smart_art_node raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete smart art sub-node' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 7, 
+            'smart_art_index' => 1,
+            'node_index' => 1,
+            'sub_node' => 2,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->delete_smart_art_node(%params);	
+        is(scalar @{$response->{nodes}[0]{nodes}}, 3);
+	};
+    if ($@) {
+        fail("delete_smart_art_node raised an exception: $@");
     }
     pass();
 };

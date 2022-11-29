@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -243,5 +245,38 @@ subtest 'layout slide animation' => sub {
     }
     pass();
 };
+
+subtest 'layout slide delete unused ' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+        
+		my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $layout_slides_before = $utils->{api}->get_layout_slides(%params);
+        is(scalar @{$layout_slides_before->{slide_list}}, 11);
+
+        my $layout_slides_after = $utils->{api}->delete_unused_layout_slides(%params);
+         is(scalar @{$layout_slides_after->{slide_list}}, 2);
+	};
+    if ($@) {
+        fail("delete_unused_layout_slides unused raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'layout slide delete unused online' => sub {
+    eval {
+
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+		my %params = ('document' => $source, 'password' => "password");
+        my $response = $utils->{api}->delete_unused_layout_slides_online(%params);
+        ok (length($response) > 0)
+	};
+    if ($@) {
+        fail("delete_unused_layout_slides_online unused raised an exception: $@");
+    }
+    pass();
+};
+
 
 done_testing;

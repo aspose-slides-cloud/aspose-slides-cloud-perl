@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use JSON;
 
@@ -34,6 +36,7 @@ use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::Object::PdfExportOptions;
 use AsposeSlidesCloud::Object::ImageExportOptions;
+use AsposeSlidesCloud::Object::FontFallbackRule;
 
 use strict;
 use warnings;
@@ -278,9 +281,24 @@ subtest 'convert shape post from storage' => sub {
     pass();
 };
 
+subtest 'convert sub-shape post from storage' => sub {
+    $utils->initialize('download_shape', '');
+    eval {
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 4, 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK", "sub_shape" => '1');
+        $utils->{api}->download_shape(%params);
+    };
+    if ($@) {
+        fail("download_shape raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'convert shape put from storage' => sub {
     $utils->initialize('save_shape', '');
     eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+        
         my $out_path = "TestData/test.pdf";
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK", 'out_path' => $out_path);
         $utils->{api}->save_shape(%params);
@@ -291,6 +309,64 @@ subtest 'convert shape put from storage' => sub {
     };
     if ($@) {
         fail("save_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'convert sub-shape put from storage' => sub {
+    $utils->initialize('save_shape', '');
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $out_path = "TestData/test.pdf";
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 4, 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK", 'out_path' => $out_path, 'sub_shape' => '1');
+        $utils->{api}->save_shape(%params);
+
+        %params = ('path' => $out_path);
+        my $exists = $utils->{api}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("save_shape raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'convert with sont fallback rules' => sub {
+    $utils->initialize('download_presentation', '');
+    eval
+    {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $start_unicode_index = 0x0B80;
+        my $end_unicode_index = 0x0BFF;
+
+        my $font_rule1 = AsposeSlidesCloud::Object::FontFallbackRule->new();
+        $font_rule1->{range_start_index} = $start_unicode_index;
+        $font_rule1->{end_unicode_index} = $end_unicode_index;
+        my @fallback_font_list = ( 'Vijaya');
+        $font_rule1 -> {fallback_font_list} = \@fallback_font_list;
+
+        my $font_rule2 = AsposeSlidesCloud::Object::FontFallbackRule->new();
+        $font_rule2->{range_start_index} = $start_unicode_index;
+        $font_rule2->{end_unicode_index} = $end_unicode_index;
+        my @fallback_font_list2 = ( 'Segoe UI Emoji', 'Segoe UI Symbol', 'Arial');
+        $font_rule2 -> {fallback_font_list2} = \@fallback_font_list;
+
+        my @font_rules = ($font_rule1, $font_rule2);
+
+        my $export_options = AsposeSlidesCloud::Object::ImageExportOptions -> new();
+        $export_options->{font_fallback_rules} = \@font_rules;
+
+        my %params = ('name' => "test.pptx", 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->download_presentation(%params);
+
+        ok(length($response) != 0);
+    };
+    if ($@) {
+        fail("download_presentation raised an exception: $@");
     }
     pass();
 };

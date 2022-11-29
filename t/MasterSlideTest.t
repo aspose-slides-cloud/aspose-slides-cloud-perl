@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -240,6 +242,34 @@ subtest 'master slide animation' => sub {
     };
     if ($@) {
         fail("get_special_slide_portions raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'master slide delete unused ' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my %params = ('name' => "test.pptx", 'ignore_preserve_field' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $master_slides = $utils->{api}->delete_unused_master_slides(%params);
+        is(scalar @{$master_slides->{slide_list}}, 1);
+	};
+    if ($@) {
+        fail("master_unused_layout_slides unused raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'master slide delete unused online' => sub {
+    eval {
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+		my %params = ('document' => $source, 'password' => "password");
+        my $response = $utils->{api}->delete_unused_master_slides_online(%params);
+        ok (length($response) > 0)
+	};
+    if ($@) {
+        fail("delete_unused_master_slides_online unused raised an exception: $@");
     }
     pass();
 };

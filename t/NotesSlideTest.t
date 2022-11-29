@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -36,6 +38,7 @@ use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::Paragraph;
 use AsposeSlidesCloud::Object::Portion;
+use AsposeSlidesCloud::Object::NotesSlide;
 
 use strict;
 use warnings;
@@ -246,6 +249,58 @@ subtest 'notes slide portions' => sub {
     };
     if ($@) {
         fail("get_special_slide_portions raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create notes slide' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my $dto = AsposeSlidesCloud::Object::NotesSlide->new();
+        my $notes_slide_text = 'Notes slide text';
+        $dto->{text} = $notes_slide_text;
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->create_notes_slide(%params);
+        is ($response->{text}, $notes_slide_text);
+	};
+    if ($@) {
+        fail("create_notes_slide raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update notes slide' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my $dto = AsposeSlidesCloud::Object::NotesSlide->new();
+        my $notes_slide_text = 'Notes slide text';
+        $dto->{text} = $notes_slide_text;
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->update_notes_slide(%params);
+        is ($response->{text}, $notes_slide_text);
+	};
+    if ($@) {
+        fail("update_notes_slide raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete notes slide' => sub {
+    my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+    eval {
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $response = $utils->{api}->delete_notes_slide(%params);
+	};
+    if ($@) {
+        fail("delete_notes_slide raised an exception: $@");
     }
     pass();
 };

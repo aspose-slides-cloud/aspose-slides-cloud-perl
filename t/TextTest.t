@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -110,6 +112,88 @@ subtest 'text replace request' => sub {
     };
     if ($@) {
         fail("replace_presentation_text_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight shape text' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $text_to_highlight = 'highlight';
+        my $highlight_color = '#FFF5FF8A';
+        my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'text' => $text_to_highlight,
+            'color' => $highlight_color,
+            'ignore_case' => 0,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+            
+        $utils->{api}->highlight_shape_text(%params);
+
+        %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'paragraph_index' => 1,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        
+        my $paragraph = $utils->{api}->get_paragraph(%params);
+        
+        ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
+        ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
+        ok(index($paragraph->{portion_list}[1]{text}, $text_to_highlight) != -1);
+        ok(index($paragraph->{portion_list}[1]{highlight_color}, $highlight_color) != -1);
+    };
+    if ($@) {
+        fail("highlight_shape_text raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight shape regex' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $text_to_highlight = 'highlight';
+        my $hightlight_regex = 'h.ghl[abci]ght';
+        my $highlight_color = '#FFF5FF8A';
+
+        my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'regex' => $hightlight_regex,
+            'color' => $highlight_color,
+            'ignore_case' => 0,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+            
+        $utils->{api}->highlight_shape_regex(%params);
+
+        %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'paragraph_index' => 1,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        
+        my $paragraph = $utils->{api}->get_paragraph(%params);
+        
+        ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
+        ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
+        ok(index($paragraph->{portion_list}[1]{text}, $text_to_highlight) != -1);
+        ok(index($paragraph->{portion_list}[1]{highlight_color}, $highlight_color) != -1);
+    };
+    if ($@) {
+        fail("highlight_shape_regex raised an exception: $@");
     }
     pass();
 };

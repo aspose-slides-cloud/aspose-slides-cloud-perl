@@ -23,6 +23,7 @@ SOFTWARE.
 =end comment
 
 =cut
+BEGIN {push @INC, "../lib"}
 
 use File::Slurp;
 use Archive::Zip;
@@ -36,6 +37,8 @@ use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::Object::DocumentProperty;
 use AsposeSlidesCloud::Object::SlideProperties;
 use AsposeSlidesCloud::Object::ProtectionProperties;
+use AsposeSlidesCloud::Object::ViewProperties;
+use AsposeSlidesCloud::Object::SlideShowProperties;
 
 use strict;
 use warnings;
@@ -262,6 +265,99 @@ subtest 'properties unprotect online' => sub {
     };
     if ($@) {
         fail("delete_protection_online raised an exception: $@");
+    }
+};
+
+subtest 'get view properties' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $result = $utils->{api}->get_view_properties(%params);
+      is($result -> {show_comments}, 'True');
+    };
+    if ($@) {
+        fail("get_view_properties raised an exception: $@");
+    }
+};
+
+subtest 'set view properties' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::ViewProperties->new();
+      my $common_slide_view_properties = AsposeSlidesCloud::Object::CommonSlideViewProperties->new();
+      $common_slide_view_properties->{scale} = 50;
+      $dto->{show_comments} = 'False';
+      $dto->{slide_view_properties} = $common_slide_view_properties;
+
+
+      my %params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $result = $utils->{api}->set_view_properties(%params);
+      is($result -> {show_comments}, 'False');
+      is($result -> {slide_view_properties} -> {scale}, 50);
+    };
+    if ($@) {
+        fail("set_view_properties raised an exception: $@");
+    }
+};
+
+subtest 'protection check' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'folder' => "TempSlidesSDK");
+      my $result = $utils->{api}->get_protection_properties(%params);
+      is($result -> {is_encrypted}, 1);
+      is($result -> {read_password}, undef);
+
+      %params = ('name' => "test.pptx", 'password' => 'password', 'folder' => "TempSlidesSDK");
+      $result = $utils->{api}->get_protection_properties(%params);
+      is($result -> {is_encrypted}, 1);
+      is($result -> {read_password}, 'password');
+    };
+    if ($@) {
+        fail("get_protection_properties raised an exception: $@");
+    }
+};
+
+subtest 'get slide show properties' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $result = $utils->{api}->get_slide_show_properties(%params);
+      is($result -> {show_animation}, 1);
+      is($result -> {show_narration}, 1);
+    };
+    if ($@) {
+        fail("get_slide_show_properties raised an exception: $@");
+    }
+};
+
+subtest 'set slide show properties' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{api}->copy_file(%copy_params);
+
+      my $dto = AsposeSlidesCloud::Object::SlideShowProperties->new();
+      $dto->{loop} = 1;
+      $dto->{use_timings} = 1;
+      $dto->{slide_show_type} = "PresentedBySpeaker";
+
+
+      my %params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $result = $utils->{api}->set_slide_show_properties(%params);
+      is($result -> {loop}, $dto->{loop});
+      is($result -> {use_timings}, $dto->{use_timings});
+      is($result -> {slide_show_type}, $dto->{slide_show_type});
+    };
+    if ($@) {
+        fail("set_slide_show_properties raised an exception: $@");
     }
 };
 

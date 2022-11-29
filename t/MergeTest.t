@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -168,6 +170,38 @@ subtest 'merge ordered combined' => sub {
         $request->{presentations} = \@presentations;
         my %params = ('files' => \@files, 'request' => $request);
         $utils->{api}->merge_online(%params);
+    };
+    if ($@) {
+        fail("merge_online raised an exception: $@");
+    }
+    pass();
+};
+
+
+subtest 'merge ordered url' => sub {
+    eval {
+        my $request = AsposeSlidesCloud::Object::OrderedMergeRequest->new();
+
+        my $presentation1 = AsposeSlidesCloud::Object::PresentationToMerge->new();
+        my @slides1 = ( 1, 2 );
+        $presentation1->{slides} = \@slides1;
+        $presentation1->{source} = 'Storage';
+        $presentation1->{path} = "TempSlidesSDK/test.pptx";
+        $presentation1->{password} = 'password';
+
+        my $presentation2 = AsposeSlidesCloud::Object::PresentationToMerge->new();
+        my @slides2 = ( 1 );
+        $presentation2->{slides} = \@slides2;
+        $presentation2->{source} = 'Url';
+        $presentation2->{path} = 'https://drive.google.com/uc?export=download&id=1ycMzd7e--Ro9H8eH2GL5fPP7-2HjX4My';
+        
+        my @presentations = ($presentation1, $presentation2);
+        $request->{presentations} = \@presentations;
+
+        my %params = ('request' => $request);
+        my $response = $utils->{api}->merge_online(%params);
+
+        ok (length($response) > 0)
     };
     if ($@) {
         fail("merge_online raised an exception: $@");

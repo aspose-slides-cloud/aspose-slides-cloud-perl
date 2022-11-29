@@ -57,6 +57,12 @@ subtest 'nullable properties' => sub {
     my %copy_params = ('src_path' => 'TempTests/'.$file_name, 'dest_path' => $folder_name.'/'.$file_name);
     $utils->{api}->copy_file(%copy_params);
 
+    my $category1 = AsposeSlidesCloud::Object::ChartCategory->new();
+    $category1->{value} = "Category1";
+    my $category2 = AsposeSlidesCloud::Object::ChartCategory->new();
+    $category2->{value} = "Category2";
+    my @categories = ( $category1, $category2 );
+
     my $title = AsposeSlidesCloud::Object::ChartTitle->new();
     $title->{has_title} = 1;
     $title->{text} = 'MyTitle';
@@ -83,6 +89,7 @@ subtest 'nullable properties' => sub {
     $chart->{width} = 400.0;
     $chart->{height} = 300.0;
     $chart->{title} = $title;
+    $chart->{categories} = \@categories;
     $chart->{series} = \@series_list;
     $chart->{axes} = $axes;
     my %post_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'dto' => $chart);

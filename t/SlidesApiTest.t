@@ -39,7 +39,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 # align_shapes test
 #
 subtest 'align_shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $utils->initialize('align_shapes', '');
     eval {
         my $result = $utils->{api}->align_shapes(%params);
@@ -51,7 +51,7 @@ subtest 'align_shapes' => sub {
 };
 
 subtest 'align_shapes invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('align_shapes', 'name', $params{ name });
     $utils->initialize('align_shapes', 'name', $params{ name });
 
@@ -66,7 +66,7 @@ subtest 'align_shapes invalid name' => sub {
 };
 
 subtest 'align_shapes invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('align_shapes', 'slide_index', $params{ slide_index });
     $utils->initialize('align_shapes', 'slide_index', $params{ slide_index });
 
@@ -81,7 +81,7 @@ subtest 'align_shapes invalid slide_index' => sub {
 };
 
 subtest 'align_shapes invalid alignment_type' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ alignment_type } = $utils->invalidize_param_value('align_shapes', 'alignment_type', $params{ alignment_type });
     $utils->initialize('align_shapes', 'alignment_type', $params{ alignment_type });
 
@@ -96,7 +96,7 @@ subtest 'align_shapes invalid alignment_type' => sub {
 };
 
 subtest 'align_shapes invalid align_to_slide' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ align_to_slide } = $utils->invalidize_param_value('align_shapes', 'align_to_slide', $params{ align_to_slide });
     $utils->initialize('align_shapes', 'align_to_slide', $params{ align_to_slide });
 
@@ -111,7 +111,7 @@ subtest 'align_shapes invalid align_to_slide' => sub {
 };
 
 subtest 'align_shapes invalid shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ shapes } = $utils->invalidize_param_value('align_shapes', 'shapes', $params{ shapes });
     $utils->initialize('align_shapes', 'shapes', $params{ shapes });
 
@@ -126,7 +126,7 @@ subtest 'align_shapes invalid shapes' => sub {
 };
 
 subtest 'align_shapes invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('align_shapes', 'password', $params{ password });
     $utils->initialize('align_shapes', 'password', $params{ password });
 
@@ -141,7 +141,7 @@ subtest 'align_shapes invalid password' => sub {
 };
 
 subtest 'align_shapes invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('align_shapes', 'folder', $params{ folder });
     $utils->initialize('align_shapes', 'folder', $params{ folder });
 
@@ -156,7 +156,7 @@ subtest 'align_shapes invalid folder' => sub {
 };
 
 subtest 'align_shapes invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('align_shapes', 'storage', $params{ storage });
     $utils->initialize('align_shapes', 'storage', $params{ storage });
 
@@ -171,7 +171,7 @@ subtest 'align_shapes invalid storage' => sub {
 };
 
 subtest 'align_shapes invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_shapes', 'slide_index', 'int'), 'alignment_type' => $utils->get_param_value('align_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_shapes', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('align_shapes', 'sub_shape', $params{ sub_shape });
     $utils->initialize('align_shapes', 'sub_shape', $params{ sub_shape });
 
@@ -189,7 +189,7 @@ subtest 'align_shapes invalid sub_shape' => sub {
 # align_special_slide_shapes test
 #
 subtest 'align_special_slide_shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $utils->initialize('align_special_slide_shapes', '');
     eval {
         my $result = $utils->{api}->align_special_slide_shapes(%params);
@@ -201,7 +201,7 @@ subtest 'align_special_slide_shapes' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('align_special_slide_shapes', 'name', $params{ name });
     $utils->initialize('align_special_slide_shapes', 'name', $params{ name });
 
@@ -216,7 +216,7 @@ subtest 'align_special_slide_shapes invalid name' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('align_special_slide_shapes', 'slide_index', $params{ slide_index });
     $utils->initialize('align_special_slide_shapes', 'slide_index', $params{ slide_index });
 
@@ -231,7 +231,7 @@ subtest 'align_special_slide_shapes invalid slide_index' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid slide_type' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ slide_type } = $utils->invalidize_param_value('align_special_slide_shapes', 'slide_type', $params{ slide_type });
     $utils->initialize('align_special_slide_shapes', 'slide_type', $params{ slide_type });
 
@@ -246,7 +246,7 @@ subtest 'align_special_slide_shapes invalid slide_type' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid alignment_type' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ alignment_type } = $utils->invalidize_param_value('align_special_slide_shapes', 'alignment_type', $params{ alignment_type });
     $utils->initialize('align_special_slide_shapes', 'alignment_type', $params{ alignment_type });
 
@@ -261,7 +261,7 @@ subtest 'align_special_slide_shapes invalid alignment_type' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid align_to_slide' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ align_to_slide } = $utils->invalidize_param_value('align_special_slide_shapes', 'align_to_slide', $params{ align_to_slide });
     $utils->initialize('align_special_slide_shapes', 'align_to_slide', $params{ align_to_slide });
 
@@ -276,7 +276,7 @@ subtest 'align_special_slide_shapes invalid align_to_slide' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ shapes } = $utils->invalidize_param_value('align_special_slide_shapes', 'shapes', $params{ shapes });
     $utils->initialize('align_special_slide_shapes', 'shapes', $params{ shapes });
 
@@ -291,7 +291,7 @@ subtest 'align_special_slide_shapes invalid shapes' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('align_special_slide_shapes', 'password', $params{ password });
     $utils->initialize('align_special_slide_shapes', 'password', $params{ password });
 
@@ -306,7 +306,7 @@ subtest 'align_special_slide_shapes invalid password' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('align_special_slide_shapes', 'folder', $params{ folder });
     $utils->initialize('align_special_slide_shapes', 'folder', $params{ folder });
 
@@ -321,7 +321,7 @@ subtest 'align_special_slide_shapes invalid folder' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('align_special_slide_shapes', 'storage', $params{ storage });
     $utils->initialize('align_special_slide_shapes', 'storage', $params{ storage });
 
@@ -336,7 +336,7 @@ subtest 'align_special_slide_shapes invalid storage' => sub {
 };
 
 subtest 'align_special_slide_shapes invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('align_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('align_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('align_special_slide_shapes', 'slide_type', 'string'), 'alignment_type' => $utils->get_param_value('align_special_slide_shapes', 'alignment_type', 'string'), 'align_to_slide' => $utils->get_param_value('align_special_slide_shapes', 'align_to_slide', 'boolean'), 'shapes' => $utils->get_param_value('align_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('align_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('align_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('align_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('align_special_slide_shapes', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('align_special_slide_shapes', 'sub_shape', $params{ sub_shape });
     $utils->initialize('align_special_slide_shapes', 'sub_shape', $params{ sub_shape });
 
@@ -354,7 +354,7 @@ subtest 'align_special_slide_shapes invalid sub_shape' => sub {
 # convert test
 #
 subtest 'convert' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $utils->initialize('convert', '');
     eval {
         my $result = $utils->{api}->convert(%params);
@@ -366,7 +366,7 @@ subtest 'convert' => sub {
 };
 
 subtest 'convert invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ document } = $utils->invalidize_param_value('convert', 'document', $params{ document });
     $utils->initialize('convert', 'document', $params{ document });
 
@@ -381,7 +381,7 @@ subtest 'convert invalid document' => sub {
 };
 
 subtest 'convert invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ format } = $utils->invalidize_param_value('convert', 'format', $params{ format });
     $utils->initialize('convert', 'format', $params{ format });
 
@@ -396,7 +396,7 @@ subtest 'convert invalid format' => sub {
 };
 
 subtest 'convert invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ password } = $utils->invalidize_param_value('convert', 'password', $params{ password });
     $utils->initialize('convert', 'password', $params{ password });
 
@@ -411,7 +411,7 @@ subtest 'convert invalid password' => sub {
 };
 
 subtest 'convert invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ storage } = $utils->invalidize_param_value('convert', 'storage', $params{ storage });
     $utils->initialize('convert', 'storage', $params{ storage });
 
@@ -426,7 +426,7 @@ subtest 'convert invalid storage' => sub {
 };
 
 subtest 'convert invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ fonts_folder } = $utils->invalidize_param_value('convert', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('convert', 'fonts_folder', $params{ fonts_folder });
 
@@ -441,7 +441,7 @@ subtest 'convert invalid fonts_folder' => sub {
 };
 
 subtest 'convert invalid slides' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ slides } = $utils->invalidize_param_value('convert', 'slides', $params{ slides });
     $utils->initialize('convert', 'slides', $params{ slides });
 
@@ -456,7 +456,7 @@ subtest 'convert invalid slides' => sub {
 };
 
 subtest 'convert invalid options' => sub {
-    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'string'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert', 'document', 'File'), 'format' => $utils->get_param_value('convert', 'format', 'string'), 'password' => $utils->get_param_value('convert', 'password', 'string'), 'storage' => $utils->get_param_value('convert', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert', 'slides', 'object'), 'options' => $utils->get_param_value('convert', 'options', 'ExportOptions'));
     $params{ options } = $utils->invalidize_param_value('convert', 'options', $params{ options });
     $utils->initialize('convert', 'options', $params{ options });
 
@@ -474,7 +474,7 @@ subtest 'convert invalid options' => sub {
 # convert_and_save test
 #
 subtest 'convert_and_save' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $utils->initialize('convert_and_save', '');
     eval {
         my $result = $utils->{api}->convert_and_save(%params);
@@ -486,7 +486,7 @@ subtest 'convert_and_save' => sub {
 };
 
 subtest 'convert_and_save invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ document } = $utils->invalidize_param_value('convert_and_save', 'document', $params{ document });
     $utils->initialize('convert_and_save', 'document', $params{ document });
 
@@ -501,7 +501,7 @@ subtest 'convert_and_save invalid document' => sub {
 };
 
 subtest 'convert_and_save invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ format } = $utils->invalidize_param_value('convert_and_save', 'format', $params{ format });
     $utils->initialize('convert_and_save', 'format', $params{ format });
 
@@ -516,7 +516,7 @@ subtest 'convert_and_save invalid format' => sub {
 };
 
 subtest 'convert_and_save invalid out_path' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ out_path } = $utils->invalidize_param_value('convert_and_save', 'out_path', $params{ out_path });
     $utils->initialize('convert_and_save', 'out_path', $params{ out_path });
 
@@ -531,7 +531,7 @@ subtest 'convert_and_save invalid out_path' => sub {
 };
 
 subtest 'convert_and_save invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ password } = $utils->invalidize_param_value('convert_and_save', 'password', $params{ password });
     $utils->initialize('convert_and_save', 'password', $params{ password });
 
@@ -546,7 +546,7 @@ subtest 'convert_and_save invalid password' => sub {
 };
 
 subtest 'convert_and_save invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ storage } = $utils->invalidize_param_value('convert_and_save', 'storage', $params{ storage });
     $utils->initialize('convert_and_save', 'storage', $params{ storage });
 
@@ -561,7 +561,7 @@ subtest 'convert_and_save invalid storage' => sub {
 };
 
 subtest 'convert_and_save invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ fonts_folder } = $utils->invalidize_param_value('convert_and_save', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('convert_and_save', 'fonts_folder', $params{ fonts_folder });
 
@@ -576,7 +576,7 @@ subtest 'convert_and_save invalid fonts_folder' => sub {
 };
 
 subtest 'convert_and_save invalid slides' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ slides } = $utils->invalidize_param_value('convert_and_save', 'slides', $params{ slides });
     $utils->initialize('convert_and_save', 'slides', $params{ slides });
 
@@ -591,7 +591,7 @@ subtest 'convert_and_save invalid slides' => sub {
 };
 
 subtest 'convert_and_save invalid options' => sub {
-    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'string'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
+    my %params = ('document' => $utils->get_param_value('convert_and_save', 'document', 'File'), 'format' => $utils->get_param_value('convert_and_save', 'format', 'string'), 'out_path' => $utils->get_param_value('convert_and_save', 'out_path', 'string'), 'password' => $utils->get_param_value('convert_and_save', 'password', 'string'), 'storage' => $utils->get_param_value('convert_and_save', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('convert_and_save', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('convert_and_save', 'slides', 'object'), 'options' => $utils->get_param_value('convert_and_save', 'options', 'ExportOptions'));
     $params{ options } = $utils->invalidize_param_value('convert_and_save', 'options', $params{ options });
     $utils->initialize('convert_and_save', 'options', $params{ options });
 
@@ -6684,7 +6684,7 @@ subtest 'delete_paragraph invalid sub_shape' => sub {
 # delete_paragraphs test
 #
 subtest 'delete_paragraphs' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $utils->initialize('delete_paragraphs', '');
     eval {
         my $result = $utils->{api}->delete_paragraphs(%params);
@@ -6696,7 +6696,7 @@ subtest 'delete_paragraphs' => sub {
 };
 
 subtest 'delete_paragraphs invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_paragraphs', 'name', $params{ name });
     $utils->initialize('delete_paragraphs', 'name', $params{ name });
 
@@ -6711,7 +6711,7 @@ subtest 'delete_paragraphs invalid name' => sub {
 };
 
 subtest 'delete_paragraphs invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_paragraphs', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_paragraphs', 'slide_index', $params{ slide_index });
 
@@ -6726,7 +6726,7 @@ subtest 'delete_paragraphs invalid slide_index' => sub {
 };
 
 subtest 'delete_paragraphs invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('delete_paragraphs', 'shape_index', $params{ shape_index });
     $utils->initialize('delete_paragraphs', 'shape_index', $params{ shape_index });
 
@@ -6741,7 +6741,7 @@ subtest 'delete_paragraphs invalid shape_index' => sub {
 };
 
 subtest 'delete_paragraphs invalid paragraphs' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ paragraphs } = $utils->invalidize_param_value('delete_paragraphs', 'paragraphs', $params{ paragraphs });
     $utils->initialize('delete_paragraphs', 'paragraphs', $params{ paragraphs });
 
@@ -6756,7 +6756,7 @@ subtest 'delete_paragraphs invalid paragraphs' => sub {
 };
 
 subtest 'delete_paragraphs invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_paragraphs', 'password', $params{ password });
     $utils->initialize('delete_paragraphs', 'password', $params{ password });
 
@@ -6771,7 +6771,7 @@ subtest 'delete_paragraphs invalid password' => sub {
 };
 
 subtest 'delete_paragraphs invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_paragraphs', 'folder', $params{ folder });
     $utils->initialize('delete_paragraphs', 'folder', $params{ folder });
 
@@ -6786,7 +6786,7 @@ subtest 'delete_paragraphs invalid folder' => sub {
 };
 
 subtest 'delete_paragraphs invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_paragraphs', 'storage', $params{ storage });
     $utils->initialize('delete_paragraphs', 'storage', $params{ storage });
 
@@ -6801,7 +6801,7 @@ subtest 'delete_paragraphs invalid storage' => sub {
 };
 
 subtest 'delete_paragraphs invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_paragraphs', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_paragraphs', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_paragraphs', 'sub_shape', $params{ sub_shape });
 
@@ -6969,7 +6969,7 @@ subtest 'delete_portion invalid sub_shape' => sub {
 # delete_portions test
 #
 subtest 'delete_portions' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $utils->initialize('delete_portions', '');
     eval {
         my $result = $utils->{api}->delete_portions(%params);
@@ -6981,7 +6981,7 @@ subtest 'delete_portions' => sub {
 };
 
 subtest 'delete_portions invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_portions', 'name', $params{ name });
     $utils->initialize('delete_portions', 'name', $params{ name });
 
@@ -6996,7 +6996,7 @@ subtest 'delete_portions invalid name' => sub {
 };
 
 subtest 'delete_portions invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_portions', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_portions', 'slide_index', $params{ slide_index });
 
@@ -7011,7 +7011,7 @@ subtest 'delete_portions invalid slide_index' => sub {
 };
 
 subtest 'delete_portions invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('delete_portions', 'shape_index', $params{ shape_index });
     $utils->initialize('delete_portions', 'shape_index', $params{ shape_index });
 
@@ -7026,7 +7026,7 @@ subtest 'delete_portions invalid shape_index' => sub {
 };
 
 subtest 'delete_portions invalid paragraph_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ paragraph_index } = $utils->invalidize_param_value('delete_portions', 'paragraph_index', $params{ paragraph_index });
     $utils->initialize('delete_portions', 'paragraph_index', $params{ paragraph_index });
 
@@ -7041,7 +7041,7 @@ subtest 'delete_portions invalid paragraph_index' => sub {
 };
 
 subtest 'delete_portions invalid portions' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ portions } = $utils->invalidize_param_value('delete_portions', 'portions', $params{ portions });
     $utils->initialize('delete_portions', 'portions', $params{ portions });
 
@@ -7056,7 +7056,7 @@ subtest 'delete_portions invalid portions' => sub {
 };
 
 subtest 'delete_portions invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_portions', 'password', $params{ password });
     $utils->initialize('delete_portions', 'password', $params{ password });
 
@@ -7071,7 +7071,7 @@ subtest 'delete_portions invalid password' => sub {
 };
 
 subtest 'delete_portions invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_portions', 'folder', $params{ folder });
     $utils->initialize('delete_portions', 'folder', $params{ folder });
 
@@ -7086,7 +7086,7 @@ subtest 'delete_portions invalid folder' => sub {
 };
 
 subtest 'delete_portions invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_portions', 'storage', $params{ storage });
     $utils->initialize('delete_portions', 'storage', $params{ storage });
 
@@ -7101,7 +7101,7 @@ subtest 'delete_portions invalid storage' => sub {
 };
 
 subtest 'delete_portions invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_portions', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_portions', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_portions', 'sub_shape', $params{ sub_shape });
 
@@ -7344,7 +7344,7 @@ subtest 'delete_section invalid storage' => sub {
 # delete_sections test
 #
 subtest 'delete_sections' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $utils->initialize('delete_sections', '');
     eval {
         my $result = $utils->{api}->delete_sections(%params);
@@ -7356,7 +7356,7 @@ subtest 'delete_sections' => sub {
 };
 
 subtest 'delete_sections invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_sections', 'name', $params{ name });
     $utils->initialize('delete_sections', 'name', $params{ name });
 
@@ -7371,7 +7371,7 @@ subtest 'delete_sections invalid name' => sub {
 };
 
 subtest 'delete_sections invalid sections' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ sections } = $utils->invalidize_param_value('delete_sections', 'sections', $params{ sections });
     $utils->initialize('delete_sections', 'sections', $params{ sections });
 
@@ -7386,7 +7386,7 @@ subtest 'delete_sections invalid sections' => sub {
 };
 
 subtest 'delete_sections invalid with_slides' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ with_slides } = $utils->invalidize_param_value('delete_sections', 'with_slides', $params{ with_slides });
     $utils->initialize('delete_sections', 'with_slides', $params{ with_slides });
 
@@ -7401,7 +7401,7 @@ subtest 'delete_sections invalid with_slides' => sub {
 };
 
 subtest 'delete_sections invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_sections', 'password', $params{ password });
     $utils->initialize('delete_sections', 'password', $params{ password });
 
@@ -7416,7 +7416,7 @@ subtest 'delete_sections invalid password' => sub {
 };
 
 subtest 'delete_sections invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_sections', 'folder', $params{ folder });
     $utils->initialize('delete_sections', 'folder', $params{ folder });
 
@@ -7431,7 +7431,7 @@ subtest 'delete_sections invalid folder' => sub {
 };
 
 subtest 'delete_sections invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'string'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_sections', 'name', 'string'), 'sections' => $utils->get_param_value('delete_sections', 'sections', 'object'), 'with_slides' => $utils->get_param_value('delete_sections', 'with_slides', 'boolean'), 'password' => $utils->get_param_value('delete_sections', 'password', 'string'), 'folder' => $utils->get_param_value('delete_sections', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_sections', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_sections', 'storage', $params{ storage });
     $utils->initialize('delete_sections', 'storage', $params{ storage });
 
@@ -7569,7 +7569,7 @@ subtest 'delete_shape invalid sub_shape' => sub {
 # delete_shapes test
 #
 subtest 'delete_shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $utils->initialize('delete_shapes', '');
     eval {
         my $result = $utils->{api}->delete_shapes(%params);
@@ -7581,7 +7581,7 @@ subtest 'delete_shapes' => sub {
 };
 
 subtest 'delete_shapes invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_shapes', 'name', $params{ name });
     $utils->initialize('delete_shapes', 'name', $params{ name });
 
@@ -7596,7 +7596,7 @@ subtest 'delete_shapes invalid name' => sub {
 };
 
 subtest 'delete_shapes invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_shapes', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_shapes', 'slide_index', $params{ slide_index });
 
@@ -7611,7 +7611,7 @@ subtest 'delete_shapes invalid slide_index' => sub {
 };
 
 subtest 'delete_shapes invalid shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ shapes } = $utils->invalidize_param_value('delete_shapes', 'shapes', $params{ shapes });
     $utils->initialize('delete_shapes', 'shapes', $params{ shapes });
 
@@ -7626,7 +7626,7 @@ subtest 'delete_shapes invalid shapes' => sub {
 };
 
 subtest 'delete_shapes invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_shapes', 'password', $params{ password });
     $utils->initialize('delete_shapes', 'password', $params{ password });
 
@@ -7641,7 +7641,7 @@ subtest 'delete_shapes invalid password' => sub {
 };
 
 subtest 'delete_shapes invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_shapes', 'folder', $params{ folder });
     $utils->initialize('delete_shapes', 'folder', $params{ folder });
 
@@ -7656,7 +7656,7 @@ subtest 'delete_shapes invalid folder' => sub {
 };
 
 subtest 'delete_shapes invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_shapes', 'storage', $params{ storage });
     $utils->initialize('delete_shapes', 'storage', $params{ storage });
 
@@ -7671,7 +7671,7 @@ subtest 'delete_shapes invalid storage' => sub {
 };
 
 subtest 'delete_shapes invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_shapes', 'slide_index', 'int'), 'shapes' => $utils->get_param_value('delete_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_shapes', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_shapes', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_shapes', 'sub_shape', $params{ sub_shape });
 
@@ -7959,7 +7959,7 @@ subtest 'delete_slide_comments_online invalid password' => sub {
 # delete_slides test
 #
 subtest 'delete_slides' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $utils->initialize('delete_slides', '');
     eval {
         my $result = $utils->{api}->delete_slides(%params);
@@ -7971,7 +7971,7 @@ subtest 'delete_slides' => sub {
 };
 
 subtest 'delete_slides invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_slides', 'name', $params{ name });
     $utils->initialize('delete_slides', 'name', $params{ name });
 
@@ -7986,7 +7986,7 @@ subtest 'delete_slides invalid name' => sub {
 };
 
 subtest 'delete_slides invalid slides' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $params{ slides } = $utils->invalidize_param_value('delete_slides', 'slides', $params{ slides });
     $utils->initialize('delete_slides', 'slides', $params{ slides });
 
@@ -8001,7 +8001,7 @@ subtest 'delete_slides invalid slides' => sub {
 };
 
 subtest 'delete_slides invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_slides', 'password', $params{ password });
     $utils->initialize('delete_slides', 'password', $params{ password });
 
@@ -8016,7 +8016,7 @@ subtest 'delete_slides invalid password' => sub {
 };
 
 subtest 'delete_slides invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_slides', 'folder', $params{ folder });
     $utils->initialize('delete_slides', 'folder', $params{ folder });
 
@@ -8031,7 +8031,7 @@ subtest 'delete_slides invalid folder' => sub {
 };
 
 subtest 'delete_slides invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'string'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_slides', 'name', 'string'), 'slides' => $utils->get_param_value('delete_slides', 'slides', 'object'), 'password' => $utils->get_param_value('delete_slides', 'password', 'string'), 'folder' => $utils->get_param_value('delete_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_slides', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_slides', 'storage', $params{ storage });
     $utils->initialize('delete_slides', 'storage', $params{ storage });
 
@@ -9024,7 +9024,7 @@ subtest 'delete_special_slide_paragraph invalid sub_shape' => sub {
 # delete_special_slide_paragraphs test
 #
 subtest 'delete_special_slide_paragraphs' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $utils->initialize('delete_special_slide_paragraphs', '');
     eval {
         my $result = $utils->{api}->delete_special_slide_paragraphs(%params);
@@ -9036,7 +9036,7 @@ subtest 'delete_special_slide_paragraphs' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'name', $params{ name });
     $utils->initialize('delete_special_slide_paragraphs', 'name', $params{ name });
 
@@ -9051,7 +9051,7 @@ subtest 'delete_special_slide_paragraphs invalid name' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_special_slide_paragraphs', 'slide_index', $params{ slide_index });
 
@@ -9066,7 +9066,7 @@ subtest 'delete_special_slide_paragraphs invalid slide_index' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid slide_type' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ slide_type } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'slide_type', $params{ slide_type });
     $utils->initialize('delete_special_slide_paragraphs', 'slide_type', $params{ slide_type });
 
@@ -9081,7 +9081,7 @@ subtest 'delete_special_slide_paragraphs invalid slide_type' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'shape_index', $params{ shape_index });
     $utils->initialize('delete_special_slide_paragraphs', 'shape_index', $params{ shape_index });
 
@@ -9096,7 +9096,7 @@ subtest 'delete_special_slide_paragraphs invalid shape_index' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid paragraphs' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ paragraphs } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'paragraphs', $params{ paragraphs });
     $utils->initialize('delete_special_slide_paragraphs', 'paragraphs', $params{ paragraphs });
 
@@ -9111,7 +9111,7 @@ subtest 'delete_special_slide_paragraphs invalid paragraphs' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'password', $params{ password });
     $utils->initialize('delete_special_slide_paragraphs', 'password', $params{ password });
 
@@ -9126,7 +9126,7 @@ subtest 'delete_special_slide_paragraphs invalid password' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'folder', $params{ folder });
     $utils->initialize('delete_special_slide_paragraphs', 'folder', $params{ folder });
 
@@ -9141,7 +9141,7 @@ subtest 'delete_special_slide_paragraphs invalid folder' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'storage', $params{ storage });
     $utils->initialize('delete_special_slide_paragraphs', 'storage', $params{ storage });
 
@@ -9156,7 +9156,7 @@ subtest 'delete_special_slide_paragraphs invalid storage' => sub {
 };
 
 subtest 'delete_special_slide_paragraphs invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'string'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_paragraphs', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_paragraphs', 'shape_index', 'int'), 'paragraphs' => $utils->get_param_value('delete_special_slide_paragraphs', 'paragraphs', 'object'), 'password' => $utils->get_param_value('delete_special_slide_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_paragraphs', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_paragraphs', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_special_slide_paragraphs', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_special_slide_paragraphs', 'sub_shape', $params{ sub_shape });
 
@@ -9339,7 +9339,7 @@ subtest 'delete_special_slide_portion invalid sub_shape' => sub {
 # delete_special_slide_portions test
 #
 subtest 'delete_special_slide_portions' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $utils->initialize('delete_special_slide_portions', '');
     eval {
         my $result = $utils->{api}->delete_special_slide_portions(%params);
@@ -9351,7 +9351,7 @@ subtest 'delete_special_slide_portions' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_special_slide_portions', 'name', $params{ name });
     $utils->initialize('delete_special_slide_portions', 'name', $params{ name });
 
@@ -9366,7 +9366,7 @@ subtest 'delete_special_slide_portions invalid name' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_special_slide_portions', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_special_slide_portions', 'slide_index', $params{ slide_index });
 
@@ -9381,7 +9381,7 @@ subtest 'delete_special_slide_portions invalid slide_index' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid slide_type' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ slide_type } = $utils->invalidize_param_value('delete_special_slide_portions', 'slide_type', $params{ slide_type });
     $utils->initialize('delete_special_slide_portions', 'slide_type', $params{ slide_type });
 
@@ -9396,7 +9396,7 @@ subtest 'delete_special_slide_portions invalid slide_type' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ shape_index } = $utils->invalidize_param_value('delete_special_slide_portions', 'shape_index', $params{ shape_index });
     $utils->initialize('delete_special_slide_portions', 'shape_index', $params{ shape_index });
 
@@ -9411,7 +9411,7 @@ subtest 'delete_special_slide_portions invalid shape_index' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid paragraph_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ paragraph_index } = $utils->invalidize_param_value('delete_special_slide_portions', 'paragraph_index', $params{ paragraph_index });
     $utils->initialize('delete_special_slide_portions', 'paragraph_index', $params{ paragraph_index });
 
@@ -9426,7 +9426,7 @@ subtest 'delete_special_slide_portions invalid paragraph_index' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid portions' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ portions } = $utils->invalidize_param_value('delete_special_slide_portions', 'portions', $params{ portions });
     $utils->initialize('delete_special_slide_portions', 'portions', $params{ portions });
 
@@ -9441,7 +9441,7 @@ subtest 'delete_special_slide_portions invalid portions' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_special_slide_portions', 'password', $params{ password });
     $utils->initialize('delete_special_slide_portions', 'password', $params{ password });
 
@@ -9456,7 +9456,7 @@ subtest 'delete_special_slide_portions invalid password' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_special_slide_portions', 'folder', $params{ folder });
     $utils->initialize('delete_special_slide_portions', 'folder', $params{ folder });
 
@@ -9471,7 +9471,7 @@ subtest 'delete_special_slide_portions invalid folder' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_special_slide_portions', 'storage', $params{ storage });
     $utils->initialize('delete_special_slide_portions', 'storage', $params{ storage });
 
@@ -9486,7 +9486,7 @@ subtest 'delete_special_slide_portions invalid storage' => sub {
 };
 
 subtest 'delete_special_slide_portions invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'string'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_portions', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_portions', 'slide_type', 'string'), 'shape_index' => $utils->get_param_value('delete_special_slide_portions', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_special_slide_portions', 'paragraph_index', 'int'), 'portions' => $utils->get_param_value('delete_special_slide_portions', 'portions', 'object'), 'password' => $utils->get_param_value('delete_special_slide_portions', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_portions', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_portions', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_special_slide_portions', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_special_slide_portions', 'sub_shape', $params{ sub_shape });
 
@@ -9639,7 +9639,7 @@ subtest 'delete_special_slide_shape invalid sub_shape' => sub {
 # delete_special_slide_shapes test
 #
 subtest 'delete_special_slide_shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $utils->initialize('delete_special_slide_shapes', '');
     eval {
         my $result = $utils->{api}->delete_special_slide_shapes(%params);
@@ -9651,7 +9651,7 @@ subtest 'delete_special_slide_shapes' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ name } = $utils->invalidize_param_value('delete_special_slide_shapes', 'name', $params{ name });
     $utils->initialize('delete_special_slide_shapes', 'name', $params{ name });
 
@@ -9666,7 +9666,7 @@ subtest 'delete_special_slide_shapes invalid name' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('delete_special_slide_shapes', 'slide_index', $params{ slide_index });
     $utils->initialize('delete_special_slide_shapes', 'slide_index', $params{ slide_index });
 
@@ -9681,7 +9681,7 @@ subtest 'delete_special_slide_shapes invalid slide_index' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid slide_type' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ slide_type } = $utils->invalidize_param_value('delete_special_slide_shapes', 'slide_type', $params{ slide_type });
     $utils->initialize('delete_special_slide_shapes', 'slide_type', $params{ slide_type });
 
@@ -9696,7 +9696,7 @@ subtest 'delete_special_slide_shapes invalid slide_type' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ shapes } = $utils->invalidize_param_value('delete_special_slide_shapes', 'shapes', $params{ shapes });
     $utils->initialize('delete_special_slide_shapes', 'shapes', $params{ shapes });
 
@@ -9711,7 +9711,7 @@ subtest 'delete_special_slide_shapes invalid shapes' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ password } = $utils->invalidize_param_value('delete_special_slide_shapes', 'password', $params{ password });
     $utils->initialize('delete_special_slide_shapes', 'password', $params{ password });
 
@@ -9726,7 +9726,7 @@ subtest 'delete_special_slide_shapes invalid password' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ folder } = $utils->invalidize_param_value('delete_special_slide_shapes', 'folder', $params{ folder });
     $utils->initialize('delete_special_slide_shapes', 'folder', $params{ folder });
 
@@ -9741,7 +9741,7 @@ subtest 'delete_special_slide_shapes invalid folder' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ storage } = $utils->invalidize_param_value('delete_special_slide_shapes', 'storage', $params{ storage });
     $utils->initialize('delete_special_slide_shapes', 'storage', $params{ storage });
 
@@ -9756,7 +9756,7 @@ subtest 'delete_special_slide_shapes invalid storage' => sub {
 };
 
 subtest 'delete_special_slide_shapes invalid sub_shape' => sub {
-    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'string'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
+    my %params = ('name' => $utils->get_param_value('delete_special_slide_shapes', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_special_slide_shapes', 'slide_index', 'int'), 'slide_type' => $utils->get_param_value('delete_special_slide_shapes', 'slide_type', 'string'), 'shapes' => $utils->get_param_value('delete_special_slide_shapes', 'shapes', 'object'), 'password' => $utils->get_param_value('delete_special_slide_shapes', 'password', 'string'), 'folder' => $utils->get_param_value('delete_special_slide_shapes', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_special_slide_shapes', 'storage', 'string'), 'sub_shape' => $utils->get_param_value('delete_special_slide_shapes', 'sub_shape', 'string'));
     $params{ sub_shape } = $utils->invalidize_param_value('delete_special_slide_shapes', 'sub_shape', $params{ sub_shape });
     $utils->initialize('delete_special_slide_shapes', 'sub_shape', $params{ sub_shape });
 
@@ -11259,7 +11259,7 @@ subtest 'download_portion_as_math_ml invalid storage' => sub {
 # download_presentation test
 #
 subtest 'download_presentation' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $utils->initialize('download_presentation', '');
     eval {
         my $result = $utils->{api}->download_presentation(%params);
@@ -11271,7 +11271,7 @@ subtest 'download_presentation' => sub {
 };
 
 subtest 'download_presentation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ name } = $utils->invalidize_param_value('download_presentation', 'name', $params{ name });
     $utils->initialize('download_presentation', 'name', $params{ name });
 
@@ -11286,7 +11286,7 @@ subtest 'download_presentation invalid name' => sub {
 };
 
 subtest 'download_presentation invalid format' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ format } = $utils->invalidize_param_value('download_presentation', 'format', $params{ format });
     $utils->initialize('download_presentation', 'format', $params{ format });
 
@@ -11301,7 +11301,7 @@ subtest 'download_presentation invalid format' => sub {
 };
 
 subtest 'download_presentation invalid options' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ options } = $utils->invalidize_param_value('download_presentation', 'options', $params{ options });
     $utils->initialize('download_presentation', 'options', $params{ options });
 
@@ -11316,7 +11316,7 @@ subtest 'download_presentation invalid options' => sub {
 };
 
 subtest 'download_presentation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ password } = $utils->invalidize_param_value('download_presentation', 'password', $params{ password });
     $utils->initialize('download_presentation', 'password', $params{ password });
 
@@ -11331,7 +11331,7 @@ subtest 'download_presentation invalid password' => sub {
 };
 
 subtest 'download_presentation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ folder } = $utils->invalidize_param_value('download_presentation', 'folder', $params{ folder });
     $utils->initialize('download_presentation', 'folder', $params{ folder });
 
@@ -11346,7 +11346,7 @@ subtest 'download_presentation invalid folder' => sub {
 };
 
 subtest 'download_presentation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ storage } = $utils->invalidize_param_value('download_presentation', 'storage', $params{ storage });
     $utils->initialize('download_presentation', 'storage', $params{ storage });
 
@@ -11361,7 +11361,7 @@ subtest 'download_presentation invalid storage' => sub {
 };
 
 subtest 'download_presentation invalid fonts_folder' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ fonts_folder } = $utils->invalidize_param_value('download_presentation', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('download_presentation', 'fonts_folder', $params{ fonts_folder });
 
@@ -11376,7 +11376,7 @@ subtest 'download_presentation invalid fonts_folder' => sub {
 };
 
 subtest 'download_presentation invalid slides' => sub {
-    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('download_presentation', 'name', 'string'), 'format' => $utils->get_param_value('download_presentation', 'format', 'string'), 'options' => $utils->get_param_value('download_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('download_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('download_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('download_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('download_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('download_presentation', 'slides', 'object'));
     $params{ slides } = $utils->invalidize_param_value('download_presentation', 'slides', $params{ slides });
     $utils->initialize('download_presentation', 'slides', $params{ slides });
 
@@ -18159,7 +18159,7 @@ subtest 'import_from_pdf invalid storage' => sub {
 # import_shapes_from_svg test
 #
 subtest 'import_shapes_from_svg' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $utils->initialize('import_shapes_from_svg', '');
     eval {
         my $result = $utils->{api}->import_shapes_from_svg(%params);
@@ -18171,7 +18171,7 @@ subtest 'import_shapes_from_svg' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('import_shapes_from_svg', 'name', $params{ name });
     $utils->initialize('import_shapes_from_svg', 'name', $params{ name });
 
@@ -18186,7 +18186,7 @@ subtest 'import_shapes_from_svg invalid name' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ slide_index } = $utils->invalidize_param_value('import_shapes_from_svg', 'slide_index', $params{ slide_index });
     $utils->initialize('import_shapes_from_svg', 'slide_index', $params{ slide_index });
 
@@ -18201,7 +18201,7 @@ subtest 'import_shapes_from_svg invalid slide_index' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid image' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ image } = $utils->invalidize_param_value('import_shapes_from_svg', 'image', $params{ image });
     $utils->initialize('import_shapes_from_svg', 'image', $params{ image });
 
@@ -18216,7 +18216,7 @@ subtest 'import_shapes_from_svg invalid image' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid x' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ x } = $utils->invalidize_param_value('import_shapes_from_svg', 'x', $params{ x });
     $utils->initialize('import_shapes_from_svg', 'x', $params{ x });
 
@@ -18231,7 +18231,7 @@ subtest 'import_shapes_from_svg invalid x' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid y' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ y } = $utils->invalidize_param_value('import_shapes_from_svg', 'y', $params{ y });
     $utils->initialize('import_shapes_from_svg', 'y', $params{ y });
 
@@ -18246,7 +18246,7 @@ subtest 'import_shapes_from_svg invalid y' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid width' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ width } = $utils->invalidize_param_value('import_shapes_from_svg', 'width', $params{ width });
     $utils->initialize('import_shapes_from_svg', 'width', $params{ width });
 
@@ -18261,7 +18261,7 @@ subtest 'import_shapes_from_svg invalid width' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid height' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ height } = $utils->invalidize_param_value('import_shapes_from_svg', 'height', $params{ height });
     $utils->initialize('import_shapes_from_svg', 'height', $params{ height });
 
@@ -18276,7 +18276,7 @@ subtest 'import_shapes_from_svg invalid height' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid shapes' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ shapes } = $utils->invalidize_param_value('import_shapes_from_svg', 'shapes', $params{ shapes });
     $utils->initialize('import_shapes_from_svg', 'shapes', $params{ shapes });
 
@@ -18291,7 +18291,7 @@ subtest 'import_shapes_from_svg invalid shapes' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid group' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ group } = $utils->invalidize_param_value('import_shapes_from_svg', 'group', $params{ group });
     $utils->initialize('import_shapes_from_svg', 'group', $params{ group });
 
@@ -18306,7 +18306,7 @@ subtest 'import_shapes_from_svg invalid group' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('import_shapes_from_svg', 'password', $params{ password });
     $utils->initialize('import_shapes_from_svg', 'password', $params{ password });
 
@@ -18321,7 +18321,7 @@ subtest 'import_shapes_from_svg invalid password' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('import_shapes_from_svg', 'folder', $params{ folder });
     $utils->initialize('import_shapes_from_svg', 'folder', $params{ folder });
 
@@ -18336,7 +18336,7 @@ subtest 'import_shapes_from_svg invalid folder' => sub {
 };
 
 subtest 'import_shapes_from_svg invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'string'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_shapes_from_svg', 'name', 'string'), 'slide_index' => $utils->get_param_value('import_shapes_from_svg', 'slide_index', 'int'), 'image' => $utils->get_param_value('import_shapes_from_svg', 'image', 'File'), 'x' => $utils->get_param_value('import_shapes_from_svg', 'x', 'int'), 'y' => $utils->get_param_value('import_shapes_from_svg', 'y', 'int'), 'width' => $utils->get_param_value('import_shapes_from_svg', 'width', 'int'), 'height' => $utils->get_param_value('import_shapes_from_svg', 'height', 'int'), 'shapes' => $utils->get_param_value('import_shapes_from_svg', 'shapes', 'object'), 'group' => $utils->get_param_value('import_shapes_from_svg', 'group', 'boolean'), 'password' => $utils->get_param_value('import_shapes_from_svg', 'password', 'string'), 'folder' => $utils->get_param_value('import_shapes_from_svg', 'folder', 'string'), 'storage' => $utils->get_param_value('import_shapes_from_svg', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('import_shapes_from_svg', 'storage', $params{ storage });
     $utils->initialize('import_shapes_from_svg', 'storage', $params{ storage });
 
@@ -19299,7 +19299,7 @@ subtest 'pipeline invalid files' => sub {
 # reorder_slides test
 #
 subtest 'reorder_slides' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $utils->initialize('reorder_slides', '');
     eval {
         my $result = $utils->{api}->reorder_slides(%params);
@@ -19311,7 +19311,7 @@ subtest 'reorder_slides' => sub {
 };
 
 subtest 'reorder_slides invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('reorder_slides', 'name', $params{ name });
     $utils->initialize('reorder_slides', 'name', $params{ name });
 
@@ -19326,7 +19326,7 @@ subtest 'reorder_slides invalid name' => sub {
 };
 
 subtest 'reorder_slides invalid old_positions' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ old_positions } = $utils->invalidize_param_value('reorder_slides', 'old_positions', $params{ old_positions });
     $utils->initialize('reorder_slides', 'old_positions', $params{ old_positions });
 
@@ -19341,7 +19341,7 @@ subtest 'reorder_slides invalid old_positions' => sub {
 };
 
 subtest 'reorder_slides invalid new_positions' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ new_positions } = $utils->invalidize_param_value('reorder_slides', 'new_positions', $params{ new_positions });
     $utils->initialize('reorder_slides', 'new_positions', $params{ new_positions });
 
@@ -19356,7 +19356,7 @@ subtest 'reorder_slides invalid new_positions' => sub {
 };
 
 subtest 'reorder_slides invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('reorder_slides', 'password', $params{ password });
     $utils->initialize('reorder_slides', 'password', $params{ password });
 
@@ -19371,7 +19371,7 @@ subtest 'reorder_slides invalid password' => sub {
 };
 
 subtest 'reorder_slides invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('reorder_slides', 'folder', $params{ folder });
     $utils->initialize('reorder_slides', 'folder', $params{ folder });
 
@@ -19386,7 +19386,7 @@ subtest 'reorder_slides invalid folder' => sub {
 };
 
 subtest 'reorder_slides invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'string'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'string'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('reorder_slides', 'name', 'string'), 'old_positions' => $utils->get_param_value('reorder_slides', 'old_positions', 'object'), 'new_positions' => $utils->get_param_value('reorder_slides', 'new_positions', 'object'), 'password' => $utils->get_param_value('reorder_slides', 'password', 'string'), 'folder' => $utils->get_param_value('reorder_slides', 'folder', 'string'), 'storage' => $utils->get_param_value('reorder_slides', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('reorder_slides', 'storage', $params{ storage });
     $utils->initialize('reorder_slides', 'storage', $params{ storage });
 
@@ -20244,7 +20244,7 @@ subtest 'save_portion_as_math_ml invalid storage' => sub {
 # save_presentation test
 #
 subtest 'save_presentation' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $utils->initialize('save_presentation', '');
     eval {
         my $result = $utils->{api}->save_presentation(%params);
@@ -20256,7 +20256,7 @@ subtest 'save_presentation' => sub {
 };
 
 subtest 'save_presentation invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ name } = $utils->invalidize_param_value('save_presentation', 'name', $params{ name });
     $utils->initialize('save_presentation', 'name', $params{ name });
 
@@ -20271,7 +20271,7 @@ subtest 'save_presentation invalid name' => sub {
 };
 
 subtest 'save_presentation invalid format' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ format } = $utils->invalidize_param_value('save_presentation', 'format', $params{ format });
     $utils->initialize('save_presentation', 'format', $params{ format });
 
@@ -20286,7 +20286,7 @@ subtest 'save_presentation invalid format' => sub {
 };
 
 subtest 'save_presentation invalid out_path' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ out_path } = $utils->invalidize_param_value('save_presentation', 'out_path', $params{ out_path });
     $utils->initialize('save_presentation', 'out_path', $params{ out_path });
 
@@ -20301,7 +20301,7 @@ subtest 'save_presentation invalid out_path' => sub {
 };
 
 subtest 'save_presentation invalid options' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ options } = $utils->invalidize_param_value('save_presentation', 'options', $params{ options });
     $utils->initialize('save_presentation', 'options', $params{ options });
 
@@ -20316,7 +20316,7 @@ subtest 'save_presentation invalid options' => sub {
 };
 
 subtest 'save_presentation invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ password } = $utils->invalidize_param_value('save_presentation', 'password', $params{ password });
     $utils->initialize('save_presentation', 'password', $params{ password });
 
@@ -20331,7 +20331,7 @@ subtest 'save_presentation invalid password' => sub {
 };
 
 subtest 'save_presentation invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ folder } = $utils->invalidize_param_value('save_presentation', 'folder', $params{ folder });
     $utils->initialize('save_presentation', 'folder', $params{ folder });
 
@@ -20346,7 +20346,7 @@ subtest 'save_presentation invalid folder' => sub {
 };
 
 subtest 'save_presentation invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ storage } = $utils->invalidize_param_value('save_presentation', 'storage', $params{ storage });
     $utils->initialize('save_presentation', 'storage', $params{ storage });
 
@@ -20361,7 +20361,7 @@ subtest 'save_presentation invalid storage' => sub {
 };
 
 subtest 'save_presentation invalid fonts_folder' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ fonts_folder } = $utils->invalidize_param_value('save_presentation', 'fonts_folder', $params{ fonts_folder });
     $utils->initialize('save_presentation', 'fonts_folder', $params{ fonts_folder });
 
@@ -20376,7 +20376,7 @@ subtest 'save_presentation invalid fonts_folder' => sub {
 };
 
 subtest 'save_presentation invalid slides' => sub {
-    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'string'));
+    my %params = ('name' => $utils->get_param_value('save_presentation', 'name', 'string'), 'format' => $utils->get_param_value('save_presentation', 'format', 'string'), 'out_path' => $utils->get_param_value('save_presentation', 'out_path', 'string'), 'options' => $utils->get_param_value('save_presentation', 'options', 'ExportOptions'), 'password' => $utils->get_param_value('save_presentation', 'password', 'string'), 'folder' => $utils->get_param_value('save_presentation', 'folder', 'string'), 'storage' => $utils->get_param_value('save_presentation', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('save_presentation', 'fonts_folder', 'string'), 'slides' => $utils->get_param_value('save_presentation', 'slides', 'object'));
     $params{ slides } = $utils->invalidize_param_value('save_presentation', 'slides', $params{ slides });
     $utils->initialize('save_presentation', 'slides', $params{ slides });
 

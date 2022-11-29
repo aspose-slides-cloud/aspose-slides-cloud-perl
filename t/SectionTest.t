@@ -24,6 +24,8 @@ SOFTWARE.
 
 =cut
 
+BEGIN {push @INC, "../lib"}
+
 use File::Slurp;
 use Archive::Zip;
 use JSON;
@@ -142,7 +144,7 @@ subtest 'sections clear' => sub {
     pass();
 };
 
-subtest 'sections delete many' => sub {
+subtest 'sections delete' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
       $utils->{api}->copy_file(%copy_params);
@@ -158,7 +160,7 @@ subtest 'sections delete many' => sub {
     pass();
 };
 
-subtest 'sections delete' => sub {
+subtest 'section delete' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
       $utils->{api}->copy_file(%copy_params);
@@ -172,5 +174,7 @@ subtest 'sections delete' => sub {
     }
     pass();
 };
+
+
 
 done_testing;

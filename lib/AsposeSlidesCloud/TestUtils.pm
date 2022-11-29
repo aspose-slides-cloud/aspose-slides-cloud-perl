@@ -49,6 +49,7 @@ sub new {
     $config->{app_sid} = $config_file->{ClientId};
     $config->{app_key} = $config_file->{ClientSecret};
     $config->{debug} = $config_file->{Debug};
+    $config->{allow_insecure_requests} = $config_file->{AllowInsecureRequests};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
     return bless { rules => decode_json(read_file('testRules.json')), api => $api }, $class;
 }
