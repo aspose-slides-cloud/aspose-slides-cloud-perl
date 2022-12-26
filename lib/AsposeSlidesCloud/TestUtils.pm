@@ -34,6 +34,7 @@ use strict;
 use warnings;
 use utf8;
 
+use AsposeSlidesCloud::ClassRegistry;
 use AsposeSlidesCloud::Configuration;
 
 my $is_initialized = 0;
@@ -55,7 +56,7 @@ sub new {
 }
 
 sub initialize {
-    my ($self, $function, $parameter, $parameter_value) = @_;
+    my ($self, $function, $parameter, $parameter_value, $parameter_type) = @_;
     $function =~ s/_//g;
     $parameter =~ s/_//g;
     if (!$is_initialized) {
@@ -81,11 +82,11 @@ sub initialize {
     my %files = ();
     my $fileRules = $self->{rules}->{Files};
     foreach (@$fileRules) {
-        if ($self->is_good_rule($_, $function, $parameter)) {
-            my $actual_name = $self->untemplatize($_->{File}, $parameter_value);
+        if ($self->is_good_rule($_, $function, $parameter, $parameter_type)) {
+            my $actual_name = $self->untemplatize($_->{File}, $parameter, $parameter_value);
             my $path = "TempSlidesSDK";
             if (exists $_->{Folder}) {
-                $path = $self->untemplatize($_->{Folder}, $parameter_value);
+                $path = $self->untemplatize($_->{Folder}, $parameter, $parameter_value);
             }
             $path = $path."/".$actual_name;
             $files{$path} = $_;
@@ -99,6 +100,7 @@ sub initialize {
         } elsif ($files{$path}->{Action} eq "Delete") {
             my %delete_params = ('path' => $path);
             $self->{api}->delete_file(%delete_params);
+            $self->{api}->delete_folder(%delete_params);
         }
     }
 }
@@ -111,55 +113,26 @@ sub get_param_value {
     my ($self, $function, $parameter, $type) = @_;
     $function =~ s/_//g;
     $parameter =~ s/_//g;
-    if ($type eq 'File') {
-        my $file_name = "test.pptx";
-        if (uc("ImportFromPdf") eq uc($function)) {
-            $file_name = "test.pdf";
-        }
-        elsif (uc("ImportShapesFromSvg") eq uc($function)) {
-            $file_name = "shapes.svg";
-        }
-        elsif (uc("Image") eq uc($parameter)) {
-            $file_name = "watermark.png";
-        }
-        elsif (uc("Font") eq uc($parameter)) {
-            $file_name = "calibri.ttf";
-        }
-        my $content = read_file("TestData/$file_name", { binmode => ':raw' });
-        return $content;
-    }
-    if ($parameter eq 'files') {
-        my $file1 = read_file("TestData/test.pptx", { binmode => ':raw' });
-        my $file2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
-        my @files = ($file1, $file2);
-        return \@files;
-    }
-    my $result = "test".$parameter;
+    my $result = undef;
     my $values = $self->{rules}->{Values};
     foreach (@$values) {
-        if ($self->is_good_rule($_, $function, $parameter)) {
+        if ($self->is_good_rule($_, $function, $parameter, $type)) {
             if (exists $_->{Value}) {
-                if (exists $_->{Type}) {
-                    if (AsposeSlidesCloud::ClassRegistry->is_subclass($_->{Type}, $type)) {
-                        $result = $_->{Value}
-                    }
-                } else {
-                    $result = $_->{Value};
-                }
+                $result = $_->{Value}
             }
         }
     }
-    return $result;
+    return $self->untemplatize($result, $parameter, "");
 }
 
 sub invalidize_param_value {
-    my ($self, $function, $parameter, $value) = @_;
+    my ($self, $function, $parameter, $value, $type) = @_;
     $function =~ s/_//g;
     $parameter =~ s/_//g;
     my $result = undef;
     my $values = $self->{rules}->{Values};
     foreach (@$values) {
-        if ($self->is_good_rule($_, $function, $parameter)) {
+        if ($self->is_good_rule($_, $function, $parameter, $type)) {
             if (exists $_->{InvalidValue}) {
                 $result = $_->{InvalidValue};
             }
@@ -168,11 +141,11 @@ sub invalidize_param_value {
     if (!$result) {
         return $result;
     }
-    return $self->untemplatize($result, $value);
+    return $self->untemplatize($result, $parameter, $value);
 }
 
 sub assert_error {
-    my ($self, $function, $parameter, $value, $error) = @_;
+    my ($self, $function, $parameter, $value, $type, $error) = @_;
     if ($error) {
         my $code = 0;
         my $message = "unexpected message";
@@ -180,7 +153,7 @@ sub assert_error {
         $function =~ s/_//g;
         $parameter =~ s/_//g;
         foreach (@$results) {
-            if ($self->is_good_rule($_, $function, $parameter)) {
+            if ($self->is_good_rule($_, $function, $parameter, $type)) {
                 if (exists $_->{Code}) {
                     $code = $_->{Code};
                 }
@@ -194,19 +167,19 @@ sub assert_error {
         } else {
             is(400, $code);
         }
-        ok(index($error, $self->untemplatize($message, $value)) != -1);
+        ok(index($error, $self->untemplatize($message, $parameter, $value)) != -1);
     } else {
         fail("expected to fail for $function $parameter");
     }
 }
 
 sub assert_no_error {
-    my ($self, $function, $parameter) = @_;
+    my ($self, $function, $parameter, $type) = @_;
     my $results = $self->{rules}->{OKToNotFail};
     $function =~ s/_//g;
     $parameter =~ s/_//g;
     foreach (@$results) {
-        if ($self->is_good_rule($_, $function, $parameter)) {
+        if ($self->is_good_rule($_, $function, $parameter, $type)) {
             pass();
             return;
         }
@@ -215,27 +188,97 @@ sub assert_no_error {
 }
 
 sub is_good_rule {
-    my ($self, $rule, $function, $parameter) = @_;
-    if ((!(defined $rule->{Method}) or uc($rule->{Method}) eq uc($function))
+    my ($self, $rule, $function, $parameter, $type) = @_;
+    if ($self->is_good_value($rule->{Method}, $function)
         and (!(defined $rule->{Invalid}) or ($rule->{Invalid} eq defined $parameter))
-        and (!(defined $rule->{Parameter}) or uc($rule->{Parameter}) eq uc($parameter))
-        and (!(defined $rule->{Language}) or uc($rule->{Language}) eq "PERL")) {
+        and $self->is_good_value($rule->{Parameter}, $parameter)
+        and $self->is_good_type($rule, $type)
+        and $self->is_good_value($rule->{Language}, "PERL")) {
         return 1;
     } else {
         return 0;
     };
 }
 
+sub is_good_value {
+    my ($self, $rule_value, $value) = @_;
+    if (!(defined $rule_value)) {
+        return 1;
+    }
+    if (!$value) {
+        return 0;
+    }
+    if ('/' eq substr($rule_value, 0, 1) and '/' eq substr($rule_value, -1)) {
+        my $regex = substr($rule_value, 1, -1);
+        return $value =~ /$regex/i;
+    }
+    return uc($rule_value) eq uc($value);
+}
+
+sub is_good_type {
+    my ($self, $rule, $type) = @_;
+    if (!(defined $rule->{Type})) {
+        return 1;
+    }
+    if (!$type) {
+        return 0;
+    }
+    if ($rule->{Type} eq 'bool') {
+        return $type eq 'boolean';
+    }
+    if ($rule->{Type} eq 'number') {
+        return $type eq 'int';
+    }
+    if ($rule->{Type} eq 'int') {
+        return $type eq 'int';
+    }
+    if ($rule->{Type} eq 'int[]') {
+        return $type eq 'int[]';
+    }
+    if ($rule->{Type} eq 'stream') {
+        return $type eq 'File';
+    }
+    if ($rule->{Type} eq 'stream[]') {
+        return $type eq 'ARRAY[string]';
+    }
+    if ($rule->{Type} eq 'model') {
+        return AsposeSlidesCloud::ClassRegistry->has_class($type);
+    }
+    if (AsposeSlidesCloud::ClassRegistry->has_class($rule->{Type})) {
+        return AsposeSlidesCloud::ClassRegistry->is_subclass($rule->{Type}, $type);
+    }
+    return 0;
+}
+
 sub untemplatize {
-    my ($self, $template, $value) = @_;
+    my ($self, $template, $name, $value) = @_;
     if (!$template) {
         return $value;
     } else {
+        if ('@' eq substr($template, 0, 1)) {
+            my $file_name = substr($template, 1);
+            if ('(' eq substr($file_name, 0, 1) and ')' eq substr($file_name, -1)) {
+                my @file_names = split(",", substr($file_name, 1, -1));
+                my @files = ();
+                foreach (@file_names) {
+                    my $file = read_file("TestData/$_", { binmode => ':raw' });
+                    push @files, $file;
+                }
+                return \@files;
+            }
+            my $content = read_file("TestData/$file_name", { binmode => ':raw' });
+            return $content;
+        }
         my $result = $template;
         if (defined $value) {
             $result =~ s/%v/$value/;
         } else {
             $result =~ s/%v//;
+        }
+        if (defined $name) {
+            $result =~ s/%n/$name/;
+        } else {
+            $result =~ s/%n//;
         }
         return $result;
     }
