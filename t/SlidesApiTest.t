@@ -351,6 +351,126 @@ subtest 'align_special_slide_shapes invalid sub_shape' => sub {
 };
 
 #
+# compress_embedded_fonts test
+#
+subtest 'compress_embedded_fonts' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_embedded_fonts', 'name', 'string'), 'password' => $utils->get_param_value('compress_embedded_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('compress_embedded_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_embedded_fonts', 'storage', 'string'));
+    $utils->initialize('compress_embedded_fonts', '');
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts(%params);
+    };
+    if ($@) {
+        fail("compress_embedded_fonts raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'compress_embedded_fonts invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_embedded_fonts', 'name', 'string'), 'password' => $utils->get_param_value('compress_embedded_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('compress_embedded_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_embedded_fonts', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('compress_embedded_fonts', 'name', $params{ name }, 'string');
+    $utils->initialize('compress_embedded_fonts', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts', 'name', 'string');
+    }
+};
+
+subtest 'compress_embedded_fonts invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_embedded_fonts', 'name', 'string'), 'password' => $utils->get_param_value('compress_embedded_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('compress_embedded_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_embedded_fonts', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('compress_embedded_fonts', 'password', $params{ password }, 'string');
+    $utils->initialize('compress_embedded_fonts', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts', 'password', 'string');
+    }
+};
+
+subtest 'compress_embedded_fonts invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_embedded_fonts', 'name', 'string'), 'password' => $utils->get_param_value('compress_embedded_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('compress_embedded_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_embedded_fonts', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('compress_embedded_fonts', 'folder', $params{ folder }, 'string');
+    $utils->initialize('compress_embedded_fonts', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts', 'folder', 'string');
+    }
+};
+
+subtest 'compress_embedded_fonts invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_embedded_fonts', 'name', 'string'), 'password' => $utils->get_param_value('compress_embedded_fonts', 'password', 'string'), 'folder' => $utils->get_param_value('compress_embedded_fonts', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_embedded_fonts', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('compress_embedded_fonts', 'storage', $params{ storage }, 'string');
+    $utils->initialize('compress_embedded_fonts', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts', 'storage', 'string');
+    }
+};
+
+#
+# compress_embedded_fonts_online test
+#
+subtest 'compress_embedded_fonts_online' => sub {
+    my %params = ('document' => $utils->get_param_value('compress_embedded_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('compress_embedded_fonts_online', 'password', 'string'));
+    $utils->initialize('compress_embedded_fonts_online', '');
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts_online(%params);
+    };
+    if ($@) {
+        fail("compress_embedded_fonts_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'compress_embedded_fonts_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('compress_embedded_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('compress_embedded_fonts_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('compress_embedded_fonts_online', 'document', $params{ document }, 'File');
+    $utils->initialize('compress_embedded_fonts_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts_online', 'document', $params{ document }, 'File', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts_online', 'document', 'File');
+    }
+};
+
+subtest 'compress_embedded_fonts_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('compress_embedded_fonts_online', 'document', 'File'), 'password' => $utils->get_param_value('compress_embedded_fonts_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('compress_embedded_fonts_online', 'password', $params{ password }, 'string');
+    $utils->initialize('compress_embedded_fonts_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->compress_embedded_fonts_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_embedded_fonts_online', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_embedded_fonts_online', 'password', 'string');
+    }
+};
+
+#
 # convert test
 #
 subtest 'convert' => sub {
