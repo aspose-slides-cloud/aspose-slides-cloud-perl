@@ -113,5 +113,47 @@ subtest 'text format 3d' => sub {
     pass();
 };
 
+subtest 'text frame format' => sub {
+    eval {
+		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+		my $dto = AsposeSlidesCloud::Object::Shape->new();
+        $dto->{shape_type} = 'Rectangle';
+        $dto->{x} = 100;
+        $dto->{y} = 100;
+        $dto->{height} = 100;
+        $dto->{width} = 200;
+        $dto->{text} = 'Sample text';
+
+        my $text_frame_format = AsposeSlidesCloud::Object::TextFrameFormat->new();
+        $text_frame_format->{center_text} = 'True';
+        $text_frame_format->{margin_left} = 2;
+        $text_frame_format->{margin_right} = 2;
+        $text_frame_format->{margin_top} = 2;
+        $text_frame_format->{margin_bottom} = 2;
+        my $solid_fill = AsposeSlidesCloud::Object::SolidFill->new();
+        $solid_fill->{color} = '#FF0000';
+        my $default_paragraph_format = AsposeSlidesCloud::Object::ParagraphFormat->new();
+        $default_paragraph_format->{default_paragraph_format} = $solid_fill;
+        $text_frame_format->{default_paragraph_format} = $default_paragraph_format;
+        $dto->{text_frame_format} = $text_frame_format;
+
+        my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 1,
+            'dto' => $dto,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+
+        my $response = $utils->{api}->create_shape(%params);
+        is ($response->{type}, 'Shape');
+
+	};
+    if ($@) {
+        fail("create_shape raised an exception: $@");
+    }
+    pass();
+};
 
 done_testing;

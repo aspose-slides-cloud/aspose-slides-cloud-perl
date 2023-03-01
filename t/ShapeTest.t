@@ -1291,4 +1291,22 @@ subtest 'delete smart art sub-node' => sub {
     pass();
 };
 
+subtest 'download shape from DTO' => sub {
+    eval {
+
+
+      my $dto = AsposeSlidesCloud::Object::Shape->new();
+      $dto->{shape_type} = "Rectangle";
+      $dto->{width} = 400;
+      $dto->{height} = 200;
+      my %params = ('format' => "png", 'dto' => $dto);
+      my $response = $utils->{api}->download_shape_from_dto(%params);
+      ok(length($response) != 0);
+    };
+    if ($@) {
+        fail("download_shape_from_dto raised an exception: $@");
+    }
+    pass();
+};
+
 done_testing;

@@ -11721,6 +11721,51 @@ subtest 'download_shape invalid sub_shape' => sub {
 };
 
 #
+# download_shape_from_dto test
+#
+subtest 'download_shape_from_dto' => sub {
+    my %params = ('format' => $utils->get_param_value('download_shape_from_dto', 'format', 'string'), 'dto' => $utils->get_param_value('download_shape_from_dto', 'dto', 'ShapeBase'));
+    $utils->initialize('download_shape_from_dto', '');
+    eval {
+        my $result = $utils->{api}->download_shape_from_dto(%params);
+    };
+    if ($@) {
+        fail("download_shape_from_dto raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'download_shape_from_dto invalid format' => sub {
+    my %params = ('format' => $utils->get_param_value('download_shape_from_dto', 'format', 'string'), 'dto' => $utils->get_param_value('download_shape_from_dto', 'dto', 'ShapeBase'));
+    $params{ format } = $utils->invalidize_param_value('download_shape_from_dto', 'format', $params{ format }, 'string');
+    $utils->initialize('download_shape_from_dto', 'format', $params{ format });
+
+    eval {
+        my $result = $utils->{api}->download_shape_from_dto(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_shape_from_dto', 'format', $params{ format }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_shape_from_dto', 'format', 'string');
+    }
+};
+
+subtest 'download_shape_from_dto invalid dto' => sub {
+    my %params = ('format' => $utils->get_param_value('download_shape_from_dto', 'format', 'string'), 'dto' => $utils->get_param_value('download_shape_from_dto', 'dto', 'ShapeBase'));
+    $params{ dto } = $utils->invalidize_param_value('download_shape_from_dto', 'dto', $params{ dto }, 'ShapeBase');
+    $utils->initialize('download_shape_from_dto', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->download_shape_from_dto(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_shape_from_dto', 'dto', $params{ dto }, 'ShapeBase', $@);
+    } else {
+        $utils->assert_no_error('download_shape_from_dto', 'dto', 'ShapeBase');
+    }
+};
+
+#
 # download_shape_online test
 #
 subtest 'download_shape_online' => sub {
