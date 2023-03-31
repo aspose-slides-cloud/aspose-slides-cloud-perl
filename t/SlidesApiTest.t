@@ -24234,7 +24234,7 @@ subtest 'split invalid fonts_folder' => sub {
 # split_and_save_online test
 #
 subtest 'split_and_save_online' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $utils->initialize('split_and_save_online', '');
     eval {
         my $result = $utils->{api}->split_and_save_online(%params);
@@ -24246,7 +24246,7 @@ subtest 'split_and_save_online' => sub {
 };
 
 subtest 'split_and_save_online invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ document } = $utils->invalidize_param_value('split_and_save_online', 'document', $params{ document }, 'File');
     $utils->initialize('split_and_save_online', 'document', $params{ document });
 
@@ -24261,7 +24261,7 @@ subtest 'split_and_save_online invalid document' => sub {
 };
 
 subtest 'split_and_save_online invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ format } = $utils->invalidize_param_value('split_and_save_online', 'format', $params{ format }, 'string');
     $utils->initialize('split_and_save_online', 'format', $params{ format });
 
@@ -24276,7 +24276,7 @@ subtest 'split_and_save_online invalid format' => sub {
 };
 
 subtest 'split_and_save_online invalid dest_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ dest_folder } = $utils->invalidize_param_value('split_and_save_online', 'dest_folder', $params{ dest_folder }, 'string');
     $utils->initialize('split_and_save_online', 'dest_folder', $params{ dest_folder });
 
@@ -24291,7 +24291,7 @@ subtest 'split_and_save_online invalid dest_folder' => sub {
 };
 
 subtest 'split_and_save_online invalid width' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ width } = $utils->invalidize_param_value('split_and_save_online', 'width', $params{ width }, 'int');
     $utils->initialize('split_and_save_online', 'width', $params{ width });
 
@@ -24306,7 +24306,7 @@ subtest 'split_and_save_online invalid width' => sub {
 };
 
 subtest 'split_and_save_online invalid height' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ height } = $utils->invalidize_param_value('split_and_save_online', 'height', $params{ height }, 'int');
     $utils->initialize('split_and_save_online', 'height', $params{ height });
 
@@ -24321,7 +24321,7 @@ subtest 'split_and_save_online invalid height' => sub {
 };
 
 subtest 'split_and_save_online invalid from' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ from } = $utils->invalidize_param_value('split_and_save_online', 'from', $params{ from }, 'int');
     $utils->initialize('split_and_save_online', 'from', $params{ from });
 
@@ -24336,7 +24336,7 @@ subtest 'split_and_save_online invalid from' => sub {
 };
 
 subtest 'split_and_save_online invalid to' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ to } = $utils->invalidize_param_value('split_and_save_online', 'to', $params{ to }, 'int');
     $utils->initialize('split_and_save_online', 'to', $params{ to });
 
@@ -24351,7 +24351,7 @@ subtest 'split_and_save_online invalid to' => sub {
 };
 
 subtest 'split_and_save_online invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ password } = $utils->invalidize_param_value('split_and_save_online', 'password', $params{ password }, 'string');
     $utils->initialize('split_and_save_online', 'password', $params{ password });
 
@@ -24366,7 +24366,7 @@ subtest 'split_and_save_online invalid password' => sub {
 };
 
 subtest 'split_and_save_online invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ storage } = $utils->invalidize_param_value('split_and_save_online', 'storage', $params{ storage }, 'string');
     $utils->initialize('split_and_save_online', 'storage', $params{ storage });
 
@@ -24381,7 +24381,7 @@ subtest 'split_and_save_online invalid storage' => sub {
 };
 
 subtest 'split_and_save_online invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
     $params{ fonts_folder } = $utils->invalidize_param_value('split_and_save_online', 'fonts_folder', $params{ fonts_folder }, 'string');
     $utils->initialize('split_and_save_online', 'fonts_folder', $params{ fonts_folder });
 
@@ -24395,11 +24395,26 @@ subtest 'split_and_save_online invalid fonts_folder' => sub {
     }
 };
 
+subtest 'split_and_save_online invalid options' => sub {
+    my %params = ('document' => $utils->get_param_value('split_and_save_online', 'document', 'File'), 'format' => $utils->get_param_value('split_and_save_online', 'format', 'string'), 'dest_folder' => $utils->get_param_value('split_and_save_online', 'dest_folder', 'string'), 'width' => $utils->get_param_value('split_and_save_online', 'width', 'int'), 'height' => $utils->get_param_value('split_and_save_online', 'height', 'int'), 'from' => $utils->get_param_value('split_and_save_online', 'from', 'int'), 'to' => $utils->get_param_value('split_and_save_online', 'to', 'int'), 'password' => $utils->get_param_value('split_and_save_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_and_save_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_and_save_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_and_save_online', 'options', 'ExportOptions'));
+    $params{ options } = $utils->invalidize_param_value('split_and_save_online', 'options', $params{ options }, 'ExportOptions');
+    $utils->initialize('split_and_save_online', 'options', $params{ options });
+
+    eval {
+        my $result = $utils->{api}->split_and_save_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_and_save_online', 'options', $params{ options }, 'ExportOptions', $@);
+    } else {
+        $utils->assert_no_error('split_and_save_online', 'options', 'ExportOptions');
+    }
+};
+
 #
 # split_online test
 #
 subtest 'split_online' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $utils->initialize('split_online', '');
     eval {
         my $result = $utils->{api}->split_online(%params);
@@ -24411,7 +24426,7 @@ subtest 'split_online' => sub {
 };
 
 subtest 'split_online invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ document } = $utils->invalidize_param_value('split_online', 'document', $params{ document }, 'File');
     $utils->initialize('split_online', 'document', $params{ document });
 
@@ -24426,7 +24441,7 @@ subtest 'split_online invalid document' => sub {
 };
 
 subtest 'split_online invalid format' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ format } = $utils->invalidize_param_value('split_online', 'format', $params{ format }, 'string');
     $utils->initialize('split_online', 'format', $params{ format });
 
@@ -24441,7 +24456,7 @@ subtest 'split_online invalid format' => sub {
 };
 
 subtest 'split_online invalid width' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ width } = $utils->invalidize_param_value('split_online', 'width', $params{ width }, 'int');
     $utils->initialize('split_online', 'width', $params{ width });
 
@@ -24456,7 +24471,7 @@ subtest 'split_online invalid width' => sub {
 };
 
 subtest 'split_online invalid height' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ height } = $utils->invalidize_param_value('split_online', 'height', $params{ height }, 'int');
     $utils->initialize('split_online', 'height', $params{ height });
 
@@ -24471,7 +24486,7 @@ subtest 'split_online invalid height' => sub {
 };
 
 subtest 'split_online invalid from' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ from } = $utils->invalidize_param_value('split_online', 'from', $params{ from }, 'int');
     $utils->initialize('split_online', 'from', $params{ from });
 
@@ -24486,7 +24501,7 @@ subtest 'split_online invalid from' => sub {
 };
 
 subtest 'split_online invalid to' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ to } = $utils->invalidize_param_value('split_online', 'to', $params{ to }, 'int');
     $utils->initialize('split_online', 'to', $params{ to });
 
@@ -24501,7 +24516,7 @@ subtest 'split_online invalid to' => sub {
 };
 
 subtest 'split_online invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ password } = $utils->invalidize_param_value('split_online', 'password', $params{ password }, 'string');
     $utils->initialize('split_online', 'password', $params{ password });
 
@@ -24516,7 +24531,7 @@ subtest 'split_online invalid password' => sub {
 };
 
 subtest 'split_online invalid storage' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ storage } = $utils->invalidize_param_value('split_online', 'storage', $params{ storage }, 'string');
     $utils->initialize('split_online', 'storage', $params{ storage });
 
@@ -24531,7 +24546,7 @@ subtest 'split_online invalid storage' => sub {
 };
 
 subtest 'split_online invalid fonts_folder' => sub {
-    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'));
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
     $params{ fonts_folder } = $utils->invalidize_param_value('split_online', 'fonts_folder', $params{ fonts_folder }, 'string');
     $utils->initialize('split_online', 'fonts_folder', $params{ fonts_folder });
 
@@ -24542,6 +24557,21 @@ subtest 'split_online invalid fonts_folder' => sub {
         $utils->assert_error('split_online', 'fonts_folder', $params{ fonts_folder }, 'string', $@);
     } else {
         $utils->assert_no_error('split_online', 'fonts_folder', 'string');
+    }
+};
+
+subtest 'split_online invalid options' => sub {
+    my %params = ('document' => $utils->get_param_value('split_online', 'document', 'File'), 'format' => $utils->get_param_value('split_online', 'format', 'string'), 'width' => $utils->get_param_value('split_online', 'width', 'int'), 'height' => $utils->get_param_value('split_online', 'height', 'int'), 'from' => $utils->get_param_value('split_online', 'from', 'int'), 'to' => $utils->get_param_value('split_online', 'to', 'int'), 'password' => $utils->get_param_value('split_online', 'password', 'string'), 'storage' => $utils->get_param_value('split_online', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('split_online', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('split_online', 'options', 'ExportOptions'));
+    $params{ options } = $utils->invalidize_param_value('split_online', 'options', $params{ options }, 'ExportOptions');
+    $utils->initialize('split_online', 'options', $params{ options });
+
+    eval {
+        my $result = $utils->{api}->split_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_online', 'options', $params{ options }, 'ExportOptions', $@);
+    } else {
+        $utils->assert_no_error('split_online', 'options', 'ExportOptions');
     }
 };
 
