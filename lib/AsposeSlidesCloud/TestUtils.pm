@@ -227,7 +227,7 @@ sub is_good_type {
         return $type eq 'boolean';
     }
     if ($rule->{Type} eq 'number') {
-        return $type eq 'int';
+        return ($type eq 'int') || ($type eq 'double');
     }
     if ($rule->{Type} eq 'int') {
         return $type eq 'int';

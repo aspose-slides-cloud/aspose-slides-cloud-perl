@@ -52,7 +52,7 @@ subtest 'get slides' => sub {
 
 		my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
         my $response = $utils->{api}->get_slides(%params);
-        is(scalar @{$response->{slide_list}}, 8);
+        is(scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
         fail("get_slides raised an exception: $@");
@@ -88,7 +88,7 @@ subtest 'create slide' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->create_slide(%params);
-        is (scalar @{$response->{slide_list}}, 9);
+        is (scalar @{$response->{slide_list}}, 10);
 
         %params = (
             'name' => "test.pptx",
@@ -96,7 +96,7 @@ subtest 'create slide' => sub {
             'folder' => "TempSlidesSDK");
 
         $response = $utils->{api}->create_slide(%params);
-        is (scalar @{$response->{slide_list}}, 10)
+        is (scalar @{$response->{slide_list}}, 11)
 	};
     if ($@) {
         fail("create_slide raised an exception: $@");
@@ -116,7 +116,7 @@ subtest 'copy slide' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->copy_slide(%params);
-        is (scalar @{$response->{slide_list}}, 9);
+        is (scalar @{$response->{slide_list}}, 10);
 	};
     if ($@) {
         fail("copy_slide raised an exception: $@");
@@ -141,7 +141,7 @@ subtest 'copy slide from source' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->copy_slide(%params);
-        is (scalar @{$response->{slide_list}}, 9);
+        is (scalar @{$response->{slide_list}}, 10);
 	};
     if ($@) {
         fail("copy_slide raised an exception: $@");
@@ -162,7 +162,7 @@ subtest 'move slide' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->move_slide(%params);
-        is (scalar @{$response->{slide_list}}, 8);
+        is (scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
         fail("move_slide raised an exception: $@");
@@ -186,7 +186,7 @@ subtest 'reorder slides' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->reorder_slides(%params);
-        is (scalar @{$response->{slide_list}}, 8);
+        is (scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
         fail("reorder_slides raised an exception: $@");
@@ -252,7 +252,7 @@ subtest 'delete slides indexes' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->delete_slides(%params);
-        is (scalar @{$response->{slide_list}}, 5);
+        is (scalar @{$response->{slide_list}}, 6);
 	};
     if ($@) {
         fail("delete_slides raised an exception: $@");
@@ -272,7 +272,7 @@ subtest 'delete slide' => sub {
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{api}->delete_slide(%params);
-        is (scalar @{$response->{slide_list}}, 7);
+        is (scalar @{$response->{slide_list}}, 8);
 	};
     if ($@) {
         fail("delete_slide raised an exception: $@");

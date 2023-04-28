@@ -4656,6 +4656,456 @@ subtest 'create_special_slide_shape invalid sub_shape' => sub {
 };
 
 #
+# create_table_cell_paragraph test
+#
+subtest 'create_table_cell_paragraph' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $utils->initialize('create_table_cell_paragraph', '');
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        fail("create_table_cell_paragraph raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create_table_cell_paragraph invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('create_table_cell_paragraph', 'name', $params{ name }, 'string');
+    $utils->initialize('create_table_cell_paragraph', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'name', 'string');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('create_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('create_table_cell_paragraph', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'slide_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('create_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('create_table_cell_paragraph', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'shape_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('create_table_cell_paragraph', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('create_table_cell_paragraph', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'row_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('create_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('create_table_cell_paragraph', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'cell_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('create_table_cell_paragraph', 'dto', $params{ dto }, 'Paragraph');
+    $utils->initialize('create_table_cell_paragraph', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'dto', $params{ dto }, 'Paragraph', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'dto', 'Paragraph');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('create_table_cell_paragraph', 'password', $params{ password }, 'string');
+    $utils->initialize('create_table_cell_paragraph', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'password', 'string');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('create_table_cell_paragraph', 'folder', $params{ folder }, 'string');
+    $utils->initialize('create_table_cell_paragraph', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'folder', 'string');
+    }
+};
+
+subtest 'create_table_cell_paragraph invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_paragraph', 'cell_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('create_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_paragraph', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('create_table_cell_paragraph', 'storage', $params{ storage }, 'string');
+    $utils->initialize('create_table_cell_paragraph', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_paragraph', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_paragraph', 'storage', 'string');
+    }
+};
+
+#
+# create_table_cell_portion test
+#
+subtest 'create_table_cell_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $utils->initialize('create_table_cell_portion', '');
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        fail("create_table_cell_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create_table_cell_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('create_table_cell_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('create_table_cell_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'name', 'string');
+    }
+};
+
+subtest 'create_table_cell_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('create_table_cell_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('create_table_cell_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('create_table_cell_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('create_table_cell_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_portion invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('create_table_cell_portion', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('create_table_cell_portion', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'row_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_portion invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('create_table_cell_portion', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('create_table_cell_portion', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'cell_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('create_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('create_table_cell_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'create_table_cell_portion invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('create_table_cell_portion', 'dto', $params{ dto }, 'Portion');
+    $utils->initialize('create_table_cell_portion', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'dto', $params{ dto }, 'Portion', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'dto', 'Portion');
+    }
+};
+
+subtest 'create_table_cell_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('create_table_cell_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('create_table_cell_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'password', 'string');
+    }
+};
+
+subtest 'create_table_cell_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('create_table_cell_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('create_table_cell_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'folder', 'string');
+    }
+};
+
+subtest 'create_table_cell_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('create_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('create_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('create_table_cell_portion', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('create_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('create_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_cell_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('create_table_cell_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('create_table_cell_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_cell_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_cell_portion', 'storage', 'string');
+    }
+};
+
+#
+# create_table_row test
+#
+subtest 'create_table_row' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $utils->initialize('create_table_row', '');
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        fail("create_table_row raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create_table_row invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('create_table_row', 'name', $params{ name }, 'string');
+    $utils->initialize('create_table_row', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'name', 'string');
+    }
+};
+
+subtest 'create_table_row invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('create_table_row', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('create_table_row', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'slide_index', 'int');
+    }
+};
+
+subtest 'create_table_row invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('create_table_row', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('create_table_row', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'shape_index', 'int');
+    }
+};
+
+subtest 'create_table_row invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('create_table_row', 'dto', $params{ dto }, 'TableRow');
+    $utils->initialize('create_table_row', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'dto', $params{ dto }, 'TableRow', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'dto', 'TableRow');
+    }
+};
+
+subtest 'create_table_row invalid position' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ position } = $utils->invalidize_param_value('create_table_row', 'position', $params{ position }, 'int');
+    $utils->initialize('create_table_row', 'position', $params{ position });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'position', $params{ position }, 'int', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'position', 'int');
+    }
+};
+
+subtest 'create_table_row invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('create_table_row', 'password', $params{ password }, 'string');
+    $utils->initialize('create_table_row', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'password', 'string');
+    }
+};
+
+subtest 'create_table_row invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('create_table_row', 'folder', $params{ folder }, 'string');
+    $utils->initialize('create_table_row', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'folder', 'string');
+    }
+};
+
+subtest 'create_table_row invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('create_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('create_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('create_table_row', 'shape_index', 'int'), 'dto' => $utils->get_param_value('create_table_row', 'dto', 'TableRow'), 'position' => $utils->get_param_value('create_table_row', 'position', 'int'), 'password' => $utils->get_param_value('create_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('create_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('create_table_row', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('create_table_row', 'storage', $params{ storage }, 'string');
+    $utils->initialize('create_table_row', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_table_row', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_table_row', 'storage', 'string');
+    }
+};
+
+#
 # create_watermark test
 #
 subtest 'create_watermark' => sub {
@@ -9887,6 +10337,456 @@ subtest 'delete_special_slide_shapes invalid sub_shape' => sub {
         $utils->assert_error('delete_special_slide_shapes', 'sub_shape', $params{ sub_shape }, 'string', $@);
     } else {
         $utils->assert_no_error('delete_special_slide_shapes', 'sub_shape', 'string');
+    }
+};
+
+#
+# delete_table_cell_paragraph test
+#
+subtest 'delete_table_cell_paragraph' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $utils->initialize('delete_table_cell_paragraph', '');
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        fail("delete_table_cell_paragraph raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_table_cell_paragraph invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'name', $params{ name }, 'string');
+    $utils->initialize('delete_table_cell_paragraph', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'name', 'string');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('delete_table_cell_paragraph', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'slide_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('delete_table_cell_paragraph', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'shape_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('delete_table_cell_paragraph', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'row_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('delete_table_cell_paragraph', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'cell_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('delete_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'password', $params{ password }, 'string');
+    $utils->initialize('delete_table_cell_paragraph', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'password', 'string');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'folder', $params{ folder }, 'string');
+    $utils->initialize('delete_table_cell_paragraph', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'folder', 'string');
+    }
+};
+
+subtest 'delete_table_cell_paragraph invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_paragraph', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_table_cell_paragraph', 'storage', $params{ storage }, 'string');
+    $utils->initialize('delete_table_cell_paragraph', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_paragraph', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_paragraph', 'storage', 'string');
+    }
+};
+
+#
+# delete_table_cell_portion test
+#
+subtest 'delete_table_cell_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $utils->initialize('delete_table_cell_portion', '');
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        fail("delete_table_cell_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_table_cell_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_table_cell_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('delete_table_cell_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'name', 'string');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'row_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'cell_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('delete_table_cell_portion', 'portion_index', $params{ portion_index }, 'int');
+    $utils->initialize('delete_table_cell_portion', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'portion_index', $params{ portion_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'portion_index', 'int');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_table_cell_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('delete_table_cell_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'password', 'string');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_table_cell_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('delete_table_cell_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'folder', 'string');
+    }
+};
+
+subtest 'delete_table_cell_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('delete_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('delete_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('delete_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('delete_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_cell_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_table_cell_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('delete_table_cell_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_cell_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_cell_portion', 'storage', 'string');
+    }
+};
+
+#
+# delete_table_row test
+#
+subtest 'delete_table_row' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $utils->initialize('delete_table_row', '');
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        fail("delete_table_row raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_table_row invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_table_row', 'name', $params{ name }, 'string');
+    $utils->initialize('delete_table_row', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'name', 'string');
+    }
+};
+
+subtest 'delete_table_row invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('delete_table_row', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('delete_table_row', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'slide_index', 'int');
+    }
+};
+
+subtest 'delete_table_row invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('delete_table_row', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('delete_table_row', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'shape_index', 'int');
+    }
+};
+
+subtest 'delete_table_row invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('delete_table_row', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('delete_table_row', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'row_index', 'int');
+    }
+};
+
+subtest 'delete_table_row invalid with_attached_rows' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ with_attached_rows } = $utils->invalidize_param_value('delete_table_row', 'with_attached_rows', $params{ with_attached_rows }, 'boolean');
+    $utils->initialize('delete_table_row', 'with_attached_rows', $params{ with_attached_rows });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'with_attached_rows', $params{ with_attached_rows }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'with_attached_rows', 'boolean');
+    }
+};
+
+subtest 'delete_table_row invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_table_row', 'password', $params{ password }, 'string');
+    $utils->initialize('delete_table_row', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'password', 'string');
+    }
+};
+
+subtest 'delete_table_row invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_table_row', 'folder', $params{ folder }, 'string');
+    $utils->initialize('delete_table_row', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'folder', 'string');
+    }
+};
+
+subtest 'delete_table_row invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('delete_table_row', 'row_index', 'int'), 'with_attached_rows' => $utils->get_param_value('delete_table_row', 'with_attached_rows', 'boolean'), 'password' => $utils->get_param_value('delete_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('delete_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_table_row', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_table_row', 'storage', $params{ storage }, 'string');
+    $utils->initialize('delete_table_row', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_table_row', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_table_row', 'storage', 'string');
     }
 };
 
@@ -17646,6 +18546,606 @@ subtest 'get_special_slide_shapes invalid sub_shape' => sub {
 };
 
 #
+# get_table_cell_paragraph test
+#
+subtest 'get_table_cell_paragraph' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $utils->initialize('get_table_cell_paragraph', '');
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        fail("get_table_cell_paragraph raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_table_cell_paragraph invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_table_cell_paragraph', 'name', $params{ name }, 'string');
+    $utils->initialize('get_table_cell_paragraph', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'name', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('get_table_cell_paragraph', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'slide_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('get_table_cell_paragraph', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'shape_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('get_table_cell_paragraph', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('get_table_cell_paragraph', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'row_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('get_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('get_table_cell_paragraph', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'cell_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('get_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_table_cell_paragraph', 'password', $params{ password }, 'string');
+    $utils->initialize('get_table_cell_paragraph', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'password', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_table_cell_paragraph', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_table_cell_paragraph', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'folder', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraph invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_paragraph', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraph', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_table_cell_paragraph', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_table_cell_paragraph', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraph', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraph', 'storage', 'string');
+    }
+};
+
+#
+# get_table_cell_paragraphs test
+#
+subtest 'get_table_cell_paragraphs' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $utils->initialize('get_table_cell_paragraphs', '');
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        fail("get_table_cell_paragraphs raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_table_cell_paragraphs invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'name', $params{ name }, 'string');
+    $utils->initialize('get_table_cell_paragraphs', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'name', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('get_table_cell_paragraphs', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'slide_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('get_table_cell_paragraphs', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'shape_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('get_table_cell_paragraphs', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'row_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('get_table_cell_paragraphs', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'cell_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'password', $params{ password }, 'string');
+    $utils->initialize('get_table_cell_paragraphs', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'password', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_table_cell_paragraphs', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'folder', 'string');
+    }
+};
+
+subtest 'get_table_cell_paragraphs invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_paragraphs', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_paragraphs', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_paragraphs', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_paragraphs', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_paragraphs', 'cell_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_paragraphs', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_paragraphs', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_paragraphs', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_table_cell_paragraphs', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_table_cell_paragraphs', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_paragraphs(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_paragraphs', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_paragraphs', 'storage', 'string');
+    }
+};
+
+#
+# get_table_cell_portion test
+#
+subtest 'get_table_cell_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $utils->initialize('get_table_cell_portion', '');
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        fail("get_table_cell_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_table_cell_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_table_cell_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('get_table_cell_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'name', 'string');
+    }
+};
+
+subtest 'get_table_cell_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_table_cell_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_table_cell_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('get_table_cell_portion', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'row_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('get_table_cell_portion', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'cell_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('get_table_cell_portion', 'portion_index', $params{ portion_index }, 'int');
+    $utils->initialize('get_table_cell_portion', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'portion_index', $params{ portion_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'portion_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_table_cell_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('get_table_cell_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'password', 'string');
+    }
+};
+
+subtest 'get_table_cell_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_table_cell_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_table_cell_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'folder', 'string');
+    }
+};
+
+subtest 'get_table_cell_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('get_table_cell_portion', 'portion_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_table_cell_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_table_cell_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portion', 'storage', 'string');
+    }
+};
+
+#
+# get_table_cell_portions test
+#
+subtest 'get_table_cell_portions' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $utils->initialize('get_table_cell_portions', '');
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        fail("get_table_cell_portions raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_table_cell_portions invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_table_cell_portions', 'name', $params{ name }, 'string');
+    $utils->initialize('get_table_cell_portions', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'name', 'string');
+    }
+};
+
+subtest 'get_table_cell_portions invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('get_table_cell_portions', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('get_table_cell_portions', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'slide_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portions invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('get_table_cell_portions', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('get_table_cell_portions', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'shape_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portions invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('get_table_cell_portions', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('get_table_cell_portions', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'row_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portions invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('get_table_cell_portions', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('get_table_cell_portions', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'cell_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portions invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('get_table_cell_portions', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('get_table_cell_portions', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'get_table_cell_portions invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_table_cell_portions', 'password', $params{ password }, 'string');
+    $utils->initialize('get_table_cell_portions', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'password', 'string');
+    }
+};
+
+subtest 'get_table_cell_portions invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_table_cell_portions', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_table_cell_portions', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'folder', 'string');
+    }
+};
+
+subtest 'get_table_cell_portions invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_table_cell_portions', 'name', 'string'), 'slide_index' => $utils->get_param_value('get_table_cell_portions', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('get_table_cell_portions', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('get_table_cell_portions', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('get_table_cell_portions', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('get_table_cell_portions', 'paragraph_index', 'int'), 'password' => $utils->get_param_value('get_table_cell_portions', 'password', 'string'), 'folder' => $utils->get_param_value('get_table_cell_portions', 'folder', 'string'), 'storage' => $utils->get_param_value('get_table_cell_portions', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_table_cell_portions', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_table_cell_portions', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_table_cell_portions(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_table_cell_portions', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_table_cell_portions', 'storage', 'string');
+    }
+};
+
+#
 # get_theme test
 #
 subtest 'get_theme' => sub {
@@ -18737,6 +20237,126 @@ subtest 'merge_online invalid storage' => sub {
         $utils->assert_error('merge_online', 'storage', $params{ storage }, 'string', $@);
     } else {
         $utils->assert_no_error('merge_online', 'storage', 'string');
+    }
+};
+
+#
+# merge_table_cells test
+#
+subtest 'merge_table_cells' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $utils->initialize('merge_table_cells', '');
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        fail("merge_table_cells raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'merge_table_cells invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('merge_table_cells', 'name', $params{ name }, 'string');
+    $utils->initialize('merge_table_cells', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'name', 'string');
+    }
+};
+
+subtest 'merge_table_cells invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('merge_table_cells', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('merge_table_cells', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'slide_index', 'int');
+    }
+};
+
+subtest 'merge_table_cells invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('merge_table_cells', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('merge_table_cells', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'shape_index', 'int');
+    }
+};
+
+subtest 'merge_table_cells invalid table_cell_merge_options' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ table_cell_merge_options } = $utils->invalidize_param_value('merge_table_cells', 'table_cell_merge_options', $params{ table_cell_merge_options }, 'TableCellMergeOptions');
+    $utils->initialize('merge_table_cells', 'table_cell_merge_options', $params{ table_cell_merge_options });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'table_cell_merge_options', $params{ table_cell_merge_options }, 'TableCellMergeOptions', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions');
+    }
+};
+
+subtest 'merge_table_cells invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('merge_table_cells', 'password', $params{ password }, 'string');
+    $utils->initialize('merge_table_cells', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'password', 'string');
+    }
+};
+
+subtest 'merge_table_cells invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('merge_table_cells', 'folder', $params{ folder }, 'string');
+    $utils->initialize('merge_table_cells', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'folder', 'string');
+    }
+};
+
+subtest 'merge_table_cells invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('merge_table_cells', 'name', 'string'), 'slide_index' => $utils->get_param_value('merge_table_cells', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('merge_table_cells', 'shape_index', 'int'), 'table_cell_merge_options' => $utils->get_param_value('merge_table_cells', 'table_cell_merge_options', 'TableCellMergeOptions'), 'password' => $utils->get_param_value('merge_table_cells', 'password', 'string'), 'folder' => $utils->get_param_value('merge_table_cells', 'folder', 'string'), 'storage' => $utils->get_param_value('merge_table_cells', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('merge_table_cells', 'storage', $params{ storage }, 'string');
+    $utils->initialize('merge_table_cells', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->merge_table_cells(%params);
+    };
+    if ($@) {
+        $utils->assert_error('merge_table_cells', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('merge_table_cells', 'storage', 'string');
     }
 };
 
@@ -24576,6 +26196,171 @@ subtest 'split_online invalid options' => sub {
 };
 
 #
+# split_table_cell test
+#
+subtest 'split_table_cell' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $utils->initialize('split_table_cell', '');
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        fail("split_table_cell raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'split_table_cell invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('split_table_cell', 'name', $params{ name }, 'string');
+    $utils->initialize('split_table_cell', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'name', 'string');
+    }
+};
+
+subtest 'split_table_cell invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('split_table_cell', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('split_table_cell', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'slide_index', 'int');
+    }
+};
+
+subtest 'split_table_cell invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('split_table_cell', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('split_table_cell', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'shape_index', 'int');
+    }
+};
+
+subtest 'split_table_cell invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('split_table_cell', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('split_table_cell', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'row_index', 'int');
+    }
+};
+
+subtest 'split_table_cell invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('split_table_cell', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('split_table_cell', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'cell_index', 'int');
+    }
+};
+
+subtest 'split_table_cell invalid split_type' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ split_type } = $utils->invalidize_param_value('split_table_cell', 'split_type', $params{ split_type }, 'string');
+    $utils->initialize('split_table_cell', 'split_type', $params{ split_type });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'split_type', $params{ split_type }, 'string', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'split_type', 'string');
+    }
+};
+
+subtest 'split_table_cell invalid value' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ value } = $utils->invalidize_param_value('split_table_cell', 'value', $params{ value }, 'double');
+    $utils->initialize('split_table_cell', 'value', $params{ value });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'value', $params{ value }, 'double', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'value', 'double');
+    }
+};
+
+subtest 'split_table_cell invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('split_table_cell', 'password', $params{ password }, 'string');
+    $utils->initialize('split_table_cell', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'password', 'string');
+    }
+};
+
+subtest 'split_table_cell invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('split_table_cell', 'folder', $params{ folder }, 'string');
+    $utils->initialize('split_table_cell', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'folder', 'string');
+    }
+};
+
+subtest 'split_table_cell invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('split_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('split_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('split_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('split_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('split_table_cell', 'cell_index', 'int'), 'split_type' => $utils->get_param_value('split_table_cell', 'split_type', 'string'), 'value' => $utils->get_param_value('split_table_cell', 'value', 'double'), 'password' => $utils->get_param_value('split_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('split_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('split_table_cell', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('split_table_cell', 'storage', $params{ storage }, 'string');
+    $utils->initialize('split_table_cell', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->split_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('split_table_cell', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('split_table_cell', 'storage', 'string');
+    }
+};
+
+#
 # storage_exists test
 #
 subtest 'storage_exists' => sub {
@@ -26927,6 +28712,636 @@ subtest 'update_special_slide_shape invalid sub_shape' => sub {
         $utils->assert_error('update_special_slide_shape', 'sub_shape', $params{ sub_shape }, 'string', $@);
     } else {
         $utils->assert_no_error('update_special_slide_shape', 'sub_shape', 'string');
+    }
+};
+
+#
+# update_table_cell test
+#
+subtest 'update_table_cell' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $utils->initialize('update_table_cell', '');
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        fail("update_table_cell raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_table_cell invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_table_cell', 'name', $params{ name }, 'string');
+    $utils->initialize('update_table_cell', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'name', 'string');
+    }
+};
+
+subtest 'update_table_cell invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('update_table_cell', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('update_table_cell', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'slide_index', 'int');
+    }
+};
+
+subtest 'update_table_cell invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('update_table_cell', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('update_table_cell', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'shape_index', 'int');
+    }
+};
+
+subtest 'update_table_cell invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('update_table_cell', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('update_table_cell', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'row_index', 'int');
+    }
+};
+
+subtest 'update_table_cell invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('update_table_cell', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('update_table_cell', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'cell_index', 'int');
+    }
+};
+
+subtest 'update_table_cell invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('update_table_cell', 'dto', $params{ dto }, 'TableCell');
+    $utils->initialize('update_table_cell', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'dto', $params{ dto }, 'TableCell', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'dto', 'TableCell');
+    }
+};
+
+subtest 'update_table_cell invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_table_cell', 'password', $params{ password }, 'string');
+    $utils->initialize('update_table_cell', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'password', 'string');
+    }
+};
+
+subtest 'update_table_cell invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_table_cell', 'folder', $params{ folder }, 'string');
+    $utils->initialize('update_table_cell', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'folder', 'string');
+    }
+};
+
+subtest 'update_table_cell invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell', 'cell_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell', 'dto', 'TableCell'), 'password' => $utils->get_param_value('update_table_cell', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_table_cell', 'storage', $params{ storage }, 'string');
+    $utils->initialize('update_table_cell', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell', 'storage', 'string');
+    }
+};
+
+#
+# update_table_cell_paragraph test
+#
+subtest 'update_table_cell_paragraph' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $utils->initialize('update_table_cell_paragraph', '');
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        fail("update_table_cell_paragraph raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_table_cell_paragraph invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_table_cell_paragraph', 'name', $params{ name }, 'string');
+    $utils->initialize('update_table_cell_paragraph', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'name', 'string');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('update_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('update_table_cell_paragraph', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'slide_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('update_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('update_table_cell_paragraph', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'shape_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('update_table_cell_paragraph', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('update_table_cell_paragraph', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'row_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('update_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('update_table_cell_paragraph', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'cell_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('update_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('update_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('update_table_cell_paragraph', 'dto', $params{ dto }, 'Paragraph');
+    $utils->initialize('update_table_cell_paragraph', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'dto', $params{ dto }, 'Paragraph', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'dto', 'Paragraph');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_table_cell_paragraph', 'password', $params{ password }, 'string');
+    $utils->initialize('update_table_cell_paragraph', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'password', 'string');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_table_cell_paragraph', 'folder', $params{ folder }, 'string');
+    $utils->initialize('update_table_cell_paragraph', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'folder', 'string');
+    }
+};
+
+subtest 'update_table_cell_paragraph invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_paragraph', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_paragraph', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_paragraph', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_paragraph', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_paragraph', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_paragraph', 'paragraph_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_paragraph', 'dto', 'Paragraph'), 'password' => $utils->get_param_value('update_table_cell_paragraph', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_paragraph', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_paragraph', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_table_cell_paragraph', 'storage', $params{ storage }, 'string');
+    $utils->initialize('update_table_cell_paragraph', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_paragraph(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_paragraph', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_paragraph', 'storage', 'string');
+    }
+};
+
+#
+# update_table_cell_portion test
+#
+subtest 'update_table_cell_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $utils->initialize('update_table_cell_portion', '');
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        fail("update_table_cell_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_table_cell_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_table_cell_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('update_table_cell_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'name', 'string');
+    }
+};
+
+subtest 'update_table_cell_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('update_table_cell_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('update_table_cell_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('update_table_cell_portion', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'row_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid cell_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ cell_index } = $utils->invalidize_param_value('update_table_cell_portion', 'cell_index', $params{ cell_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'cell_index', $params{ cell_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'cell_index', $params{ cell_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'cell_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('update_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('update_table_cell_portion', 'portion_index', $params{ portion_index }, 'int');
+    $utils->initialize('update_table_cell_portion', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'portion_index', $params{ portion_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'portion_index', 'int');
+    }
+};
+
+subtest 'update_table_cell_portion invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('update_table_cell_portion', 'dto', $params{ dto }, 'Portion');
+    $utils->initialize('update_table_cell_portion', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'dto', $params{ dto }, 'Portion', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'dto', 'Portion');
+    }
+};
+
+subtest 'update_table_cell_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_table_cell_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('update_table_cell_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'password', 'string');
+    }
+};
+
+subtest 'update_table_cell_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_table_cell_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('update_table_cell_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'folder', 'string');
+    }
+};
+
+subtest 'update_table_cell_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_cell_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_cell_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_cell_portion', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_cell_portion', 'row_index', 'int'), 'cell_index' => $utils->get_param_value('update_table_cell_portion', 'cell_index', 'int'), 'paragraph_index' => $utils->get_param_value('update_table_cell_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('update_table_cell_portion', 'portion_index', 'int'), 'dto' => $utils->get_param_value('update_table_cell_portion', 'dto', 'Portion'), 'password' => $utils->get_param_value('update_table_cell_portion', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_cell_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_cell_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_table_cell_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('update_table_cell_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_table_cell_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_cell_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_cell_portion', 'storage', 'string');
+    }
+};
+
+#
+# update_table_row test
+#
+subtest 'update_table_row' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $utils->initialize('update_table_row', '');
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        fail("update_table_row raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_table_row invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_table_row', 'name', $params{ name }, 'string');
+    $utils->initialize('update_table_row', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'name', 'string');
+    }
+};
+
+subtest 'update_table_row invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('update_table_row', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('update_table_row', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'slide_index', 'int');
+    }
+};
+
+subtest 'update_table_row invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('update_table_row', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('update_table_row', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'shape_index', 'int');
+    }
+};
+
+subtest 'update_table_row invalid row_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ row_index } = $utils->invalidize_param_value('update_table_row', 'row_index', $params{ row_index }, 'int');
+    $utils->initialize('update_table_row', 'row_index', $params{ row_index });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'row_index', $params{ row_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'row_index', 'int');
+    }
+};
+
+subtest 'update_table_row invalid dto' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ dto } = $utils->invalidize_param_value('update_table_row', 'dto', $params{ dto }, 'TableRow');
+    $utils->initialize('update_table_row', 'dto', $params{ dto });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'dto', $params{ dto }, 'TableRow', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'dto', 'TableRow');
+    }
+};
+
+subtest 'update_table_row invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_table_row', 'password', $params{ password }, 'string');
+    $utils->initialize('update_table_row', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'password', 'string');
+    }
+};
+
+subtest 'update_table_row invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_table_row', 'folder', $params{ folder }, 'string');
+    $utils->initialize('update_table_row', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'folder', 'string');
+    }
+};
+
+subtest 'update_table_row invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_table_row', 'name', 'string'), 'slide_index' => $utils->get_param_value('update_table_row', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('update_table_row', 'shape_index', 'int'), 'row_index' => $utils->get_param_value('update_table_row', 'row_index', 'int'), 'dto' => $utils->get_param_value('update_table_row', 'dto', 'TableRow'), 'password' => $utils->get_param_value('update_table_row', 'password', 'string'), 'folder' => $utils->get_param_value('update_table_row', 'folder', 'string'), 'storage' => $utils->get_param_value('update_table_row', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_table_row', 'storage', $params{ storage }, 'string');
+    $utils->initialize('update_table_row', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_table_row(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_table_row', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_table_row', 'storage', 'string');
     }
 };
 
