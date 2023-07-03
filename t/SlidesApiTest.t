@@ -5106,6 +5106,96 @@ subtest 'create_table_row invalid storage' => sub {
 };
 
 #
+# create_vba_module test
+#
+subtest 'create_vba_module' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $utils->initialize('create_vba_module', '');
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        fail("create_vba_module raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'create_vba_module invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('create_vba_module', 'name', $params{ name }, 'string');
+    $utils->initialize('create_vba_module', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_vba_module', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_vba_module', 'name', 'string');
+    }
+};
+
+subtest 'create_vba_module invalid module_dto' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $params{ module_dto } = $utils->invalidize_param_value('create_vba_module', 'module_dto', $params{ module_dto }, 'VbaModule');
+    $utils->initialize('create_vba_module', 'module_dto', $params{ module_dto });
+
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_vba_module', 'module_dto', $params{ module_dto }, 'VbaModule', $@);
+    } else {
+        $utils->assert_no_error('create_vba_module', 'module_dto', 'VbaModule');
+    }
+};
+
+subtest 'create_vba_module invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('create_vba_module', 'password', $params{ password }, 'string');
+    $utils->initialize('create_vba_module', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_vba_module', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_vba_module', 'password', 'string');
+    }
+};
+
+subtest 'create_vba_module invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('create_vba_module', 'folder', $params{ folder }, 'string');
+    $utils->initialize('create_vba_module', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_vba_module', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_vba_module', 'folder', 'string');
+    }
+};
+
+subtest 'create_vba_module invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('create_vba_module', 'name', 'string'), 'module_dto' => $utils->get_param_value('create_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('create_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('create_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('create_vba_module', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('create_vba_module', 'storage', $params{ storage }, 'string');
+    $utils->initialize('create_vba_module', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->create_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('create_vba_module', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('create_vba_module', 'storage', 'string');
+    }
+};
+
+#
 # create_watermark test
 #
 subtest 'create_watermark' => sub {
@@ -11057,6 +11147,96 @@ subtest 'delete_unused_master_slides_online invalid password' => sub {
         $utils->assert_error('delete_unused_master_slides_online', 'password', $params{ password }, 'string', $@);
     } else {
         $utils->assert_no_error('delete_unused_master_slides_online', 'password', 'string');
+    }
+};
+
+#
+# delete_vba_module test
+#
+subtest 'delete_vba_module' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $utils->initialize('delete_vba_module', '');
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        fail("delete_vba_module raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_vba_module invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_vba_module', 'name', $params{ name }, 'string');
+    $utils->initialize('delete_vba_module', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_vba_module', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_vba_module', 'name', 'string');
+    }
+};
+
+subtest 'delete_vba_module invalid module_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $params{ module_index } = $utils->invalidize_param_value('delete_vba_module', 'module_index', $params{ module_index }, 'int');
+    $utils->initialize('delete_vba_module', 'module_index', $params{ module_index });
+
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_vba_module', 'module_index', $params{ module_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_vba_module', 'module_index', 'int');
+    }
+};
+
+subtest 'delete_vba_module invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_vba_module', 'password', $params{ password }, 'string');
+    $utils->initialize('delete_vba_module', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_vba_module', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_vba_module', 'password', 'string');
+    }
+};
+
+subtest 'delete_vba_module invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_vba_module', 'folder', $params{ folder }, 'string');
+    $utils->initialize('delete_vba_module', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_vba_module', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_vba_module', 'folder', 'string');
+    }
+};
+
+subtest 'delete_vba_module invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('delete_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('delete_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('delete_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_vba_module', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_vba_module', 'storage', $params{ storage }, 'string');
+    $utils->initialize('delete_vba_module', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->delete_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_vba_module', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_vba_module', 'storage', 'string');
     }
 };
 
@@ -19232,6 +19412,171 @@ subtest 'get_theme invalid storage' => sub {
         $utils->assert_error('get_theme', 'storage', $params{ storage }, 'string', $@);
     } else {
         $utils->assert_no_error('get_theme', 'storage', 'string');
+    }
+};
+
+#
+# get_vba_module test
+#
+subtest 'get_vba_module' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $utils->initialize('get_vba_module', '');
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        fail("get_vba_module raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_vba_module invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_vba_module', 'name', $params{ name }, 'string');
+    $utils->initialize('get_vba_module', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_module', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_module', 'name', 'string');
+    }
+};
+
+subtest 'get_vba_module invalid module_index' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $params{ module_index } = $utils->invalidize_param_value('get_vba_module', 'module_index', $params{ module_index }, 'int');
+    $utils->initialize('get_vba_module', 'module_index', $params{ module_index });
+
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_module', 'module_index', $params{ module_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('get_vba_module', 'module_index', 'int');
+    }
+};
+
+subtest 'get_vba_module invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_vba_module', 'password', $params{ password }, 'string');
+    $utils->initialize('get_vba_module', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_module', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_module', 'password', 'string');
+    }
+};
+
+subtest 'get_vba_module invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_vba_module', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_vba_module', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_module', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_module', 'folder', 'string');
+    }
+};
+
+subtest 'get_vba_module invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('get_vba_module', 'module_index', 'int'), 'password' => $utils->get_param_value('get_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_module', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_vba_module', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_vba_module', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_module', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_module', 'storage', 'string');
+    }
+};
+
+#
+# get_vba_project test
+#
+subtest 'get_vba_project' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_project', 'name', 'string'), 'password' => $utils->get_param_value('get_vba_project', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_project', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_project', 'storage', 'string'));
+    $utils->initialize('get_vba_project', '');
+    eval {
+        my $result = $utils->{api}->get_vba_project(%params);
+    };
+    if ($@) {
+        fail("get_vba_project raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_vba_project invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_project', 'name', 'string'), 'password' => $utils->get_param_value('get_vba_project', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_project', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_project', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_vba_project', 'name', $params{ name }, 'string');
+    $utils->initialize('get_vba_project', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->get_vba_project(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_project', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_project', 'name', 'string');
+    }
+};
+
+subtest 'get_vba_project invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_project', 'name', 'string'), 'password' => $utils->get_param_value('get_vba_project', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_project', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_project', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_vba_project', 'password', $params{ password }, 'string');
+    $utils->initialize('get_vba_project', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->get_vba_project(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_project', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_project', 'password', 'string');
+    }
+};
+
+subtest 'get_vba_project invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_project', 'name', 'string'), 'password' => $utils->get_param_value('get_vba_project', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_project', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_project', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_vba_project', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_vba_project', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->get_vba_project(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_project', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_project', 'folder', 'string');
+    }
+};
+
+subtest 'get_vba_project invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_vba_project', 'name', 'string'), 'password' => $utils->get_param_value('get_vba_project', 'password', 'string'), 'folder' => $utils->get_param_value('get_vba_project', 'folder', 'string'), 'storage' => $utils->get_param_value('get_vba_project', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_vba_project', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_vba_project', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->get_vba_project(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_vba_project', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_vba_project', 'storage', 'string');
     }
 };
 
@@ -29342,6 +29687,111 @@ subtest 'update_table_row invalid storage' => sub {
         $utils->assert_error('update_table_row', 'storage', $params{ storage }, 'string', $@);
     } else {
         $utils->assert_no_error('update_table_row', 'storage', 'string');
+    }
+};
+
+#
+# update_vba_module test
+#
+subtest 'update_vba_module' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $utils->initialize('update_vba_module', '');
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        fail("update_vba_module raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'update_vba_module invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('update_vba_module', 'name', $params{ name }, 'string');
+    $utils->initialize('update_vba_module', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'name', 'string');
+    }
+};
+
+subtest 'update_vba_module invalid module_index' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ module_index } = $utils->invalidize_param_value('update_vba_module', 'module_index', $params{ module_index }, 'int');
+    $utils->initialize('update_vba_module', 'module_index', $params{ module_index });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'module_index', $params{ module_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'module_index', 'int');
+    }
+};
+
+subtest 'update_vba_module invalid module_dto' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ module_dto } = $utils->invalidize_param_value('update_vba_module', 'module_dto', $params{ module_dto }, 'VbaModule');
+    $utils->initialize('update_vba_module', 'module_dto', $params{ module_dto });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'module_dto', $params{ module_dto }, 'VbaModule', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'module_dto', 'VbaModule');
+    }
+};
+
+subtest 'update_vba_module invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('update_vba_module', 'password', $params{ password }, 'string');
+    $utils->initialize('update_vba_module', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'password', 'string');
+    }
+};
+
+subtest 'update_vba_module invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('update_vba_module', 'folder', $params{ folder }, 'string');
+    $utils->initialize('update_vba_module', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'folder', 'string');
+    }
+};
+
+subtest 'update_vba_module invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('update_vba_module', 'name', 'string'), 'module_index' => $utils->get_param_value('update_vba_module', 'module_index', 'int'), 'module_dto' => $utils->get_param_value('update_vba_module', 'module_dto', 'VbaModule'), 'password' => $utils->get_param_value('update_vba_module', 'password', 'string'), 'folder' => $utils->get_param_value('update_vba_module', 'folder', 'string'), 'storage' => $utils->get_param_value('update_vba_module', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('update_vba_module', 'storage', $params{ storage }, 'string');
+    $utils->initialize('update_vba_module', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->update_vba_module(%params);
+    };
+    if ($@) {
+        $utils->assert_error('update_vba_module', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('update_vba_module', 'storage', 'string');
     }
 };
 
