@@ -22221,6 +22221,246 @@ subtest 'replace_slide_text_online invalid password' => sub {
 };
 
 #
+# replace_text_formatting test
+#
+subtest 'replace_text_formatting' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $utils->initialize('replace_text_formatting', '');
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        fail("replace_text_formatting raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace_text_formatting invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('replace_text_formatting', 'name', $params{ name }, 'string');
+    $utils->initialize('replace_text_formatting', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'name', 'string');
+    }
+};
+
+subtest 'replace_text_formatting invalid old_value' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ old_value } = $utils->invalidize_param_value('replace_text_formatting', 'old_value', $params{ old_value }, 'string');
+    $utils->initialize('replace_text_formatting', 'old_value', $params{ old_value });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'old_value', $params{ old_value }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'old_value', 'string');
+    }
+};
+
+subtest 'replace_text_formatting invalid new_value' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ new_value } = $utils->invalidize_param_value('replace_text_formatting', 'new_value', $params{ new_value }, 'string');
+    $utils->initialize('replace_text_formatting', 'new_value', $params{ new_value });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'new_value', $params{ new_value }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'new_value', 'string');
+    }
+};
+
+subtest 'replace_text_formatting invalid portion_format' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ portion_format } = $utils->invalidize_param_value('replace_text_formatting', 'portion_format', $params{ portion_format }, 'PortionFormat');
+    $utils->initialize('replace_text_formatting', 'portion_format', $params{ portion_format });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'portion_format', $params{ portion_format }, 'PortionFormat', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'portion_format', 'PortionFormat');
+    }
+};
+
+subtest 'replace_text_formatting invalid with_masters' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ with_masters } = $utils->invalidize_param_value('replace_text_formatting', 'with_masters', $params{ with_masters }, 'boolean');
+    $utils->initialize('replace_text_formatting', 'with_masters', $params{ with_masters });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'with_masters', $params{ with_masters }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'with_masters', 'boolean');
+    }
+};
+
+subtest 'replace_text_formatting invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('replace_text_formatting', 'password', $params{ password }, 'string');
+    $utils->initialize('replace_text_formatting', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'password', 'string');
+    }
+};
+
+subtest 'replace_text_formatting invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('replace_text_formatting', 'folder', $params{ folder }, 'string');
+    $utils->initialize('replace_text_formatting', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'folder', 'string');
+    }
+};
+
+subtest 'replace_text_formatting invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_text_formatting', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_text_formatting', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting', 'password', 'string'), 'folder' => $utils->get_param_value('replace_text_formatting', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_text_formatting', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('replace_text_formatting', 'storage', $params{ storage }, 'string');
+    $utils->initialize('replace_text_formatting', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting', 'storage', 'string');
+    }
+};
+
+#
+# replace_text_formatting_online test
+#
+subtest 'replace_text_formatting_online' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $utils->initialize('replace_text_formatting_online', '');
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        fail("replace_text_formatting_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace_text_formatting_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('replace_text_formatting_online', 'document', $params{ document }, 'File');
+    $utils->initialize('replace_text_formatting_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'document', $params{ document }, 'File', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'document', 'File');
+    }
+};
+
+subtest 'replace_text_formatting_online invalid old_value' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ old_value } = $utils->invalidize_param_value('replace_text_formatting_online', 'old_value', $params{ old_value }, 'string');
+    $utils->initialize('replace_text_formatting_online', 'old_value', $params{ old_value });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'old_value', $params{ old_value }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'old_value', 'string');
+    }
+};
+
+subtest 'replace_text_formatting_online invalid new_value' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ new_value } = $utils->invalidize_param_value('replace_text_formatting_online', 'new_value', $params{ new_value }, 'string');
+    $utils->initialize('replace_text_formatting_online', 'new_value', $params{ new_value });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'new_value', $params{ new_value }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'new_value', 'string');
+    }
+};
+
+subtest 'replace_text_formatting_online invalid portion_format' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ portion_format } = $utils->invalidize_param_value('replace_text_formatting_online', 'portion_format', $params{ portion_format }, 'PortionFormat');
+    $utils->initialize('replace_text_formatting_online', 'portion_format', $params{ portion_format });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'portion_format', $params{ portion_format }, 'PortionFormat', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'portion_format', 'PortionFormat');
+    }
+};
+
+subtest 'replace_text_formatting_online invalid with_masters' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ with_masters } = $utils->invalidize_param_value('replace_text_formatting_online', 'with_masters', $params{ with_masters }, 'boolean');
+    $utils->initialize('replace_text_formatting_online', 'with_masters', $params{ with_masters });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'with_masters', $params{ with_masters }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'with_masters', 'boolean');
+    }
+};
+
+subtest 'replace_text_formatting_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_text_formatting_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_text_formatting_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_text_formatting_online', 'new_value', 'string'), 'portion_format' => $utils->get_param_value('replace_text_formatting_online', 'portion_format', 'PortionFormat'), 'with_masters' => $utils->get_param_value('replace_text_formatting_online', 'with_masters', 'boolean'), 'password' => $utils->get_param_value('replace_text_formatting_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('replace_text_formatting_online', 'password', $params{ password }, 'string');
+    $utils->initialize('replace_text_formatting_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_text_formatting_online', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_text_formatting_online', 'password', 'string');
+    }
+};
+
+#
 # save_portion_as_math_ml test
 #
 subtest 'save_portion_as_math_ml' => sub {

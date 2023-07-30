@@ -35,6 +35,8 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::Object::Portion;
+use AsposeSlidesCloud::Object::PortionFormat;
 
 use strict;
 use warnings;
@@ -112,6 +114,54 @@ subtest 'text replace request' => sub {
     };
     if ($@) {
         fail("replace_presentation_text_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace text formatting' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{api}->copy_file(%copy_params);
+
+        my $old_text = "banana";
+        my $new_text = "orange";
+        my $color = "#FFFFA500";
+
+        my $portion = AsposeSlidesCloud::Object::Portion->new();
+        $portion->{text} = $old_text;
+
+        my $portion_format = AsposeSlidesCloud::Object::PortionFormat->new();
+        $portion_format->{font_color} = $color;
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'paragraph_index' => 1, 'position' => 1, 'dto' => $portion, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{api}->create_portion(%params);
+
+        $params{old_value} = $old_text;
+        $params{new_value} = $new_text;
+        $params{portion_format} = $portion_format;
+        $utils->{api}->replace_text_formatting(%params);
+
+        $params{portion_index} = 1;
+        my $updated_portion = $utils->{api}->get_portion(%params);
+        is($updated_portion->{text}, $new_text);
+        is($updated_portion->{font_color}, $color);
+    };
+    if ($@) {
+        fail("replace_text_formatting raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace text formatting online' => sub {
+    eval {
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+        my $portion_format = AsposeSlidesCloud::Object::PortionFormat->new();
+        $portion_format->{font_color} = "#FFFFA500";
+        my %params = ('document' => $source, 'old_value' => "banana", 'new_value' => "orange", 'portion_format' => $portion_format, 'password' => "password");
+        $utils->{api}->replace_text_formatting_online(%params);
+    };
+    if ($@) {
+        fail("replace_text_formatting_online raised an exception: $@");
     }
     pass();
 };

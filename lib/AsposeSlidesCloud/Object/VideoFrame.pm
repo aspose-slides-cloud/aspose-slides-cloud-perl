@@ -288,6 +288,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'trim_from_start' => {
+    	datatype => 'double',
+    	base_name => 'TrimFromStart',
+    	description => 'Trim start [ms]',
+    	format => '',
+    	read_only => '',
+    		},
+    'trim_from_end' => {
+    	datatype => 'double',
+    	base_name => 'TrimFromEnd',
+    	description => 'Trim end [ms]',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -317,7 +331,9 @@ __PACKAGE__->swagger_types( {
     'rewind_video' => 'boolean',
     'volume' => 'string',
     'base64_data' => 'string',
-    'picture_fill_format' => 'PictureFill'
+    'picture_fill_format' => 'PictureFill',
+    'trim_from_start' => 'double',
+    'trim_from_end' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -347,7 +363,9 @@ __PACKAGE__->attribute_map( {
     'rewind_video' => 'RewindVideo',
     'volume' => 'Volume',
     'base64_data' => 'Base64Data',
-    'picture_fill_format' => 'PictureFillFormat'
+    'picture_fill_format' => 'PictureFillFormat',
+    'trim_from_start' => 'TrimFromStart',
+    'trim_from_end' => 'TrimFromEnd'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

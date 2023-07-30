@@ -216,6 +216,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'rewind' => {
+    	datatype => 'boolean',
+    	base_name => 'Rewind',
+    	description => 'This attribute specifies if the effect will rewind when done playing.',
+    	format => '',
+    	read_only => '',
+    		},
+    'after_animation_type' => {
+    	datatype => 'string',
+    	base_name => 'AfterAnimationType',
+    	description => 'Defined an after animation color for effect.',
+    	format => '',
+    	read_only => '',
+    		},
+    'after_animation_color' => {
+    	datatype => 'string',
+    	base_name => 'AfterAnimationColor',
+    	description => 'Defined an after animation color for effect. Applied when the AfterAnimationType property is set to Color.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -236,7 +257,10 @@ __PACKAGE__->swagger_types( {
     'trigger_delay_time' => 'double',
     'repeat_until_end_slide' => 'boolean',
     'repeat_until_next_click' => 'boolean',
-    'stop_previous_sound' => 'boolean'
+    'stop_previous_sound' => 'boolean',
+    'rewind' => 'boolean',
+    'after_animation_type' => 'string',
+    'after_animation_color' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -257,7 +281,10 @@ __PACKAGE__->attribute_map( {
     'trigger_delay_time' => 'TriggerDelayTime',
     'repeat_until_end_slide' => 'RepeatUntilEndSlide',
     'repeat_until_next_click' => 'RepeatUntilNextClick',
-    'stop_previous_sound' => 'StopPreviousSound'
+    'stop_previous_sound' => 'StopPreviousSound',
+    'rewind' => 'Rewind',
+    'after_animation_type' => 'AfterAnimationType',
+    'after_animation_color' => 'AfterAnimationColor'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
