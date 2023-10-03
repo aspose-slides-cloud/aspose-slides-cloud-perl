@@ -21771,6 +21771,186 @@ subtest 'replace_font_online invalid fonts_folder' => sub {
 };
 
 #
+# replace_image test
+#
+subtest 'replace_image' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $utils->initialize('replace_image', '');
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        fail("replace_image raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace_image invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('replace_image', 'name', $params{ name }, 'string');
+    $utils->initialize('replace_image', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'name', 'string');
+    }
+};
+
+subtest 'replace_image invalid image_index' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ image_index } = $utils->invalidize_param_value('replace_image', 'image_index', $params{ image_index }, 'int');
+    $utils->initialize('replace_image', 'image_index', $params{ image_index });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'image_index', $params{ image_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'image_index', 'int');
+    }
+};
+
+subtest 'replace_image invalid image' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ image } = $utils->invalidize_param_value('replace_image', 'image', $params{ image }, 'File');
+    $utils->initialize('replace_image', 'image', $params{ image });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'image', $params{ image }, 'File', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'image', 'File');
+    }
+};
+
+subtest 'replace_image invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('replace_image', 'password', $params{ password }, 'string');
+    $utils->initialize('replace_image', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'password', 'string');
+    }
+};
+
+subtest 'replace_image invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('replace_image', 'folder', $params{ folder }, 'string');
+    $utils->initialize('replace_image', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'folder', 'string');
+    }
+};
+
+subtest 'replace_image invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_image', 'name', 'string'), 'image_index' => $utils->get_param_value('replace_image', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image', 'image', 'File'), 'password' => $utils->get_param_value('replace_image', 'password', 'string'), 'folder' => $utils->get_param_value('replace_image', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_image', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('replace_image', 'storage', $params{ storage }, 'string');
+    $utils->initialize('replace_image', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{api}->replace_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_image', 'storage', 'string');
+    }
+};
+
+#
+# replace_image_online test
+#
+subtest 'replace_image_online' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_image_online', 'document', 'File'), 'image_index' => $utils->get_param_value('replace_image_online', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image_online', 'image', 'File'), 'password' => $utils->get_param_value('replace_image_online', 'password', 'string'));
+    $utils->initialize('replace_image_online', '');
+    eval {
+        my $result = $utils->{api}->replace_image_online(%params);
+    };
+    if ($@) {
+        fail("replace_image_online raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'replace_image_online invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_image_online', 'document', 'File'), 'image_index' => $utils->get_param_value('replace_image_online', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image_online', 'image', 'File'), 'password' => $utils->get_param_value('replace_image_online', 'password', 'string'));
+    $params{ document } = $utils->invalidize_param_value('replace_image_online', 'document', $params{ document }, 'File');
+    $utils->initialize('replace_image_online', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{api}->replace_image_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image_online', 'document', $params{ document }, 'File', $@);
+    } else {
+        $utils->assert_no_error('replace_image_online', 'document', 'File');
+    }
+};
+
+subtest 'replace_image_online invalid image_index' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_image_online', 'document', 'File'), 'image_index' => $utils->get_param_value('replace_image_online', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image_online', 'image', 'File'), 'password' => $utils->get_param_value('replace_image_online', 'password', 'string'));
+    $params{ image_index } = $utils->invalidize_param_value('replace_image_online', 'image_index', $params{ image_index }, 'int');
+    $utils->initialize('replace_image_online', 'image_index', $params{ image_index });
+
+    eval {
+        my $result = $utils->{api}->replace_image_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image_online', 'image_index', $params{ image_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('replace_image_online', 'image_index', 'int');
+    }
+};
+
+subtest 'replace_image_online invalid image' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_image_online', 'document', 'File'), 'image_index' => $utils->get_param_value('replace_image_online', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image_online', 'image', 'File'), 'password' => $utils->get_param_value('replace_image_online', 'password', 'string'));
+    $params{ image } = $utils->invalidize_param_value('replace_image_online', 'image', $params{ image }, 'File');
+    $utils->initialize('replace_image_online', 'image', $params{ image });
+
+    eval {
+        my $result = $utils->{api}->replace_image_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image_online', 'image', $params{ image }, 'File', $@);
+    } else {
+        $utils->assert_no_error('replace_image_online', 'image', 'File');
+    }
+};
+
+subtest 'replace_image_online invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_image_online', 'document', 'File'), 'image_index' => $utils->get_param_value('replace_image_online', 'image_index', 'int'), 'image' => $utils->get_param_value('replace_image_online', 'image', 'File'), 'password' => $utils->get_param_value('replace_image_online', 'password', 'string'));
+    $params{ password } = $utils->invalidize_param_value('replace_image_online', 'password', $params{ password }, 'string');
+    $utils->initialize('replace_image_online', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{api}->replace_image_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_image_online', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('replace_image_online', 'password', 'string');
+    }
+};
+
+#
 # replace_presentation_text test
 #
 subtest 'replace_presentation_text' => sub {
