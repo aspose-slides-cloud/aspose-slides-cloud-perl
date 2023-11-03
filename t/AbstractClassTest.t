@@ -32,6 +32,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Chart;
 
 use strict;
@@ -44,7 +45,7 @@ subtest 'subclass property deserialization' => sub {
     $utils->initialize('get_slide_shape', '');
     my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
     eval {
-        my $result = $utils->{api}->get_shape(%params);
+        my $result = $utils->{testSlidesApi}->get_shape(%params);
         is($result->{text}, "1");
     };
     if ($@) {

@@ -32,6 +32,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::HeaderFooter;
 use AsposeSlidesCloud::Object::NotesSlideHeaderFooter;
 
@@ -43,16 +44,16 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'header footer all slides' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::HeaderFooter->new();
         $dto->{is_footer_visible} = 1;
         $dto->{footer_text} = "footer";
         $dto->{is_date_time_visible} = 0;
         my %params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->set_presentation_header_footer(%params);
+        $utils->{testSlidesApi}->set_presentation_header_footer(%params);
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->get_slide_header_footer(%params);
+        my $result = $utils->{testSlidesApi}->get_slide_header_footer(%params);
         ok($result->{is_footer_visible});
         ok(not $result->{is_date_time_visible});
     };
@@ -65,18 +66,18 @@ subtest 'header footer all slides' => sub {
 subtest 'header footer slide' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::HeaderFooter->new();
         $dto->{is_footer_visible} = 1;
         $dto->{footer_text} = "footer";
         $dto->{is_date_time_visible} = 0;
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->set_slide_header_footer(%params);
+        my $result = $utils->{testSlidesApi}->set_slide_header_footer(%params);
         ok($result->{is_footer_visible});
         ok(not $result->{is_date_time_visible});
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $result = $utils->{api}->get_slide_header_footer(%params);
+        $result = $utils->{testSlidesApi}->get_slide_header_footer(%params);
         ok($result->{is_footer_visible});
         ok(not $result->{is_date_time_visible});
     };
@@ -89,18 +90,18 @@ subtest 'header footer slide' => sub {
 subtest 'header notes slide' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::NotesSlideHeaderFooter->new();
         $dto->{is_header_visible} = 1;
         $dto->{footer_text} = "footer";
         $dto->{is_date_time_visible} = 0;
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->set_notes_slide_header_footer(%params);
+        my $result = $utils->{testSlidesApi}->set_notes_slide_header_footer(%params);
         ok($result->{is_header_visible});
         ok(not $result->{is_date_time_visible});
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $result = $utils->{api}->get_notes_slide_header_footer(%params);
+        $result = $utils->{testSlidesApi}->get_notes_slide_header_footer(%params);
         ok($result->{is_header_visible});
         ok(not $result->{is_date_time_visible});
     };

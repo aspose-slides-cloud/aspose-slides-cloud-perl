@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::SolidFill;
 
@@ -44,7 +45,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'shape format line' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Shape->new();
       my $line_format = AsposeSlidesCloud::Object::LineFormat->new();
@@ -53,11 +54,11 @@ subtest 'shape format line' => sub {
       $line_format->{dash_style} = "Dash";
       $dto->{line_format} = $line_format;
       my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape = $utils->{api}->update_shape(%params);
+      my $shape = $utils->{testSlidesApi}->update_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
 
       %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $shape = $utils->{api}->get_shape(%params);
+      $shape = $utils->{testSlidesApi}->get_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
       is($shape->{line_format}{width}, $dto->{line_format}{width});
     };
@@ -70,18 +71,18 @@ subtest 'shape format line' => sub {
 subtest 'shape format fill' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Shape->new();
       my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
       $fill_format->{color} = "#FFFFFF00";
       $dto->{fill_format} = $fill_format;
       my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape = $utils->{api}->update_shape(%params);
+      my $shape = $utils->{testSlidesApi}->update_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
 
       %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $shape = $utils->{api}->get_shape(%params);
+      $shape = $utils->{testSlidesApi}->get_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
       is(ref $shape->{fill_format}, "AsposeSlidesCloud::Object::SolidFill");
       is($shape->{fill_format}{color}, $dto->{fill_format}{color});
@@ -95,7 +96,7 @@ subtest 'shape format fill' => sub {
 subtest 'shape format effect' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Shape->new();
       my $effect_format = AsposeSlidesCloud::Object::EffectFormat->new();
@@ -107,11 +108,11 @@ subtest 'shape format effect' => sub {
       $effect_format->{inner_shadow} = $inner_shadow;
       $dto->{effect_format} = $effect_format;
       my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape = $utils->{api}->update_shape(%params);
+      my $shape = $utils->{testSlidesApi}->update_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
 
       %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $shape = $utils->{api}->get_shape(%params);
+      $shape = $utils->{testSlidesApi}->get_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
       is($shape->{effect_format}{inner_shadow}{direction}, $dto->{effect_format}{inner_shadow}{direction});
     };
@@ -124,7 +125,7 @@ subtest 'shape format effect' => sub {
 subtest 'shape format 3d' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Shape->new();
       my $three_d_format = AsposeSlidesCloud::Object::ThreeDFormat->new();
@@ -146,11 +147,11 @@ subtest 'shape format 3d' => sub {
       $three_d_format->{light_rig} = $light_rig;
       $dto->{three_d_format} = $three_d_format;
       my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $shape = $utils->{api}->update_shape(%params);
+      my $shape = $utils->{testSlidesApi}->update_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
 
       %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $shape = $utils->{api}->get_shape(%params);
+      $shape = $utils->{testSlidesApi}->get_shape(%params);
       is(ref $shape, "AsposeSlidesCloud::Object::Shape");
       is($shape->{three_d_format}{depth}, $dto->{three_d_format}{depth});
     };

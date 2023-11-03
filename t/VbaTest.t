@@ -34,6 +34,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::VbaModule;
 use AsposeSlidesCloud::Object::VbaReference;
 
@@ -45,7 +46,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'create VBA module' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::VbaModule->new();
         $dto->{name} = "Module1";
@@ -60,7 +61,7 @@ subtest 'create VBA module' => sub {
         $dto->{references} = \@references;
 
         my %params = ('name' => 'test.pptx', 'module_dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->create_vba_module(%params);
+        my $response = $utils->{testSlidesApi}->create_vba_module(%params);
         print STDERR "'".$response->{name}."' has been created\n".$response->{self_uri}->{href};
     };
     if ($@) {
@@ -72,10 +73,10 @@ subtest 'create VBA module' => sub {
 subtest 'delete VBA module' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/macros.pptm", 'dest_path' => "TempSlidesSDK/macros.pptm");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => 'macros.pptm', 'module_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->delete_vba_module(%params);
+        my $response = $utils->{testSlidesApi}->delete_vba_module(%params);
         my $modules_count = scalar @{$response->{modules}};
         my $references_count = scalar @{$response->{references}};
         print STDERR "VBA project contains: ".$modules_count." module(s), and ".$references_count." references";
@@ -89,10 +90,10 @@ subtest 'delete VBA module' => sub {
 subtest 'get VBA module' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/macros.pptm", 'dest_path' => "TempSlidesSDK/macros.pptm");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => 'macros.pptm', 'module_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->get_vba_module(%params);
+        my $response = $utils->{testSlidesApi}->get_vba_module(%params);
         print STDERR "Module: ".$response->{name}."\n".$response->{source_code};
     };
     if ($@) {
@@ -104,10 +105,10 @@ subtest 'get VBA module' => sub {
 subtest 'get VBA project' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/macros.pptm", 'dest_path' => "TempSlidesSDK/macros.pptm");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => 'macros.pptm', 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->get_vba_project(%params);
+        my $response = $utils->{testSlidesApi}->get_vba_project(%params);
         my $modules_count = scalar @{$response->{modules}};
         my $references_count = scalar @{$response->{references}};
         print STDERR "VBA project contains: ".$modules_count." module(s), and ".$references_count." references";
@@ -121,13 +122,13 @@ subtest 'get VBA project' => sub {
 subtest 'update VBA module' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/macros.pptm", 'dest_path' => "TempSlidesSDK/macros.pptm");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::VbaModule->new();
         $dto->{source_code} = "Sub Test() MsgBox \"Test\" End Sub";
 
         my %params = ('name' => 'macros.pptm', 'module_dto' => $dto, 'module_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->update_vba_module(%params);
+        my $response = $utils->{testSlidesApi}->update_vba_module(%params);
         print STDERR "'".$response->{name}."' has been updated\n".$response->{self_uri}->{href};
     };
     if ($@) {

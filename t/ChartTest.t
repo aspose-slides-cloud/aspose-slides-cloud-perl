@@ -34,6 +34,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Chart;
 use AsposeSlidesCloud::Object::OneValueSeries;
 use AsposeSlidesCloud::Object::Workbook;
@@ -54,7 +55,7 @@ subtest 'chart get' => sub {
     $utils->initialize('get_shape', '');
     eval {
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->get_shape(%params);
+        my $chart = $utils->{testSlidesApi}->get_shape(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 4);
     };
@@ -102,7 +103,7 @@ subtest 'chart create auto data source' => sub {
         my @categories = ( $category1, $category2, $category3 );
         $dto->{categories} = \@categories;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is(scalar @{$chart->{series}}, 2);
         is(scalar @{$chart->{categories}}, 3);
     };
@@ -176,7 +177,7 @@ subtest 'chart create workbook data source' => sub {
         my @categories = ( $category1, $category2, $category3 );
         $dto->{categories} = \@categories;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is(scalar @{$chart->{series}}, 2);
         is(scalar @{$chart->{categories}}, 3);
     };
@@ -235,7 +236,7 @@ subtest 'chart create literals data source' => sub {
         my @categories = ( $category1, $category2, $category3 );
         $dto->{categories} = \@categories;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is(scalar @{$chart->{series}}, 2);
         is(scalar @{$chart->{categories}}, 3);
     };
@@ -283,7 +284,7 @@ subtest 'chart update' => sub {
         my @categories = ( $category1, $category2, $category3 );
         $dto->{categories} = \@categories;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->update_shape(%params);
+        my $chart = $utils->{testSlidesApi}->update_shape(%params);
         is(scalar @{$chart->{series}}, 2);
         is(scalar @{$chart->{categories}}, 3);
     };
@@ -307,7 +308,7 @@ subtest 'chart series create' => sub {
         my @points = ( $point1, $point2, $point3 );
         $dto->{data_points} = \@points;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_chart_series(%params);
+        my $chart = $utils->{testSlidesApi}->create_chart_series(%params);
         is(scalar @{$chart->{series}}, 4);
         is(scalar @{$chart->{categories}}, 4);
     };
@@ -333,7 +334,7 @@ subtest 'chart series update' => sub {
         my @points = ( $point1, $point2, $point3, $point4 );
         $dto->{data_points} = \@points;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_index' => 2, 'series' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->update_chart_series(%params);
+        my $chart = $utils->{testSlidesApi}->update_chart_series(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 4);
     };
@@ -347,7 +348,7 @@ subtest 'chart series delete' => sub {
     $utils->initialize('delete_chart_series', '');
     eval {
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_index' => 2, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->delete_chart_series(%params);
+        my $chart = $utils->{testSlidesApi}->delete_chart_series(%params);
         is(scalar @{$chart->{series}}, 2);
         is(scalar @{$chart->{categories}}, 4);
     };
@@ -371,7 +372,7 @@ subtest 'chart category create' => sub {
         my @points = ( $point1, $point2, $point3 );
         $dto->{data_points} = \@points;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'category' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_chart_category(%params);
+        my $chart = $utils->{testSlidesApi}->create_chart_category(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 5);
         is(scalar @{$chart->{series}[0]{data_points}}, 5);
@@ -397,7 +398,7 @@ subtest 'chart category update' => sub {
         my @points = ( $point1, $point2, $point3 );
         $dto->{data_points} = \@points;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'category_index' => 2, 'category' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->update_chart_category(%params);
+        my $chart = $utils->{testSlidesApi}->update_chart_category(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 4);
         is(scalar @{$chart->{series}[0]{data_points}}, 4);
@@ -413,7 +414,7 @@ subtest 'chart category delete' => sub {
     $utils->initialize('delete_chart_category', '');
     eval {
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'category_index' => 2, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->delete_chart_category(%params);
+        my $chart = $utils->{testSlidesApi}->delete_chart_category(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 3);
         is(scalar @{$chart->{series}[0]{data_points}}, 3);
@@ -430,7 +431,7 @@ subtest 'chart data point create' => sub {
         my $dto = AsposeSlidesCloud::Object::OneValueChartDataPoint->new();
         $dto->{value} = 40;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_index' => 2, 'data_point' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        $utils->{api}->create_chart_data_point(%params);
+        $utils->{testSlidesApi}->create_chart_data_point(%params);
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
@@ -450,7 +451,7 @@ subtest 'chart data point update' => sub {
         my $dto = AsposeSlidesCloud::Object::OneValueChartDataPoint->new();
         $dto->{value} = 40;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_index' => 2, 'point_index' => 2, 'data_point' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->update_chart_data_point(%params);
+        my $chart = $utils->{testSlidesApi}->update_chart_data_point(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 4);
         is(scalar @{$chart->{series}[0]{data_points}}, 4);
@@ -466,7 +467,7 @@ subtest 'chart data point delete' => sub {
     $utils->initialize('delete_chart_data_point', '');
     eval {
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_index' => 2, 'point_index' => 2, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->delete_chart_data_point(%params);
+        my $chart = $utils->{testSlidesApi}->delete_chart_data_point(%params);
         is(scalar @{$chart->{series}}, 3);
         is(scalar @{$chart->{categories}}, 4);
         is($chart->{series}[1]{data_points}[1], undef);
@@ -515,7 +516,7 @@ subtest 'chart sunburst' => sub {
         my @categories = ( $category1, $category2, $category3, $category4 );
         $dto->{categories} = \@categories;
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is(scalar @{$chart->{series}}, 1);
         is(scalar @{$chart->{categories}}, 4);
     };
@@ -529,7 +530,7 @@ subtest 'multi-level category axis' => sub {
     $utils->initialize('create_shape', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my $dto = AsposeSlidesCloud::Object::Chart->new();
         $dto->{chart_type} = "ClusteredColumn";
@@ -590,7 +591,7 @@ subtest 'multi-level category axis' => sub {
         $dto->{categories} = \@categories;
 
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is(scalar @{$chart->{series}}, 1);
         is(scalar @{$chart->{categories}}, 8);
         is(scalar @{$chart->{categories}[0]{parent_categories}}, 2);
@@ -606,15 +607,15 @@ subtest 'hide chart legend' => sub {
     $utils->initialize('update_shape', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->get_shape(%params);
+        my $chart = $utils->{testSlidesApi}->get_shape(%params);
 
         $chart->{legend}->{has_legend} = 0;
 
         my %params2 = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'dto' => $chart, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        $chart = $utils->{api}->update_shape(%params2);
+        $chart = $utils->{testSlidesApi}->update_shape(%params2);
         is($chart->{legend}->{has_legend}, 0);
 	};
     if ($@) {
@@ -629,10 +630,10 @@ subtest 'chart grid line format' => sub {
 
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->get_shape(%params);
+        my $chart = $utils->{testSlidesApi}->get_shape(%params);
 
         #horizontal axis
         my $horz_major_line_format_fill_format = AsposeSlidesCloud::Object::NoFill->new();
@@ -686,7 +687,7 @@ subtest 'chart grid line format' => sub {
         $chart->{axes} = $axes;
 
         my %params2 = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'dto' => $chart, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        $chart = $utils->{api}->update_shape(%params2);
+        $chart = $utils->{testSlidesApi}->update_shape(%params2);
         
         is($chart->{axes}->{horizontal_axis}->{major_grid_lines_format}->{line_format}->{fill_format}->{type}, 'NoFill');
 	    is($chart->{axes}->{horizontal_axis}->{minor_grid_lines_format}->{line_format}->{fill_format}->{type}, 'Solid');
@@ -704,16 +705,16 @@ subtest 'chart series groups' => sub {
     $utils->initialize('set_chart_series_group', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->get_shape(%params);
+        my $chart = $utils->{testSlidesApi}->get_shape(%params);
 
         my $series_group = $chart->{series_groups}[0];
         $series_group->{overlap} = 10;
         
         my %params2 = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'series_group_index' => 1, 'series_group' => $series_group, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        $chart = $utils->{api}->set_chart_series_group(%params2);
+        $chart = $utils->{testSlidesApi}->set_chart_series_group(%params2);
         is ($chart->{series_groups}[0]->{overlap}, 10);
 	};
     if ($@) {
@@ -726,7 +727,7 @@ subtest 'set chart legend' => sub {
     $utils->initialize('set_chart_legend', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $legend = AsposeSlidesCloud::Object::Legend->new();
         $legend->{overlay} = 1;
@@ -735,7 +736,7 @@ subtest 'set chart legend' => sub {
         $legend->{fill_format} = $fill_format;
 
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, 'legend' => $legend, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->set_chart_legend(%params);
+        my $response = $utils->{testSlidesApi}->set_chart_legend(%params);
         is ($legend->{overlay}, 1);
         is ($legend->{fill_format}->{type}, 'Solid');
 	};
@@ -749,7 +750,7 @@ subtest 'set chart axis' => sub {
     $utils->initialize('set_chart_axis', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $axis = AsposeSlidesCloud::Object::Axis->new();
         $axis->{has_title} = 1;
@@ -757,7 +758,7 @@ subtest 'set chart axis' => sub {
         $axis->{max_value} = 10;
 
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'shape_index' => 1, "axis_type" => 'VerticalAxis', 'axis'=>$axis, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->set_chart_axis(%params);
+        my $response = $utils->{testSlidesApi}->set_chart_axis(%params);
         is ($response->{has_title}, $axis->{has_title});
         is ($response->{is_automatic_max_value}, $axis->{is_automatic_max_value});
         is ($response->{max_value}, $axis->{max_value});
@@ -772,7 +773,7 @@ subtest 'set chart wall' => sub {
     $utils->initialize('set_chart_wall', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $chart_wall = AsposeSlidesCloud::Object::ChartWall->new();
         my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
@@ -780,7 +781,7 @@ subtest 'set chart wall' => sub {
         $chart_wall->{fill_format} = $fill_format;
 
         my %params = ('name' => 'test.pptx', 'slide_index' => 8, 'shape_index' => 2, "chart_wall_type" => 'BackWall', 'chart_wall'=>$chart_wall, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->set_chart_wall(%params);
+        my $response = $utils->{testSlidesApi}->set_chart_wall(%params);
         is ($response->{fill_format}->{type}, 'Solid');
 	};
     if ($@) {
@@ -793,7 +794,7 @@ subtest 'update data point format' => sub {
     $utils->initialize('update_chart_data_point', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
         $fill_format->{color} = '#77CEF9';
@@ -814,7 +815,7 @@ subtest 'update data point format' => sub {
         $dto->{effect_format} = $effect_format;
 
         my %params = ('name' => 'test.pptx', 'slide_index' => 8, 'shape_index' => 2, "series_index" => 2, 'point_index' => 2, 'data_point' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->update_chart_data_point(%params);
+        my $chart = $utils->{testSlidesApi}->update_chart_data_point(%params);
         my $data_point = $chart->{series}[1]{data_points}[1];
         is ($data_point->{fill_format}->{type}, 'Solid');
         is ($data_point->{line_format}->{fill_format}->{type}, 'Solid');
@@ -871,7 +872,7 @@ subtest 'chart formulas' => sub {
         $dto->{series} = \@series;
         
         my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $dto, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $chart = $utils->{api}->create_shape(%params);
+        my $chart = $utils->{testSlidesApi}->create_shape(%params);
         is($chart->{series}[0]{data_points}[2]->{value}, 90);
     };
     if ($@) {

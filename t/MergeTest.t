@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::PresentationsMergeRequest;
 use AsposeSlidesCloud::Object::OrderedMergeRequest;
 
@@ -46,19 +47,19 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'merge storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         %copy_params = ('src_path' => "TempTests/test-unprotected.pptx", 'dest_path' => "TempSlidesSDK/test-unprotected.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         %copy_params = ('src_path' => "TempTests/test.pdf", 'dest_path' => "TempSlidesSDK/test.pdf");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $request = AsposeSlidesCloud::Object::PresentationsMergeRequest->new();
         my @paths = ( "TempSlidesSDK/test-unprotected.pptx", "TempSlidesSDK/test.pdf" );
         $request->{presentation_paths} = \@paths;
         my %params = ('name' => "test.pptx", 'request' => $request, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->merge(%params);
+        $utils->{testSlidesApi}->merge(%params);
     };
     if ($@) {
         fail("merge raised an exception: $@");
@@ -69,10 +70,10 @@ subtest 'merge storage' => sub {
 subtest 'merge ordered storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         %copy_params = ('src_path' => "TempTests/test-unprotected.pptx", 'dest_path' => "TempSlidesSDK/test-unprotected.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $request = AsposeSlidesCloud::Object::OrderedMergeRequest->new();
         my $presentation = AsposeSlidesCloud::Object::PresentationToMerge->new();
@@ -82,7 +83,7 @@ subtest 'merge ordered storage' => sub {
         my @presentations = ( $presentation );
         $request->{presentations} = \@presentations;
         my %params = ('name' => "test.pptx", 'request' => $request, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->ordered_merge(%params);
+        $utils->{testSlidesApi}->ordered_merge(%params);
     };
     if ($@) {
         fail("ordered_merge raised an exception: $@");
@@ -96,7 +97,7 @@ subtest 'merge request' => sub {
         my $source2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
         my @files = ( $source1, $source2 );
         my %params = ('files' => \@files);
-        $utils->{api}->merge_online(%params);
+        $utils->{testSlidesApi}->merge_online(%params);
     };
     if ($@) {
         fail("merge_online raised an exception: $@");
@@ -111,10 +112,10 @@ subtest 'merge request save' => sub {
         my $source2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
         my @files = ( $source1, $source2 );
         my %params = ('files' => \@files, 'out_path' => $out_path);
-        $utils->{api}->merge_and_save_online(%params);
+        $utils->{testSlidesApi}->merge_and_save_online(%params);
 
         %params = ('path' => $out_path);
-        my $exists = $utils->{api}->object_exists(%params);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
         ok($exists->{exists});
     };
     if ($@) {
@@ -140,7 +141,7 @@ subtest 'merge ordered request' => sub {
         my @presentations = ( $presentation1, $presentation2 );
         $request->{presentations} = \@presentations;
         my %params = ('files' => \@files, 'request' => $request);
-        $utils->{api}->merge_online(%params);
+        $utils->{testSlidesApi}->merge_online(%params);
     };
     if ($@) {
         fail("merge_online raised an exception: $@");
@@ -153,7 +154,7 @@ subtest 'merge ordered combined' => sub {
         my $source1 = read_file("TestData/test.pptx", { binmode => ':raw' });
 
         my %copy_params = ('src_path' => "TempTests/test-unprotected.pptx", 'dest_path' => "TempSlidesSDK/test-unprotected.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my @files = ( $source );
@@ -169,7 +170,7 @@ subtest 'merge ordered combined' => sub {
         my @presentations = ( $presentation1, $presentation2 );
         $request->{presentations} = \@presentations;
         my %params = ('files' => \@files, 'request' => $request);
-        $utils->{api}->merge_online(%params);
+        $utils->{testSlidesApi}->merge_online(%params);
     };
     if ($@) {
         fail("merge_online raised an exception: $@");
@@ -199,7 +200,7 @@ subtest 'merge ordered url' => sub {
         $request->{presentations} = \@presentations;
 
         my %params = ('request' => $request);
-        my $response = $utils->{api}->merge_online(%params);
+        my $response = $utils->{testSlidesApi}->merge_online(%params);
 
         ok (length($response) > 0)
     };

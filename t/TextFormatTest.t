@@ -32,6 +32,7 @@ use JSON;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::TextFrameFormat;
 use AsposeSlidesCloud::Object::ThreeDFormat;
@@ -50,7 +51,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'text format 3d' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my $dto = AsposeSlidesCloud::Object::Shape->new();
         $dto->{shape_type} = 'Rectangle';
@@ -103,7 +104,7 @@ subtest 'text format 3d' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->create_shape(%params);
+        my $response = $utils->{testSlidesApi}->create_shape(%params);
         is ($response->{type}, 'Shape');
 
 	};
@@ -116,7 +117,7 @@ subtest 'text format 3d' => sub {
 subtest 'text frame format' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my $dto = AsposeSlidesCloud::Object::Shape->new();
         $dto->{shape_type} = 'Rectangle';
@@ -146,7 +147,7 @@ subtest 'text frame format' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->create_shape(%params);
+        my $response = $utils->{testSlidesApi}->create_shape(%params);
         is ($response->{type}, 'Shape');
 
 	};

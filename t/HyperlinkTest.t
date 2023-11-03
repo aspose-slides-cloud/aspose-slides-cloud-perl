@@ -32,6 +32,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::PictureFrame;
 use AsposeSlidesCloud::Object::Portion;
@@ -46,10 +47,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'hyperlink get shape' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->get_shape(%params);
+        my $result = $utils->{testSlidesApi}->get_shape(%params);
         ok($result->{hyperlink_click});
         is($result->{hyperlink_click}->{action_type}, "Hyperlink");
         ok(not $result->{hyperlink_mouse_over});
@@ -63,10 +64,10 @@ subtest 'hyperlink get shape' => sub {
 subtest 'hyperlink get portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 1, 'paragraph_index' => 1, 'portion_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->get_portion(%params);
+        my $result = $utils->{testSlidesApi}->get_portion(%params);
         ok(not $result->{hyperlink_click});
         ok($result->{hyperlink_mouse_over});
         is($result->{hyperlink_mouse_over}->{action_type}, "JumpLastSlide");
@@ -80,7 +81,7 @@ subtest 'hyperlink get portion' => sub {
 subtest 'hyperlink create shape' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $shape = AsposeSlidesCloud::Object::Shape->new();
         my $hyperlink = AsposeSlidesCloud::Object::Hyperlink->new();
@@ -88,7 +89,7 @@ subtest 'hyperlink create shape' => sub {
         $hyperlink->{external_url} = "https://docs.aspose.cloud/slides";
         $shape->{hyperlink_click} = $hyperlink;
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'dto' => $shape, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->update_shape(%params);
+        my $result = $utils->{testSlidesApi}->update_shape(%params);
         ok($result->{hyperlink_click});
         is($result->{hyperlink_click}->{external_url}, $shape->{hyperlink_click}->{external_url});
     };
@@ -101,7 +102,7 @@ subtest 'hyperlink create shape' => sub {
 subtest 'hyperlink create portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = "Link text";
@@ -109,7 +110,7 @@ subtest 'hyperlink create portion' => sub {
         $hyperlink->{action_type} = "JumpLastSlide";
         $dto->{hyperlink_mouse_over} = $hyperlink;
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'paragraph_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->create_portion(%params);
+        my $result = $utils->{testSlidesApi}->create_portion(%params);
         ok($result->{hyperlink_mouse_over});
         is($result->{hyperlink_mouse_over}->{action_type}, $dto->{hyperlink_mouse_over}->{action_type});
     };
@@ -122,14 +123,14 @@ subtest 'hyperlink create portion' => sub {
 subtest 'hyperlink delete' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::PictureFrame->new();
         my $hyperlink = AsposeSlidesCloud::Object::Hyperlink->new();
         $hyperlink->{is_disabled} = 1;
         $dto->{hyperlink_click} = $hyperlink;
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->update_shape(%params);
+        my $result = $utils->{testSlidesApi}->update_shape(%params);
         ok(not $result->{hyperlink_click});
     };
     if ($@) {

@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Portion;
 use AsposeSlidesCloud::Object::FunctionElement;
 use AsposeSlidesCloud::Object::LimitElement;
@@ -47,10 +48,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'math get' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portion = $utils->{api}->get_portion(%params);
+        my $portion = $utils->{testSlidesApi}->get_portion(%params);
         ok($portion->{math_paragraph});
         ok($portion->{math_paragraph}{math_block_list});
         is(scalar @{$portion->{math_paragraph}{math_block_list}}, 1);
@@ -67,10 +68,10 @@ subtest 'math get' => sub {
 subtest 'math get null' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 1, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portion = $utils->{api}->get_portion(%params);
+        my $portion = $utils->{testSlidesApi}->get_portion(%params);
         ok(not $portion->{math_paragraph});
     };
     if ($@) {
@@ -82,7 +83,7 @@ subtest 'math get null' => sub {
 subtest 'math create' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         my $math_paragraph = AsposeSlidesCloud::Object::MathParagraph->new();
@@ -115,7 +116,7 @@ subtest 'math create' => sub {
         $math_paragraph->{math_block_list} = \@math_block_list;
         $dto->{math_paragraph} = $math_paragraph;
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'paragraph_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portion = $utils->{api}->create_portion(%params);
+        my $portion = $utils->{testSlidesApi}->create_portion(%params);
         ok($portion->{math_paragraph});
         ok($portion->{math_paragraph}{math_block_list});
         is(scalar @{$portion->{math_paragraph}{math_block_list}}, 1);
@@ -132,7 +133,7 @@ subtest 'math create' => sub {
 subtest 'math update' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         my $math_paragraph = AsposeSlidesCloud::Object::MathParagraph->new();
@@ -165,7 +166,7 @@ subtest 'math update' => sub {
         $math_paragraph->{math_block_list} = \@math_block_list;
         $dto->{math_paragraph} = $math_paragraph;
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portion = $utils->{api}->update_portion(%params);
+        my $portion = $utils->{testSlidesApi}->update_portion(%params);
         ok($portion->{math_paragraph});
         ok($portion->{math_paragraph}{math_block_list});
         is(scalar @{$portion->{math_paragraph}{math_block_list}}, 1);
@@ -182,10 +183,10 @@ subtest 'math update' => sub {
 subtest 'math download' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $mathMl = $utils->{api}->download_portion_as_math_ml(%params);
+        my $mathMl = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
         ok(length($mathMl));
     };
     if ($@) {
@@ -197,10 +198,10 @@ subtest 'math download' => sub {
 subtest 'math download null' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 1, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->download_portion_as_math_ml(%params);
+        $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
@@ -217,14 +218,14 @@ subtest 'math download null' => sub {
 subtest 'math save' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $out_path = "TempSlidesSDK/mathml.xml";
         my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'out_path' => $out_path, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->save_portion_as_math_ml(%params);
+        $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
 
         %params = ('path' => $out_path);
-        my $exists = $utils->{api}->object_exists(%params);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
         ok($exists->{exists});
     };
     if ($@) {

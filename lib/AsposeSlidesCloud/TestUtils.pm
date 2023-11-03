@@ -37,14 +37,19 @@ use utf8;
 use AsposeSlidesCloud::ClassRegistry;
 use AsposeSlidesCloud::Configuration;
 
+use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
+
 my $is_initialized = 0;
 my $test_data_version = "1";
+my $test_operation_id = "";
 
 sub new {
     my $class = shift;
     my %params = @_;
-    my $config = AsposeSlidesCloud::Configuration->new();
     my $config_file = decode_json(read_file("testConfig.json"));
+
+    my $config = AsposeSlidesCloud::Configuration->new();
     $config->{base_url} = $config_file->{BaseUrl};
     $config->{auth_base_url} = $config_file->{AuthBaseUrl};
     $config->{app_sid} = $config_file->{ClientId};
@@ -52,7 +57,17 @@ sub new {
     $config->{debug} = $config_file->{Debug};
     $config->{allow_insecure_requests} = $config_file->{AllowInsecureRequests};
     my $api = AsposeSlidesCloud::SlidesApi->new(config => $config);
-    return bless { rules => decode_json(read_file('testRules.json')), api => $api }, $class;
+
+    my $asyncConfig = AsposeSlidesCloud::Configuration->new();
+    $asyncConfig->{base_url} = $config_file->{AsyncBaseUrl};
+    $asyncConfig->{auth_base_url} = $config_file->{AuthBaseUrl};
+    $asyncConfig->{app_sid} = $config_file->{ClientId};
+    $asyncConfig->{app_key} = $config_file->{ClientSecret};
+    $asyncConfig->{debug} = $config_file->{Debug};
+    $asyncConfig->{allow_insecure_requests} = $config_file->{AllowInsecureRequests};
+    my $asyncApi = AsposeSlidesCloud::SlidesAsyncApi->new(config => $asyncConfig);
+
+    return bless { rules => decode_json(read_file('testRules.json')), testSlidesApi => $api, testSlidesAsyncApi => $asyncApi }, $class;
 }
 
 sub initialize {
@@ -61,7 +76,7 @@ sub initialize {
     $parameter =~ s/_//g;
     if (!$is_initialized) {
         my %download_params = ('path' => 'TempTests/version.txt');
-        my $version = $self->{api}->download_file(%download_params);
+        my $version = $self->{testSlidesApi}->download_file(%download_params);
         if ($version != $test_data_version) {
             opendir my $dir, "TestData";
             my @files = readdir $dir;
@@ -70,11 +85,11 @@ sub initialize {
                 if(-f "TestData/".$_) {
                     my $content = read_file("TestData/".$_, { binmode => ':raw' });
                     my %file_upload_params = ('path' => 'TempTests/'.$_, 'file' => $content);
-                    $self->{api}->upload_file(%file_upload_params);
+                    $self->{testSlidesApi}->upload_file(%file_upload_params);
                 }
             }
             my %upload_params = ('path' => 'TempTests/version.txt', 'file' => $test_data_version);
-            $self->{api}->upload_file(%upload_params);
+            $self->{testSlidesApi}->upload_file(%upload_params);
         }
         $is_initialized = 1;
     }
@@ -96,11 +111,11 @@ sub initialize {
     foreach my $path (keys %files) {
         if ($files{$path}->{Action} eq "Put") {
             my %copy_params = ('src_path' => 'TempTests/'.$files{$path}->{ActualName}, 'dest_path' => $path);
-            $self->{api}->copy_file(%copy_params);
+            $self->{testSlidesApi}->copy_file(%copy_params);
         } elsif ($files{$path}->{Action} eq "Delete") {
             my %delete_params = ('path' => $path);
-            $self->{api}->delete_file(%delete_params);
-            $self->{api}->delete_folder(%delete_params);
+            $self->{testSlidesApi}->delete_file(%delete_params);
+            $self->{testSlidesApi}->delete_folder(%delete_params);
         }
     }
 }
@@ -269,6 +284,12 @@ sub untemplatize {
             my $content = read_file("TestData/$file_name", { binmode => ':raw' });
             return $content;
         }
+        if ('#OperationId' eq $template) {
+            return $self->get_operation_id();
+        }
+        if ('#NewId' eq $template) {
+            return "541f91c7-5721-4f0f-9bc0-0d18c1b4ae82";
+        }
         my $result = $template;
         if (defined $value) {
             $result =~ s/%v/$value/;
@@ -282,6 +303,17 @@ sub untemplatize {
         }
         return $result;
     }
+}
+
+sub get_operation_id {
+    my ($self) = @_;
+    if ('' eq $test_operation_id) {
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+        my %params = ('document' => $source, 'format' => 'pdf', 'password' => 'password');
+        $test_operation_id = $self->{testSlidesAsyncApi}->start_convert(%params);
+        sleep(10);
+    }
+    return $test_operation_id;
 }
 
 1;

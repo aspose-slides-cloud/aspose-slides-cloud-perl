@@ -34,6 +34,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::PictureFrame;
 
@@ -46,26 +47,26 @@ subtest 'watermark text storage' => sub {
     eval {
         my $watermark_text = "watermarkText";
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $get1_result = $utils->{api}->get_shapes(%params);
+        my $get1_result = $utils->{testSlidesApi}->get_shapes(%params);
         my $shape_count = scalar @{$get1_result->{shapes_links}} + 1;
 
         my %create_params = ('name' => "test.pptx", 'text' => $watermark_text, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->create_watermark(%create_params);
-        my $get2_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->create_watermark(%create_params);
+        my $get2_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get2_result->{shapes_links}}, $shape_count);
 
         my %get_shape_params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => $shape_count, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shape = $utils->{api}->get_shape(%get_shape_params);
+        my $shape = $utils->{testSlidesApi}->get_shape(%get_shape_params);
         is($shape->{name}, "watermark");
         is($shape->{text}, $watermark_text);
 
 
         my %delete_params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_watermark(%delete_params);
-        my $get3_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->delete_watermark(%delete_params);
+        my $get3_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get3_result->{shapes_links}}, $shape_count - 1);
     };
     if ($@) {
@@ -78,27 +79,27 @@ subtest 'watermark dto storage' => sub {
     eval {
         my $watermark_text = "watermarkText";
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $get1_result = $utils->{api}->get_shapes(%params);
+        my $get1_result = $utils->{testSlidesApi}->get_shapes(%params);
         my $shape_count = scalar @{$get1_result->{shapes_links}} + 1;
 
         my $watermark = AsposeSlidesCloud::Object::Shape->new();
         $watermark->{text} = $watermark_text;
         my %create_params = ('name' => "test.pptx", 'shape' => $watermark, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->create_watermark(%create_params);
-        my $get2_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->create_watermark(%create_params);
+        my $get2_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get2_result->{shapes_links}}, $shape_count);
 
         my %get_shape_params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => $shape_count, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shape = $utils->{api}->get_shape(%get_shape_params);
+        my $shape = $utils->{testSlidesApi}->get_shape(%get_shape_params);
         is($shape->{name}, "watermark");
         is($shape->{text}, $watermark_text);
 
         my %delete_params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_watermark(%delete_params);
-        my $get3_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->delete_watermark(%delete_params);
+        my $get3_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get3_result->{shapes_links}}, $shape_count - 1);
     };
     if ($@) {
@@ -110,25 +111,25 @@ subtest 'watermark dto storage' => sub {
 subtest 'watermark image storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $get1_result = $utils->{api}->get_shapes(%params);
+        my $get1_result = $utils->{testSlidesApi}->get_shapes(%params);
         my $shape_count = scalar @{$get1_result->{shapes_links}} + 1;
 
         my $source = read_file("TestData/watermark.png", { binmode => ':raw' });
         my %create_params = ('name' => "test.pptx", 'image' => $source, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->create_image_watermark(%create_params);
-        my $get2_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->create_image_watermark(%create_params);
+        my $get2_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get2_result->{shapes_links}}, $shape_count);
 
         my %get_shape_params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => $shape_count, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shape = $utils->{api}->get_shape(%get_shape_params);
+        my $shape = $utils->{testSlidesApi}->get_shape(%get_shape_params);
         is($shape->{name}, "watermark");
 
         my %delete_params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_watermark(%delete_params);
-        my $get3_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->delete_watermark(%delete_params);
+        my $get3_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get3_result->{shapes_links}}, $shape_count - 1);
     };
     if ($@) {
@@ -141,10 +142,10 @@ subtest 'watermark image dto storage' => sub {
     eval {
         my $watermark_name = "myWatermark";
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $get1_result = $utils->{api}->get_shapes(%params);
+        my $get1_result = $utils->{testSlidesApi}->get_shapes(%params);
         my $shape_count = scalar @{$get1_result->{shapes_links}} + 1;
 
         my $source = read_file("TestData/watermark.png", { binmode => ':raw' });
@@ -154,17 +155,17 @@ subtest 'watermark image dto storage' => sub {
         $watermark->{fill_format} = $fill_format;
         $watermark->{name} = $watermark_name;
         my %create_params = ('name' => "test.pptx", 'picture_frame' => $watermark, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->create_image_watermark(%create_params);
-        my $get2_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->create_image_watermark(%create_params);
+        my $get2_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get2_result->{shapes_links}}, $shape_count);
 
         my %get_shape_params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => $shape_count, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shape = $utils->{api}->get_shape(%get_shape_params);
+        my $shape = $utils->{testSlidesApi}->get_shape(%get_shape_params);
         is($shape->{name}, $watermark_name);
 
         my %delete_params = ('name' => "test.pptx", 'shape_name' => $watermark_name, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_watermark(%delete_params);
-        my $get3_result = $utils->{api}->get_shapes(%params);
+        $utils->{testSlidesApi}->delete_watermark(%delete_params);
+        my $get3_result = $utils->{testSlidesApi}->get_shapes(%params);
         is(scalar @{$get3_result->{shapes_links}}, $shape_count - 1);
     };
     if ($@) {
@@ -178,11 +179,11 @@ subtest 'watermark text request' => sub {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
 
         my %create_params = ('document' => $source, 'text' => "watermarkText", 'password' => "password");
-        my $post_result = $utils->{api}->create_watermark_online(%create_params);
+        my $post_result = $utils->{testSlidesApi}->create_watermark_online(%create_params);
         ok(length($post_result) ne length($source));
 
         my %delete_params = ('document' => $source, 'password' => "password");
-        my $delete_result = $utils->{api}->delete_watermark_online(%delete_params);
+        my $delete_result = $utils->{testSlidesApi}->delete_watermark_online(%delete_params);
         ok(length($post_result) ne length($delete_result));
     };
     if ($@) {
@@ -198,11 +199,11 @@ subtest 'watermark dto request' => sub {
         my $watermark = AsposeSlidesCloud::Object::Shape->new();
         $watermark->{text} = "watermarkText";
         my %create_params = ('document' => $source, 'shape' => $watermark, 'password' => "password");
-        my $post_result = $utils->{api}->create_watermark_online(%create_params);
+        my $post_result = $utils->{testSlidesApi}->create_watermark_online(%create_params);
         ok(length($post_result) ne length($source));
 
         my %delete_params = ('document' => $source, 'password' => "password");
-        my $delete_result = $utils->{api}->delete_watermark_online(%delete_params);
+        my $delete_result = $utils->{testSlidesApi}->delete_watermark_online(%delete_params);
         ok(length($post_result) ne length($delete_result));
     };
     if ($@) {
@@ -217,11 +218,11 @@ subtest 'watermark image request' => sub {
         my $watermark = read_file("TestData/watermark.png", { binmode => ':raw' });
 
         my %create_params = ('document' => $source, 'image' => $watermark, 'password' => "password");
-        my $post_result = $utils->{api}->create_image_watermark_online(%create_params);
+        my $post_result = $utils->{testSlidesApi}->create_image_watermark_online(%create_params);
         ok(length($post_result) ne length($source));
 
         my %delete_params = ('document' => $source, 'password' => "password");
-        my $delete_result = $utils->{api}->delete_watermark_online(%delete_params);
+        my $delete_result = $utils->{testSlidesApi}->delete_watermark_online(%delete_params);
         ok(length($post_result) ne length($delete_result));
     };
     if ($@) {
@@ -240,11 +241,11 @@ subtest 'watermark image dto request' => sub {
         $fill_format->{base64_data} = encode_base64($watermark_source);
         $watermark->{fill_format} = $fill_format;
         my %create_params = ('document' => $source, 'picture_frame' => $watermark, 'password' => "password");
-        my $post_result = $utils->{api}->create_image_watermark_online(%create_params);
+        my $post_result = $utils->{testSlidesApi}->create_image_watermark_online(%create_params);
         ok(length($post_result) ne length($source));
 
         my %delete_params = ('document' => $source, 'password' => "password");
-        my $delete_result = $utils->{api}->delete_watermark_online(%delete_params);
+        my $delete_result = $utils->{testSlidesApi}->delete_watermark_online(%delete_params);
         ok(length($post_result) ne length($delete_result));
     };
     if ($@) {

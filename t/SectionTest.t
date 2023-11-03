@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 
 use strict;
 use warnings;
@@ -44,10 +45,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'sections get' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_sections(%params);
+      my $result = $utils->{testSlidesApi}->get_sections(%params);
       is(scalar @{$result->{section_list}}, 3);
     };
     if ($@) {
@@ -59,7 +60,7 @@ subtest 'sections get' => sub {
 subtest 'sections replace' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::Sections->new();
       my $section1 = AsposeSlidesCloud::Object::Section->new();
@@ -71,7 +72,7 @@ subtest 'sections replace' => sub {
       my @section_list = ( $section1, $section2 );
       $dto->{section_list} = \@section_list;
       my %params = ('name' => "test.pptx", 'sections' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_sections(%params);
+      my $result = $utils->{testSlidesApi}->set_sections(%params);
       is(scalar @{$result->{section_list}}, @{$dto->{section_list}});
       is(scalar @{$result->{section_list}[0]{slide_list}}, $section2->{first_slide_index} - $section1->{first_slide_index});
     };
@@ -84,10 +85,10 @@ subtest 'sections replace' => sub {
 subtest 'sections post' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'section_name' => "NewSection", 'slide_index' => 5, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->create_section(%params);
+      my $result = $utils->{testSlidesApi}->create_section(%params);
       is(scalar @{$result->{section_list}}, 4);
     };
     if ($@) {
@@ -99,12 +100,12 @@ subtest 'sections post' => sub {
 subtest 'sections put' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $section_index = 2;
       my $section_name = "UpdatedSection";
       my %params = ('name' => "test.pptx", 'section_index' => $section_index, 'section_name' => $section_name, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->update_section(%params);
+      my $result = $utils->{testSlidesApi}->update_section(%params);
       is(scalar @{$result->{section_list}}, 3);
       is($result->{section_list}[$section_index - 1]{name}, $section_name);
     };
@@ -117,10 +118,10 @@ subtest 'sections put' => sub {
 subtest 'sections move' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'section_index' => 1, 'new_position' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->move_section(%params);
+      my $result = $utils->{testSlidesApi}->move_section(%params);
       is(scalar @{$result->{section_list}}, 3);
     };
     if ($@) {
@@ -132,10 +133,10 @@ subtest 'sections move' => sub {
 subtest 'sections clear' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->delete_sections(%params);
+      my $result = $utils->{testSlidesApi}->delete_sections(%params);
       is(scalar @{$result->{section_list}}, 0);
     };
     if ($@) {
@@ -147,11 +148,11 @@ subtest 'sections clear' => sub {
 subtest 'sections delete' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my @sections = ( 2, 3 );
       my %params = ('name' => "test.pptx", 'sections' => \@sections, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->delete_sections(%params);
+      my $result = $utils->{testSlidesApi}->delete_sections(%params);
       is(scalar @{$result->{section_list}}, 1);
     };
     if ($@) {
@@ -163,10 +164,10 @@ subtest 'sections delete' => sub {
 subtest 'section delete' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'section_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->delete_section(%params);
+      my $result = $utils->{testSlidesApi}->delete_section(%params);
       is(scalar @{$result->{section_list}}, 2);
     };
     if ($@) {

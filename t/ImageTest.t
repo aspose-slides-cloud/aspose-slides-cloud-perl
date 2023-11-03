@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 
 use strict;
 use warnings;
@@ -42,13 +43,13 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'images get' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $presentation_result = $utils->{api}->get_presentation_images(%params);
+        my $presentation_result = $utils->{testSlidesApi}->get_presentation_images(%params);
 
         $params{slide_index} = 1;
-        my $slide_result = $utils->{api}->get_slide_images(%params);
+        my $slide_result = $utils->{testSlidesApi}->get_slide_images(%params);
         ok(scalar @{$slide_result->{list}} < @{$presentation_result->{list}});
     };
     if ($@) {
@@ -60,13 +61,13 @@ subtest 'images get' => sub {
 subtest 'images download all storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $default_result = $utils->{api}->download_images_default_format(%params);
+        my $default_result = $utils->{testSlidesApi}->download_images_default_format(%params);
 
         $params{format} = "png";
-        my $png_result = $utils->{api}->download_images(%params);
+        my $png_result = $utils->{testSlidesApi}->download_images(%params);
 
         my $defaultFile = 'defaultZip.zip';
 	open my $fh, '>>', $defaultFile;
@@ -100,10 +101,10 @@ subtest 'images download all request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'password' => "password");
-        my $default_result = $utils->{api}->download_images_default_format_online(%params);
+        my $default_result = $utils->{testSlidesApi}->download_images_default_format_online(%params);
 
         $params{format} = "png";
-        my $png_result = $utils->{api}->download_images_online(%params);
+        my $png_result = $utils->{testSlidesApi}->download_images_online(%params);
 
         my $defaultFile = 'defaultZip.zip';
 	open my $fh, '>>', $defaultFile;
@@ -136,14 +137,14 @@ subtest 'images download all request' => sub {
 subtest 'images download storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('name' => "test.pptx", 'index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $default_result = $utils->{api}->download_image_default_format(%params);
+        my $default_result = $utils->{testSlidesApi}->download_image_default_format(%params);
 
         $params{format} = "png";
-        my $png_result = $utils->{api}->download_image(%params);
+        my $png_result = $utils->{testSlidesApi}->download_image(%params);
 
         ok(not length($default_result) == length($png_result));
     };
@@ -157,10 +158,10 @@ subtest 'images download request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'index' => 1, 'password' => "password");
-        my $default_result = $utils->{api}->download_image_default_format_online(%params);
+        my $default_result = $utils->{testSlidesApi}->download_image_default_format_online(%params);
 
         $params{format} = "png";
-        my $png_result = $utils->{api}->download_image_online(%params);
+        my $png_result = $utils->{testSlidesApi}->download_image_online(%params);
 
         ok(not length($default_result) == length($png_result));
     };

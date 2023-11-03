@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::Paragraph;
 use AsposeSlidesCloud::Object::Portion;
@@ -48,7 +49,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'get portions' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -57,7 +58,7 @@ subtest 'get portions' => sub {
             'paragraph_index' => 1, 
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_portions(%params);
+        my $response = $utils->{testSlidesApi}->get_portions(%params);
         is(scalar @{$response->{items}}, 2);
 	};
     if ($@) {
@@ -69,7 +70,7 @@ subtest 'get portions' => sub {
 subtest 'get sub_shape portions' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -79,7 +80,7 @@ subtest 'get sub_shape portions' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->get_portions(%params);
+        my $response = $utils->{testSlidesApi}->get_portions(%params);
         is(scalar @{$response->{items}}, 2);
 	};
     if ($@) {
@@ -91,7 +92,7 @@ subtest 'get sub_shape portions' => sub {
 subtest 'get portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -102,7 +103,7 @@ subtest 'get portion' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->get_portion(%params);
+        my $response = $utils->{testSlidesApi}->get_portion(%params);
         ok(index($response->{text}, 'portion 1') != -1);
 	};
     if ($@) {
@@ -114,7 +115,7 @@ subtest 'get portion' => sub {
 subtest 'get sub-shape portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -126,7 +127,7 @@ subtest 'get sub-shape portion' => sub {
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
 
-        my $response = $utils->{api}->get_portion(%params);
+        my $response = $utils->{testSlidesApi}->get_portion(%params);
         ok(index($response->{text}, 'portion 1') != -1);
 	};
     if ($@) {
@@ -138,7 +139,7 @@ subtest 'get sub-shape portion' => sub {
 subtest 'create portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = 'Portion 1';
@@ -158,7 +159,7 @@ subtest 'create portion' => sub {
             'dto' => $dto,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->create_portion(%params);
+        my $response = $utils->{testSlidesApi}->create_portion(%params);
 
         is($response->{text}, $dto->{text});
         is($response->{font_bold}, 'True');
@@ -175,7 +176,7 @@ subtest 'create portion' => sub {
 subtest 'create sub-shape portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = 'Portion 1';
@@ -196,7 +197,7 @@ subtest 'create sub-shape portion' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->create_portion(%params);
+        my $response = $utils->{testSlidesApi}->create_portion(%params);
 
         is($response->{text}, $dto->{text});
         is($response->{font_bold}, 'True');
@@ -213,7 +214,7 @@ subtest 'create sub-shape portion' => sub {
 subtest 'update portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = 'Portion 1';
@@ -234,7 +235,7 @@ subtest 'update portion' => sub {
             'dto' => $dto,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->update_portion(%params);
+        my $response = $utils->{testSlidesApi}->update_portion(%params);
 
         is($response->{text}, $dto->{text});
         is($response->{font_bold}, 'True');
@@ -251,7 +252,7 @@ subtest 'update portion' => sub {
 subtest 'update sub-shape portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = 'Portion 1';
@@ -273,7 +274,7 @@ subtest 'update sub-shape portion' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->update_portion(%params);
+        my $response = $utils->{testSlidesApi}->update_portion(%params);
 
         is($response->{text}, $dto->{text});
         is($response->{font_bold}, 'True');
@@ -290,7 +291,7 @@ subtest 'update sub-shape portion' => sub {
 subtest 'delete portions' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -299,7 +300,7 @@ subtest 'delete portions' => sub {
             'paragraph_index' => 1, 
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_portions(%params);
+        my $response = $utils->{testSlidesApi}->delete_portions(%params);
         is(scalar @{$response->{items}}, 0);
 	};
     if ($@) {
@@ -311,7 +312,7 @@ subtest 'delete portions' => sub {
 subtest 'delete portions indexes' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @indexes = (1);
 		my %params = (
@@ -322,7 +323,7 @@ subtest 'delete portions indexes' => sub {
             'portions' => \@indexes,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_portions(%params);
+        my $response = $utils->{testSlidesApi}->delete_portions(%params);
         is(scalar @{$response->{items}}, 1);
 	};
     if ($@) {
@@ -334,7 +335,7 @@ subtest 'delete portions indexes' => sub {
 subtest 'delete sub-shape portions' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -345,7 +346,7 @@ subtest 'delete sub-shape portions' => sub {
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
 
-        my $response = $utils->{api}->delete_portions(%params);
+        my $response = $utils->{testSlidesApi}->delete_portions(%params);
         is(scalar @{$response->{items}}, 0);
 	};
     if ($@) {
@@ -357,7 +358,7 @@ subtest 'delete sub-shape portions' => sub {
 subtest 'delete sub-shape portions indexes' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @indexes = (1);
 		my %params = (
@@ -369,7 +370,7 @@ subtest 'delete sub-shape portions indexes' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->delete_portions(%params);
+        my $response = $utils->{testSlidesApi}->delete_portions(%params);
         is(scalar @{$response->{items}}, 1);
 	};
     if ($@) {
@@ -381,7 +382,7 @@ subtest 'delete sub-shape portions indexes' => sub {
 subtest 'delete portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -391,7 +392,7 @@ subtest 'delete portion' => sub {
             'portion_index' => 1,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_portion(%params);
+        my $response = $utils->{testSlidesApi}->delete_portion(%params);
         is(scalar @{$response->{items}}, 1);
 	};
     if ($@) {
@@ -403,7 +404,7 @@ subtest 'delete portion' => sub {
 subtest 'delete sub-shape portion' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -414,7 +415,7 @@ subtest 'delete sub-shape portion' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->delete_portion(%params);
+        my $response = $utils->{testSlidesApi}->delete_portion(%params);
         is(scalar @{$response->{items}}, 1);
 	};
     if ($@) {
@@ -426,7 +427,7 @@ subtest 'delete sub-shape portion' => sub {
 subtest 'get portion rect' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -437,7 +438,7 @@ subtest 'get portion rect' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->get_portion_rectangle(%params);
+        my $response = $utils->{testSlidesApi}->get_portion_rectangle(%params);
         ok($response->{x} > 0);
         ok($response->{y} > 0);
         ok($response->{width} > 0);
@@ -452,7 +453,7 @@ subtest 'get portion rect' => sub {
 subtest 'get portion effective' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -463,7 +464,7 @@ subtest 'get portion effective' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->get_portion_effective(%params);
+        my $response = $utils->{testSlidesApi}->get_portion_effective(%params);
         is($response->{font_height}, 18);
 	};
     if ($@) {
@@ -475,7 +476,7 @@ subtest 'get portion effective' => sub {
 subtest 'get sub-shape portion effective' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -487,7 +488,7 @@ subtest 'get sub-shape portion effective' => sub {
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
 
-        my $response = $utils->{api}->get_portion_effective(%params);
+        my $response = $utils->{testSlidesApi}->get_portion_effective(%params);
         is($response->{font_height}, 18);
 	};
     if ($@) {

@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::PdfExportOptions;
 
 use strict;
@@ -43,13 +44,13 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'split storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result1 = $utils->{api}->split(%params);
+        my $result1 = $utils->{testSlidesApi}->split(%params);
         $params{from} = 2;
         $params{to} = 3;
-        my $result2 = $utils->{api}->split(%params);
+        my $result2 = $utils->{testSlidesApi}->split(%params);
         is(scalar @{$result2->{slides}}, 2);
         ok(scalar @{$result2->{slides}} < scalar @{$result1->{slides}});
         my $url = $result1->{slides}[0]{href};
@@ -57,7 +58,7 @@ subtest 'split storage' => sub {
         my $path = substr($url, $index, length($url) - $index);
 
         %params = ('path' => $path);
-        my $exists = $utils->{api}->object_exists(%params);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
         ok($exists->{exists});
     };
     if ($@) {
@@ -70,7 +71,7 @@ subtest 'split request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'format' => "png", 'password' => "password");
-        my $result1 = $utils->{api}->split_online(%params);
+        my $result1 = $utils->{testSlidesApi}->split_online(%params);
         my $file1 = 'zip1.zip';
 	open my $fh, '>>', $file1;
 	binmode $fh;
@@ -82,7 +83,7 @@ subtest 'split request' => sub {
 
         $params{from} = 2;
         $params{to} = 3;
-        my $result2 = $utils->{api}->split_online(%params);
+        my $result2 = $utils->{testSlidesApi}->split_online(%params);
         my $file2 = 'zip2.zip';
 	open $fh, '>>', $file2;
 	binmode $fh;
@@ -105,11 +106,11 @@ subtest 'split request to storage' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'format' => "png", 'password' => "password");
-        my $result1 = $utils->{api}->split_and_save_online(%params);
+        my $result1 = $utils->{testSlidesApi}->split_and_save_online(%params);
 
         $params{from} = 2;
         $params{to} = 3;
-        my $result2 = $utils->{api}->split_and_save_online(%params);
+        my $result2 = $utils->{testSlidesApi}->split_and_save_online(%params);
 
         is(scalar @{$result2->{slides}}, 2);
         ok(scalar @{$result2->{slides}} < scalar @{$result1->{slides}});
@@ -117,7 +118,7 @@ subtest 'split request to storage' => sub {
         my $index = index($url, "/storage/file/") + length("/storage/file/");
         my $path = substr($url, $index, length($url) - $index);
         %params = ('path' => $path);
-        my $exists = $utils->{api}->object_exists(%params);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
         ok($exists->{exists});
     };
     if ($@) {
@@ -129,18 +130,18 @@ subtest 'split request to storage' => sub {
 subtest 'split with options' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $options = AsposeSlidesCloud::Object::PdfExportOptions->new();
         $options->{jpeg_quality} = 50;
         my %params = ('name' => "test.pptx", 'options' => $options, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result1 = $utils->{api}->split(%params);
+        my $result1 = $utils->{testSlidesApi}->split(%params);
         my $url = $result1->{slides}[0]{href};
         my $index = index($url, "/storage/file/") + length("/storage/file/");
         my $path = substr($url, $index, length($url) - $index);
 
         %params = ('path' => $path);
-        my $exists = $utils->{api}->object_exists(%params);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
         ok($exists->{exists});
     };
     if ($@) {

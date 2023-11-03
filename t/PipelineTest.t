@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Pipeline;
 use AsposeSlidesCloud::Object::RequestInputFile;
 use AsposeSlidesCloud::Object::Save;
@@ -66,7 +67,7 @@ subtest 'multipart content' => sub {
     my @files = ($file1, $file2);
     my %params = ('pipeline' => $pipeline, 'files' => \@files);
     eval {
-        my $result = $utils->{api}->pipeline(%params);
+        my $result = $utils->{testSlidesApi}->pipeline(%params);
     };
     if ($@) {
         fail("post_slides_pipeline raised an exception: $@");

@@ -33,6 +33,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Chart;
 use AsposeSlidesCloud::Object::ChartTitle;
 use AsposeSlidesCloud::Object::Axes;
@@ -55,7 +56,7 @@ subtest 'nullable properties' => sub {
     my $max2 = 87;
     $utils->initialize('no_method', 'no_property');
     my %copy_params = ('src_path' => 'TempTests/'.$file_name, 'dest_path' => $folder_name.'/'.$file_name);
-    $utils->{api}->copy_file(%copy_params);
+    $utils->{testSlidesApi}->copy_file(%copy_params);
 
     my $title = AsposeSlidesCloud::Object::ChartTitle->new();
     $title->{has_title} = 1;
@@ -86,10 +87,10 @@ subtest 'nullable properties' => sub {
     $chart->{series} = \@series_list;
     $chart->{axes} = $axes;
     my %post_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'dto' => $chart);
-    $utils->{api}->create_shape(%post_params);
+    $utils->{testSlidesApi}->create_shape(%post_params);
 
     my %get_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 5);
-    my $result = $utils->{api}->get_shape(%get_params);
+    my $result = $utils->{testSlidesApi}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min1);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max1);
 
@@ -99,9 +100,9 @@ subtest 'nullable properties' => sub {
     $chart = AsposeSlidesCloud::Object::Chart->new();
     $chart->{axes} = $axes;
     my %put_params = ('name' => $file_name, 'folder' => $folder_name, 'password' => $password, 'slide_index' => 1, 'shape_index' => 5, 'dto' => $chart);
-    $utils->{api}->update_shape(%put_params);
+    $utils->{testSlidesApi}->update_shape(%put_params);
 
-    $result = $utils->{api}->get_shape(%get_params);
+    $result = $utils->{testSlidesApi}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min2);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max1);
 
@@ -109,9 +110,9 @@ subtest 'nullable properties' => sub {
     $axis->{max_value} = $max2;
     $axes->{horizontal_axis} = $axis;
     $chart->{axes} = $axes;
-    $utils->{api}->update_shape(%put_params);
+    $utils->{testSlidesApi}->update_shape(%put_params);
 
-    $result = $utils->{api}->get_shape(%get_params);
+    $result = $utils->{testSlidesApi}->get_shape(%get_params);
     is($result->{axes}->{horizontal_axis}->{min_value}, $min2);
     is($result->{axes}->{horizontal_axis}->{max_value}, $max2);
 

@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Portion;
 use AsposeSlidesCloud::Object::PortionFormat;
 
@@ -46,17 +47,17 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'text get' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->get_presentation_text_items(%params);
+        my $result = $utils->{testSlidesApi}->get_presentation_text_items(%params);
         $params{with_empty} = 1;
-        my $result_with_empty = $utils->{api}->get_presentation_text_items(%params);
+        my $result_with_empty = $utils->{testSlidesApi}->get_presentation_text_items(%params);
 
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $slide_result = $utils->{api}->get_slide_text_items(%params);
+        my $slide_result = $utils->{testSlidesApi}->get_slide_text_items(%params);
         $params{with_empty} = 1;
-        my $slide_result_with_empty = $utils->{api}->get_slide_text_items(%params);
+        my $slide_result_with_empty = $utils->{testSlidesApi}->get_slide_text_items(%params);
 
         ok(scalar @{$result_with_empty->{items}} > scalar @{$result->{items}});
         ok(scalar @{$result->{items}} > scalar @{$slide_result->{items}});
@@ -71,21 +72,21 @@ subtest 'text get' => sub {
 subtest 'text replace storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         my %params = ('name' => "test.pptx", 'old_value' => "text", 'new_value' => "new_text", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->replace_presentation_text(%params);
+        my $result = $utils->{testSlidesApi}->replace_presentation_text(%params);
 
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         $params{ignore_case} = 1;
-        my $result_ignore_case = $utils->{api}->replace_presentation_text(%params);
+        my $result_ignore_case = $utils->{testSlidesApi}->replace_presentation_text(%params);
 
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'old_value' => "text", 'new_value' => "new_text", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $slide_result = $utils->{api}->replace_slide_text(%params);
+        my $slide_result = $utils->{testSlidesApi}->replace_slide_text(%params);
 
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         $params{ignore_case} = 1;
-        my $slide_result_ignore_case = $utils->{api}->replace_slide_text(%params);
+        my $slide_result_ignore_case = $utils->{testSlidesApi}->replace_slide_text(%params);
 
         ok($result_ignore_case->{matches} > $result->{matches});
         ok($result->{matches} > $slide_result->{matches});
@@ -101,16 +102,16 @@ subtest 'text replace request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'old_value' => "text", 'new_value' => "new_text", 'password' => "password");
-        $utils->{api}->replace_presentation_text_online(%params);
+        $utils->{testSlidesApi}->replace_presentation_text_online(%params);
 
         $params{ignore_case} = 1;
-        $utils->{api}->replace_presentation_text_online(%params);
+        $utils->{testSlidesApi}->replace_presentation_text_online(%params);
 
         %params = ('document' => $source, 'slide_index' => 1, 'old_value' => "text", 'new_value' => "new_text", 'password' => "password");
-        $utils->{api}->replace_slide_text_online(%params);
+        $utils->{testSlidesApi}->replace_slide_text_online(%params);
 
         $params{ignore_case} = 1;
-        $utils->{api}->replace_slide_text_online(%params);
+        $utils->{testSlidesApi}->replace_slide_text_online(%params);
     };
     if ($@) {
         fail("replace_presentation_text_online raised an exception: $@");
@@ -121,7 +122,7 @@ subtest 'text replace request' => sub {
 subtest 'replace text formatting' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $old_text = "banana";
         my $new_text = "orange";
@@ -134,15 +135,15 @@ subtest 'replace text formatting' => sub {
         $portion_format->{font_color} = $color;
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'shape_index' => 1, 'paragraph_index' => 1, 'position' => 1, 'dto' => $portion, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->create_portion(%params);
+        $utils->{testSlidesApi}->create_portion(%params);
 
         $params{old_value} = $old_text;
         $params{new_value} = $new_text;
         $params{portion_format} = $portion_format;
-        $utils->{api}->replace_text_formatting(%params);
+        $utils->{testSlidesApi}->replace_text_formatting(%params);
 
         $params{portion_index} = 1;
-        my $updated_portion = $utils->{api}->get_portion(%params);
+        my $updated_portion = $utils->{testSlidesApi}->get_portion(%params);
         is($updated_portion->{text}, $new_text);
         is($updated_portion->{font_color}, $color);
     };
@@ -158,7 +159,7 @@ subtest 'replace text formatting online' => sub {
         my $portion_format = AsposeSlidesCloud::Object::PortionFormat->new();
         $portion_format->{font_color} = "#FFFFA500";
         my %params = ('document' => $source, 'old_value' => "banana", 'new_value' => "orange", 'portion_format' => $portion_format, 'password' => "password");
-        $utils->{api}->replace_text_formatting_online(%params);
+        $utils->{testSlidesApi}->replace_text_formatting_online(%params);
     };
     if ($@) {
         fail("replace_text_formatting_online raised an exception: $@");
@@ -169,7 +170,7 @@ subtest 'replace text formatting online' => sub {
 subtest 'highlight shape text' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $text_to_highlight = 'highlight';
         my $highlight_color = '#FFF5FF8A';
@@ -183,7 +184,7 @@ subtest 'highlight shape text' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
             
-        $utils->{api}->highlight_shape_text(%params);
+        $utils->{testSlidesApi}->highlight_shape_text(%params);
 
         %params = (
             'name' => "test.pptx", 
@@ -193,7 +194,7 @@ subtest 'highlight shape text' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
         
-        my $paragraph = $utils->{api}->get_paragraph(%params);
+        my $paragraph = $utils->{testSlidesApi}->get_paragraph(%params);
         
         ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
         ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
@@ -209,7 +210,7 @@ subtest 'highlight shape text' => sub {
 subtest 'highlight shape regex' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $text_to_highlight = 'highlight';
         my $hightlight_regex = 'h.ghl[abci]ght';
@@ -225,7 +226,7 @@ subtest 'highlight shape regex' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
             
-        $utils->{api}->highlight_shape_regex(%params);
+        $utils->{testSlidesApi}->highlight_shape_regex(%params);
 
         %params = (
             'name' => "test.pptx", 
@@ -235,7 +236,7 @@ subtest 'highlight shape regex' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
         
-        my $paragraph = $utils->{api}->get_paragraph(%params);
+        my $paragraph = $utils->{testSlidesApi}->get_paragraph(%params);
         
         ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
         ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);

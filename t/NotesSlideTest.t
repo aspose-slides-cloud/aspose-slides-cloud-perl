@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::Paragraph;
 use AsposeSlidesCloud::Object::Portion;
@@ -48,10 +49,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'notes slide get from storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->get_notes_slide(%params);
+        my $result = $utils->{testSlidesApi}->get_notes_slide(%params);
         ok($result->{text});
     };
     if ($@) {
@@ -63,10 +64,10 @@ subtest 'notes slide get from storage' => sub {
 subtest 'notes slide exists from storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $result = $utils->{api}->notes_slide_exists(%params);
+        my $result = $utils->{testSlidesApi}->notes_slide_exists(%params);
         ok($result->{exists});
     };
     if ($@) {
@@ -78,10 +79,10 @@ subtest 'notes slide exists from storage' => sub {
 subtest 'notes slide download from storage' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'format' => "png", 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->download_notes_slide(%params);
+        $utils->{testSlidesApi}->download_notes_slide(%params);
     };
     if ($@) {
         fail("download_notes_slide raised an exception: $@");
@@ -93,7 +94,7 @@ subtest 'notes slide get from request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'slide_index' => 1, 'password' => "password");
-        $utils->{api}->get_notes_slide_online(%params);
+        $utils->{testSlidesApi}->get_notes_slide_online(%params);
     };
     if ($@) {
         fail("get_notes_slide_online raised an exception: $@");
@@ -105,7 +106,7 @@ subtest 'notes slide exists from request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'slide_index' => 1, 'password' => "password");
-        my $result = $utils->{api}->notes_slide_exists_online(%params);
+        my $result = $utils->{testSlidesApi}->notes_slide_exists_online(%params);
         ok($result->{exists});
     };
     if ($@) {
@@ -118,7 +119,7 @@ subtest 'notes slide download from request' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'slide_index' => 1, 'format' => "png", 'password' => "password");
-        $utils->{api}->download_notes_slide_online(%params);
+        $utils->{testSlidesApi}->download_notes_slide_online(%params);
     };
     if ($@) {
         fail("download_notes_slide_online raised an exception: $@");
@@ -131,10 +132,10 @@ subtest 'notes slide shapes' => sub {
         my $shape_count = 3;
 
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %list_params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shapes = $utils->{api}->get_special_slide_shapes(%list_params);
+        my $shapes = $utils->{testSlidesApi}->get_special_slide_shapes(%list_params);
         is(scalar @{$shapes->{shapes_links}}, $shape_count);
 
         my $dto = AsposeSlidesCloud::Object::Shape->new();
@@ -145,21 +146,21 @@ subtest 'notes slide shapes' => sub {
         $dto->{shape_type} = "Rectangle";
         $dto->{text} = "New shape";
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $shape = $utils->{api}->create_special_slide_shape(%params);
+        my $shape = $utils->{testSlidesApi}->create_special_slide_shape(%params);
         is($shape->{text}, $dto->{text});
-        $shapes = $utils->{api}->get_special_slide_shapes(%list_params);
+        $shapes = $utils->{testSlidesApi}->get_special_slide_shapes(%list_params);
         is(scalar @{$shapes->{shapes_links}}, $shape_count + 1);
 
         $dto->{text} = "Updated shape";
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => $shape_count + 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $shape = $utils->{api}->update_special_slide_shape(%params);
+        $shape = $utils->{testSlidesApi}->update_special_slide_shape(%params);
         is($shape->{text}, $dto->{text});
-        $shapes = $utils->{api}->get_special_slide_shapes(%list_params);
+        $shapes = $utils->{testSlidesApi}->get_special_slide_shapes(%list_params);
         is(scalar @{$shapes->{shapes_links}}, $shape_count + 1);
 
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => $shape_count + 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_special_slide_shape(%params);
-        $shapes = $utils->{api}->get_special_slide_shapes(%list_params);
+        $utils->{testSlidesApi}->delete_special_slide_shape(%params);
+        $shapes = $utils->{testSlidesApi}->get_special_slide_shapes(%list_params);
         is(scalar @{$shapes->{shapes_links}}, $shape_count);
     };
     if ($@) {
@@ -173,10 +174,10 @@ subtest 'notes slide paragraphs' => sub {
         my $paragraph_count = 1;
 
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %list_params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $paragraphs = $utils->{api}->get_special_slide_paragraphs(%list_params);
+        my $paragraphs = $utils->{testSlidesApi}->get_special_slide_paragraphs(%list_params);
         is(scalar @{$paragraphs->{paragraph_links}}, $paragraph_count);
 
         my $portion = AsposeSlidesCloud::Object::Portion->new();
@@ -186,22 +187,22 @@ subtest 'notes slide paragraphs' => sub {
         my @portions = ( $portion );
         $dto->{portion_list} = \@portions;
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $paragraph = $utils->{api}->create_special_slide_paragraph(%params);
+        my $paragraph = $utils->{testSlidesApi}->create_special_slide_paragraph(%params);
         is($paragraph->{alignment}, $dto->{alignment});
-        $paragraphs = $utils->{api}->get_special_slide_paragraphs(%list_params);
+        $paragraphs = $utils->{testSlidesApi}->get_special_slide_paragraphs(%list_params);
         is(scalar @{$paragraphs->{paragraph_links}}, $paragraph_count + 1);
 
         $dto = AsposeSlidesCloud::Object::Paragraph->new();
         $dto->{alignment} = "Center";
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => $paragraph_count + 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $paragraph = $utils->{api}->update_special_slide_paragraph(%params);
+        $paragraph = $utils->{testSlidesApi}->update_special_slide_paragraph(%params);
         is($paragraph->{alignment}, $dto->{alignment});
-        $paragraphs = $utils->{api}->get_special_slide_paragraphs(%list_params);
+        $paragraphs = $utils->{testSlidesApi}->get_special_slide_paragraphs(%list_params);
         is(scalar @{$paragraphs->{paragraph_links}}, $paragraph_count + 1);
 
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => $paragraph_count + 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_special_slide_paragraph(%params);
-        $paragraphs = $utils->{api}->get_special_slide_paragraphs(%list_params);
+        $utils->{testSlidesApi}->delete_special_slide_paragraph(%params);
+        $paragraphs = $utils->{testSlidesApi}->get_special_slide_paragraphs(%list_params);
         is(scalar @{$paragraphs->{paragraph_links}}, $paragraph_count);
     };
     if ($@) {
@@ -215,36 +216,36 @@ subtest 'notes slide portions' => sub {
         my $portion_count = 1;
 
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my %list_params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portions = $utils->{api}->get_special_slide_portions(%list_params);
+        my $portions = $utils->{testSlidesApi}->get_special_slide_portions(%list_params);
         is(scalar @{$portions->{items}}, $portion_count);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = "New portion";
         $dto->{font_bold} = 'True';
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $portion = $utils->{api}->create_special_slide_portion(%params);
+        my $portion = $utils->{testSlidesApi}->create_special_slide_portion(%params);
         is($portion->{font_bold}, $dto->{font_bold});
         is($portion->{text}, $dto->{text});
-        $portions = $utils->{api}->get_special_slide_portions(%list_params);
+        $portions = $utils->{testSlidesApi}->get_special_slide_portions(%list_params);
         is(scalar @{$portions->{items}}, $portion_count + 1);
 
         my $dto2 = AsposeSlidesCloud::Object::Portion->new();
         $dto2->{text} = "Updated portion";
         $dto2->{font_height} = 22;
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => 1, 'portion_index' => $portion_count + 1, 'dto' => $dto2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $portion = $utils->{api}->update_special_slide_portion(%params);
+        $portion = $utils->{testSlidesApi}->update_special_slide_portion(%params);
         is($portion->{font_bold}, $dto->{font_bold});
         is($portion->{font_height}, $dto2->{font_height});
         is($portion->{text}, $dto2->{text});
-        $portions = $utils->{api}->get_special_slide_portions(%list_params);
+        $portions = $utils->{testSlidesApi}->get_special_slide_portions(%list_params);
         is(scalar @{$portions->{items}}, $portion_count + 1);
 
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'slide_type' => "NotesSlide", 'shape_index' => 2, 'paragraph_index' => 1, 'portion_index' => $portion_count + 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{api}->delete_special_slide_portion(%params);
-        $portions = $utils->{api}->get_special_slide_portions(%list_params);
+        $utils->{testSlidesApi}->delete_special_slide_portion(%params);
+        $portions = $utils->{testSlidesApi}->get_special_slide_portions(%list_params);
         is(scalar @{$portions->{items}}, $portion_count);
     };
     if ($@) {
@@ -256,14 +257,14 @@ subtest 'notes slide portions' => sub {
 subtest 'create notes slide' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my $dto = AsposeSlidesCloud::Object::NotesSlide->new();
         my $notes_slide_text = 'Notes slide text';
         $dto->{text} = $notes_slide_text;
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->create_notes_slide(%params);
+        my $response = $utils->{testSlidesApi}->create_notes_slide(%params);
         is ($response->{text}, $notes_slide_text);
 	};
     if ($@) {
@@ -275,14 +276,14 @@ subtest 'create notes slide' => sub {
 subtest 'update notes slide' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my $dto = AsposeSlidesCloud::Object::NotesSlide->new();
         my $notes_slide_text = 'Notes slide text';
         $dto->{text} = $notes_slide_text;
 
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->update_notes_slide(%params);
+        my $response = $utils->{testSlidesApi}->update_notes_slide(%params);
         is ($response->{text}, $notes_slide_text);
 	};
     if ($@) {
@@ -293,11 +294,11 @@ subtest 'update notes slide' => sub {
 
 subtest 'delete notes slide' => sub {
     my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
     eval {
         my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_notes_slide(%params);
+        my $response = $utils->{testSlidesApi}->delete_notes_slide(%params);
 	};
     if ($@) {
         fail("delete_notes_slide raised an exception: $@");

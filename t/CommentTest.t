@@ -34,6 +34,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::SlideComment;
 use AsposeSlidesCloud::Object::SlideModernComment;
 
@@ -46,7 +47,7 @@ subtest 'create comment' => sub {
     $utils->initialize('create_comment', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
         my $comment_text = 'Comment text';
         my $author = 'author';
@@ -63,7 +64,7 @@ subtest 'create comment' => sub {
         $comment->{child_comments} = \@child_comments;
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->create_comment(%params);
+        my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
         is($response->{list}[0]{text}, $comment_text);
@@ -96,7 +97,7 @@ subtest 'create comment online' => sub {
 
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
 		my %params = ('document' => $source, 'slide_index' => 3, 'dto' => $comment, 'password' => 'password');
-        my $response = $utils->{api}->create_comment_online(%params);
+        my $response = $utils->{testSlidesApi}->create_comment_online(%params);
 
         ok(length($response) > length($source));
 	};
@@ -110,10 +111,10 @@ subtest 'get slide comments' => sub {
     $utils->initialize('get_slide_comments', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->get_slide_comments(%params);
+        my $response = $utils->{testSlidesApi}->get_slide_comments(%params);
 
         is(scalar @{$response->{list}}, 2);
         is(scalar @{$response->{list}[0]{child_comments}}, 1);
@@ -128,10 +129,10 @@ subtest 'delete comments' => sub {
     $utils->initialize('delete_comments', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->delete_comments(%params);
+        my $response = $utils->{testSlidesApi}->delete_comments(%params);
 
         is(scalar @{$response->{list}}, 0);
 	};
@@ -146,7 +147,7 @@ subtest 'delete comments online' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'password' => 'password');
-        my $response = $utils->{api}->delete_comments_online(%params);
+        my $response = $utils->{testSlidesApi}->delete_comments_online(%params);
         ok(length($response) < length($source));
 	};
     if ($@) {
@@ -159,10 +160,10 @@ subtest 'delete slide comments' => sub {
     $utils->initialize('delete_slide_comments', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->delete_slide_comments(%params);
+        my $response = $utils->{testSlidesApi}->delete_slide_comments(%params);
         is(scalar @{$response->{list}}, 0);
 	};
     if ($@) {
@@ -176,7 +177,7 @@ subtest 'delete slide comments online' => sub {
     eval {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'slide_index' => 1, 'password' => 'password');
-        my $response = $utils->{api}->delete_slide_comments_online(%params);
+        my $response = $utils->{testSlidesApi}->delete_slide_comments_online(%params);
         ok(length($response) != length($source));
 	};
     if ($@) {
@@ -189,7 +190,7 @@ subtest 'create modern comment' => sub {
     $utils->initialize('create_modern_comment', '');
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
         my $text_selection_start_index = 1;
         my $text_selection_length = 5;
@@ -213,7 +214,7 @@ subtest 'create modern comment' => sub {
         $comment->{child_comments} = \@child_comments;
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->create_comment(%params);
+        my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
         is($response->{list}[0]{type}, 'Modern');
@@ -227,7 +228,7 @@ subtest 'create modern comment' => sub {
 subtest 'create shape modern comment' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
         my $text_selection_start_index = 1;
         my $text_selection_length = 5;
@@ -251,7 +252,7 @@ subtest 'create shape modern comment' => sub {
         $comment->{child_comments} = \@child_comments;
 
 		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
-        my $response = $utils->{api}->create_comment(%params);
+        my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
         is($response->{list}[0]{type}, 'Modern');

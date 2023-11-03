@@ -34,6 +34,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::DocumentProperty;
 use AsposeSlidesCloud::Object::SlideProperties;
 use AsposeSlidesCloud::Object::ProtectionProperties;
@@ -50,23 +51,23 @@ subtest 'properties builtin' => sub {
       my $property_name = "Author";
       my $updated_property_value = "New Value";
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'property_name' => $property_name, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_document_property(%params);
+      my $result = $utils->{testSlidesApi}->get_document_property(%params);
       is($result->{name}, $property_name);
       ok($result->{built_in});
 
       my $property = AsposeSlidesCloud::Object::DocumentProperty->new();
       $property->{value} = $updated_property_value;
       my %set_params = ('name' => "test.pptx", 'property_name' => $property_name, 'property' => $property, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $result = $utils->{api}->set_document_property(%set_params);
+      $result = $utils->{testSlidesApi}->set_document_property(%set_params);
       is($result->{name}, $property_name);
       is($result->{value}, $updated_property_value);
       ok($result->{built_in});
 
-      $utils->{api}->delete_document_property(%params);
-      $result = $utils->{api}->get_document_property(%params);
+      $utils->{testSlidesApi}->delete_document_property(%params);
+      $result = $utils->{testSlidesApi}->get_document_property(%params);
       #built-in property is not actually deleted
       is($result->{name}, $property_name);
       ok($result->{value} ne $updated_property_value);
@@ -84,23 +85,23 @@ subtest 'properties custom' => sub {
     eval {
       my $updated_property_value = "New Value";
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $property = AsposeSlidesCloud::Object::DocumentProperty->new();
       $property->{value} = $updated_property_value;
       my %set_params = ('name' => "test.pptx", 'property_name' => $property_name, 'property' => $property, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_document_property(%set_params);
+      my $result = $utils->{testSlidesApi}->set_document_property(%set_params);
       is($result->{name}, $property_name);
       is($result->{value}, $updated_property_value);
       ok(not $result->{built_in});
 
-      $utils->{api}->delete_document_property(%params);
+      $utils->{testSlidesApi}->delete_document_property(%params);
     };
     if ($@) {
         fail("get_document_property raised an exception: $@");
     }
     eval {
-      $utils->{api}->get_document_property(%params);
+      $utils->{testSlidesApi}->get_document_property(%params);
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
@@ -120,10 +121,10 @@ subtest 'properties bulk update' => sub {
       my $custom_property_name = "CustomProperty2";
       my $updated_property_value = "New Value";
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_document_properties(%params);
+      my $result = $utils->{testSlidesApi}->get_document_properties(%params);
       my $count = scalar @{$result->{list}};
 
       my $property1 = AsposeSlidesCloud::Object::DocumentProperty->new();
@@ -136,10 +137,10 @@ subtest 'properties bulk update' => sub {
       my @properties_list = ( $property1, $property2 );
       $properties->{list} = \@properties_list;
       my %set_params = ('name' => "test.pptx", 'properties' => $properties, 'password' => "password", 'folder' => "TempSlidesSDK");
-      $result = $utils->{api}->set_document_properties(%set_params);
+      $result = $utils->{testSlidesApi}->set_document_properties(%set_params);
       is(scalar @{$result->{list}}, $count + 1);
 
-      $result = $utils->{api}->delete_document_properties(%params);
+      $result = $utils->{testSlidesApi}->delete_document_properties(%params);
       is(scalar @{$result->{list}}, $count - 1);
     };
     if ($@) {
@@ -150,15 +151,15 @@ subtest 'properties bulk update' => sub {
 subtest 'properties slide' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $get_result = $utils->{api}->get_slide_properties(%params);
+      my $get_result = $utils->{testSlidesApi}->get_slide_properties(%params);
 
       my $dto = AsposeSlidesCloud::Object::SlideProperties->new();
       $dto->{first_slide_number} = $get_result->{first_slide_number} + 2;
       my %set_params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $put_result = $utils->{api}->set_slide_properties(%set_params);
+      my $put_result = $utils->{testSlidesApi}->set_slide_properties(%set_params);
       is($put_result->{orientation}, $get_result->{orientation});
       ok($put_result->{first_slide_number} ne $get_result->{first_slide_number});
     };
@@ -170,12 +171,12 @@ subtest 'properties slide' => sub {
 subtest 'properties slide size preset' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::SlideProperties->new();
       $dto->{size_type} = 'B4IsoPaper';
       my %set_params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_slide_properties(%set_params);
+      my $result = $utils->{testSlidesApi}->set_slide_properties(%set_params);
       is($result->{size_type}, 'B4IsoPaper');
       is($result->{width}, 852);
       is($result->{height}, 639);
@@ -190,13 +191,13 @@ subtest 'properties slide size custom' => sub {
       my $width = 800;
       my $height = 500;
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::SlideProperties->new();
       $dto->{width} = $width;
       $dto->{height} = $height;
       my %set_params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_slide_properties(%set_params);
+      my $result = $utils->{testSlidesApi}->set_slide_properties(%set_params);
       is($result->{size_type}, 'Custom');
       is($result->{width}, $width);
       is($result->{height}, $height);
@@ -209,15 +210,15 @@ subtest 'properties slide size custom' => sub {
 subtest 'properties protection' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $get_result = $utils->{api}->get_protection_properties(%params);
+      my $get_result = $utils->{testSlidesApi}->get_protection_properties(%params);
 
       my $dto = AsposeSlidesCloud::Object::ProtectionProperties->new();
       $dto->{read_only_recommended} = ($get_result->{read_only_recommended} ? "false" : "true");
       $params{dto} = $dto;
-      my $put_result = $utils->{api}->set_protection(%params);
+      my $put_result = $utils->{testSlidesApi}->set_protection(%params);
       is($put_result->{encrypt_document_properties}, $get_result->{encrypt_document_properties});
       ok($put_result->{read_only_recommended} ne $get_result->{read_only_recommended});
     };
@@ -229,10 +230,10 @@ subtest 'properties protection' => sub {
 subtest 'properties protection delete' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->delete_protection(%params);
+      my $result = $utils->{testSlidesApi}->delete_protection(%params);
       ok(not $result->{is_encrypted});
       ok(not $result->{read_only_recommended});
       ok(not $result->{read_password});
@@ -248,7 +249,7 @@ subtest 'properties protection online' => sub {
       my $dto = AsposeSlidesCloud::Object::ProtectionProperties->new();
       $dto->{read_password} = "newPassword";
       my %params = ('document' => $source, 'dto' => $dto, 'password' => "password");
-      my $result = $utils->{api}->set_protection_online(%params);
+      my $result = $utils->{testSlidesApi}->set_protection_online(%params);
       ok(length($source) > 0);
     };
     if ($@) {
@@ -260,7 +261,7 @@ subtest 'properties unprotect online' => sub {
     eval {
       my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
       my %params = ('document' => $source, 'password' => "password");
-      my $result = $utils->{api}->delete_protection_online(%params);
+      my $result = $utils->{testSlidesApi}->delete_protection_online(%params);
       ok(length($result) ne length($source));
     };
     if ($@) {
@@ -271,10 +272,10 @@ subtest 'properties unprotect online' => sub {
 subtest 'get view properties' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_view_properties(%params);
+      my $result = $utils->{testSlidesApi}->get_view_properties(%params);
       is($result -> {show_comments}, 'True');
     };
     if ($@) {
@@ -285,7 +286,7 @@ subtest 'get view properties' => sub {
 subtest 'set view properties' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::ViewProperties->new();
       my $common_slide_view_properties = AsposeSlidesCloud::Object::CommonSlideViewProperties->new();
@@ -295,7 +296,7 @@ subtest 'set view properties' => sub {
 
 
       my %params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_view_properties(%params);
+      my $result = $utils->{testSlidesApi}->set_view_properties(%params);
       is($result -> {show_comments}, 'False');
       is($result -> {slide_view_properties} -> {scale}, 50);
     };
@@ -307,15 +308,15 @@ subtest 'set view properties' => sub {
 subtest 'protection check' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_protection_properties(%params);
+      my $result = $utils->{testSlidesApi}->get_protection_properties(%params);
       is($result -> {is_encrypted}, 1);
       is($result -> {read_password}, undef);
 
       %params = ('name' => "test.pptx", 'password' => 'password', 'folder' => "TempSlidesSDK");
-      $result = $utils->{api}->get_protection_properties(%params);
+      $result = $utils->{testSlidesApi}->get_protection_properties(%params);
       is($result -> {is_encrypted}, 1);
       is($result -> {read_password}, 'password');
     };
@@ -327,10 +328,10 @@ subtest 'protection check' => sub {
 subtest 'get slide show properties' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->get_slide_show_properties(%params);
+      my $result = $utils->{testSlidesApi}->get_slide_show_properties(%params);
       is($result -> {show_animation}, 1);
       is($result -> {show_narration}, 1);
     };
@@ -342,7 +343,7 @@ subtest 'get slide show properties' => sub {
 subtest 'set slide show properties' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-      $utils->{api}->copy_file(%copy_params);
+      $utils->{testSlidesApi}->copy_file(%copy_params);
 
       my $dto = AsposeSlidesCloud::Object::SlideShowProperties->new();
       $dto->{loop} = 1;
@@ -351,7 +352,7 @@ subtest 'set slide show properties' => sub {
 
 
       my %params = ('name' => "test.pptx", 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-      my $result = $utils->{api}->set_slide_show_properties(%params);
+      my $result = $utils->{testSlidesApi}->set_slide_show_properties(%params);
       is($result -> {loop}, $dto->{loop});
       is($result -> {use_timings}, $dto->{use_timings});
       is($result -> {slide_show_type}, $dto->{slide_show_type});

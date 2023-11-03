@@ -35,6 +35,7 @@ use Test::Exception;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Shape;
 use AsposeSlidesCloud::Object::Paragraph;
 use AsposeSlidesCloud::Object::Portion;
@@ -48,10 +49,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'get paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 'slide_index' => 6, 'shape_index' => 2, 'paragraph_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraph(%params);
         is(scalar @{$response->{portion_list}}, 2);
 	};
     if ($@) {
@@ -63,10 +64,10 @@ subtest 'get paragraph' => sub {
 subtest 'get paragraphs' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 'slide_index' => 6, 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraphs(%params);
         is(scalar @{$response->{paragraph_links}}, 2);
 	};
     if ($@) {
@@ -78,7 +79,7 @@ subtest 'get paragraphs' => sub {
 subtest 'get sub-shape paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -88,7 +89,7 @@ subtest 'get sub-shape paragraph' => sub {
             'folder' => "TempSlidesSDK", 
             'sub_shape' => '1');
 
-        my $response = $utils->{api}->get_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraph(%params);
         is(scalar @{$response->{portion_list}}, 2);
 	};
     if ($@) {
@@ -100,7 +101,7 @@ subtest 'get sub-shape paragraph' => sub {
 subtest 'get sub-shape paragraphs' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -108,7 +109,7 @@ subtest 'get sub-shape paragraphs' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             "sub_shape" => '1');
-        my $response = $utils->{api}->get_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraphs(%params);
         is(scalar @{$response->{paragraph_links}}, 2);
 	};
     if ($@) {
@@ -120,7 +121,7 @@ subtest 'get sub-shape paragraphs' => sub {
 subtest 'create paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         $dto->{margin_left} = 2;
@@ -128,7 +129,7 @@ subtest 'create paragraph' => sub {
         $dto->{alignment} = 'Center';
         
 		my %params = ('name' => "test.pptx", 'slide_index' => 6, 'shape_index' => 2, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->create_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->create_paragraph(%params);
         
         is($response->{margin_left}, 2);
         is($response->{margin_right}, 2);
@@ -143,7 +144,7 @@ subtest 'create paragraph' => sub {
 subtest 'create paragraph width portions' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         my $portion1 = AsposeSlidesCloud::Object::Portion->new();
@@ -154,7 +155,7 @@ subtest 'create paragraph width portions' => sub {
         $dto->{portion_list} = \@portions;
         
 		my %params = ('name' => "test.pptx", 'slide_index' => 6, 'shape_index' => 2, 'dto' => $dto, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->create_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->create_paragraph(%params);
         
         is(scalar @{$response->{portion_list}}, 2);
 	};
@@ -167,7 +168,7 @@ subtest 'create paragraph width portions' => sub {
 subtest 'create sub-shape paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         $dto->{margin_left} = 2;
@@ -181,7 +182,7 @@ subtest 'create sub-shape paragraph' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->create_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->create_paragraph(%params);
         
         is($response->{margin_left}, 2);
         is($response->{margin_right}, 2);
@@ -196,7 +197,7 @@ subtest 'create sub-shape paragraph' => sub {
 subtest 'update paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         $dto->{margin_left} = 2;
@@ -210,7 +211,7 @@ subtest 'update paragraph' => sub {
             'dto' => $dto, 
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->update_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->update_paragraph(%params);
         
         is($response->{margin_left}, 2);
         is($response->{margin_right}, 2);
@@ -225,7 +226,7 @@ subtest 'update paragraph' => sub {
 subtest 'update sub-shape paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         $dto->{margin_left} = 2;
@@ -240,7 +241,7 @@ subtest 'update sub-shape paragraph' => sub {
             'password' => 'password', 
             'folder' => 'TempSlidesSDK',
             'sub_shape' => '1');
-        my $response = $utils->{api}->update_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->update_paragraph(%params);
         
         is($response->{margin_left}, 2);
         is($response->{margin_right}, 2);
@@ -255,14 +256,14 @@ subtest 'update sub-shape paragraph' => sub {
 subtest 'delete paragraphs' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
             'shape_index' => 2,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraphs(%params);
         
         is(scalar @{$response->{paragraph_links}}, 0);
 	};
@@ -275,7 +276,7 @@ subtest 'delete paragraphs' => sub {
 subtest 'delete paragraphs indexes' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         my @paragraphs = (2);
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -283,7 +284,7 @@ subtest 'delete paragraphs indexes' => sub {
             'paragraphs' => \@paragraphs,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraphs(%params);
         
         is(scalar @{$response->{paragraph_links}}, 1);
 	};
@@ -296,7 +297,7 @@ subtest 'delete paragraphs indexes' => sub {
 subtest 'delete sub-shape paragraphs' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -304,7 +305,7 @@ subtest 'delete sub-shape paragraphs' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->delete_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraphs(%params);
         
         is(scalar @{$response->{paragraph_links}}, 0);
 	};
@@ -317,7 +318,7 @@ subtest 'delete sub-shape paragraphs' => sub {
 subtest 'delete sub-shape paragraphs indexes' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         my @paragraphs = (1);
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -326,7 +327,7 @@ subtest 'delete sub-shape paragraphs indexes' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->delete_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraphs(%params);
         
         is(scalar @{$response->{paragraph_links}}, 1);
 	};
@@ -339,7 +340,7 @@ subtest 'delete sub-shape paragraphs indexes' => sub {
 subtest 'delete paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -347,7 +348,7 @@ subtest 'delete paragraph' => sub {
             'paragraph_index' => 1,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->delete_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraph(%params);
         
         is(scalar @{$response->{paragraph_links}}, 1);
 	};
@@ -360,7 +361,7 @@ subtest 'delete paragraph' => sub {
 subtest 'delete sub-shape paragraph' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -369,7 +370,7 @@ subtest 'delete sub-shape paragraph' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK",
             'sub_shape' => '1');
-        my $response = $utils->{api}->delete_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->delete_paragraph(%params);
         
         is(scalar @{$response->{paragraph_links}}, 1);
 	};
@@ -382,7 +383,7 @@ subtest 'delete sub-shape paragraph' => sub {
 subtest 'get paragraph rect' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         
 		my %params = ('name' => "test.pptx", 
             'slide_index' => 6, 
@@ -390,7 +391,7 @@ subtest 'get paragraph rect' => sub {
             'paragraph_index' => 1,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_paragraph_rectangle(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraph_rectangle(%params);
         
         ok($response->{x} > 0);
         ok($response->{y} > 0);
@@ -406,7 +407,7 @@ subtest 'get paragraph rect' => sub {
 subtest 'paragraph default portion format' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Paragraph->new();
         my $default_portion_format = AsposeSlidesCloud::Object::PortionFormat->new();
@@ -426,7 +427,7 @@ subtest 'paragraph default portion format' => sub {
             'dto' => $dto,
             'password' => "password", 
             'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->create_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->create_paragraph(%params);
 
         is(scalar @{$response->{portion_list}}, 2);
         is($response->{default_portion_format}->{latin_font}, $dto->{default_portion_format}->{latin_font});
@@ -441,10 +442,10 @@ subtest 'paragraph default portion format' => sub {
 subtest 'get paragraph effective' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 'slide_index' => 6, 'shape_index' => 2, 'paragraph_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_paragraph_effective(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraph_effective(%params);
         is($response->{default_tab_size}, 72);
 	};
     if ($@) {
@@ -456,7 +457,7 @@ subtest 'get paragraph effective' => sub {
 subtest 'get sub-shape paragraph effective' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -467,7 +468,7 @@ subtest 'get sub-shape paragraph effective' => sub {
             'folder' => "TempSlidesSDK", 
             'sub_shape' => '1');
 
-        my $response = $utils->{api}->get_paragraph_effective(%params);
+        my $response = $utils->{testSlidesApi}->get_paragraph_effective(%params);
         is($response->{default_tab_size}, 72);
 	};
     if ($@) {

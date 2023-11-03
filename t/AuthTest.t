@@ -31,6 +31,7 @@ use Test::More;
 use Test::Exception;
 
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 
 use strict;
 use warnings;

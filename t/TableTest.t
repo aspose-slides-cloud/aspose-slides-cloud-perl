@@ -32,6 +32,7 @@ use JSON;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::TableCell;
 use AsposeSlidesCloud::Object::TableRow;
 use AsposeSlidesCloud::Object::Paragraph;
@@ -49,7 +50,7 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'update table cell' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::TableCell->new();
         $dto->{text} = "Test text";
@@ -63,7 +64,7 @@ subtest 'update table cell' => sub {
             'row_index' => 2, 
             'cell_index' => 1, 
             'dto' => $dto);
-        my $response = $utils->{api}->update_table_cell(%params);
+        my $response = $utils->{testSlidesApi}->update_table_cell(%params);
         is($response->{text}, "Test text");
 	};
     if ($@) {
@@ -75,7 +76,7 @@ subtest 'update table cell' => sub {
 subtest 'create table row' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $cell0 = AsposeSlidesCloud::Object::TableCell->new();
         $cell0->{text} = "Cell 1";
@@ -98,7 +99,7 @@ subtest 'create table row' => sub {
             'slide_index' => 9,
             'shape_index' => 1, 
             'dto' => $dto);
-        my $response = $utils->{api}->create_table_row(%params);
+        my $response = $utils->{testSlidesApi}->create_table_row(%params);
         is(scalar @{$response->{cells}}, scalar @{$dto->{cells}});
         is($response->{minimal_height}, $dto->{minimal_height});
 	};
@@ -111,7 +112,7 @@ subtest 'create table row' => sub {
 subtest 'delete table row' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -121,7 +122,7 @@ subtest 'delete table row' => sub {
             'shape_index' => 1, 
             'row_index' => 2,
             'with_attached_rows' => 'true');
-        my $response = $utils->{api}->delete_table_row(%params);
+        my $response = $utils->{testSlidesApi}->delete_table_row(%params);
 
         is(scalar @{$response->{rows}}, 2);
 	};
@@ -134,7 +135,7 @@ subtest 'delete table row' => sub {
 subtest 'update table row' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::TableRow->new();
         $dto->{minimal_height} = 30;
@@ -148,7 +149,7 @@ subtest 'update table row' => sub {
             'row_index' => 1,
             'dto' => $dto);
 
-        my $response = $utils->{api}->update_table_row(%params);
+        my $response = $utils->{testSlidesApi}->update_table_row(%params);
 
         is($response->{minimal_height}, $dto->{minimal_height});
 	};
@@ -161,7 +162,7 @@ subtest 'update table row' => sub {
 subtest 'merge table cells' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::TableCellMergeOptions->new();
         $dto->{first_row_index} = 1;
@@ -178,7 +179,7 @@ subtest 'merge table cells' => sub {
             'shape_index' => 1, 
             'table_cell_merge_options' => $dto);
 
-        my $response = $utils->{api}->merge_table_cells(%params);
+        my $response = $utils->{testSlidesApi}->merge_table_cells(%params);
 
         is($response->{rows}[0]{cells}[0]->col_span, 2);
         is($response->{rows}[0]{cells}[0]->row_span, 2);
@@ -192,7 +193,7 @@ subtest 'merge table cells' => sub {
 subtest 'split table cell by width' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -205,7 +206,7 @@ subtest 'split table cell by width' => sub {
             'row_index' => 1, 
             'cell_index' => 1);
 
-        my $response = $utils->{api}->split_table_cell(%params);
+        my $response = $utils->{testSlidesApi}->split_table_cell(%params);
 
         is(scalar @{$response->{rows}[0]{cells}}, 5);
 	};
@@ -218,7 +219,7 @@ subtest 'split table cell by width' => sub {
 subtest 'split table cell by height' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -231,7 +232,7 @@ subtest 'split table cell by height' => sub {
             'row_index' => 1, 
             'cell_index' => 1);
 
-        my $response = $utils->{api}->split_table_cell(%params);
+        my $response = $utils->{testSlidesApi}->split_table_cell(%params);
 
         is(scalar @{$response->{rows}}, 5);
 	};
@@ -244,7 +245,7 @@ subtest 'split table cell by height' => sub {
 subtest 'split table cell by col span' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -257,7 +258,7 @@ subtest 'split table cell by col span' => sub {
             'row_index' => 3, 
             'cell_index' => 1);
 
-        my $response = $utils->{api}->split_table_cell(%params);
+        my $response = $utils->{testSlidesApi}->split_table_cell(%params);
 
         is($response->{rows}[0]{cells}[0]->col_span, undef);
 	};
@@ -270,7 +271,7 @@ subtest 'split table cell by col span' => sub {
 subtest 'split table cell by row span' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -283,7 +284,7 @@ subtest 'split table cell by row span' => sub {
             'row_index' => 2, 
             'cell_index' => 3);
 
-        my $response = $utils->{api}->split_table_cell(%params);
+        my $response = $utils->{testSlidesApi}->split_table_cell(%params);
 
         is($response->{rows}[1]{cells}[2]->col_span, undef);
 	};
@@ -296,7 +297,7 @@ subtest 'split table cell by row span' => sub {
 subtest 'get table cell paragraphs' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -307,7 +308,7 @@ subtest 'get table cell paragraphs' => sub {
             'row_index' => 1, 
             'cell_index' => 1);
 
-        my $response = $utils->{api}->get_table_cell_paragraphs(%params);
+        my $response = $utils->{testSlidesApi}->get_table_cell_paragraphs(%params);
 
         is(scalar @{$response->{paragraph_links}}, 1);
 	};
@@ -320,7 +321,7 @@ subtest 'get table cell paragraphs' => sub {
 subtest 'get table cell paragraph' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -332,7 +333,7 @@ subtest 'get table cell paragraph' => sub {
             'cell_index' => 1,
             'paragraph_index' => 1);
 
-        my $response = $utils->{api}->get_table_cell_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->get_table_cell_paragraph(%params);
 
         is(scalar @{$response->{portion_list}}, 2);
 	};
@@ -345,7 +346,7 @@ subtest 'get table cell paragraph' => sub {
 subtest 'create table cell paragraph' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $portion0 = AsposeSlidesCloud::Object::Portion->new();
         $portion0->{text} = "Portion 1";
@@ -365,7 +366,7 @@ subtest 'create table cell paragraph' => sub {
             'cell_index' => 1,
             'dto' => $dto);
 
-        my $response = $utils->{api}->create_table_cell_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->create_table_cell_paragraph(%params);
 
         is(scalar @{$response->{portion_list}}, 2);
 	};
@@ -378,7 +379,7 @@ subtest 'create table cell paragraph' => sub {
 subtest 'update table cell paragraph' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $portion0 = AsposeSlidesCloud::Object::Portion->new();
         $portion0->{text} = "Portion 1";
@@ -399,7 +400,7 @@ subtest 'update table cell paragraph' => sub {
             'paragraph_index' => 1,
             'dto' => $dto);
 
-        my $response = $utils->{api}->update_table_cell_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->update_table_cell_paragraph(%params);
 
         is(scalar @{$response->{portion_list}}, 2);
 	};
@@ -412,7 +413,7 @@ subtest 'update table cell paragraph' => sub {
 subtest 'delete table cell paragraph' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -424,7 +425,7 @@ subtest 'delete table cell paragraph' => sub {
             'cell_index' => 1,
             'paragraph_index' => 1);
 
-        my $response = $utils->{api}->delete_table_cell_paragraph(%params);
+        my $response = $utils->{testSlidesApi}->delete_table_cell_paragraph(%params);
 
         is(scalar @{$response->{paragraph_links}}, 0);
 	};
@@ -437,7 +438,7 @@ subtest 'delete table cell paragraph' => sub {
 subtest 'get table cell portions' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -449,7 +450,7 @@ subtest 'get table cell portions' => sub {
             'cell_index' => 1,
             'paragraph_index' => 1);
 
-        my $response = $utils->{api}->get_table_cell_portions(%params);
+        my $response = $utils->{testSlidesApi}->get_table_cell_portions(%params);
 
         is(scalar @{$response->{items}}, 2);
 	};
@@ -462,7 +463,7 @@ subtest 'get table cell portions' => sub {
 subtest 'get table cell portion' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -475,7 +476,7 @@ subtest 'get table cell portion' => sub {
             'paragraph_index' => 1,
             'portion_index' => 1);
 
-        my $response = $utils->{api}->get_table_cell_portion(%params);
+        my $response = $utils->{testSlidesApi}->get_table_cell_portion(%params);
 
         is($response->{text}, "Header");
 	};
@@ -488,7 +489,7 @@ subtest 'get table cell portion' => sub {
 subtest 'create table cell portion' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = "Portion 1";
@@ -504,7 +505,7 @@ subtest 'create table cell portion' => sub {
             'paragraph_index' => 1,
             'dto' => $dto);
 
-        my $response = $utils->{api}->create_table_cell_portion(%params);
+        my $response = $utils->{testSlidesApi}->create_table_cell_portion(%params);
 
         is($response->{text}, $dto->{text});
 	};
@@ -517,7 +518,7 @@ subtest 'create table cell portion' => sub {
 subtest 'update table cell portion' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Portion->new();
         $dto->{text} = "Portion 1";
@@ -534,7 +535,7 @@ subtest 'update table cell portion' => sub {
             'portion_index' => 1,
             'dto' => $dto);
 
-        my $response = $utils->{api}->update_table_cell_portion(%params);
+        my $response = $utils->{testSlidesApi}->update_table_cell_portion(%params);
 
         is($response->{text}, $dto->{text});
 	};
@@ -547,7 +548,7 @@ subtest 'update table cell portion' => sub {
 subtest 'delete table cell portion' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -560,7 +561,7 @@ subtest 'delete table cell portion' => sub {
             'paragraph_index' => 1,
             'portion_index' => 1);
 
-        my $response = $utils->{api}->delete_table_cell_portion(%params);
+        my $response = $utils->{testSlidesApi}->delete_table_cell_portion(%params);
 
         is(scalar @{$response->{items}}, 1);
 	};

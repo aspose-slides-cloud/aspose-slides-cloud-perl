@@ -32,6 +32,7 @@ use JSON;
 
 use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
+use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Slide;
 use AsposeSlidesCloud::Object::ResourceUri;
 use AsposeSlidesCloud::Object::SlideBackground;
@@ -48,10 +49,10 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 subtest 'get slides' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_slides(%params);
+        my $response = $utils->{testSlidesApi}->get_slides(%params);
         is(scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
@@ -63,10 +64,10 @@ subtest 'get slides' => sub {
 subtest 'get slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $response = $utils->{api}->get_slide(%params);
+        my $response = $utils->{testSlidesApi}->get_slide(%params);
         ok($response != undef)
 	};
     if ($@) {
@@ -78,7 +79,7 @@ subtest 'get slide' => sub {
 subtest 'create slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -87,7 +88,7 @@ subtest 'create slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->create_slide(%params);
+        my $response = $utils->{testSlidesApi}->create_slide(%params);
         is (scalar @{$response->{slide_list}}, 10);
 
         %params = (
@@ -95,7 +96,7 @@ subtest 'create slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        $response = $utils->{api}->create_slide(%params);
+        $response = $utils->{testSlidesApi}->create_slide(%params);
         is (scalar @{$response->{slide_list}}, 11)
 	};
     if ($@) {
@@ -107,7 +108,7 @@ subtest 'create slide' => sub {
 subtest 'copy slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -115,7 +116,7 @@ subtest 'copy slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->copy_slide(%params);
+        my $response = $utils->{testSlidesApi}->copy_slide(%params);
         is (scalar @{$response->{slide_list}}, 10);
 	};
     if ($@) {
@@ -127,10 +128,10 @@ subtest 'copy slide' => sub {
 subtest 'copy slide from source' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         %copy_params = ('src_path' => "TempTests/TemplateCV.pptx", 'dest_path' => "TempSlidesSDK/TemplateCV.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -140,7 +141,7 @@ subtest 'copy slide from source' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->copy_slide(%params);
+        my $response = $utils->{testSlidesApi}->copy_slide(%params);
         is (scalar @{$response->{slide_list}}, 10);
 	};
     if ($@) {
@@ -152,7 +153,7 @@ subtest 'copy slide from source' => sub {
 subtest 'move slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -161,7 +162,7 @@ subtest 'move slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->move_slide(%params);
+        my $response = $utils->{testSlidesApi}->move_slide(%params);
         is (scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
@@ -173,7 +174,7 @@ subtest 'move slide' => sub {
 subtest 'reorder slides' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @old_positions = (1, 2, 3, 4, 5, 6);
         my @new_positions = (6, 5, 4, 3, 2, 1);
@@ -185,7 +186,7 @@ subtest 'reorder slides' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->reorder_slides(%params);
+        my $response = $utils->{testSlidesApi}->reorder_slides(%params);
         is (scalar @{$response->{slide_list}}, 9);
 	};
     if ($@) {
@@ -197,7 +198,7 @@ subtest 'reorder slides' => sub {
 subtest 'update slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Slide->new();
         my $layout_slide = AsposeSlidesCloud::Object::ResourceUri->new();
@@ -211,7 +212,7 @@ subtest 'update slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->update_slide(%params);
+        my $response = $utils->{testSlidesApi}->update_slide(%params);
         ok (index($response->{layout_slide}->{href}, $layout_slide != -1));
 	};
     if ($@) {
@@ -223,14 +224,14 @@ subtest 'update slide' => sub {
 subtest 'delete slides' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->delete_slides(%params);
+        my $response = $utils->{testSlidesApi}->delete_slides(%params);
         is (scalar @{$response->{slide_list}}, 1);
 	};
     if ($@) {
@@ -242,7 +243,7 @@ subtest 'delete slides' => sub {
 subtest 'delete slides indexes' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @indexes = (1, 3, 5);
 		my %params = (
@@ -251,7 +252,7 @@ subtest 'delete slides indexes' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->delete_slides(%params);
+        my $response = $utils->{testSlidesApi}->delete_slides(%params);
         is (scalar @{$response->{slide_list}}, 6);
 	};
     if ($@) {
@@ -263,7 +264,7 @@ subtest 'delete slides indexes' => sub {
 subtest 'delete slide' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -271,7 +272,7 @@ subtest 'delete slide' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->delete_slide(%params);
+        my $response = $utils->{testSlidesApi}->delete_slide(%params);
         is (scalar @{$response->{slide_list}}, 8);
 	};
     if ($@) {
@@ -283,7 +284,7 @@ subtest 'delete slide' => sub {
 subtest 'get background' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -291,7 +292,7 @@ subtest 'get background' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->get_background(%params);
+        my $response = $utils->{testSlidesApi}->get_background(%params);
         is ($response->{fill_format}->{type}, 'Solid');
 	};
     if ($@) {
@@ -303,7 +304,7 @@ subtest 'get background' => sub {
 subtest 'set background' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::SlideBackground->new();
         my $fill_format = AsposeSlidesCloud::Object::SolidFill->new();
@@ -317,7 +318,7 @@ subtest 'set background' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->set_background(%params);
+        my $response = $utils->{testSlidesApi}->set_background(%params);
         is ($response->{fill_format}->{type}, 'Solid');
         is ($response->{fill_format}->{color}, $fill_format->color);
 	};
@@ -330,7 +331,7 @@ subtest 'set background' => sub {
 subtest 'set background color' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -339,7 +340,7 @@ subtest 'set background color' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->set_background_color(%params);
+        my $response = $utils->{testSlidesApi}->set_background_color(%params);
         is ($response->{fill_format}->{type}, 'Solid');
         is ($response->{fill_format}->{color}, '#FFF5FF8A');
 	};
@@ -352,7 +353,7 @@ subtest 'set background color' => sub {
 subtest 'delete background color' => sub {
     eval {
 		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
-        $utils->{api}->copy_file(%copy_params);
+        $utils->{testSlidesApi}->copy_file(%copy_params);
 
 		my %params = (
             'name' => "test.pptx", 
@@ -360,7 +361,7 @@ subtest 'delete background color' => sub {
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
-        my $response = $utils->{api}->delete_background(%params);
+        my $response = $utils->{testSlidesApi}->delete_background(%params);
         is ($response->{fill_format}->{type}, 'NoFill');
 	};
     if ($@) {
