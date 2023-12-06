@@ -99,6 +99,144 @@ subtest 'async download presentation' => sub {
     pass();
 };
 
+subtest 'async convert and save' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+        my $out_path = "TempSlidesSDK/converted.pdf";
+
+        my %params = ('path' => $out_path);
+        $utils->{testSlidesApi}->delete_file(%params);
+
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+        %params = ('document' => $source, 'format' => 'Pdf', 'password' => 'password', 'out_path' => $out_path);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_convert_and_save(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        %params = ('path' => $out_path);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("async convert raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'async save presentation' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+        my $out_path = "TempSlidesSDK/converted.pdf";
+
+        my %params = ('path' => $out_path);
+        $utils->{testSlidesApi}->delete_file(%params);
+
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+        %params = ('name' => 'test.pptx', 'format' => 'Pdf', 'password' => 'password', 'folder' => "TempSlidesSDK", 'out_path' => $out_path);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_save_presentation(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        %params = ('path' => $out_path);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("async convert raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'async merge' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+
+        my $source1 = read_file("TestData/TemplateCV.pptx", { binmode => ':raw' });
+        my $source2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
+        my @files = ( $source1, $source2 );
+        my %params = ('files' => \@files);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_merge(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        my $merged = $utils->{testSlidesAsyncApi}->get_operation_result(%getStatusParams);
+        ok(length($merged));
+    };
+    if ($@) {
+        fail("async merge raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'async merge and save' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+        my $out_path = "TempSlidesSDK/merged.pptx";
+
+        my %params = ('path' => $out_path);
+        $utils->{testSlidesApi}->delete_file(%params);
+
+        my $source1 = read_file("TestData/TemplateCV.pptx", { binmode => ':raw' });
+        my $source2 = read_file("TestData/test-unprotected.pptx", { binmode => ':raw' });
+        my @files = ( $source1, $source2 );
+        %params = ('files' => \@files, 'out_path' => $out_path);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_merge_and_save(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        %params = ('path' => $out_path);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("async merge and save raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'async bad operation' => sub {
     eval {
         my $maxTries = 10;

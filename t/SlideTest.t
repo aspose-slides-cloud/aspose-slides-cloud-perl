@@ -34,6 +34,7 @@ use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::Slide;
+use AsposeSlidesCloud::Object::SlideShowTransition;
 use AsposeSlidesCloud::Object::ResourceUri;
 use AsposeSlidesCloud::Object::SlideBackground;
 use AsposeSlidesCloud::Object::SolidFill;
@@ -48,13 +49,13 @@ my $utils = AsposeSlidesCloud::TestUtils->new();
 
 subtest 'get slides' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
+        my %params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");
         my $response = $utils->{testSlidesApi}->get_slides(%params);
         is(scalar @{$response->{slide_list}}, 9);
-	};
+    };
     if ($@) {
         fail("get_slides raised an exception: $@");
     }
@@ -63,13 +64,13 @@ subtest 'get slides' => sub {
 
 subtest 'get slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my %params = ('name' => "test.pptx", 'slide_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
         my $response = $utils->{testSlidesApi}->get_slide(%params);
         ok($response != undef)
-	};
+    };
     if ($@) {
         fail("get_slide raised an exception: $@");
     }
@@ -78,10 +79,10 @@ subtest 'get slide' => sub {
 
 subtest 'create slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'layout_alias' => 'layoutSlides/3', 
             'position' => 1, 
@@ -98,7 +99,7 @@ subtest 'create slide' => sub {
 
         $response = $utils->{testSlidesApi}->create_slide(%params);
         is (scalar @{$response->{slide_list}}, 11)
-	};
+    };
     if ($@) {
         fail("create_slide raised an exception: $@");
     }
@@ -107,10 +108,10 @@ subtest 'create slide' => sub {
 
 subtest 'copy slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_to_copy' => 3,
             'password' => "password", 
@@ -118,7 +119,7 @@ subtest 'copy slide' => sub {
 
         my $response = $utils->{testSlidesApi}->copy_slide(%params);
         is (scalar @{$response->{slide_list}}, 10);
-	};
+    };
     if ($@) {
         fail("copy_slide raised an exception: $@");
     }
@@ -127,13 +128,13 @@ subtest 'copy slide' => sub {
 
 subtest 'copy slide from source' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         %copy_params = ('src_path' => "TempTests/TemplateCV.pptx", 'dest_path' => "TempSlidesSDK/TemplateCV.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_to_copy' => 1,
             'position' => 1,
@@ -143,7 +144,7 @@ subtest 'copy slide from source' => sub {
 
         my $response = $utils->{testSlidesApi}->copy_slide(%params);
         is (scalar @{$response->{slide_list}}, 10);
-	};
+    };
     if ($@) {
         fail("copy_slide raised an exception: $@");
     }
@@ -152,10 +153,10 @@ subtest 'copy slide from source' => sub {
 
 subtest 'move slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 3,
             'new_position' => 2,
@@ -164,7 +165,7 @@ subtest 'move slide' => sub {
 
         my $response = $utils->{testSlidesApi}->move_slide(%params);
         is (scalar @{$response->{slide_list}}, 9);
-	};
+    };
     if ($@) {
         fail("move_slide raised an exception: $@");
     }
@@ -173,13 +174,13 @@ subtest 'move slide' => sub {
 
 subtest 'reorder slides' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @old_positions = (1, 2, 3, 4, 5, 6);
         my @new_positions = (6, 5, 4, 3, 2, 1);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'old_positions' => \@old_positions,
             'new_positions' => \@new_positions,
@@ -188,7 +189,7 @@ subtest 'reorder slides' => sub {
 
         my $response = $utils->{testSlidesApi}->reorder_slides(%params);
         is (scalar @{$response->{slide_list}}, 9);
-	};
+    };
     if ($@) {
         fail("reorder_slides raised an exception: $@");
     }
@@ -197,7 +198,7 @@ subtest 'reorder slides' => sub {
 
 subtest 'update slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::Slide->new();
@@ -205,7 +206,7 @@ subtest 'update slide' => sub {
         $layout_slide->{href} = 'layoutSlides/3';
         $dto->{layout_slide} = $layout_slide;
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 1,
             'slide_dto' => $dto, 
@@ -214,7 +215,34 @@ subtest 'update slide' => sub {
 
         my $response = $utils->{testSlidesApi}->update_slide(%params);
         ok (index($response->{layout_slide}->{href}, $layout_slide != -1));
-	};
+    };
+    if ($@) {
+        fail("update_slide raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'set slide transition' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $dto = AsposeSlidesCloud::Object::Slide->new();
+        my $transition = AsposeSlidesCloud::Object::SlideShowTransition->new();
+        $transition->{type} = 'Circle';
+        $transition->{speed} = 'Medium';
+        $dto->{slide_show_transition} = $transition;
+
+        my %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 1,
+            'slide_dto' => $dto, 
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+
+        my $response = $utils->{testSlidesApi}->update_slide(%params);
+        is ($dto->{slide_show_transition}->{type}, $response->{slide_show_transition}->{type});
+    };
     if ($@) {
         fail("update_slide raised an exception: $@");
     }
@@ -223,17 +251,17 @@ subtest 'update slide' => sub {
 
 subtest 'delete slides' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'password' => "password", 
             'folder' => "TempSlidesSDK");
 
         my $response = $utils->{testSlidesApi}->delete_slides(%params);
         is (scalar @{$response->{slide_list}}, 1);
-	};
+    };
     if ($@) {
         fail("delete_slides raised an exception: $@");
     }
@@ -242,11 +270,11 @@ subtest 'delete slides' => sub {
 
 subtest 'delete slides indexes' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my @indexes = (1, 3, 5);
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slides' => \@indexes,
             'password' => "password", 
@@ -254,7 +282,7 @@ subtest 'delete slides indexes' => sub {
 
         my $response = $utils->{testSlidesApi}->delete_slides(%params);
         is (scalar @{$response->{slide_list}}, 6);
-	};
+    };
     if ($@) {
         fail("delete_slides raised an exception: $@");
     }
@@ -263,10 +291,10 @@ subtest 'delete slides indexes' => sub {
 
 subtest 'delete slide' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 1,
             'password' => "password", 
@@ -274,7 +302,7 @@ subtest 'delete slide' => sub {
 
         my $response = $utils->{testSlidesApi}->delete_slide(%params);
         is (scalar @{$response->{slide_list}}, 8);
-	};
+    };
     if ($@) {
         fail("delete_slide raised an exception: $@");
     }
@@ -283,10 +311,10 @@ subtest 'delete slide' => sub {
 
 subtest 'get background' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 5,
             'password' => "password", 
@@ -294,7 +322,7 @@ subtest 'get background' => sub {
 
         my $response = $utils->{testSlidesApi}->get_background(%params);
         is ($response->{fill_format}->{type}, 'Solid');
-	};
+    };
     if ($@) {
         fail("get_background raised an exception: $@");
     }
@@ -303,7 +331,7 @@ subtest 'get background' => sub {
 
 subtest 'set background' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $dto = AsposeSlidesCloud::Object::SlideBackground->new();
@@ -311,7 +339,7 @@ subtest 'set background' => sub {
         $fill_format->{color} = '#FFF5FF8A';
         $dto->{fill_format} = $fill_format;
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 5,
             'background' => $dto,
@@ -321,7 +349,7 @@ subtest 'set background' => sub {
         my $response = $utils->{testSlidesApi}->set_background(%params);
         is ($response->{fill_format}->{type}, 'Solid');
         is ($response->{fill_format}->{color}, $fill_format->color);
-	};
+    };
     if ($@) {
         fail("set_background raised an exception: $@");
     }
@@ -330,10 +358,10 @@ subtest 'set background' => sub {
 
 subtest 'set background color' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 1,
             'color' => '#FFF5FF8A',
@@ -343,7 +371,7 @@ subtest 'set background color' => sub {
         my $response = $utils->{testSlidesApi}->set_background_color(%params);
         is ($response->{fill_format}->{type}, 'Solid');
         is ($response->{fill_format}->{color}, '#FFF5FF8A');
-	};
+    };
     if ($@) {
         fail("set_background_color raised an exception: $@");
     }
@@ -352,10 +380,10 @@ subtest 'set background color' => sub {
 
 subtest 'delete background color' => sub {
     eval {
-		my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = (
+        my %params = (
             'name' => "test.pptx", 
             'slide_index' => 5,
             'password' => "password", 
@@ -363,7 +391,7 @@ subtest 'delete background color' => sub {
 
         my $response = $utils->{testSlidesApi}->delete_background(%params);
         is ($response->{fill_format}->{type}, 'NoFill');
-	};
+    };
     if ($@) {
         fail("delete_background raised an exception: $@");
     }
