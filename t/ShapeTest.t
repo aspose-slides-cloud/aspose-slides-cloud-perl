@@ -155,6 +155,23 @@ subtest 'get sub-shape' => sub {
     pass();
 };
 
+subtest 'shape load save' => sub {
+    eval {
+      my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+      $utils->{testSlidesApi}->copy_file(%copy_params);
+
+      my %params = ('name' => "test.pptx", 'slide_index' => 3, 'shape_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+      my $dto = $utils->{testSlidesApi}->get_shape(%params);
+      $params{dto} = $dto;
+      my $shape = $utils->{testSlidesApi}->update_shape(%params);
+      is(ref $shape, "AsposeSlidesCloud::Object::Chart");
+    };
+    if ($@) {
+        fail("update_shape raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'shape add' => sub {
     eval {
       my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");

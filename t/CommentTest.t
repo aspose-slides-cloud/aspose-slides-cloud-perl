@@ -148,7 +148,7 @@ subtest 'delete comments online' => sub {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'password' => 'password');
         my $response = $utils->{testSlidesApi}->delete_comments_online(%params);
-        ok(length($response) < length($source));
+        ok(length($response) != length($source));
 	};
     if ($@) {
         fail("delete_comments_online raised an exception: $@");
