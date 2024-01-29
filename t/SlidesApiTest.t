@@ -13702,6 +13702,51 @@ subtest 'get_api_info' => sub {
 };
 
 #
+# get_available_fonts test
+#
+subtest 'get_available_fonts' => sub {
+    my %params = ('fonts_folder' => $utils->get_param_value('get_available_fonts', 'fonts_folder', 'string'), 'storage' => $utils->get_param_value('get_available_fonts', 'storage', 'string'));
+    $utils->initialize('get_available_fonts', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->get_available_fonts(%params);
+    };
+    if ($@) {
+        fail("get_available_fonts raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_available_fonts invalid fonts_folder' => sub {
+    my %params = ('fonts_folder' => $utils->get_param_value('get_available_fonts', 'fonts_folder', 'string'), 'storage' => $utils->get_param_value('get_available_fonts', 'storage', 'string'));
+    $params{ fonts_folder } = $utils->invalidize_param_value('get_available_fonts', 'fonts_folder', $params{ fonts_folder }, 'string');
+    $utils->initialize('get_available_fonts', 'fonts_folder', $params{ fonts_folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_available_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_available_fonts', 'fonts_folder', $params{ fonts_folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_available_fonts', 'fonts_folder', 'string');
+    }
+};
+
+subtest 'get_available_fonts invalid storage' => sub {
+    my %params = ('fonts_folder' => $utils->get_param_value('get_available_fonts', 'fonts_folder', 'string'), 'storage' => $utils->get_param_value('get_available_fonts', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_available_fonts', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_available_fonts', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_available_fonts(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_available_fonts', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_available_fonts', 'storage', 'string');
+    }
+};
+
+#
 # get_background test
 #
 subtest 'get_background' => sub {
