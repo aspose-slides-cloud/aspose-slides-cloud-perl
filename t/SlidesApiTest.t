@@ -13927,6 +13927,81 @@ subtest 'get_color_scheme invalid storage' => sub {
 };
 
 #
+# get_comment_authors test
+#
+subtest 'get_comment_authors' => sub {
+    my %params = ('name' => $utils->get_param_value('get_comment_authors', 'name', 'string'), 'password' => $utils->get_param_value('get_comment_authors', 'password', 'string'), 'folder' => $utils->get_param_value('get_comment_authors', 'folder', 'string'), 'storage' => $utils->get_param_value('get_comment_authors', 'storage', 'string'));
+    $utils->initialize('get_comment_authors', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->get_comment_authors(%params);
+    };
+    if ($@) {
+        fail("get_comment_authors raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get_comment_authors invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('get_comment_authors', 'name', 'string'), 'password' => $utils->get_param_value('get_comment_authors', 'password', 'string'), 'folder' => $utils->get_param_value('get_comment_authors', 'folder', 'string'), 'storage' => $utils->get_param_value('get_comment_authors', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('get_comment_authors', 'name', $params{ name }, 'string');
+    $utils->initialize('get_comment_authors', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_comment_authors(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_comment_authors', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_comment_authors', 'name', 'string');
+    }
+};
+
+subtest 'get_comment_authors invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('get_comment_authors', 'name', 'string'), 'password' => $utils->get_param_value('get_comment_authors', 'password', 'string'), 'folder' => $utils->get_param_value('get_comment_authors', 'folder', 'string'), 'storage' => $utils->get_param_value('get_comment_authors', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('get_comment_authors', 'password', $params{ password }, 'string');
+    $utils->initialize('get_comment_authors', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_comment_authors(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_comment_authors', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_comment_authors', 'password', 'string');
+    }
+};
+
+subtest 'get_comment_authors invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('get_comment_authors', 'name', 'string'), 'password' => $utils->get_param_value('get_comment_authors', 'password', 'string'), 'folder' => $utils->get_param_value('get_comment_authors', 'folder', 'string'), 'storage' => $utils->get_param_value('get_comment_authors', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('get_comment_authors', 'folder', $params{ folder }, 'string');
+    $utils->initialize('get_comment_authors', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_comment_authors(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_comment_authors', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_comment_authors', 'folder', 'string');
+    }
+};
+
+subtest 'get_comment_authors invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('get_comment_authors', 'name', 'string'), 'password' => $utils->get_param_value('get_comment_authors', 'password', 'string'), 'folder' => $utils->get_param_value('get_comment_authors', 'folder', 'string'), 'storage' => $utils->get_param_value('get_comment_authors', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('get_comment_authors', 'storage', $params{ storage }, 'string');
+    $utils->initialize('get_comment_authors', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->get_comment_authors(%params);
+    };
+    if ($@) {
+        $utils->assert_error('get_comment_authors', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('get_comment_authors', 'storage', 'string');
+    }
+};
+
+#
 # get_disc_usage test
 #
 subtest 'get_disc_usage' => sub {

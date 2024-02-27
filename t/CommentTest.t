@@ -63,7 +63,7 @@ subtest 'create comment' => sub {
         my @child_comments = ($child_comment);
         $comment->{child_comments} = \@child_comments;
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
@@ -71,7 +71,7 @@ subtest 'create comment' => sub {
         is($response->{list}[0]{author}, $author);
         is($response->{list}[0]{child_comments}[0]{text}, $child_comment_text);
         is($response->{list}[0]{child_comments}[0]{author}, $author);
-	};
+    };
     if ($@) {
         fail("create_comment raised an exception: $@");
     }
@@ -96,11 +96,11 @@ subtest 'create comment online' => sub {
         $comment->{child_comments} = \@child_comments;
 
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
-		my %params = ('document' => $source, 'slide_index' => 3, 'dto' => $comment, 'password' => 'password');
+        my %params = ('document' => $source, 'slide_index' => 3, 'dto' => $comment, 'password' => 'password');
         my $response = $utils->{testSlidesApi}->create_comment_online(%params);
 
         ok(length($response) > length($source));
-	};
+    };
     if ($@) {
         fail("create_comment_online raised an exception: $@");
     }
@@ -113,12 +113,12 @@ subtest 'get slide comments' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->get_slide_comments(%params);
 
         is(scalar @{$response->{list}}, 2);
         is(scalar @{$response->{list}[0]{child_comments}}, 1);
-	};
+    };
     if ($@) {
         fail("get_slide_comments raised an exception: $@");
     }
@@ -131,11 +131,11 @@ subtest 'delete comments' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->delete_comments(%params);
 
         is(scalar @{$response->{list}}, 0);
-	};
+    };
     if ($@) {
         fail("delete_comments raised an exception: $@");
     }
@@ -149,7 +149,7 @@ subtest 'delete comments online' => sub {
         my %params = ('document' => $source, 'password' => 'password');
         my $response = $utils->{testSlidesApi}->delete_comments_online(%params);
         ok(length($response) != length($source));
-	};
+    };
     if ($@) {
         fail("delete_comments_online raised an exception: $@");
     }
@@ -162,10 +162,10 @@ subtest 'delete slide comments' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->delete_slide_comments(%params);
         is(scalar @{$response->{list}}, 0);
-	};
+    };
     if ($@) {
         fail("delete_slide_comments raised an exception: $@");
     }
@@ -179,7 +179,7 @@ subtest 'delete slide comments online' => sub {
         my %params = ('document' => $source, 'slide_index' => 1, 'password' => 'password');
         my $response = $utils->{testSlidesApi}->delete_slide_comments_online(%params);
         ok(length($response) != length($source));
-	};
+    };
     if ($@) {
         fail("delete_slide_comments_online raised an exception: $@");
     }
@@ -213,12 +213,12 @@ subtest 'create modern comment' => sub {
         my @child_comments = ($child_comment);
         $comment->{child_comments} = \@child_comments;
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
         is($response->{list}[0]{type}, 'Modern');
-	};
+    };
     if ($@) {
         fail("create modern comment raised an exception: $@");
     }
@@ -251,14 +251,31 @@ subtest 'create shape modern comment' => sub {
         my @child_comments = ($child_comment);
         $comment->{child_comments} = \@child_comments;
 
-		my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my %params = ('name' => 'test.pptx', 'slide_index' => 3, 'dto' => $comment, 'shape_index' => 1, 'password' => 'password', 'folder' => 'TempSlidesSDK');
         my $response = $utils->{testSlidesApi}->create_comment(%params);
 
         is(scalar @{$response->{list}}, 1);
         is($response->{list}[0]{type}, 'Modern');
-	};
+    };
     if ($@) {
         fail("create shape modern comment raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get comment authors' => sub {
+    $utils->initialize('get_comment_authors', '');
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my %params = ('name' => 'test.pptx', 'password' => 'password', 'folder' => 'TempSlidesSDK');
+        my $response = $utils->{testSlidesApi}->get_comment_authors(%params);
+
+        is(scalar @{$response->{list}}, 1);
+    };
+    if ($@) {
+        fail("get_slide_comments raised an exception: $@");
     }
     pass();
 };
