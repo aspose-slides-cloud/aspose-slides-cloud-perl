@@ -171,4 +171,38 @@ subtest 'images download request' => sub {
     pass();
 };
 
+subtest 'delete picture cropped areas' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        fail("delete_picture_cropped_areas raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete picture cropped areas wrong shape type' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
+            is($1, 400);
+        } else {
+            fail("Invalid exception type: $@");
+        }
+    } else {
+        fail("Should throw an exception if shape is not PictureFrame");
+    }
+    pass();
+};
+
 done_testing;

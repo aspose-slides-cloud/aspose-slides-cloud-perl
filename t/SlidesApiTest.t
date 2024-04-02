@@ -7477,6 +7477,111 @@ subtest 'delete_paragraphs invalid sub_shape' => sub {
 };
 
 #
+# delete_picture_cropped_areas test
+#
+subtest 'delete_picture_cropped_areas' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $utils->initialize('delete_picture_cropped_areas', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        fail("delete_picture_cropped_areas raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'delete_picture_cropped_areas invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'name', $params{ name }, 'string');
+    $utils->initialize('delete_picture_cropped_areas', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'name', 'string');
+    }
+};
+
+subtest 'delete_picture_cropped_areas invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('delete_picture_cropped_areas', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'slide_index', 'int');
+    }
+};
+
+subtest 'delete_picture_cropped_areas invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('delete_picture_cropped_areas', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'shape_index', 'int');
+    }
+};
+
+subtest 'delete_picture_cropped_areas invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'password', $params{ password }, 'string');
+    $utils->initialize('delete_picture_cropped_areas', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'password', 'string');
+    }
+};
+
+subtest 'delete_picture_cropped_areas invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'folder', $params{ folder }, 'string');
+    $utils->initialize('delete_picture_cropped_areas', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'folder', 'string');
+    }
+};
+
+subtest 'delete_picture_cropped_areas invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('delete_picture_cropped_areas', 'name', 'string'), 'slide_index' => $utils->get_param_value('delete_picture_cropped_areas', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('delete_picture_cropped_areas', 'shape_index', 'int'), 'password' => $utils->get_param_value('delete_picture_cropped_areas', 'password', 'string'), 'folder' => $utils->get_param_value('delete_picture_cropped_areas', 'folder', 'string'), 'storage' => $utils->get_param_value('delete_picture_cropped_areas', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('delete_picture_cropped_areas', 'storage', $params{ storage }, 'string');
+    $utils->initialize('delete_picture_cropped_areas', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+    };
+    if ($@) {
+        $utils->assert_error('delete_picture_cropped_areas', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('delete_picture_cropped_areas', 'storage', 'string');
+    }
+};
+
+#
 # delete_portion test
 #
 subtest 'delete_portion' => sub {

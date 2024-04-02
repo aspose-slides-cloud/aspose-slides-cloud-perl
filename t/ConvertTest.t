@@ -38,6 +38,7 @@ use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::PdfExportOptions;
 use AsposeSlidesCloud::Object::ImageExportOptions;
 use AsposeSlidesCloud::Object::FontFallbackRule;
+use AsposeSlidesCloud::Object::HandoutLayoutingOptions;
 
 use strict;
 use warnings;
@@ -334,7 +335,7 @@ subtest 'convert sub-shape put from storage' => sub {
     pass();
 };
 
-subtest 'convert with sont fallback rules' => sub {
+subtest 'convert with font fallback rules' => sub {
     $utils->initialize('download_presentation', '');
     eval
     {
@@ -346,22 +347,47 @@ subtest 'convert with sont fallback rules' => sub {
 
         my $font_rule1 = AsposeSlidesCloud::Object::FontFallbackRule->new();
         $font_rule1->{range_start_index} = $start_unicode_index;
-        $font_rule1->{end_unicode_index} = $end_unicode_index;
+        $font_rule1->{range_end_index} = $end_unicode_index;
         my @fallback_font_list = ( 'Vijaya');
-        $font_rule1 -> {fallback_font_list} = \@fallback_font_list;
+        $font_rule1->{fallback_font_list} = \@fallback_font_list;
 
         my $font_rule2 = AsposeSlidesCloud::Object::FontFallbackRule->new();
         $font_rule2->{range_start_index} = $start_unicode_index;
-        $font_rule2->{end_unicode_index} = $end_unicode_index;
+        $font_rule2->{range_end_index} = $end_unicode_index;
         my @fallback_font_list2 = ( 'Segoe UI Emoji', 'Segoe UI Symbol', 'Arial');
-        $font_rule2 -> {fallback_font_list2} = \@fallback_font_list;
+        $font_rule2->{fallback_font_list} = \@fallback_font_list2;
 
         my @font_rules = ($font_rule1, $font_rule2);
 
         my $export_options = AsposeSlidesCloud::Object::ImageExportOptions -> new();
         $export_options->{font_fallback_rules} = \@font_rules;
 
-        my %params = ('name' => "test.pptx", 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK");
+        my %params = ('name' => "test.pptx", 'format' => 'Png', 'password' => 'password', 'folder' => "TempSlidesSDK", 'options' => $export_options);
+        my $response = $utils->{testSlidesApi}->download_presentation(%params);
+
+        ok(length($response) != 0);
+    };
+    if ($@) {
+        fail("download_presentation raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'convert with slide layout options' => sub {
+    $utils->initialize('download_presentation', '');
+    eval
+    {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $slides_layout_options = AsposeSlidesCloud::Object::HandoutLayoutingOptions->new();
+        $slides_layout_options->{handout} = "Handouts2";
+        $slides_layout_options->{print_slide_numbers} = 1;
+
+        my $export_options = AsposeSlidesCloud::Object::PdfExportOptions -> new();
+        $export_options->{slides_layout_options} = $slides_layout_options;
+
+        my %params = ('name' => "test.pptx", 'format' => 'Pdf', 'password' => 'password', 'folder' => "TempSlidesSDK", 'options' => $export_options);
         my $response = $utils->{testSlidesApi}->download_presentation(%params);
 
         ok(length($response) != 0);
