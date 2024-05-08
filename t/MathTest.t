@@ -185,8 +185,8 @@ subtest 'math download' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        my $mathMl = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'format' => "MathML", 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $mathMl = $utils->{testSlidesApi}->download_math_portion(%params);
         ok(length($mathMl));
     };
     if ($@) {
@@ -200,8 +200,8 @@ subtest 'math download null' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 1, 'paragraph_index' => 1, 'portion_index' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 1, 'paragraph_index' => 1, 'portion_index' => 1, 'format' => "MathML", 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->download_math_portion(%params);
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
@@ -221,8 +221,8 @@ subtest 'math save' => sub {
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
         my $out_path = "TempSlidesSDK/mathml.xml";
-        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'out_path' => $out_path, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'paragraph_index' => 1, 'portion_index' => 1, 'format' => "MathML", 'out_path' => $out_path, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->save_math_portion(%params);
 
         %params = ('path' => $out_path);
         my $exists = $utils->{testSlidesApi}->object_exists(%params);

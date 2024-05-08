@@ -12157,6 +12157,156 @@ subtest 'download_images_online invalid password' => sub {
 };
 
 #
+# download_math_portion test
+#
+subtest 'download_math_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $utils->initialize('download_math_portion', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        fail("download_math_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'download_math_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('download_math_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('download_math_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'name', 'string');
+    }
+};
+
+subtest 'download_math_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('download_math_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('download_math_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'download_math_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('download_math_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('download_math_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'download_math_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('download_math_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('download_math_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'download_math_portion invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('download_math_portion', 'portion_index', $params{ portion_index }, 'int');
+    $utils->initialize('download_math_portion', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'portion_index', $params{ portion_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'portion_index', 'int');
+    }
+};
+
+subtest 'download_math_portion invalid format' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ format } = $utils->invalidize_param_value('download_math_portion', 'format', $params{ format }, 'string');
+    $utils->initialize('download_math_portion', 'format', $params{ format });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'format', $params{ format }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'format', 'string');
+    }
+};
+
+subtest 'download_math_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('download_math_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('download_math_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'password', 'string');
+    }
+};
+
+subtest 'download_math_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('download_math_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('download_math_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'folder', 'string');
+    }
+};
+
+subtest 'download_math_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('download_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('download_math_portion', 'format', 'string'), 'password' => $utils->get_param_value('download_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('download_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('download_math_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('download_math_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('download_math_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->download_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download_math_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download_math_portion', 'storage', 'string');
+    }
+};
+
+#
 # download_notes_slide test
 #
 subtest 'download_notes_slide' => sub {
@@ -22863,6 +23013,171 @@ subtest 'replace_text_formatting_online invalid password' => sub {
         $utils->assert_error('replace_text_formatting_online', 'password', $params{ password }, 'string', $@);
     } else {
         $utils->assert_no_error('replace_text_formatting_online', 'password', 'string');
+    }
+};
+
+#
+# save_math_portion test
+#
+subtest 'save_math_portion' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $utils->initialize('save_math_portion', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        fail("save_math_portion raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'save_math_portion invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('save_math_portion', 'name', $params{ name }, 'string');
+    $utils->initialize('save_math_portion', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'name', 'string');
+    }
+};
+
+subtest 'save_math_portion invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('save_math_portion', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('save_math_portion', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'slide_index', 'int');
+    }
+};
+
+subtest 'save_math_portion invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('save_math_portion', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('save_math_portion', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'shape_index', 'int');
+    }
+};
+
+subtest 'save_math_portion invalid paragraph_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ paragraph_index } = $utils->invalidize_param_value('save_math_portion', 'paragraph_index', $params{ paragraph_index }, 'int');
+    $utils->initialize('save_math_portion', 'paragraph_index', $params{ paragraph_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'paragraph_index', 'int');
+    }
+};
+
+subtest 'save_math_portion invalid portion_index' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ portion_index } = $utils->invalidize_param_value('save_math_portion', 'portion_index', $params{ portion_index }, 'int');
+    $utils->initialize('save_math_portion', 'portion_index', $params{ portion_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'portion_index', $params{ portion_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'portion_index', 'int');
+    }
+};
+
+subtest 'save_math_portion invalid format' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ format } = $utils->invalidize_param_value('save_math_portion', 'format', $params{ format }, 'string');
+    $utils->initialize('save_math_portion', 'format', $params{ format });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'format', $params{ format }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'format', 'string');
+    }
+};
+
+subtest 'save_math_portion invalid out_path' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ out_path } = $utils->invalidize_param_value('save_math_portion', 'out_path', $params{ out_path }, 'string');
+    $utils->initialize('save_math_portion', 'out_path', $params{ out_path });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'out_path', $params{ out_path }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'out_path', 'string');
+    }
+};
+
+subtest 'save_math_portion invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('save_math_portion', 'password', $params{ password }, 'string');
+    $utils->initialize('save_math_portion', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'password', 'string');
+    }
+};
+
+subtest 'save_math_portion invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('save_math_portion', 'folder', $params{ folder }, 'string');
+    $utils->initialize('save_math_portion', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'folder', 'string');
+    }
+};
+
+subtest 'save_math_portion invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('save_math_portion', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_math_portion', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_math_portion', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_math_portion', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_math_portion', 'portion_index', 'int'), 'format' => $utils->get_param_value('save_math_portion', 'format', 'string'), 'out_path' => $utils->get_param_value('save_math_portion', 'out_path', 'string'), 'password' => $utils->get_param_value('save_math_portion', 'password', 'string'), 'folder' => $utils->get_param_value('save_math_portion', 'folder', 'string'), 'storage' => $utils->get_param_value('save_math_portion', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('save_math_portion', 'storage', $params{ storage }, 'string');
+    $utils->initialize('save_math_portion', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->save_math_portion(%params);
+    };
+    if ($@) {
+        $utils->assert_error('save_math_portion', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('save_math_portion', 'storage', 'string');
     }
 };
 
