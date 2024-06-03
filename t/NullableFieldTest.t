@@ -59,7 +59,6 @@ subtest 'nullable properties' => sub {
     $utils->{testSlidesApi}->copy_file(%copy_params);
 
     my $title = AsposeSlidesCloud::Object::ChartTitle->new();
-    $title->{has_title} = 1;
     $title->{text} = 'MyTitle';
     my $data_point1 = AsposeSlidesCloud::Object::OneValueChartDataPoint->new();
     $data_point1->{value} = 40.0;
@@ -83,6 +82,7 @@ subtest 'nullable properties' => sub {
     $chart->{chart_type} = 'Line';
     $chart->{width} = 400.0;
     $chart->{height} = 300.0;
+    $chart->{has_title} = 1;
     $chart->{title} = $title;
     $chart->{series} = \@series_list;
     $chart->{axes} = $axes;

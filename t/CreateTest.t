@@ -34,6 +34,7 @@ use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::PdfExportOptions;
+use AsposeSlidesCloud::Object::PdfImportOptions;
 use AsposeSlidesCloud::Object::ImageExportOptions;
 
 use strict;
@@ -172,7 +173,9 @@ subtest 'append from PDF' => sub {
         my $slide_count = scalar @{$result->{slide_list}};
 
         my $source = read_file("TestData/test.pdf", { binmode => ':raw' });
-        my %post_params = ('name' => "test.pptx", 'pdf' => $source, 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $options = AsposeSlidesCloud::Object::PdfImportOptions->new();
+        $options->{detect_tables} = 0;
+        my %post_params = ('name' => "test.pptx", 'pdf' => $source, 'options' => $options, 'password' => "password", 'folder' => "TempSlidesSDK");
         $utils->{testSlidesApi}->import_from_pdf(%post_params);
 
         %get_params = ('name' => "test.pptx", 'password' => "password", 'folder' => "TempSlidesSDK");

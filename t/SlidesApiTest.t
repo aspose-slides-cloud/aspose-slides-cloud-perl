@@ -20455,7 +20455,7 @@ subtest 'import_from_html invalid storage' => sub {
 # import_from_pdf test
 #
 subtest 'import_from_pdf' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $utils->initialize('import_from_pdf', '');
     eval {
         my $result = $utils->{testSlidesApi}->import_from_pdf(%params);
@@ -20467,7 +20467,7 @@ subtest 'import_from_pdf' => sub {
 };
 
 subtest 'import_from_pdf invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('import_from_pdf', 'name', $params{ name }, 'string');
     $utils->initialize('import_from_pdf', 'name', $params{ name });
 
@@ -20482,7 +20482,7 @@ subtest 'import_from_pdf invalid name' => sub {
 };
 
 subtest 'import_from_pdf invalid pdf' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $params{ pdf } = $utils->invalidize_param_value('import_from_pdf', 'pdf', $params{ pdf }, 'File');
     $utils->initialize('import_from_pdf', 'pdf', $params{ pdf });
 
@@ -20496,8 +20496,23 @@ subtest 'import_from_pdf invalid pdf' => sub {
     }
 };
 
+subtest 'import_from_pdf invalid options' => sub {
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    $params{ options } = $utils->invalidize_param_value('import_from_pdf', 'options', $params{ options }, 'PdfImportOptions');
+    $utils->initialize('import_from_pdf', 'options', $params{ options });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->import_from_pdf(%params);
+    };
+    if ($@) {
+        $utils->assert_error('import_from_pdf', 'options', $params{ options }, 'PdfImportOptions', $@);
+    } else {
+        $utils->assert_no_error('import_from_pdf', 'options', 'PdfImportOptions');
+    }
+};
+
 subtest 'import_from_pdf invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('import_from_pdf', 'password', $params{ password }, 'string');
     $utils->initialize('import_from_pdf', 'password', $params{ password });
 
@@ -20512,7 +20527,7 @@ subtest 'import_from_pdf invalid password' => sub {
 };
 
 subtest 'import_from_pdf invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('import_from_pdf', 'folder', $params{ folder }, 'string');
     $utils->initialize('import_from_pdf', 'folder', $params{ folder });
 
@@ -20527,7 +20542,7 @@ subtest 'import_from_pdf invalid folder' => sub {
 };
 
 subtest 'import_from_pdf invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('import_from_pdf', 'name', 'string'), 'pdf' => $utils->get_param_value('import_from_pdf', 'pdf', 'File'), 'options' => $utils->get_param_value('import_from_pdf', 'options', 'PdfImportOptions'), 'password' => $utils->get_param_value('import_from_pdf', 'password', 'string'), 'folder' => $utils->get_param_value('import_from_pdf', 'folder', 'string'), 'storage' => $utils->get_param_value('import_from_pdf', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('import_from_pdf', 'storage', $params{ storage }, 'string');
     $utils->initialize('import_from_pdf', 'storage', $params{ storage });
 
