@@ -81,6 +81,10 @@ subtest 'text replace storage' => sub {
         my $result_ignore_case = $utils->{testSlidesApi}->replace_presentation_text(%params);
 
         $utils->{testSlidesApi}->copy_file(%copy_params);
+        $params{whole_words_only} = 1;
+        my $result_whole_words = $utils->{testSlidesApi}->replace_presentation_text(%params);
+
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         %params = ('name' => "test.pptx", 'slide_index' => 1, 'old_value' => "text", 'new_value' => "new_text", 'password' => "password", 'folder' => "TempSlidesSDK");
         my $slide_result = $utils->{testSlidesApi}->replace_slide_text(%params);
 
@@ -89,6 +93,7 @@ subtest 'text replace storage' => sub {
         my $slide_result_ignore_case = $utils->{testSlidesApi}->replace_slide_text(%params);
 
         ok($result_ignore_case->{matches} > $result->{matches});
+        ok($result_ignore_case->{matches} > $result_whole_words->{matches});
         ok($result->{matches} > $slide_result->{matches});
         ok($slide_result_ignore_case->{matches} > $slide_result->{matches});
     };

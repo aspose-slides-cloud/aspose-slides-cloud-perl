@@ -36,6 +36,7 @@ use AsposeSlidesCloud::TestUtils;
 use AsposeSlidesCloud::SlidesApi;
 use AsposeSlidesCloud::SlidesAsyncApi;
 use AsposeSlidesCloud::Object::PdfExportOptions;
+use AsposeSlidesCloud::Object::Html5ExportOptions;
 use AsposeSlidesCloud::Object::ImageExportOptions;
 use AsposeSlidesCloud::Object::FontFallbackRule;
 use AsposeSlidesCloud::Object::HandoutLayoutingOptions;
@@ -394,6 +395,50 @@ subtest 'convert with slide layout options' => sub {
     };
     if ($@) {
         fail("download_presentation raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'convert with custom HTML5 templates' => sub {
+    $utils->initialize('download_presentation', '');
+    eval
+    {
+        my $templatesPath = "Html5Templates";
+        my $templateFileName = "pictureFrame.html";
+
+        my %create_params = ('path' => $templatesPath);
+        $utils->{testSlidesApi}->create_folder(%create_params);
+
+        my %copy_template_params = ('src_path' => "TempTests/".$templateFileName, 'dest_path' => $templatesPath."/".$templateFileName);
+        $utils->{testSlidesApi}->copy_file(%copy_template_params);
+
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $export_options = AsposeSlidesCloud::Object::Html5ExportOptions -> new();
+        $export_options->{templates_path} = $templatesPath;
+        $export_options->{animate_transitions} = 1;
+
+        my %params = ('name' => "test.pptx", 'format' => 'Html5', 'password' => 'password', 'folder' => "TempSlidesSDK", 'options' => $export_options);
+        my $response = $utils->{testSlidesApi}->download_presentation(%params);
+
+        ok(length($response) != 0);
+    };
+    if ($@) {
+        fail("download_presentation raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'get HTML5 templates' => sub {
+    $utils->initialize('download_presentation', '');
+    eval
+    {
+        my $response = $utils->{testSlidesApi}->get_html5_templates();
+        ok(length($response) != 0);
+    };
+    if ($@) {
+        fail("get_html5_templates raised an exception: $@");
     }
     pass();
 };

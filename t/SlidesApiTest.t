@@ -12577,141 +12577,6 @@ subtest 'download_notes_slide_online invalid fonts_folder' => sub {
 };
 
 #
-# download_portion_as_math_ml test
-#
-subtest 'download_portion_as_math_ml' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $utils->initialize('download_portion_as_math_ml', '');
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        fail("download_portion_as_math_ml raised an exception: $@");
-    }
-    pass();
-};
-
-subtest 'download_portion_as_math_ml invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ name } = $utils->invalidize_param_value('download_portion_as_math_ml', 'name', $params{ name }, 'string');
-    $utils->initialize('download_portion_as_math_ml', 'name', $params{ name });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'name', $params{ name }, 'string', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'name', 'string');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ slide_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'slide_index', $params{ slide_index }, 'int');
-    $utils->initialize('download_portion_as_math_ml', 'slide_index', $params{ slide_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'slide_index', $params{ slide_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'slide_index', 'int');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ shape_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'shape_index', $params{ shape_index }, 'int');
-    $utils->initialize('download_portion_as_math_ml', 'shape_index', $params{ shape_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'shape_index', $params{ shape_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'shape_index', 'int');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid paragraph_index' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ paragraph_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, 'int');
-    $utils->initialize('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'paragraph_index', 'int');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid portion_index' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ portion_index } = $utils->invalidize_param_value('download_portion_as_math_ml', 'portion_index', $params{ portion_index }, 'int');
-    $utils->initialize('download_portion_as_math_ml', 'portion_index', $params{ portion_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'portion_index', $params{ portion_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'portion_index', 'int');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ password } = $utils->invalidize_param_value('download_portion_as_math_ml', 'password', $params{ password }, 'string');
-    $utils->initialize('download_portion_as_math_ml', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'password', $params{ password }, 'string', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'password', 'string');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ folder } = $utils->invalidize_param_value('download_portion_as_math_ml', 'folder', $params{ folder }, 'string');
-    $utils->initialize('download_portion_as_math_ml', 'folder', $params{ folder });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'folder', $params{ folder }, 'string', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'folder', 'string');
-    }
-};
-
-subtest 'download_portion_as_math_ml invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('download_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('download_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('download_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('download_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('download_portion_as_math_ml', 'portion_index', 'int'), 'password' => $utils->get_param_value('download_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('download_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('download_portion_as_math_ml', 'storage', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('download_portion_as_math_ml', 'storage', $params{ storage }, 'string');
-    $utils->initialize('download_portion_as_math_ml', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->download_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('download_portion_as_math_ml', 'storage', $params{ storage }, 'string', $@);
-    } else {
-        $utils->assert_no_error('download_portion_as_math_ml', 'storage', 'string');
-    }
-};
-
-#
 # download_presentation test
 #
 subtest 'download_presentation' => sub {
@@ -14839,6 +14704,21 @@ subtest 'get_format_scheme invalid storage' => sub {
     } else {
         $utils->assert_no_error('get_format_scheme', 'storage', 'string');
     }
+};
+
+#
+# get_html5_templates test
+#
+subtest 'get_html5_templates' => sub {
+    my %params = ();
+    $utils->initialize('get_html5_templates', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->get_html5_templates(%params);
+    };
+    if ($@) {
+        fail("get_html5_templates raised an exception: $@");
+    }
+    pass();
 };
 
 #
@@ -22345,7 +22225,7 @@ subtest 'replace_image_online invalid password' => sub {
 # replace_presentation_text test
 #
 subtest 'replace_presentation_text' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $utils->initialize('replace_presentation_text', '');
     eval {
         my $result = $utils->{testSlidesApi}->replace_presentation_text(%params);
@@ -22357,7 +22237,7 @@ subtest 'replace_presentation_text' => sub {
 };
 
 subtest 'replace_presentation_text invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ name } = $utils->invalidize_param_value('replace_presentation_text', 'name', $params{ name }, 'string');
     $utils->initialize('replace_presentation_text', 'name', $params{ name });
 
@@ -22372,7 +22252,7 @@ subtest 'replace_presentation_text invalid name' => sub {
 };
 
 subtest 'replace_presentation_text invalid old_value' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ old_value } = $utils->invalidize_param_value('replace_presentation_text', 'old_value', $params{ old_value }, 'string');
     $utils->initialize('replace_presentation_text', 'old_value', $params{ old_value });
 
@@ -22387,7 +22267,7 @@ subtest 'replace_presentation_text invalid old_value' => sub {
 };
 
 subtest 'replace_presentation_text invalid new_value' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ new_value } = $utils->invalidize_param_value('replace_presentation_text', 'new_value', $params{ new_value }, 'string');
     $utils->initialize('replace_presentation_text', 'new_value', $params{ new_value });
 
@@ -22402,7 +22282,7 @@ subtest 'replace_presentation_text invalid new_value' => sub {
 };
 
 subtest 'replace_presentation_text invalid ignore_case' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ ignore_case } = $utils->invalidize_param_value('replace_presentation_text', 'ignore_case', $params{ ignore_case }, 'boolean');
     $utils->initialize('replace_presentation_text', 'ignore_case', $params{ ignore_case });
 
@@ -22416,8 +22296,23 @@ subtest 'replace_presentation_text invalid ignore_case' => sub {
     }
 };
 
+subtest 'replace_presentation_text invalid whole_words_only' => sub {
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    $params{ whole_words_only } = $utils->invalidize_param_value('replace_presentation_text', 'whole_words_only', $params{ whole_words_only }, 'boolean');
+    $utils->initialize('replace_presentation_text', 'whole_words_only', $params{ whole_words_only });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->replace_presentation_text(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_presentation_text', 'whole_words_only', $params{ whole_words_only }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('replace_presentation_text', 'whole_words_only', 'boolean');
+    }
+};
+
 subtest 'replace_presentation_text invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ password } = $utils->invalidize_param_value('replace_presentation_text', 'password', $params{ password }, 'string');
     $utils->initialize('replace_presentation_text', 'password', $params{ password });
 
@@ -22432,7 +22327,7 @@ subtest 'replace_presentation_text invalid password' => sub {
 };
 
 subtest 'replace_presentation_text invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ folder } = $utils->invalidize_param_value('replace_presentation_text', 'folder', $params{ folder }, 'string');
     $utils->initialize('replace_presentation_text', 'folder', $params{ folder });
 
@@ -22447,7 +22342,7 @@ subtest 'replace_presentation_text invalid folder' => sub {
 };
 
 subtest 'replace_presentation_text invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
+    my %params = ('name' => $utils->get_param_value('replace_presentation_text', 'name', 'string'), 'old_value' => $utils->get_param_value('replace_presentation_text', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text', 'password', 'string'), 'folder' => $utils->get_param_value('replace_presentation_text', 'folder', 'string'), 'storage' => $utils->get_param_value('replace_presentation_text', 'storage', 'string'));
     $params{ storage } = $utils->invalidize_param_value('replace_presentation_text', 'storage', $params{ storage }, 'string');
     $utils->initialize('replace_presentation_text', 'storage', $params{ storage });
 
@@ -22465,7 +22360,7 @@ subtest 'replace_presentation_text invalid storage' => sub {
 # replace_presentation_text_online test
 #
 subtest 'replace_presentation_text_online' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $utils->initialize('replace_presentation_text_online', '');
     eval {
         my $result = $utils->{testSlidesApi}->replace_presentation_text_online(%params);
@@ -22477,7 +22372,7 @@ subtest 'replace_presentation_text_online' => sub {
 };
 
 subtest 'replace_presentation_text_online invalid document' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $params{ document } = $utils->invalidize_param_value('replace_presentation_text_online', 'document', $params{ document }, 'File');
     $utils->initialize('replace_presentation_text_online', 'document', $params{ document });
 
@@ -22492,7 +22387,7 @@ subtest 'replace_presentation_text_online invalid document' => sub {
 };
 
 subtest 'replace_presentation_text_online invalid old_value' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $params{ old_value } = $utils->invalidize_param_value('replace_presentation_text_online', 'old_value', $params{ old_value }, 'string');
     $utils->initialize('replace_presentation_text_online', 'old_value', $params{ old_value });
 
@@ -22507,7 +22402,7 @@ subtest 'replace_presentation_text_online invalid old_value' => sub {
 };
 
 subtest 'replace_presentation_text_online invalid new_value' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $params{ new_value } = $utils->invalidize_param_value('replace_presentation_text_online', 'new_value', $params{ new_value }, 'string');
     $utils->initialize('replace_presentation_text_online', 'new_value', $params{ new_value });
 
@@ -22522,7 +22417,7 @@ subtest 'replace_presentation_text_online invalid new_value' => sub {
 };
 
 subtest 'replace_presentation_text_online invalid ignore_case' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $params{ ignore_case } = $utils->invalidize_param_value('replace_presentation_text_online', 'ignore_case', $params{ ignore_case }, 'boolean');
     $utils->initialize('replace_presentation_text_online', 'ignore_case', $params{ ignore_case });
 
@@ -22536,8 +22431,23 @@ subtest 'replace_presentation_text_online invalid ignore_case' => sub {
     }
 };
 
+subtest 'replace_presentation_text_online invalid whole_words_only' => sub {
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    $params{ whole_words_only } = $utils->invalidize_param_value('replace_presentation_text_online', 'whole_words_only', $params{ whole_words_only }, 'boolean');
+    $utils->initialize('replace_presentation_text_online', 'whole_words_only', $params{ whole_words_only });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->replace_presentation_text_online(%params);
+    };
+    if ($@) {
+        $utils->assert_error('replace_presentation_text_online', 'whole_words_only', $params{ whole_words_only }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('replace_presentation_text_online', 'whole_words_only', 'boolean');
+    }
+};
+
 subtest 'replace_presentation_text_online invalid password' => sub {
-    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
+    my %params = ('document' => $utils->get_param_value('replace_presentation_text_online', 'document', 'File'), 'old_value' => $utils->get_param_value('replace_presentation_text_online', 'old_value', 'string'), 'new_value' => $utils->get_param_value('replace_presentation_text_online', 'new_value', 'string'), 'ignore_case' => $utils->get_param_value('replace_presentation_text_online', 'ignore_case', 'boolean'), 'whole_words_only' => $utils->get_param_value('replace_presentation_text_online', 'whole_words_only', 'boolean'), 'password' => $utils->get_param_value('replace_presentation_text_online', 'password', 'string'));
     $params{ password } = $utils->invalidize_param_value('replace_presentation_text_online', 'password', $params{ password }, 'string');
     $utils->initialize('replace_presentation_text_online', 'password', $params{ password });
 
@@ -23193,156 +23103,6 @@ subtest 'save_math_portion invalid storage' => sub {
         $utils->assert_error('save_math_portion', 'storage', $params{ storage }, 'string', $@);
     } else {
         $utils->assert_no_error('save_math_portion', 'storage', 'string');
-    }
-};
-
-#
-# save_portion_as_math_ml test
-#
-subtest 'save_portion_as_math_ml' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $utils->initialize('save_portion_as_math_ml', '');
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        fail("save_portion_as_math_ml raised an exception: $@");
-    }
-    pass();
-};
-
-subtest 'save_portion_as_math_ml invalid name' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ name } = $utils->invalidize_param_value('save_portion_as_math_ml', 'name', $params{ name }, 'string');
-    $utils->initialize('save_portion_as_math_ml', 'name', $params{ name });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'name', $params{ name }, 'string', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'name', 'string');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid slide_index' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ slide_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'slide_index', $params{ slide_index }, 'int');
-    $utils->initialize('save_portion_as_math_ml', 'slide_index', $params{ slide_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'slide_index', $params{ slide_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'slide_index', 'int');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid shape_index' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ shape_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'shape_index', $params{ shape_index }, 'int');
-    $utils->initialize('save_portion_as_math_ml', 'shape_index', $params{ shape_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'shape_index', $params{ shape_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'shape_index', 'int');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid paragraph_index' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ paragraph_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, 'int');
-    $utils->initialize('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'paragraph_index', $params{ paragraph_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'paragraph_index', 'int');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid portion_index' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ portion_index } = $utils->invalidize_param_value('save_portion_as_math_ml', 'portion_index', $params{ portion_index }, 'int');
-    $utils->initialize('save_portion_as_math_ml', 'portion_index', $params{ portion_index });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'portion_index', $params{ portion_index }, 'int', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'portion_index', 'int');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid out_path' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ out_path } = $utils->invalidize_param_value('save_portion_as_math_ml', 'out_path', $params{ out_path }, 'string');
-    $utils->initialize('save_portion_as_math_ml', 'out_path', $params{ out_path });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'out_path', $params{ out_path }, 'string', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'out_path', 'string');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid password' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ password } = $utils->invalidize_param_value('save_portion_as_math_ml', 'password', $params{ password }, 'string');
-    $utils->initialize('save_portion_as_math_ml', 'password', $params{ password });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'password', $params{ password }, 'string', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'password', 'string');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid folder' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ folder } = $utils->invalidize_param_value('save_portion_as_math_ml', 'folder', $params{ folder }, 'string');
-    $utils->initialize('save_portion_as_math_ml', 'folder', $params{ folder });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'folder', $params{ folder }, 'string', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'folder', 'string');
-    }
-};
-
-subtest 'save_portion_as_math_ml invalid storage' => sub {
-    my %params = ('name' => $utils->get_param_value('save_portion_as_math_ml', 'name', 'string'), 'slide_index' => $utils->get_param_value('save_portion_as_math_ml', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('save_portion_as_math_ml', 'shape_index', 'int'), 'paragraph_index' => $utils->get_param_value('save_portion_as_math_ml', 'paragraph_index', 'int'), 'portion_index' => $utils->get_param_value('save_portion_as_math_ml', 'portion_index', 'int'), 'out_path' => $utils->get_param_value('save_portion_as_math_ml', 'out_path', 'string'), 'password' => $utils->get_param_value('save_portion_as_math_ml', 'password', 'string'), 'folder' => $utils->get_param_value('save_portion_as_math_ml', 'folder', 'string'), 'storage' => $utils->get_param_value('save_portion_as_math_ml', 'storage', 'string'));
-    $params{ storage } = $utils->invalidize_param_value('save_portion_as_math_ml', 'storage', $params{ storage }, 'string');
-    $utils->initialize('save_portion_as_math_ml', 'storage', $params{ storage });
-
-    eval {
-        my $result = $utils->{testSlidesApi}->save_portion_as_math_ml(%params);
-    };
-    if ($@) {
-        $utils->assert_error('save_portion_as_math_ml', 'storage', $params{ storage }, 'string', $@);
-    } else {
-        $utils->assert_no_error('save_portion_as_math_ml', 'storage', 'string');
     }
 };
 
