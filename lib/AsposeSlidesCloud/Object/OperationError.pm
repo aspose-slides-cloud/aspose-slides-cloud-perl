@@ -24,7 +24,7 @@ SOFTWARE.
 
 =cut
 
-package AsposeSlidesCloud::Object::Operation;
+package AsposeSlidesCloud::Object::OperationError;
 
 require 5.6.0;
 use strict;
@@ -37,8 +37,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use AsposeSlidesCloud::Object::OperationError;
-use AsposeSlidesCloud::Object::OperationProgress;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -87,77 +85,35 @@ sub TO_JSON {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'Operation',
+                                  class => 'OperationError',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'id' => {
+    'code' => {
     	datatype => 'string',
-    	base_name => 'Id',
+    	base_name => 'Code',
     	description => '',
     	format => '',
     	read_only => '',
     		},
-    'method' => {
+    'description' => {
     	datatype => 'string',
-    	base_name => 'Method',
+    	base_name => 'Description',
     	description => '',
     	format => '',
     	read_only => '',
     		},
-    'status' => {
+    'http_status_code' => {
+    	datatype => 'int',
+    	base_name => 'HttpStatusCode',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'message' => {
     	datatype => 'string',
-    	base_name => 'Status',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'progress' => {
-    	datatype => 'OperationProgress',
-    	base_name => 'Progress',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'created' => {
-    	datatype => 'DateTime',
-    	base_name => 'Created',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'started' => {
-    	datatype => 'DateTime',
-    	base_name => 'Started',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'failed' => {
-    	datatype => 'DateTime',
-    	base_name => 'Failed',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'canceled' => {
-    	datatype => 'DateTime',
-    	base_name => 'Canceled',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'finished' => {
-    	datatype => 'DateTime',
-    	base_name => 'Finished',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
-    'error' => {
-    	datatype => 'OperationError',
-    	base_name => 'Error',
+    	base_name => 'Message',
     	description => '',
     	format => '',
     	read_only => '',
@@ -165,29 +121,17 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->swagger_types( {
-    'id' => 'string',
-    'method' => 'string',
-    'status' => 'string',
-    'progress' => 'OperationProgress',
-    'created' => 'DateTime',
-    'started' => 'DateTime',
-    'failed' => 'DateTime',
-    'canceled' => 'DateTime',
-    'finished' => 'DateTime',
-    'error' => 'OperationError'
+    'code' => 'string',
+    'description' => 'string',
+    'http_status_code' => 'int',
+    'message' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'id' => 'Id',
-    'method' => 'Method',
-    'status' => 'Status',
-    'progress' => 'Progress',
-    'created' => 'Created',
-    'started' => 'Started',
-    'failed' => 'Failed',
-    'canceled' => 'Canceled',
-    'finished' => 'Finished',
-    'error' => 'Error'
+    'code' => 'Code',
+    'description' => 'Description',
+    'http_status_code' => 'HttpStatusCode',
+    'message' => 'Message'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

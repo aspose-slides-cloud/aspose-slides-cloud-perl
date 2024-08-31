@@ -77,6 +77,10 @@ subtest 'text replace storage' => sub {
         my $result = $utils->{testSlidesApi}->replace_presentation_text(%params);
 
         $utils->{testSlidesApi}->copy_file(%copy_params);
+        my %regex_params = ('name' => "test.pptx", 'pattern' => "text", 'new_value' => "new_text", 'password' => "password", 'folder' => "TempSlidesSDK");
+        my $result_regex = $utils->{testSlidesApi}->replace_presentation_regex(%regex_params);
+
+        $utils->{testSlidesApi}->copy_file(%copy_params);
         $params{ignore_case} = 1;
         my $result_ignore_case = $utils->{testSlidesApi}->replace_presentation_text(%params);
 
@@ -92,6 +96,7 @@ subtest 'text replace storage' => sub {
         $params{ignore_case} = 1;
         my $slide_result_ignore_case = $utils->{testSlidesApi}->replace_slide_text(%params);
 
+        is($result_regex->{matches}, $result->{matches});
         ok($result_ignore_case->{matches} > $result->{matches});
         ok($result_ignore_case->{matches} > $result_whole_words->{matches});
         ok($result->{matches} > $slide_result->{matches});
@@ -108,6 +113,9 @@ subtest 'text replace request' => sub {
         my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         my %params = ('document' => $source, 'old_value' => "text", 'new_value' => "new_text", 'password' => "password");
         $utils->{testSlidesApi}->replace_presentation_text_online(%params);
+
+        my %regex_params = ('document' => $source, 'pattern' => "text", 'new_value' => "new_text", 'password' => "password");
+        $utils->{testSlidesApi}->replace_presentation_regex_online(%regex_params);
 
         $params{ignore_case} = 1;
         $utils->{testSlidesApi}->replace_presentation_text_online(%params);
@@ -242,7 +250,93 @@ subtest 'highlight shape regex' => sub {
             'folder' => "TempSlidesSDK");
         
         my $paragraph = $utils->{testSlidesApi}->get_paragraph(%params);
+
+        ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
+        ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
+        ok(index($paragraph->{portion_list}[1]{text}, $text_to_highlight) != -1);
+        ok(index($paragraph->{portion_list}[1]{highlight_color}, $highlight_color) != -1);
+    };
+    if ($@) {
+        fail("highlight_shape_regex raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight presentation text' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $text_to_highlight = 'highlight';
+        my $highlight_color = '#FFF5FF8A';
+        my %params = (
+            'name' => "test.pptx", 
+            'text' => $text_to_highlight,
+            'color' => $highlight_color,
+            'ignore_case' => 0,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+            
+        my $result = $utils->{testSlidesApi}->highlight_presentation_text(%params);
+
+        $params{ignore_case} = 1;
+        my $result_ignore_case = $utils->{testSlidesApi}->highlight_presentation_text(%params);
+        is($result_ignore_case->{matches}, $result->{matches});
+
+        %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'paragraph_index' => 1,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
         
+        my $paragraph = $utils->{testSlidesApi}->get_paragraph(%params);
+        
+        ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
+        ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
+        ok(index($paragraph->{portion_list}[1]{text}, $text_to_highlight) != -1);
+        ok(index($paragraph->{portion_list}[1]{highlight_color}, $highlight_color) != -1);
+    };
+    if ($@) {
+        fail("highlight_shape_text raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'highlight presentation regex' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my $text_to_highlight = 'highlight';
+        my $hightlight_regex = 'h.ghl[abci]ght';
+        my $highlight_color = '#FFF5FF8A';
+
+        my %params = (
+            'name' => "test.pptx", 
+            'regex' => $hightlight_regex,
+            'color' => $highlight_color,
+            'ignore_case' => 0,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+            
+        my $result = $utils->{testSlidesApi}->highlight_presentation_regex(%params);
+
+        $params{ignore_case} = 1;
+        my $result_ignore_case = $utils->{testSlidesApi}->highlight_presentation_regex(%params);
+        is($result_ignore_case->{matches}, $result->{matches});
+
+        %params = (
+            'name' => "test.pptx", 
+            'slide_index' => 6,
+            'shape_index' => 1,
+            'paragraph_index' => 1,
+            'password' => "password", 
+            'folder' => "TempSlidesSDK");
+        
+        my $paragraph = $utils->{testSlidesApi}->get_paragraph(%params);
+
         ok(index($paragraph->{portion_list}[0]{text}, $text_to_highlight) == -1);
         ok(index($paragraph->{portion_list}[0]{highlight_color}, $highlight_color) == -1);
         ok(index($paragraph->{portion_list}[1]{text}, $text_to_highlight) != -1);

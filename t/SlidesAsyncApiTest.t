@@ -771,5 +771,380 @@ subtest 'start_save_presentation invalid slides' => sub {
     }
 };
 
+#
+# start_split test
+#
+subtest 'start_split' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $utils->initialize('start_split', '');
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        fail("start_split raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'start_split invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ name } = $utils->invalidize_param_value('start_split', 'name', $params{ name }, 'string');
+    $utils->initialize('start_split', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'name', 'string');
+    }
+};
+
+subtest 'start_split invalid format' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ format } = $utils->invalidize_param_value('start_split', 'format', $params{ format }, 'string');
+    $utils->initialize('start_split', 'format', $params{ format });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'format', $params{ format }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'format', 'string');
+    }
+};
+
+subtest 'start_split invalid options' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ options } = $utils->invalidize_param_value('start_split', 'options', $params{ options }, 'ExportOptions');
+    $utils->initialize('start_split', 'options', $params{ options });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'options', $params{ options }, 'ExportOptions', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'options', 'ExportOptions');
+    }
+};
+
+subtest 'start_split invalid width' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ width } = $utils->invalidize_param_value('start_split', 'width', $params{ width }, 'int');
+    $utils->initialize('start_split', 'width', $params{ width });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'width', $params{ width }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'width', 'int');
+    }
+};
+
+subtest 'start_split invalid height' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ height } = $utils->invalidize_param_value('start_split', 'height', $params{ height }, 'int');
+    $utils->initialize('start_split', 'height', $params{ height });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'height', $params{ height }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'height', 'int');
+    }
+};
+
+subtest 'start_split invalid from' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ from } = $utils->invalidize_param_value('start_split', 'from', $params{ from }, 'int');
+    $utils->initialize('start_split', 'from', $params{ from });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'from', $params{ from }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'from', 'int');
+    }
+};
+
+subtest 'start_split invalid to' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ to } = $utils->invalidize_param_value('start_split', 'to', $params{ to }, 'int');
+    $utils->initialize('start_split', 'to', $params{ to });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'to', $params{ to }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'to', 'int');
+    }
+};
+
+subtest 'start_split invalid dest_folder' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ dest_folder } = $utils->invalidize_param_value('start_split', 'dest_folder', $params{ dest_folder }, 'string');
+    $utils->initialize('start_split', 'dest_folder', $params{ dest_folder });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'dest_folder', $params{ dest_folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'dest_folder', 'string');
+    }
+};
+
+subtest 'start_split invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ password } = $utils->invalidize_param_value('start_split', 'password', $params{ password }, 'string');
+    $utils->initialize('start_split', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'password', 'string');
+    }
+};
+
+subtest 'start_split invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('start_split', 'folder', $params{ folder }, 'string');
+    $utils->initialize('start_split', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'folder', 'string');
+    }
+};
+
+subtest 'start_split invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('start_split', 'storage', $params{ storage }, 'string');
+    $utils->initialize('start_split', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'storage', 'string');
+    }
+};
+
+subtest 'start_split invalid fonts_folder' => sub {
+    my %params = ('name' => $utils->get_param_value('start_split', 'name', 'string'), 'format' => $utils->get_param_value('start_split', 'format', 'string'), 'options' => $utils->get_param_value('start_split', 'options', 'ExportOptions'), 'width' => $utils->get_param_value('start_split', 'width', 'int'), 'height' => $utils->get_param_value('start_split', 'height', 'int'), 'from' => $utils->get_param_value('start_split', 'from', 'int'), 'to' => $utils->get_param_value('start_split', 'to', 'int'), 'dest_folder' => $utils->get_param_value('start_split', 'dest_folder', 'string'), 'password' => $utils->get_param_value('start_split', 'password', 'string'), 'folder' => $utils->get_param_value('start_split', 'folder', 'string'), 'storage' => $utils->get_param_value('start_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_split', 'fonts_folder', 'string'));
+    $params{ fonts_folder } = $utils->invalidize_param_value('start_split', 'fonts_folder', $params{ fonts_folder }, 'string');
+    $utils->initialize('start_split', 'fonts_folder', $params{ fonts_folder });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_split', 'fonts_folder', $params{ fonts_folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_split', 'fonts_folder', 'string');
+    }
+};
+
+#
+# start_upload_and_split test
+#
+subtest 'start_upload_and_split' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $utils->initialize('start_upload_and_split', '');
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        fail("start_upload_and_split raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'start_upload_and_split invalid document' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ document } = $utils->invalidize_param_value('start_upload_and_split', 'document', $params{ document }, 'File');
+    $utils->initialize('start_upload_and_split', 'document', $params{ document });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'document', $params{ document }, 'File', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'document', 'File');
+    }
+};
+
+subtest 'start_upload_and_split invalid format' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ format } = $utils->invalidize_param_value('start_upload_and_split', 'format', $params{ format }, 'string');
+    $utils->initialize('start_upload_and_split', 'format', $params{ format });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'format', $params{ format }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'format', 'string');
+    }
+};
+
+subtest 'start_upload_and_split invalid dest_folder' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ dest_folder } = $utils->invalidize_param_value('start_upload_and_split', 'dest_folder', $params{ dest_folder }, 'string');
+    $utils->initialize('start_upload_and_split', 'dest_folder', $params{ dest_folder });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'dest_folder', $params{ dest_folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'dest_folder', 'string');
+    }
+};
+
+subtest 'start_upload_and_split invalid width' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ width } = $utils->invalidize_param_value('start_upload_and_split', 'width', $params{ width }, 'int');
+    $utils->initialize('start_upload_and_split', 'width', $params{ width });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'width', $params{ width }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'width', 'int');
+    }
+};
+
+subtest 'start_upload_and_split invalid height' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ height } = $utils->invalidize_param_value('start_upload_and_split', 'height', $params{ height }, 'int');
+    $utils->initialize('start_upload_and_split', 'height', $params{ height });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'height', $params{ height }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'height', 'int');
+    }
+};
+
+subtest 'start_upload_and_split invalid from' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ from } = $utils->invalidize_param_value('start_upload_and_split', 'from', $params{ from }, 'int');
+    $utils->initialize('start_upload_and_split', 'from', $params{ from });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'from', $params{ from }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'from', 'int');
+    }
+};
+
+subtest 'start_upload_and_split invalid to' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ to } = $utils->invalidize_param_value('start_upload_and_split', 'to', $params{ to }, 'int');
+    $utils->initialize('start_upload_and_split', 'to', $params{ to });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'to', $params{ to }, 'int', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'to', 'int');
+    }
+};
+
+subtest 'start_upload_and_split invalid password' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ password } = $utils->invalidize_param_value('start_upload_and_split', 'password', $params{ password }, 'string');
+    $utils->initialize('start_upload_and_split', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'password', 'string');
+    }
+};
+
+subtest 'start_upload_and_split invalid storage' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ storage } = $utils->invalidize_param_value('start_upload_and_split', 'storage', $params{ storage }, 'string');
+    $utils->initialize('start_upload_and_split', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'storage', 'string');
+    }
+};
+
+subtest 'start_upload_and_split invalid fonts_folder' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ fonts_folder } = $utils->invalidize_param_value('start_upload_and_split', 'fonts_folder', $params{ fonts_folder }, 'string');
+    $utils->initialize('start_upload_and_split', 'fonts_folder', $params{ fonts_folder });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'fonts_folder', $params{ fonts_folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'fonts_folder', 'string');
+    }
+};
+
+subtest 'start_upload_and_split invalid options' => sub {
+    my %params = ('document' => $utils->get_param_value('start_upload_and_split', 'document', 'File'), 'format' => $utils->get_param_value('start_upload_and_split', 'format', 'string'), 'dest_folder' => $utils->get_param_value('start_upload_and_split', 'dest_folder', 'string'), 'width' => $utils->get_param_value('start_upload_and_split', 'width', 'int'), 'height' => $utils->get_param_value('start_upload_and_split', 'height', 'int'), 'from' => $utils->get_param_value('start_upload_and_split', 'from', 'int'), 'to' => $utils->get_param_value('start_upload_and_split', 'to', 'int'), 'password' => $utils->get_param_value('start_upload_and_split', 'password', 'string'), 'storage' => $utils->get_param_value('start_upload_and_split', 'storage', 'string'), 'fonts_folder' => $utils->get_param_value('start_upload_and_split', 'fonts_folder', 'string'), 'options' => $utils->get_param_value('start_upload_and_split', 'options', 'ExportOptions'));
+    $params{ options } = $utils->invalidize_param_value('start_upload_and_split', 'options', $params{ options }, 'ExportOptions');
+    $utils->initialize('start_upload_and_split', 'options', $params{ options });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+    };
+    if ($@) {
+        $utils->assert_error('start_upload_and_split', 'options', $params{ options }, 'ExportOptions', $@);
+    } else {
+        $utils->assert_no_error('start_upload_and_split', 'options', 'ExportOptions');
+    }
+};
+
 
 done_testing;

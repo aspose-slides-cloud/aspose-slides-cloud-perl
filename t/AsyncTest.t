@@ -145,7 +145,6 @@ subtest 'async save presentation' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
         %params = ('name' => 'test.pptx', 'format' => 'Pdf', 'password' => 'password', 'folder' => "TempSlidesSDK", 'out_path' => $out_path);
         my $operationId = $utils->{testSlidesAsyncApi}->start_save_presentation(%params);
         my $operation;
@@ -233,6 +232,76 @@ subtest 'async merge and save' => sub {
     };
     if ($@) {
         fail("async merge and save raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'async split' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+        my $out_folder = "splitResult";
+
+        my %params = ('path' => $out_folder, 'recursive' => 1);
+        $utils->{testSlidesApi}->delete_folder(%params);
+
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        %params = ('name' => 'test.pptx', 'format' => 'png', 'password' => 'password', 'folder' => "TempSlidesSDK", 'dest_folder' => $out_folder);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_split(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        %params = ('path' => $out_folder);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("async split raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'async upload and split' => sub {
+    eval {
+        my $maxTries = 10;
+        my $sleepTimeout = 3;
+        my $out_folder = "splitResult";
+
+        my %params = ('path' => $out_folder, 'recursive' => 1);
+        $utils->{testSlidesApi}->delete_folder(%params);
+
+        my $source = read_file("TestData/test.pptx", { binmode => ':raw' });
+        %params = ('document' => $source, 'format' => 'png', 'password' => 'password', 'dest_folder' => $out_folder);
+        my $operationId = $utils->{testSlidesAsyncApi}->start_upload_and_split(%params);
+        my $operation;
+        my %getStatusParams = ('id' => $operationId);
+        for (my $i = 0; $i < $maxTries; $i++) {
+            sleep($sleepTimeout);
+            $operation = $utils->{testSlidesAsyncApi}->get_operation_status(%getStatusParams);
+            if ($operation->{status} ne 'Created' && $operation->{status} ne 'Enqueued' && $operation->{status} ne 'Started') {
+                last;
+            }
+        }
+        is($operation->{status}, 'Finished');
+        ok(not $operation->{error});
+
+        %params = ('path' => $out_folder);
+        my $exists = $utils->{testSlidesApi}->object_exists(%params);
+        ok($exists->{exists});
+    };
+    if ($@) {
+        fail("async split raised an exception: $@");
     }
     pass();
 };
