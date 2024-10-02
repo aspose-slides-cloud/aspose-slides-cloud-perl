@@ -37,6 +37,66 @@ use warnings;
 my $utils = AsposeSlidesCloud::TestUtils->new();
 
 #
+# download test
+#
+subtest 'download' => sub {
+    my %params = ('path' => $utils->get_param_value('download', 'path', 'string'), 'storage_name' => $utils->get_param_value('download', 'storage_name', 'string'), 'version_id' => $utils->get_param_value('download', 'version_id', 'string'));
+    $utils->initialize('download', '');
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->download(%params);
+    };
+    if ($@) {
+        fail("download raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'download invalid path' => sub {
+    my %params = ('path' => $utils->get_param_value('download', 'path', 'string'), 'storage_name' => $utils->get_param_value('download', 'storage_name', 'string'), 'version_id' => $utils->get_param_value('download', 'version_id', 'string'));
+    $params{ path } = $utils->invalidize_param_value('download', 'path', $params{ path }, 'string');
+    $utils->initialize('download', 'path', $params{ path });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->download(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download', 'path', $params{ path }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download', 'path', 'string');
+    }
+};
+
+subtest 'download invalid storage_name' => sub {
+    my %params = ('path' => $utils->get_param_value('download', 'path', 'string'), 'storage_name' => $utils->get_param_value('download', 'storage_name', 'string'), 'version_id' => $utils->get_param_value('download', 'version_id', 'string'));
+    $params{ storage_name } = $utils->invalidize_param_value('download', 'storage_name', $params{ storage_name }, 'string');
+    $utils->initialize('download', 'storage_name', $params{ storage_name });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->download(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download', 'storage_name', $params{ storage_name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download', 'storage_name', 'string');
+    }
+};
+
+subtest 'download invalid version_id' => sub {
+    my %params = ('path' => $utils->get_param_value('download', 'path', 'string'), 'storage_name' => $utils->get_param_value('download', 'storage_name', 'string'), 'version_id' => $utils->get_param_value('download', 'version_id', 'string'));
+    $params{ version_id } = $utils->invalidize_param_value('download', 'version_id', $params{ version_id }, 'string');
+    $utils->initialize('download', 'version_id', $params{ version_id });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->download(%params);
+    };
+    if ($@) {
+        $utils->assert_error('download', 'version_id', $params{ version_id }, 'string', $@);
+    } else {
+        $utils->assert_no_error('download', 'version_id', 'string');
+    }
+};
+
+#
 # get_operation_result test
 #
 subtest 'get_operation_result' => sub {
@@ -1143,6 +1203,66 @@ subtest 'start_upload_and_split invalid options' => sub {
         $utils->assert_error('start_upload_and_split', 'options', $params{ options }, 'ExportOptions', $@);
     } else {
         $utils->assert_no_error('start_upload_and_split', 'options', 'ExportOptions');
+    }
+};
+
+#
+# upload test
+#
+subtest 'upload' => sub {
+    my %params = ('path' => $utils->get_param_value('upload', 'path', 'string'), 'file' => $utils->get_param_value('upload', 'file', 'File'), 'storage_name' => $utils->get_param_value('upload', 'storage_name', 'string'));
+    $utils->initialize('upload', '');
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->upload(%params);
+    };
+    if ($@) {
+        fail("upload raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'upload invalid path' => sub {
+    my %params = ('path' => $utils->get_param_value('upload', 'path', 'string'), 'file' => $utils->get_param_value('upload', 'file', 'File'), 'storage_name' => $utils->get_param_value('upload', 'storage_name', 'string'));
+    $params{ path } = $utils->invalidize_param_value('upload', 'path', $params{ path }, 'string');
+    $utils->initialize('upload', 'path', $params{ path });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->upload(%params);
+    };
+    if ($@) {
+        $utils->assert_error('upload', 'path', $params{ path }, 'string', $@);
+    } else {
+        $utils->assert_no_error('upload', 'path', 'string');
+    }
+};
+
+subtest 'upload invalid file' => sub {
+    my %params = ('path' => $utils->get_param_value('upload', 'path', 'string'), 'file' => $utils->get_param_value('upload', 'file', 'File'), 'storage_name' => $utils->get_param_value('upload', 'storage_name', 'string'));
+    $params{ file } = $utils->invalidize_param_value('upload', 'file', $params{ file }, 'File');
+    $utils->initialize('upload', 'file', $params{ file });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->upload(%params);
+    };
+    if ($@) {
+        $utils->assert_error('upload', 'file', $params{ file }, 'File', $@);
+    } else {
+        $utils->assert_no_error('upload', 'file', 'File');
+    }
+};
+
+subtest 'upload invalid storage_name' => sub {
+    my %params = ('path' => $utils->get_param_value('upload', 'path', 'string'), 'file' => $utils->get_param_value('upload', 'file', 'File'), 'storage_name' => $utils->get_param_value('upload', 'storage_name', 'string'));
+    $params{ storage_name } = $utils->invalidize_param_value('upload', 'storage_name', $params{ storage_name }, 'string');
+    $utils->initialize('upload', 'storage_name', $params{ storage_name });
+
+    eval {
+        my $result = $utils->{testSlidesAsyncApi}->upload(%params);
+    };
+    if ($@) {
+        $utils->assert_error('upload', 'storage_name', $params{ storage_name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('upload', 'storage_name', 'string');
     }
 };
 
