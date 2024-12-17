@@ -472,6 +472,141 @@ subtest 'compress_embedded_fonts_online invalid password' => sub {
 };
 
 #
+# compress_image test
+#
+subtest 'compress_image' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $utils->initialize('compress_image', '');
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        fail("compress_image raised an exception: $@");
+    }
+    pass();
+};
+
+subtest 'compress_image invalid name' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ name } = $utils->invalidize_param_value('compress_image', 'name', $params{ name }, 'string');
+    $utils->initialize('compress_image', 'name', $params{ name });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'name', $params{ name }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'name', 'string');
+    }
+};
+
+subtest 'compress_image invalid slide_index' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ slide_index } = $utils->invalidize_param_value('compress_image', 'slide_index', $params{ slide_index }, 'int');
+    $utils->initialize('compress_image', 'slide_index', $params{ slide_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'slide_index', $params{ slide_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'slide_index', 'int');
+    }
+};
+
+subtest 'compress_image invalid shape_index' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ shape_index } = $utils->invalidize_param_value('compress_image', 'shape_index', $params{ shape_index }, 'int');
+    $utils->initialize('compress_image', 'shape_index', $params{ shape_index });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'shape_index', $params{ shape_index }, 'int', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'shape_index', 'int');
+    }
+};
+
+subtest 'compress_image invalid resolution' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ resolution } = $utils->invalidize_param_value('compress_image', 'resolution', $params{ resolution }, 'double');
+    $utils->initialize('compress_image', 'resolution', $params{ resolution });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'resolution', $params{ resolution }, 'double', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'resolution', 'double');
+    }
+};
+
+subtest 'compress_image invalid delete_picture_cropped_areas' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ delete_picture_cropped_areas } = $utils->invalidize_param_value('compress_image', 'delete_picture_cropped_areas', $params{ delete_picture_cropped_areas }, 'boolean');
+    $utils->initialize('compress_image', 'delete_picture_cropped_areas', $params{ delete_picture_cropped_areas });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'delete_picture_cropped_areas', $params{ delete_picture_cropped_areas }, 'boolean', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'delete_picture_cropped_areas', 'boolean');
+    }
+};
+
+subtest 'compress_image invalid password' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ password } = $utils->invalidize_param_value('compress_image', 'password', $params{ password }, 'string');
+    $utils->initialize('compress_image', 'password', $params{ password });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'password', $params{ password }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'password', 'string');
+    }
+};
+
+subtest 'compress_image invalid folder' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ folder } = $utils->invalidize_param_value('compress_image', 'folder', $params{ folder }, 'string');
+    $utils->initialize('compress_image', 'folder', $params{ folder });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'folder', $params{ folder }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'folder', 'string');
+    }
+};
+
+subtest 'compress_image invalid storage' => sub {
+    my %params = ('name' => $utils->get_param_value('compress_image', 'name', 'string'), 'slide_index' => $utils->get_param_value('compress_image', 'slide_index', 'int'), 'shape_index' => $utils->get_param_value('compress_image', 'shape_index', 'int'), 'resolution' => $utils->get_param_value('compress_image', 'resolution', 'double'), 'delete_picture_cropped_areas' => $utils->get_param_value('compress_image', 'delete_picture_cropped_areas', 'boolean'), 'password' => $utils->get_param_value('compress_image', 'password', 'string'), 'folder' => $utils->get_param_value('compress_image', 'folder', 'string'), 'storage' => $utils->get_param_value('compress_image', 'storage', 'string'));
+    $params{ storage } = $utils->invalidize_param_value('compress_image', 'storage', $params{ storage }, 'string');
+    $utils->initialize('compress_image', 'storage', $params{ storage });
+
+    eval {
+        my $result = $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        $utils->assert_error('compress_image', 'storage', $params{ storage }, 'string', $@);
+    } else {
+        $utils->assert_no_error('compress_image', 'storage', 'string');
+    }
+};
+
+#
 # convert test
 #
 subtest 'convert' => sub {

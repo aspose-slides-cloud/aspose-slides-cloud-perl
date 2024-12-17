@@ -171,16 +171,30 @@ subtest 'images download request' => sub {
     pass();
 };
 
+subtest 'compress image' => sub {
+    eval {
+        my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
+        $utils->{testSlidesApi}->copy_file(%copy_params);
+
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2,, 'resolution' => 150, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->compress_image(%params);
+    };
+    if ($@) {
+        fail("compress_image raised an exception: $@");
+    }
+    pass();
+};
+
 subtest 'delete picture cropped areas' => sub {
     eval {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 2, 'delete_picture_cropped_areas' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->compress_image(%params);
     };
     if ($@) {
-        fail("delete_picture_cropped_areas raised an exception: $@");
+        fail("compress_image raised an exception: $@");
     }
     pass();
 };
@@ -190,8 +204,8 @@ subtest 'delete picture cropped areas wrong shape type' => sub {
         my %copy_params = ('src_path' => "TempTests/test.pptx", 'dest_path' => "TempSlidesSDK/test.pptx");
         $utils->{testSlidesApi}->copy_file(%copy_params);
 
-        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'password' => "password", 'folder' => "TempSlidesSDK");
-        $utils->{testSlidesApi}->delete_picture_cropped_areas(%params);
+        my %params = ('name' => "test.pptx", 'slide_index' => 2, 'shape_index' => 3, 'delete_picture_cropped_areas' => 1, 'password' => "password", 'folder' => "TempSlidesSDK");
+        $utils->{testSlidesApi}->compress_image(%params);
     };
     if ($@) {
         if ($@ =~ m/API Exception\((\d+)\): (.*) /s) {
